@@ -1,8 +1,9 @@
-import { InputHTMLAttributes, forwardRef, useState } from 'react';
+import { InputHTMLAttributes, forwardRef, useState } from "react";
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   /** 입력 필드 크기 */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** 에러 상태 */
   error?: boolean;
   /** 성공 상태 */
@@ -31,7 +32,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      size = 'md',
+      size = "md",
       error = false,
       success = false,
       label,
@@ -39,40 +40,47 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       errorMessage,
       fullWidth = false,
       disabled,
-      className = '',
+      className = "",
       ...props
     },
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false);
 
-    const baseStyles = 'rounded-lg border-2 transition-all duration-[0.25s] font-normal bg-bg-primary text-text-primary placeholder:text-text-tertiary disabled:bg-bg-secondary disabled:cursor-not-allowed disabled:text-text-disabled';
+    const baseStyles =
+      "rounded-lg border-2 transition-all duration-[0.25s] font-normal bg-bg-primary text-text-primary placeholder:text-text-tertiary disabled:bg-bg-secondary disabled:cursor-not-allowed disabled:text-text-disabled";
 
     const sizeStyles = {
-      sm: 'px-3 py-1.5 text-[0.8125rem] leading-[1.5] tracking-[-0.01em] min-h-[32px]',
-      md: 'px-4 py-2 text-[0.9375rem] leading-[1.6] tracking-[-0.011em] min-h-[40px]',
-      lg: 'px-6 py-3 text-[1.0625rem] leading-[1.6] tracking-[0] min-h-[48px]',
+      sm: "px-3 py-1.5 text-[0.8125rem] leading-[1.5] tracking-[-0.01em] min-h-[32px]",
+      md: "px-4 py-2 text-[0.9375rem] leading-[1.6] tracking-[-0.011em] min-h-[40px]",
+      lg: "px-6 py-3 text-[1.0625rem] leading-[1.6] tracking-[0] min-h-[48px]",
     };
 
     const stateStyles = error
-      ? 'border-semantic-error focus:border-semantic-error focus:ring-2 focus:ring-semantic-error/20'
+      ? "border-semantic-error focus:border-semantic-error focus:ring-2 focus:ring-semantic-error/20"
       : success
-        ? 'border-semantic-success focus:border-semantic-success focus:ring-2 focus:ring-semantic-success/20'
-        : isFocused
-          ? 'border-brand-primary focus:ring-2 focus:ring-brand-primary/20'
-          : 'border-border-primary hover:border-border-secondary';
+      ? "border-semantic-success focus:border-semantic-success focus:ring-2 focus:ring-semantic-success/20"
+      : isFocused
+      ? "border-brand-primary focus:ring-2 focus:ring-brand-primary/20"
+      : "border-border-primary hover:border-border-secondary";
 
-    const widthStyles = fullWidth ? 'w-full' : '';
+    const widthStyles = fullWidth ? "w-full" : "";
 
     const displayMessage = error && errorMessage ? errorMessage : helperText;
-    const messageColor = error ? 'text-semantic-error' : success ? 'text-semantic-success' : 'text-text-secondary';
+    const messageColor = error
+      ? "text-semantic-error"
+      : success
+      ? "text-semantic-success"
+      : "text-text-secondary";
 
     return (
-      <div className={fullWidth ? 'w-full' : ''}>
+      <div className={fullWidth ? "w-full" : ""}>
         {label && (
           <label className="block mb-1.5 text-[0.8125rem] leading-[1.5] tracking-[-0.01em] font-medium text-text-primary">
             {label}
-            {props.required && <span className="ml-1 text-semantic-error">*</span>}
+            {props.required && (
+              <span className="ml-1 text-semantic-error">*</span>
+            )}
           </label>
         )}
         <input
@@ -90,7 +98,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {displayMessage && (
-          <p className={`mt-1.5 text-[0.75rem] leading-[1.4] tracking-[0] ${messageColor}`}>
+          <p
+            className={`mt-1.5 text-[0.75rem] leading-[1.4] tracking-[0] ${messageColor}`}
+          >
             {displayMessage}
           </p>
         )}
@@ -99,7 +109,4 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-Input.displayName = 'Input';
-
-
-
+Input.displayName = "Input";
