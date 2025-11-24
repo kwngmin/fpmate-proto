@@ -1,26 +1,261 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors - Brand */
+  --brand-primary: #00ab55;
+  --brand-text: #ffffff;
+  --brand-bg: #00ab55;
+  --brand-tint: #c8fad6;
+  --brand-hover: #5be49b;
+
+  /* Colors - Accent */
+  --accent-primary: #007b3d;
+  --accent-tint: #b8e6d0;
+  --accent-hover: #00995a;
+
+  /* Colors - Semantic */
+  --semantic-red: #ff5630;
+  --semantic-orange: #ffab00;
+  --semantic-yellow: #ffd666;
+  --semantic-green: #22c55e;
+  --semantic-blue: #00b8d9;
+  --semantic-indigo: #8e33ff;
+  --semantic-success: #22c55e;
+  --semantic-warning: #ffab00;
+  --semantic-error: #ff5630;
+  --semantic-info: #00b8d9;
+
+  /* Colors - Background */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f4f6f8;
+  --bg-quaternary: #dfe3e8;
+  --bg-quinary: #c4cdd5;
+  --bg-paper: #ffffff;
+  --bg-neutral: #f4f6f8;
+  --bg-default: #ffffff;
+
+  /* Colors - Foreground */
+  --fg-primary: #1c252e;
+  --fg-secondary: #637381;
+  --fg-tertiary: #919eab;
+  --fg-quaternary: #c4cdd5;
+
+  /* Colors - Text */
+  --text-primary: #1c252e;
+  --text-secondary: #637381;
+  --text-tertiary: #919eab;
+  --text-quaternary: #c4cdd5;
+  --text-disabled: #919eab;
+
+  /* Colors - Border */
+  --border-primary: #dfe3e8;
+  --border-secondary: #c4cdd5;
+  --border-tertiary: #919eab;
+  --border-divider: rgba(145, 158, 171, 0.2);
+
+  /* Colors - Grey Scale */
+  --grey-50: #fcfdfd;
+  --grey-100: #f9fafb;
+  --grey-200: #f4f6f8;
+  --grey-300: #dfe3e8;
+  --grey-400: #c4cdd5;
+  --grey-500: #919eab;
+  --grey-600: #637381;
+  --grey-700: #454f5b;
+  --grey-800: #1c252e;
+  --grey-900: #141a21;
+
+  /* Colors - Action */
+  --action-active: #637381;
+  --action-hover: rgba(145, 158, 171, 0.08);
+  --action-selected: rgba(145, 158, 171, 0.16);
+  --action-disabled: rgba(145, 158, 171, 0.8);
+  --action-disabled-bg: rgba(145, 158, 171, 0.24);
+  --action-focus: rgba(145, 158, 171, 0.24);
+
+  /* Typography - Font Families */
+  --font-regular: "Noto Sans KR", "Inter Variable", "SF Pro Display",
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
+  --font-monospace: "Berkeley Mono", ui-monospace, "SF Mono", "Menlo", monospace;
+  --font-serif-display: "Tiempos Headline", ui-serif, Georgia, Cambria,
+    "Times New Roman", Times, serif;
+
+  /* Typography - Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 680;
+
+  /* Spacing */
+  --spacing-page-x: 24px;
+  --spacing-page-y: 64px;
+  --spacing-page-max-width: 1024px;
+  --spacing-prose-max-width: 624px;
+
+  /* Shadows */
+  --shadow-tiny: 0 1px 2px 0 rgba(145, 158, 171, 0.16);
+  --shadow-low: 0px 2px 4px rgba(145, 158, 171, 0.2);
+  --shadow-medium: 0px 4px 24px rgba(145, 158, 171, 0.2);
+  --shadow-high: 0px 7px 32px rgba(145, 158, 171, 0.35);
+  --shadow-card: 0 0 2px 0 rgba(145, 158, 171, 0.2),
+    0 12px 24px -4px rgba(145, 158, 171, 0.12);
+  --shadow-dropdown: 0 0 2px 0 rgba(145, 158, 171, 0.24),
+    -20px 20px 40px -4px rgba(145, 158, 171, 0.24);
+  --shadow-dialog: -40px 40px 80px -8px rgba(0, 0, 0, 0.24);
+
+  /* Focus Ring */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: #00ab55;
+
+  /* Layout */
+  --header-height: 64px;
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --header-blur: 20px;
+  --header-border: rgba(145, 158, 171, 0.08);
+
+  /* Animation */
+  --transition-quick: 0.1s;
+  --transition-regular: 0.25s;
+
+  /* Scrollbar */
+  --scrollbar-size: 6px;
+  --scrollbar-size-active: 10px;
+  --scrollbar-gap: 4px;
+  --scrollbar-color: rgba(145, 158, 171, 0.2);
+  --scrollbar-color-hover: rgba(145, 158, 171, 0.4);
+  --scrollbar-color-active: rgba(145, 158, 171, 0.6);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Colors */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-text: var(--brand-text);
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-tint: var(--brand-tint);
+  --color-brand-hover: var(--brand-hover);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-hover: var(--accent-hover);
+
+  --color-semantic-red: var(--semantic-red);
+  --color-semantic-orange: var(--semantic-orange);
+  --color-semantic-yellow: var(--semantic-yellow);
+  --color-semantic-green: var(--semantic-green);
+  --color-semantic-blue: var(--semantic-blue);
+  --color-semantic-indigo: var(--semantic-indigo);
+  --color-semantic-success: var(--semantic-success);
+  --color-semantic-warning: var(--semantic-warning);
+  --color-semantic-error: var(--semantic-error);
+  --color-semantic-info: var(--semantic-info);
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-quaternary: var(--bg-quaternary);
+  --color-bg-quinary: var(--bg-quinary);
+  --color-bg-paper: var(--bg-paper);
+  --color-bg-neutral: var(--bg-neutral);
+
+  --color-fg-primary: var(--fg-primary);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-tertiary: var(--fg-tertiary);
+  --color-fg-quaternary: var(--fg-quaternary);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-quaternary: var(--text-quaternary);
+  --color-text-disabled: var(--text-disabled);
+
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-tertiary: var(--border-tertiary);
+
+  --color-grey-50: var(--grey-50);
+  --color-grey-100: var(--grey-100);
+  --color-grey-200: var(--grey-200);
+  --color-grey-300: var(--grey-300);
+  --color-grey-400: var(--grey-400);
+  --color-grey-500: var(--grey-500);
+  --color-grey-600: var(--grey-600);
+  --color-grey-700: var(--grey-700);
+  --color-grey-800: var(--grey-800);
+  --color-grey-900: var(--grey-900);
+
+  --color-action-active: var(--action-active);
+  --color-action-hover: var(--action-hover);
+  --color-action-selected: var(--action-selected);
+  --color-action-disabled: var(--action-disabled);
+  --color-action-disabled-bg: var(--action-disabled-bg);
+  --color-action-focus: var(--action-focus);
+
+  /* Font Families */
+  --font-sans: var(--font-regular);
+  --font-mono: var(--font-monospace);
+  --font-serif: var(--font-serif-display);
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-tiny: var(--shadow-tiny);
+  --shadow-low: var(--shadow-low);
+  --shadow-medium: var(--shadow-medium);
+  --shadow-high: var(--shadow-high);
+  --shadow-card: var(--shadow-card);
+  --shadow-dropdown: var(--shadow-dropdown);
+  --shadow-dialog: var(--shadow-dialog);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-regular);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-quick);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-color-hover);
+  width: var(--scrollbar-size-active);
+  height: var(--scrollbar-size-active);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--scrollbar-color-active);
+}
+
+/* Focus Ring */
+*:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
 }
