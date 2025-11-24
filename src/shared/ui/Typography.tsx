@@ -175,7 +175,7 @@ export function Typography({
   const content = showConversion ? (
     <>
       {children}
-      <span className="block mt-1 text-text-tertiary text-[0.75rem] font-mono">
+      <span className="block mt-2 text-text-tertiary text-[0.875rem] font-base">
         {variantSizes[variant]} / {remToPx(variantSizes[variant])}px
         {" • "}
         line-height: {variantLineHeights[variant]}

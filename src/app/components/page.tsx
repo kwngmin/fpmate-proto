@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button, Typography, Card, Input, Badge, Divider } from "@/shared/ui";
 
 export default function ComponentsPage() {
@@ -16,10 +17,27 @@ export default function ComponentsPage() {
     <div className="min-h-screen bg-bg-secondary">
       {/* Header */}
       <header className="sticky top-0 z-[100] bg-[var(--header-bg)] backdrop-blur-[var(--header-blur)] border-b border-[var(--header-border)]">
-        <div className="max-w-[var(--spacing-page-max-width)] mx-auto px-[var(--spacing-page-x)] h-[var(--header-height)] flex items-center">
-          <Typography variant="title2" weight="semibold">
-            Design System Components
-          </Typography>
+        <div className="max-w-[var(--spacing-page-max-width)] mx-auto px-[var(--spacing-page-x)] h-[var(--header-height)] flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Image
+              src="/assets/logo/fpmate-symbol-black.svg"
+              alt="FPmate"
+              width={131}
+              height={40}
+              priority
+            />
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center gap-3">
+            <Button variant="outline" size="md">
+              로그인/회원가입
+            </Button>
+            <Button variant="primary" size="md">
+              제품도입문의
+            </Button>
+          </div>
         </div>
       </header>
 
