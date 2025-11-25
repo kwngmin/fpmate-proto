@@ -12,42 +12,49 @@ const processSteps = [
   {
     id: 1,
     number: "01",
+    key: "one",
     title: "SW 사업 정보 정보 등록",
     image: "/assets/images/main-card-01.png",
   },
   {
     id: 2,
     number: "02",
+    key: "two",
     title: "SW 사업 정보 정보 등록",
     image: "/assets/images/main-card-02.png",
   },
   {
     id: 3,
     number: "03",
+    key: "three",
     title: "SW 사업 정보 정보 등록",
     image: "/assets/images/main-card-03.png",
   },
   {
     id: 4,
     number: "04",
+    key: "four",
     title: "SW 사업 정보 정보 등록",
     image: "/assets/images/main-card-04.png",
   },
   {
     id: 5,
     number: "05",
+    key: "five",
     title: "SW 사업 정보 정보 등록",
     image: "/assets/images/main-card-05.png",
   },
   {
     id: 6,
     number: "06",
+    key: "six",
     title: "SW 사업 정보 정보 등록",
     image: "/assets/images/main-card-06.png",
   },
   {
     id: 7,
     number: "07",
+    key: "seven",
     title: "SW 사업 정보 정보 등록",
     image: "/assets/images/main-card-07.png",
   },
@@ -214,11 +221,17 @@ export default function Home() {
           </div> */}
 
           {/* progress bar */}
-          <div className="flex items-center w-full max-w-xs sm:max-w-lg md:max-w-2xl py-8">
+          <div className="flex items-center w-full max-w-xs sm:max-w-lg md:max-w-2xl pb-6 md:pt-6">
             {processSteps.map((step, index) => (
               <Fragment key={step.id}>
-                <div className="size-8 sm:size-9 md:size-10 bg-brand-primary rounded-full flex items-center justify-center font-bold text-brand-text text-base sm:text-lg leading-none pb-1">
-                  {step.id}
+                <div className="size-8 sm:size-9 md:size-10 bg-brand-primary rounded-full flex items-center justify-center">
+                  <Image
+                    src={`/assets/svgs/number-${step.key}.svg`}
+                    alt={`process-step-${step.id}`}
+                    width={32}
+                    height={32}
+                    className="size-5 brightness-0 invert"
+                  />
                 </div>
                 {index < processSteps.length - 1 && (
                   <div className="grow h-1 border-t border-border-primary" />
