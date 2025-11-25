@@ -177,7 +177,9 @@ export default function Home() {
             </span>
             <div className="text-[2.5rem] md:text-[3.75rem] leading-[1.1] tracking-[-0.022em] font-bold">
               <div>
-                <span className="font-black text-brand-primary">FPMate</span>
+                <span className="font-extrabold text-brand-primary">
+                  FPMate
+                </span>
                 <span>로</span>
               </div>
               <div className="break-keep">
@@ -185,34 +187,34 @@ export default function Home() {
               </div>
             </div>
             <p className="text-[1.3125rem] leading-[1.33] tracking-[-0.012em] font-medium break-keep">
-              FPMate는 AI 비서와 함께 쉽고 빠르게 SW 사업 비용을 알아 볼 수
-              있습니다. <br />
+              <span className="font-extrabold">FPMate</span>는 AI 비서와 함께
+              쉽고 빠르게 SW 사업 비용을 알아 볼 수 있습니다. <br />
               사업 단계별 변경 관리도 어렵지 않아요.
             </p>
           </div>
 
           {/* Action Buttons - Mobile*/}
-          <div className="flex items-center gap-2 md:hidden">
+          {/* <div className="flex items-center gap-2 md:hidden">
             <Button variant="primary" size="md">
               제품도입문의
             </Button>
             <Button variant="ghost" size="md">
               로그인/회원가입
             </Button>
-          </div>
+          </div> */}
 
           {/* Action Buttons - Desktop*/}
-          <div className="hidden md:flex items-center gap-2">
+          {/* <div className="hidden md:flex items-center gap-2">
             <Button variant="primary" size="lg">
               제품도입문의
             </Button>
             <Button variant="ghost" size="lg">
               로그인/회원가입
             </Button>
-          </div>
+          </div> */}
 
           {/* progress bar */}
-          <div className="flex items-center w-full max-w-xs sm:max-w-lg md:max-w-2xl py-8 mt-6">
+          <div className="flex items-center w-full max-w-xs sm:max-w-lg md:max-w-2xl py-8">
             {processSteps.map((step, index) => (
               <Fragment key={step.id}>
                 <div className="size-8 sm:size-9 md:size-10 bg-brand-primary rounded-full flex items-center justify-center font-bold text-brand-text text-base sm:text-lg leading-none pb-1">
@@ -590,13 +592,15 @@ export default function Home() {
         </div>
 
         {/* 차트 그래픽 영역 */}
-        <div className="max-w-[1200px] mx-auto px-6 flex items-center gap-20">
+        <div className="max-w-[1200px] mx-auto px-6 flex gap-20">
           {/* 차트 셀렉터 */}
-          <div className="flex flex-col gap-2 py-8 min-w-lg">
+          <div className="flex flex-col gap-2 min-w-lg">
             {section3Charts.map((chart) => (
               <button
                 key={chart.id}
-                className="flex gap-3 items-center hover:bg-white rounded overflow-hidden max-w-96"
+                className={`flex gap-3 items-center hover:bg-white rounded overflow-hidden ${
+                  selectedChart.key === chart.key ? "bg-white" : "bg-black/2"
+                }`}
                 onClick={() => handleChartClick(chart.key)}
               >
                 <div
