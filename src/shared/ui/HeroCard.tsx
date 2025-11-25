@@ -1,10 +1,10 @@
 import { HTMLAttributes, forwardRef } from "react";
 
-export interface CardProps extends HTMLAttributes<HTMLDivElement> {
+export interface HeroCardProps extends HTMLAttributes<HTMLDivElement> {
   /** 카드 변형 */
   variant?: "default" | "bordered" | "elevated";
   /** 패딩 크기 */
-  padding?: "none" | "xs" | "sm" | "md" | "lg";
+  padding?: "none" | "sm" | "md" | "lg";
   /** 호버 효과 */
   hoverable?: boolean;
   /** 클릭 가능 여부 */
@@ -19,7 +19,7 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
  * @param clickable - 클릭 가능 여부
  * @returns Card 컴포넌트
  */
-export const Card = forwardRef<HTMLDivElement, CardProps>(
+export const HeroCard = forwardRef<HTMLDivElement, HeroCardProps>(
   (
     {
       variant = "default",
@@ -42,8 +42,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
 
     const paddingStyles = {
       none: "",
-      xs: "p-3",
-      sm: "p-4",
+      sm: "p-3",
       md: "p-6",
       lg: "p-8",
     };
@@ -70,4 +69,4 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
   }
 );
 
-Card.displayName = "Card";
+HeroCard.displayName = "HeroCard";

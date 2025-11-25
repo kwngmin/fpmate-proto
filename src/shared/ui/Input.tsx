@@ -1,3 +1,5 @@
+"use client";
+
 import { InputHTMLAttributes, forwardRef, useState } from "react";
 
 export interface InputProps
@@ -76,7 +78,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className={fullWidth ? "w-full" : ""}>
         {label && (
-          <label className="block mb-1.5 text-[0.8125rem] leading-[1.5] tracking-[-0.01em] font-medium text-text-primary">
+          <label className="block mb-1.5 text-[0.8125rem] leading-normal tracking-[-0.01em] font-medium text-text-primary">
             {label}
             {props.required && (
               <span className="ml-1 text-semantic-error">*</span>

@@ -1,10 +1,10 @@
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from "react";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** 버튼 변형 */
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "danger";
   /** 버튼 크기 */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** 전체 너비 사용 */
   fullWidth?: boolean;
   /** 로딩 상태 */
@@ -22,34 +22,40 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      variant = 'primary',
-      size = 'md',
+      variant = "primary",
+      size = "md",
       fullWidth = false,
       loading = false,
       disabled,
-      className = '',
+      className = "",
       children,
       ...props
     },
     ref
   ) => {
-    const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-[0.25s] rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary disabled:cursor-not-allowed';
+    const baseStyles =
+      "inline-flex items-center justify-center font-medium transition-all duration-[0.25s] rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary disabled:cursor-not-allowed";
 
     const variantStyles = {
-      primary: 'bg-brand-primary text-brand-text hover:bg-brand-hover active:bg-accent-primary disabled:bg-action-disabled-bg disabled:text-action-disabled',
-      secondary: 'bg-bg-secondary text-text-primary hover:bg-bg-tertiary active:bg-bg-quaternary disabled:bg-action-disabled-bg disabled:text-action-disabled',
-      outline: 'border-2 border-border-primary bg-transparent text-text-primary hover:bg-action-hover active:bg-action-selected disabled:border-border-primary disabled:text-action-disabled',
-      ghost: 'bg-transparent text-text-primary hover:bg-action-hover active:bg-action-selected disabled:text-action-disabled',
-      danger: 'bg-semantic-error text-white hover:opacity-90 active:opacity-80 disabled:bg-action-disabled-bg disabled:text-action-disabled',
+      primary:
+        "bg-brand-primary text-brand-text hover:bg-brand-hover active:bg-accent-primary disabled:bg-action-disabled-bg disabled:text-action-disabled",
+      secondary:
+        "bg-bg-secondary text-text-primary hover:bg-bg-tertiary active:bg-bg-quaternary disabled:bg-action-disabled-bg disabled:text-action-disabled",
+      outline:
+        "border-2 border-border-primary bg-transparent text-text-primary hover:bg-action-hover active:bg-action-selected disabled:border-border-primary disabled:text-action-disabled",
+      ghost:
+        "bg-transparent text-text-primary hover:bg-action-hover active:bg-action-selected disabled:text-action-disabled",
+      danger:
+        "bg-semantic-error text-white hover:opacity-90 active:opacity-80 disabled:bg-action-disabled-bg disabled:text-action-disabled",
     };
 
     const sizeStyles = {
-      sm: 'px-3 py-1.5 text-[0.8125rem] leading-[1.5] tracking-[-0.01em] min-h-[32px]',
-      md: 'px-4 py-2 text-[0.9375rem] leading-[1.6] tracking-[-0.011em] min-h-[40px]',
-      lg: 'px-6 py-3 text-[1.0625rem] leading-[1.6] tracking-[0] min-h-[48px]',
+      sm: "px-3 py-1.5 text-[0.8125rem] leading-[1.5] tracking-[-0.01em] min-h-[32px]",
+      md: "px-4 py-2 text-[0.9375rem] leading-[1.6] tracking-[-0.011em] min-h-[40px]",
+      lg: "px-6 py-3 text-[1.0625rem] leading-[1.6] tracking-[0] min-h-[48px]",
     };
 
-    const widthStyles = fullWidth ? 'w-full' : '';
+    const widthStyles = fullWidth ? "w-full" : "";
 
     return (
       <button
@@ -86,7 +92,4 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-Button.displayName = 'Button';
-
-
-
+Button.displayName = "Button";
