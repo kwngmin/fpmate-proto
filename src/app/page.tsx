@@ -721,9 +721,9 @@ export default function Home() {
                 <div className="h-4 bg-gray-100" />
                 <div className="flex flex-col gap-6 px-6 py-8">
                   {/* <div className="w-12 h-12 rounded-full bg-gray-100" /> */}
-                  <Typography variant="title2">{content.title}</Typography>
+                  <Typography variant="title3">{content.title}</Typography>
                   <div className="flex flex-col gap-2">
-                    <Typography variant="title1">{content.subTitle}</Typography>
+                    <Typography variant="title2">{content.subTitle}</Typography>
                     <div className="flex flex-col gap-1">
                       {content.sectionTitle.map((title) => (
                         <div key={title} className="flex items-center gap-2">
@@ -739,7 +739,7 @@ export default function Home() {
                     {content.tags.map((tag) => (
                       <li
                         key={tag}
-                        className="text-[0.875rem] leading-normal tracking-[-0.013em] px-3 h-7 rounded-sm bg-gray-100 flex items-center font-medium"
+                        className="text-base sm:text-[0.875rem] px-3 h-8 sm:h-7 rounded-sm bg-gray-100 flex items-center font-medium"
                       >
                         {tag}
                       </li>
