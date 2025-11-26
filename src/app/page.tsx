@@ -226,7 +226,7 @@ export default function Home() {
               <Fragment key={step.id}>
                 <div className="size-8 sm:size-9 md:size-10 bg-brand-primary rounded-full flex items-center justify-center">
                   <Image
-                    src={`/assets/svgs/number-${step.key}.svg`}
+                    src={`/assets/svgs/number-${step.key}-bold.svg`}
                     alt={`process-step-${step.id}`}
                     width={32}
                     height={32}
