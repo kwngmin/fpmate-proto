@@ -158,19 +158,10 @@ const section4Contents = [
 ];
 
 export default function Home() {
-  const [selectedChart, setSelectedChart] = useState<{
-    key: string;
-    image: string;
-  }>({
-    key: "function",
-    image: "/assets/images/section3-chart-1.png",
-  });
+  const [selectedChart, setSelectedChart] = useState<string>("function");
 
   const handleChartClick = (key: string) => {
-    setSelectedChart({
-      key,
-      image: section3Charts.find((chart) => chart.key === key)?.image || "",
-    });
+    setSelectedChart(key);
   };
 
   return (
@@ -271,7 +262,7 @@ export default function Home() {
                     alt={`process-step-${step.id}`}
                     width={32}
                     height={32}
-                    className="size-5 md:size-6 brightness-0 invert"
+                    className="size-4.5 md:size-5 brightness-0 invert"
                   />
                 </div>
                 {index < processSteps.length - 1 && (
@@ -646,45 +637,97 @@ export default function Home() {
         </div>
 
         {/* 차트 그래픽 영역 */}
-        <div className="max-w-[1200px] mx-auto px-6 flex gap-20">
+        <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20">
           {/* 차트 셀렉터 */}
-          <div className="flex flex-col gap-2 min-w-lg">
+          <div className="flex flex-col gap-2 min-w-xs lg:min-w-1/3 py-10">
             {section3Charts.map((chart) => (
               <button
                 key={chart.id}
-                className={`flex gap-3 items-center hover:bg-white rounded overflow-hidden ${
-                  selectedChart.key === chart.key ? "bg-white" : "bg-black/2"
-                }`}
+                className={`flex gap-3 items-center rounded overflow-hidden`}
                 onClick={() => handleChartClick(chart.key)}
               >
                 <div
                   className={`w-1.5 h-14 rounded-full ${
-                    selectedChart.key === chart.key
+                    selectedChart === chart.key
                       ? "bg-brand-primary"
                       : "bg-gray-200"
                   }`}
                 />
-                <span
-                  className={`text-[1.0625rem] leading-[1.4] tracking-[-0.012em]
-                    ${selectedChart.key === chart.key ? "font-semibold" : ""}
-                  `}
+                <Typography
+                  variant="title1"
+                  className={
+                    selectedChart === chart.key
+                      ? "opacity-100"
+                      : "opacity-50 hover:opacity-80"
+                  }
                 >
                   {chart.title}
-                </span>
+                </Typography>
               </button>
             ))}
           </div>
 
-          {/* 차트 프레임 */}
-          <div className="bg-white rounded-xl grow h-96 overflow-hidden">
-            <Image
-              src={selectedChart.image}
-              alt={`section3-chart-${selectedChart.key}`}
-              width={608}
-              height={304}
-              unoptimized
-              className="h-full w-full object-cover mt-8"
-            />
+          {/* 차트 프레임 - horizontal */}
+          <div className="flex gap-2 md:hidden lg:flex">
+            {section3Charts.map((chart) => (
+              <div
+                key={chart.id}
+                className={`bg-white rounded h-96 overflow-hidden ${
+                  selectedChart === chart.key ? "shadow-card grow" : ""
+                }`}
+                style={{
+                  width: selectedChart === chart.key ? "70%" : "40px",
+                  flexShrink: selectedChart === chart.key ? 0 : 1,
+                  transition: "transform ease-in-out duration-200",
+                }}
+              >
+                <Image
+                  src={chart.image}
+                  alt={`section3-chart-${chart.key}`}
+                  width={608}
+                  height={304}
+                  unoptimized
+                  className="h-full w-full object-cover mt-8"
+                  style={{
+                    opacity: selectedChart === chart.key ? 1 : 0,
+                    filter:
+                      selectedChart === chart.key ? "blur(0rem)" : "blur(1rem)",
+                    transition:
+                      "opacity 0.3s ease-in-out, filter 0.5s ease-in-out",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* 차트 프레임 - vertical */}
+          <div className="hidden md:flex flex-col justify-center gap-2 lg:hidden h-140">
+            {section3Charts.map((chart) => (
+              <div
+                key={chart.id}
+                className={`bg-white rounded overflow-hidden ${
+                  selectedChart === chart.key ? "shadow-card" : ""
+                }`}
+                style={{
+                  height: selectedChart === chart.key ? "60%" : "24px",
+                  flexShrink: selectedChart === chart.key ? 0 : 1,
+                  transition: "transform ease-in-out duration-200",
+                }}
+              >
+                <Image
+                  src={chart.image}
+                  alt={`section3-chart-${chart.key}`}
+                  width={608}
+                  height={304}
+                  unoptimized
+                  className="h-full w-full object-cover mt-8"
+                  style={{
+                    opacity: selectedChart === chart.key ? 1 : 0,
+                    transition: "transform ease-in-out duration-200",
+                  }}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
