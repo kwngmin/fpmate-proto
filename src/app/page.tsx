@@ -4,7 +4,7 @@ import { Button, Card, Typography } from "@/shared/ui";
 import InsightCard from "@/shared/ui/InsightCard";
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, useRef, useMemo } from "react";
 
 /**
  * 프로세스 단계 카드 데이터
@@ -160,6 +160,12 @@ const section4Contents = [
 export default function Home() {
   const [selectedChart, setSelectedChart] = useState<string>("function");
   const [currentStep, setCurrentStep] = useState<number>(1);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // 카드 너비와 갭 상수
+  const CARD_WIDTH = 256; // w-64
+  const CARD_GAP = 8; // gap-2
 
   const handleChartClick = (key: string) => {
     setSelectedChart(key);
@@ -176,6 +182,28 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, []);
+
+  // state 대신 useMemo 사용
+  const translateX = useMemo(() => {
+    const totalCards = processSteps.length;
+    const carouselWidth = totalCards * CARD_WIDTH + (totalCards - 1) * CARD_GAP;
+    const containerWidth = 1200 - 48; // max-width - padding (24px * 2)
+    const maxTranslate = carouselWidth - containerWidth;
+
+    // 현재 카드의 왼쪽 위치
+    const cardLeftPosition = (currentStep - 1) * (CARD_WIDTH + CARD_GAP);
+
+    // 기본: 카드 왼쪽을 main 왼쪽에 맞춤
+    let newTranslateX = cardLeftPosition;
+
+    // 오른쪽 끝 처리: 더 이상 왼쪽으로 이동할 수 없으면 오른쪽에 맞춤
+    if (newTranslateX > maxTranslate) {
+      newTranslateX = maxTranslate;
+    }
+
+    // 음수 방지 (첫 번째 카드)
+    return Math.max(0, newTranslateX);
+  }, [currentStep, processSteps.length]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -324,33 +352,55 @@ export default function Home() {
               }
             }
           `}</style>
+        </div>
 
-          {/* 카드 영역 */}
-          <div className="flex gap-2 py-4">
-            {processSteps.map((step) => (
-              <Card
-                key={step.id}
-                variant="elevated"
-                padding="none"
-                className="w-64 shrink-0"
-              >
-                <Image
-                  src={step.image}
-                  alt={`step-${step.number}`}
-                  width={256}
-                  height={152}
-                  className="w-[256px] h-[130px] object-cover"
-                />
-                <div className="flex flex-col px-4 py-6">
-                  <span className="text-[27px] text-brand-primary font-base">
-                    {step.number}
-                  </span>
-                  <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
-                    {step.title}
-                  </span>
-                </div>
-              </Card>
-            ))}
+        {/* 카드 영역 - Linear.app 스타일 Inset 캐로셀 */}
+        <div className="w-full py-4 overflow-hidden">
+          {/* 1200px 컨테이너 - main과 동일한 정렬 */}
+          <div className="max-w-[1200px] mx-auto px-6 overflow-visible">
+            {/* 캐로셀 트랙 */}
+            <div
+              ref={carouselRef}
+              className="flex gap-2 transition-transform duration-500 ease-out"
+              style={{
+                transform: `translateX(-${translateX}px)`,
+                // 오른쪽으로 넘치도록 충분한 너비 확보
+                width: "max-content",
+              }}
+            >
+              {processSteps.map((step, index) => (
+                <Card
+                  key={step.id}
+                  ref={(el) => {
+                    cardRefs.current[index] = el;
+                  }}
+                  variant="elevated"
+                  padding="none"
+                  className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer ${
+                    step.id === currentStep
+                      ? "scale-100 opacity-100 ring-4 ring-brand-primary"
+                      : "scale-[0.98] opacity-70 hover:opacity-90"
+                  }`}
+                  onClick={() => setCurrentStep(step.id)}
+                >
+                  <Image
+                    src={step.image}
+                    alt={`step-${step.number}`}
+                    width={256}
+                    height={152}
+                    className="w-[256px] h-[130px] object-cover"
+                  />
+                  <div className="flex flex-col px-4 py-6">
+                    <span className="text-[27px] text-brand-primary font-base">
+                      {step.number}
+                    </span>
+                    <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
+                      {step.title}
+                    </span>
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </main>
