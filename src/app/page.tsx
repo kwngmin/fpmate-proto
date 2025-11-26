@@ -299,13 +299,13 @@ export default function Home() {
                   )}
                 </div>
                 {index < processSteps.length - 1 && (
-                  <div className="grow h-0.5 bg-border-primary relative overflow-hidden">
+                  <div className="grow h-1 sm:h-0.5 bg-border-primary relative overflow-hidden">
                     {step.id === currentStep && (
                       <div
                         key={currentStep}
                         className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
                         style={{
-                          animation: "progressBar 3.9s linear forwards",
+                          animation: "progressBar 3.9s forwards",
                         }}
                       />
                     )}
