@@ -264,16 +264,10 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <main
-        // className="py-40 overflow-hidden"
-        className="pb-20 md:pb-40 overflow-hidden scroll-mt-16"
-      >
+      <main className="pb-20 md:pb-40 overflow-hidden scroll-mt-16">
         <div className="max-w-[1200px] mx-auto px-6">
           {/* Title */}
-          <div
-            className="py-10 space-y-6 flex flex-col"
-            // className="px-6 py-10 space-y-6 flex flex-col bg-gray-50 border border-gray-200"
-          >
+          <div className="py-10 space-y-6 flex flex-col">
             <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
               FINE PROJECT MATE
             </span>
@@ -398,10 +392,10 @@ export default function Home() {
                   }}
                   variant="elevated"
                   padding="none"
-                  className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer border border-border-primary ${
+                  className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer border overflow-hidden ${
                     step.id === currentStep
-                      ? "scale-100 opacity-100 ring-4 ring-brand-primary"
-                      : "scale-[0.98] opacity-70 hover:opacity-90"
+                      ? "scale-100 opacity-100 ring-4 ring-brand-primary border-transparent"
+                      : "scale-[0.98] opacity-70 hover:opacity-90 border-border-primary hover:border-border-secondary"
                   }`}
                   onClick={() => setCurrentStep(step.id)}
                 >
@@ -454,10 +448,10 @@ export default function Home() {
                     height={124}
                     className="shrink-0 size-28 mb-2"
                   />
-                  <span className="text-[1.0625rem] leading-tight tracking-[-0.012em] font-bold break-keep">
+                  <span className="text-lg tracking-tight font-bold break-keep">
                     {content.title}
                   </span>
-                  <span className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em] font-medium text-center break-keep max-w-48">
+                  <span className="text-[1.0625rem] leading-normal tracking-[0] text-center break-keep max-w-48">
                     {content.description}
                   </span>
                 </div>
