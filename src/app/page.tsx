@@ -303,9 +303,9 @@ export default function Home() {
                     {step.id === currentStep && (
                       <div
                         key={currentStep}
-                        className="absolute inset-0 bg-brand-primary origin-left"
+                        className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
                         style={{
-                          animation: "progressBar 4s forwards",
+                          animation: "progressBar 3.9s linear forwards",
                         }}
                       />
                     )}
