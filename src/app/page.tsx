@@ -691,7 +691,7 @@ export default function Home() {
       {/* Section 4 */}
       <section className="bg-white py-20 md:py-40 overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
-          <div className="text-[2rem] md:text-[3.5rem] leading-[1.1] tracking-[-0.022em] font-semibold break-keep text-center">
+          <div className="text-[2rem] leading-[1.125] tracking-[-0.022em] md:text-[3.5rem] md:leading-[1.1] md:tracking-[-0.022em] font-semibold break-keep text-center">
             진화하는{" "}
             <span className="font-bold text-brand-primary">FPMate</span>,{" "}
             <br className="lg:hidden" />
@@ -708,7 +708,7 @@ export default function Home() {
             className="break-keep max-w-80 sm:max-w-none mx-auto"
           >
             당신의 SW 사업 성공과 <br className="md:hidden" />
-            Fine 프로젝트를 위하여 <br className="hidden md:block" />
+            Fine 프로젝트를 위하여 <br className="hidden md:inline" />
             <span className="font-bold text-brand-primary">FPMate</span>는
             지속적으로 진화합니다.
           </Typography>
@@ -732,7 +732,7 @@ export default function Home() {
                       {content.sectionTitle.map((title) => (
                         <div key={title} className="flex items-center gap-2">
                           <div className="w-1 h-7 rounded-full bg-gray-200" />
-                          <span className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em] font-medium">
+                          <span className="text-[1.0625rem] md:text-[0.9375rem] font-medium">
                             {title}
                           </span>
                         </div>
@@ -756,9 +756,9 @@ export default function Home() {
                       {content.values.map((value) => (
                         <li
                           key={value}
-                          className="font-medium break-keep list-disc ml-4"
+                          className="text-[1.0625rem] md:text-[0.9375rem]  font-medium break-keep list-disc ml-4"
                         >
-                          <Typography variant="regular">{value}</Typography>
+                          {value}
                         </li>
                       ))}
                     </ul>
