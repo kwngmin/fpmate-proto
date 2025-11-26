@@ -48,8 +48,8 @@ const variantStyles = {
   title5: "text-[2.5rem] leading-[1.1] tracking-[-0.022em] font-semibold", // 40px
   title4: "text-[2rem] leading-[1.125] tracking-[-0.022em] font-semibold", // 32px
   title3: "text-[1.5rem] leading-[1.33] tracking-[-0.012em] font-semibold", // 24px
-  title2: "text-[1.3125rem] leading-[1.33] tracking-[-0.012em] font-semibold", // 21px
-  title1: "text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold", // 17px
+  title2: "text-[1.3125rem] leading-[1.33] tracking-[-0.012em] font-medium", // 21px
+  title1: "text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-medium", // 17px
   large: "text-[1.0625rem] leading-[1.6] tracking-[0]", // 17px
   regular: "text-[0.9375rem] leading-[1.6] tracking-[-0.011em]", // 15px
   small: "text-[0.875rem] leading-[calc(21/14)] tracking-[-0.013em]", // 14px
