@@ -6,6 +6,7 @@ import InsightCard from "@/shared/ui/InsightCard";
 import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState, useEffect, useRef, useMemo } from "react";
+import Section1 from "./ui/Section1";
 
 /**
  * 프로세스 단계 카드 데이터
@@ -59,30 +60,6 @@ const processSteps = [
     key: "seven",
     title: "SW 사업 정보 정보 등록",
     image: "/assets/images/main-card-07.png",
-  },
-];
-
-/**
- * Section 1 카드 데이터
- */
-const section1Contents = [
-  {
-    id: 1,
-    title: "SW 사업을 기획하고 계신가요?",
-    description: "FPMate에서 필요한 비용을 알아보세요.",
-    image: "/assets/images/section1-lamp.png",
-  },
-  {
-    id: 2,
-    title: "SW 사업을 진행하고 계신가요?",
-    description: "FPMate로 프로젝트의 비용을 추척해보세요.",
-    image: "/assets/images/section1-play.png",
-  },
-  {
-    id: 3,
-    title: "SW 사업이 완료되셨나요?",
-    description: "FPMate로 운영에 필요한 비용을 알아보세요.",
-    image: "/assets/images/section1-check.png",
   },
 ];
 
@@ -386,7 +363,7 @@ export default function Home() {
                     )}
                   </button>
                   {index < processSteps.length - 1 && (
-                    <div className="grow h-1 sm:h-0.5 bg-border-primary relative overflow-hidden">
+                    <div className="grow h-1 sm:h-0.75 bg-border-primary relative overflow-hidden">
                       {isAnimationStarted && step.id === currentStep && (
                         <div
                           key={currentStep}
@@ -468,50 +445,7 @@ export default function Home() {
       </main>
 
       {/* Section 1 */}
-      <section className="bg-gray-50 py-20 md:py-40 overflow-hidden">
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
-          <div className="text-[2rem] leading-[1.325] tracking-[-0.022em] font-semibold break-keep">
-            <span className="font-bold text-brand-primary">FPMate</span>는{" "}
-            <br className="sm:hidden" />
-            SW 사업 파트너로서 <br />
-            SW 사업 관리를 돕고자 탄생하였습니다.
-          </div>
-
-          {/* 카드 영역 */}
-          <div className="flex gap-2 py-4">
-            {section1Contents.map((content) => (
-              <Card
-                key={content.id}
-                variant="elevated"
-                padding="none"
-                className="grow w-64 min-w-72 shrink-0"
-              >
-                <div className="flex flex-col gap-1 items-center px-4 pt-6 pb-8">
-                  <Image
-                    src={content.image}
-                    alt={`section1-${content.id}`}
-                    width={124}
-                    height={124}
-                    className="shrink-0 size-28 mb-2"
-                  />
-                  <span className="text-lg tracking-tight font-bold break-keep">
-                    {content.title}
-                  </span>
-                  <span className="text-[1.0625rem] leading-normal tracking-[0] text-center break-keep max-w-48">
-                    {content.description}
-                  </span>
-                </div>
-              </Card>
-            ))}
-          </div>
-
-          {/* Section 1 Description */}
-          <p className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em] break-keep">
-            FPMate에서는 국제표준(ISO/IEC 14143)에 기반한 방법으로 SW 사업
-            비용을 산정합니다.
-          </p>
-        </div>
-      </section>
+      <Section1 />
 
       {/* Section 2 */}
       <section className="bg-white py-20 md:py-40 overflow-hidden">
@@ -612,8 +546,8 @@ export default function Home() {
         {/* 테이블 영역 */}
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8 mb-20">
           <div className="text-[2rem] md:text-[2rem] leading-tight tracking-[-0.022em] font-semibold break-keep">
-            리포팅 기능을 통해 소프트웨어 사업 추진에{" "}
-            <br className="hidden sm:block" />
+            리포팅 기능을 통해 <br className="sm:hidden" />
+            소프트웨어 사업 추진에 <br className="hidden sm:block" />
             <span className="font-bold text-brand-primary">인사이트</span>를
             더해 드립니다.
           </div>
