@@ -196,7 +196,7 @@ export default function Home() {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [currentStep]);
 
   // translateX 계산
   const translateX = useMemo(() => {
@@ -416,7 +416,7 @@ export default function Home() {
                     <span className="text-[27px] text-brand-primary font-base">
                       {step.number}
                     </span>
-                    <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
+                    <span className="text-lg font-semibold tracking-tight">
                       {step.title}
                     </span>
                   </div>
@@ -431,8 +431,9 @@ export default function Home() {
       <section className="bg-gray-50 py-20 md:py-40 overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
           <div className="text-[2rem] leading-[1.325] tracking-[-0.022em] font-semibold break-keep">
-            <span className="font-bold text-brand-primary">FPMate</span>는 SW
-            사업 파트너로서 <br />
+            <span className="font-bold text-brand-primary">FPMate</span>는{" "}
+            <br className="sm:hidden" />
+            SW 사업 파트너로서 <br />
             SW 사업 관리를 돕고자 탄생하였습니다.
           </div>
 
