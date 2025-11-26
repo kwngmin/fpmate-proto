@@ -753,7 +753,7 @@ export default function Home() {
 
                   <div className="flex flex-col gap-2">
                     <span>제공가치</span>
-                    <ul className="flex flex-col gap-1">
+                    <ul className="flex flex-col gap-1 pl-2">
                       {content.values.map((value) => (
                         <li
                           key={value}
@@ -772,12 +772,12 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-50 py-20 md:py-40 overflow-hidden">
+      <footer className="bg-gray-50 py-20 overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row gap-6">
           <Link
             href="https://www.ibksystem.co.kr/"
             target="_blank"
-            className="mr-12"
+            className="mr-12 flex items-center"
           >
             <Image
               src="/assets/logo/IBKSystem_CI_gray.svg"
@@ -792,9 +792,10 @@ export default function Home() {
               이용자 약관 및 개인정보 처리지침
             </span>
             <div className="flex flex-col py-2">
-              <span>
-                서울시 중구 퇴계로 141-7 뉴서울빌딩 10F (주)IBK 시스템(구 주소 :
-                서울시 중구 충무로 2가 62-7)
+              <span className="leading-tight break-keep">
+                서울시 중구 퇴계로 141-7 뉴서울빌딩 10F (주)IBK 시스템
+                <br className="lg:hidden" />
+                (구 주소 : 서울시 중구 충무로 2가 62-7)
               </span>
               <div className="flex items-center flex-wrap gap-x-2">
                 <span>
@@ -822,7 +823,11 @@ export default function Home() {
             </div>
             <span>© 2023 IBK System Co. Ltd All rights reserved.</span>
           </div>
-          <Link href="https://www.gs.tta.or.kr/ko" target="_blank">
+          <Link
+            href="https://www.gs.tta.or.kr/ko"
+            target="_blank"
+            className="flex items-center"
+          >
             <Image
               src="/fpmate-gs.png"
               alt="FPMate Good Software"
