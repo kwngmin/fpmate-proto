@@ -1,6 +1,7 @@
 "use client";
 
 import { Button, Card, Typography } from "@/shared/ui";
+import { BlurFadeText, BlurFadeDiv } from "@/shared/ui/BlurFadeText";
 import InsightCard from "@/shared/ui/InsightCard";
 import Image from "next/image";
 import Link from "next/link";
@@ -228,7 +229,12 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="sticky top-0 z-100 bg-(--header-bg) backdrop-blur-(--header-blur) border-b border-(--header-border)">
+      <header
+        style={{
+          height: "64px",
+        }}
+        className="sticky top-0 z-100 bg-(--header-bg) backdrop-blur-(--header-blur) border-b border-(--header-border)"
+      >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
@@ -264,26 +270,43 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <main className="pb-20 md:pb-40 overflow-hidden scroll-mt-16">
+      <main className="pb-20 md:pb-40 overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6">
           {/* Title */}
           <div className="py-10 space-y-6 flex flex-col">
-            <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
-              FINE PROJECT MATE
-            </span>
+            <BlurFadeText
+              text="FINE PROJECT MATE"
+              className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold"
+              delay={500}
+            />
             <div className="text-[2.5rem] md:text-[3.75rem] leading-[1.1] tracking-[-0.022em] font-bold">
               <div>
-                <span className="font-bold text-brand-primary">FPMate</span>
-                <span>로</span>
+                <BlurFadeText
+                  text="FPMate"
+                  className="font-bold text-brand-primary"
+                  delay={700}
+                />
+                <BlurFadeText text="로" delay={700} />
               </div>
-              <div className="break-keep">
-                SW 사업 비용 산정과 관리를 한번에
-              </div>
+              <BlurFadeText
+                text="SW 사업 비용 산정과 관리를 한번에"
+                delay={800}
+                className="break-keep"
+              />
             </div>
             <p className="text-[1.3125rem] leading-[1.33] tracking-[-0.012em] font-medium break-keep">
-              <span className="font-bold">FPMate</span>는 AI 비서와 함께 쉽고
-              빠르게 SW 사업 비용을 알아 볼 수 있습니다. <br />
-              사업 단계별 변경 관리도 어렵지 않아요.
+              <BlurFadeText
+                text="FPMate는 AI 비서와 함께 쉽고
+              빠르게 SW 사업 비용을 알아 볼 수 있습니다. "
+                delay={900}
+                className="break-keep"
+              />
+              <br />
+              <BlurFadeText
+                text="사업 단계별 변경 관리도 어렵지 않아요."
+                delay={1000}
+                className="break-keep"
+              />
             </p>
           </div>
 
@@ -308,68 +331,72 @@ export default function Home() {
           </div> */}
 
           {/* progress bar */}
-          <div className="flex items-center w-full max-w-xs sm:max-w-lg md:max-w-2xl pb-6 md:pt-6">
-            {processSteps.map((step, index) => (
-              <Fragment key={step.id}>
-                <div
-                  className={`size-8 sm:size-9 md:size-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                    step.id === currentStep
-                      ? "bg-brand-primary"
-                      : step.id < currentStep
-                      ? "bg-accent-primary"
-                      : "bg-bg-tertiary"
-                  }`}
-                >
-                  {step.id < currentStep ? (
-                    <Image
-                      src="/assets/svgs/check-bold.svg"
-                      alt={`completed-step-${step.id}`}
-                      width={32}
-                      height={32}
-                      className="size-4.5 md:size-5 brightness-0 invert"
-                    />
-                  ) : (
-                    <Image
-                      src={`/assets/svgs/number-${step.key}-bold.svg`}
-                      alt={`process-step-${step.id}`}
-                      width={32}
-                      height={32}
-                      className={`size-4.5 md:size-5 ${
-                        step.id === currentStep ? "brightness-0 invert" : ""
-                      }`}
-                    />
-                  )}
-                </div>
-                {index < processSteps.length - 1 && (
-                  <div className="grow h-1 sm:h-0.5 bg-border-primary relative overflow-hidden">
-                    {step.id === currentStep && (
-                      <div
-                        key={currentStep}
-                        className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
-                        style={{
-                          animation: "progressBar 4s forwards",
-                        }}
+          <BlurFadeDiv className="w-full" delay={1200}>
+            <div className="flex items-center w-full max-w-xs sm:max-w-lg md:max-w-xl pb-6 md:pt-6">
+              {processSteps.map((step, index) => (
+                <Fragment key={step.id}>
+                  <button
+                    type="button"
+                    onClick={() => setCurrentStep(step.id)}
+                    className={`size-8 sm:size-9 md:size-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                      step.id === currentStep
+                        ? "bg-brand-primary"
+                        : step.id < currentStep
+                        ? "bg-accent-primary"
+                        : "bg-bg-tertiary"
+                    }`}
+                  >
+                    {step.id < currentStep ? (
+                      <Image
+                        src="/assets/svgs/check-bold.svg"
+                        alt={`completed-step-${step.id}`}
+                        width={32}
+                        height={32}
+                        className="size-4.5 md:size-5 brightness-0 invert"
+                      />
+                    ) : (
+                      <Image
+                        src={`/assets/svgs/number-${step.key}-bold.svg`}
+                        alt={`process-step-${step.id}`}
+                        width={32}
+                        height={32}
+                        className={`size-4.5 md:size-5 ${
+                          step.id === currentStep ? "brightness-0 invert" : ""
+                        }`}
                       />
                     )}
-                  </div>
-                )}
-              </Fragment>
-            ))}
-          </div>
-          <style jsx>{`
-            @keyframes progressBar {
-              from {
-                transform: scaleX(0);
+                  </button>
+                  {index < processSteps.length - 1 && (
+                    <div className="grow h-1 sm:h-0.5 bg-border-primary relative overflow-hidden">
+                      {step.id === currentStep && (
+                        <div
+                          key={currentStep}
+                          className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
+                          style={{
+                            animation: "progressBar 4s forwards",
+                          }}
+                        />
+                      )}
+                    </div>
+                  )}
+                </Fragment>
+              ))}
+            </div>
+            <style jsx>{`
+              @keyframes progressBar {
+                from {
+                  transform: scaleX(0);
+                }
+                to {
+                  transform: scaleX(1);
+                }
               }
-              to {
-                transform: scaleX(1);
-              }
-            }
-          `}</style>
+            `}</style>
+          </BlurFadeDiv>
         </div>
 
         {/* 카드 영역 - Linear.app 스타일 Inset 캐로셀 */}
-        <div className="w-full py-4 overflow-hidden">
+        <BlurFadeDiv className="w-full py-4 overflow-hidden" delay={1600}>
           {/* 1200px 컨테이너 - main과 동일한 정렬 */}
           <div
             ref={containerRef}
@@ -418,7 +445,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
+        </BlurFadeDiv>
       </main>
 
       {/* Section 1 */}
