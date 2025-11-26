@@ -162,6 +162,8 @@ export default function Home() {
   const [selectedChart, setSelectedChart] = useState<string>("function");
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [containerWidth, setContainerWidth] = useState<number>(0);
+  const [isAnimationStarted, setIsAnimationStarted] = useState<boolean>(false);
+  const [resetTrigger, setResetTrigger] = useState<number>(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -189,24 +191,29 @@ export default function Home() {
 
   // 프로그레스 자동 진행 (BlurFade delay 후 시작)
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    // 1200ms 후에 interval 시작
+    // 1200ms 후에 애니메이션 시작
     const initialDelay = setTimeout(() => {
-      // 그 이후 4초마다 반복
-      interval = setInterval(() => {
-        setCurrentStep((prev) => {
-          if (prev >= 7) return 1;
-          return prev + 1;
-        });
-      }, 4000);
+      setIsAnimationStarted(true);
     }, 1200);
 
     return () => {
       clearTimeout(initialDelay);
-      if (interval) clearInterval(interval);
     };
   }, []);
+
+  // interval은 애니메이션이 시작된 후에만 실행
+  useEffect(() => {
+    if (!isAnimationStarted) return;
+
+    const interval = setInterval(() => {
+      setCurrentStep((prev) => {
+        if (prev >= 7) return 1;
+        return prev + 1;
+      });
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isAnimationStarted, resetTrigger]);
 
   // translateX 계산
   const translateX = useMemo(() => {
@@ -346,7 +353,10 @@ export default function Home() {
                 <Fragment key={step.id}>
                   <button
                     type="button"
-                    onClick={() => setCurrentStep(step.id)}
+                    onClick={() => {
+                      setCurrentStep(step.id);
+                      setResetTrigger((prev) => prev + 1);
+                    }}
                     className={`size-8 sm:size-9 md:size-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
                       step.id === currentStep
                         ? "bg-brand-primary"
@@ -377,7 +387,7 @@ export default function Home() {
                   </button>
                   {index < processSteps.length - 1 && (
                     <div className="grow h-1 sm:h-0.5 bg-border-primary relative overflow-hidden">
-                      {step.id === currentStep && (
+                      {isAnimationStarted && step.id === currentStep && (
                         <div
                           key={currentStep}
                           className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
