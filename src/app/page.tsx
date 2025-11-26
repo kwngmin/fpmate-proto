@@ -300,9 +300,9 @@ export default function Home() {
                 <div
                   className={`size-8 sm:size-9 md:size-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
                     step.id === currentStep
-                      ? "bg-accent-primary"
-                      : step.id < currentStep
                       ? "bg-brand-primary"
+                      : step.id < currentStep
+                      ? "bg-accent-primary"
                       : "bg-bg-tertiary"
                   }`}
                 >
