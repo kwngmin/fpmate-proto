@@ -194,8 +194,8 @@ export default function Home() {
               </div>
             </div>
             <p className="text-[1.3125rem] leading-[1.33] tracking-[-0.012em] font-medium break-keep">
-              <span className="font-extrabold">FPMate</span>는 AI 비서와 함께
-              쉽고 빠르게 SW 사업 비용을 알아 볼 수 있습니다. <br />
+              <span className="font-bold">FPMate</span>는 AI 비서와 함께 쉽고
+              빠르게 SW 사업 비용을 알아 볼 수 있습니다. <br />
               사업 단계별 변경 관리도 어렵지 않아요.
             </p>
           </div>
@@ -274,8 +274,8 @@ export default function Home() {
       <section className="bg-gray-50 py-20 md:py-40 overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
           <div className="text-[2rem] leading-[1.325] tracking-[-0.022em] font-semibold break-keep">
-            <span className="font-black text-brand-primary">FPMate</span>는 SW
-            사업 파트너로서 <br />
+            <span className="font-extrabold text-brand-primary">FPMate</span>는
+            SW 사업 파트너로서 <br />
             SW 사업 관리를 돕고자 탄생하였습니다.
           </div>
 
@@ -296,10 +296,10 @@ export default function Home() {
                     height={124}
                     className="shrink-0 size-28 mb-2"
                   />
-                  <span className="text-[1.0625rem] leading-tight tracking-[-0.012em] font-semibold break-keep">
+                  <span className="text-[1.0625rem] leading-tight tracking-[-0.012em] font-bold break-keep">
                     {content.title}
                   </span>
-                  <span className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em] text-center break-keep max-w-48">
+                  <span className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em] font-medium text-center break-keep max-w-48">
                     {content.description}
                   </span>
                 </div>
@@ -320,7 +320,7 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
           <div className="text-[2rem] md:text-[3.5rem] leading-[1.1] tracking-[-0.022em] font-semibold break-keep">
             SW 사업 추진{" "}
-            <span className="font-black text-brand-primary">인사이트+</span>
+            <span className="font-extrabold text-brand-primary">인사이트+</span>
           </div>
           <p className="text-[1.0625rem] leading-[1.6] tracking-[0] font-medium break-keep">
             고유 작업 공간에서 그동안 작업했던 <br />
