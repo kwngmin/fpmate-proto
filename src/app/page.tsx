@@ -639,7 +639,7 @@ export default function Home() {
         {/* 차트 그래픽 영역 */}
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20">
           {/* 차트 셀렉터 */}
-          <div className="flex flex-col gap-2 min-w-xs lg:min-w-1/3 py-10">
+          <div className="flex flex-col gap-2 min-w-xs sm:min-w-2/5 lg:min-w-1/3 py-10">
             {section3Charts.map((chart) => (
               <button
                 key={chart.id}
@@ -723,7 +723,10 @@ export default function Home() {
                   className="h-full w-full object-cover mt-8"
                   style={{
                     opacity: selectedChart === chart.key ? 1 : 0,
-                    transition: "transform ease-in-out duration-200",
+                    filter:
+                      selectedChart === chart.key ? "blur(0rem)" : "blur(1rem)",
+                    transition:
+                      "opacity 0.3s ease-in-out, filter 0.5s ease-in-out",
                   }}
                 />
               </div>
