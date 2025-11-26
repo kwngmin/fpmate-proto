@@ -184,9 +184,7 @@ export default function Home() {
             </span>
             <div className="text-[2.5rem] md:text-[3.75rem] leading-[1.1] tracking-[-0.022em] font-bold">
               <div>
-                <span className="font-extrabold text-brand-primary">
-                  FPMate
-                </span>
+                <span className="font-bold text-brand-primary">FPMate</span>
                 <span>로</span>
               </div>
               <div className="break-keep">
@@ -274,8 +272,8 @@ export default function Home() {
       <section className="bg-gray-50 py-20 md:py-40 overflow-hidden">
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
           <div className="text-[2rem] leading-[1.325] tracking-[-0.022em] font-semibold break-keep">
-            <span className="font-extrabold text-brand-primary">FPMate</span>는
-            SW 사업 파트너로서 <br />
+            <span className="font-bold text-brand-primary">FPMate</span>는 SW
+            사업 파트너로서 <br />
             SW 사업 관리를 돕고자 탄생하였습니다.
           </div>
 
@@ -320,7 +318,7 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
           <div className="text-[2rem] md:text-[3.5rem] leading-[1.1] tracking-[-0.022em] font-semibold break-keep">
             SW 사업 추진{" "}
-            <span className="font-extrabold text-brand-primary">인사이트+</span>
+            <span className="font-bold text-brand-primary">인사이트+</span>
           </div>
           <p className="text-[1.0625rem] leading-[1.6] tracking-[0] font-medium break-keep">
             고유 작업 공간에서 그동안 작업했던 <br />
@@ -416,7 +414,7 @@ export default function Home() {
           <div className="text-[2rem] md:text-[2rem] leading-tight tracking-[-0.022em] font-semibold break-keep">
             리포팅 기능을 통해 소프트웨어 사업 추진에{" "}
             <br className="hidden sm:block" />
-            <span className="font-black text-brand-primary">인사이트</span>를
+            <span className="font-bold text-brand-primary">인사이트</span>를
             더해 드립니다.
           </div>
 
