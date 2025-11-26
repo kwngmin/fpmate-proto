@@ -639,7 +639,7 @@ export default function Home() {
         {/* 차트 그래픽 영역 */}
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20">
           {/* 차트 셀렉터 */}
-          <div className="flex flex-col gap-2 min-w-xs sm:min-w-2/5 lg:min-w-1/3 py-10">
+          <div className="flex flex-col gap-2 min-w-xs sm:min-w-2/5 lg:min-w-1/3 py-6 sm:py-10">
             {section3Charts.map((chart) => (
               <button
                 key={chart.id}
@@ -647,7 +647,7 @@ export default function Home() {
                 onClick={() => handleChartClick(chart.key)}
               >
                 <div
-                  className={`w-1.5 h-14 rounded-full ${
+                  className={`w-1.5 h-11 sm:h-14 rounded-full ${
                     selectedChart === chart.key
                       ? "bg-brand-primary"
                       : "bg-gray-200"
@@ -667,8 +667,8 @@ export default function Home() {
             ))}
           </div>
 
-          {/* 차트 프레임 - horizontal */}
-          <div className="flex gap-2 md:hidden lg:flex">
+          {/* 차트 프레임 - desktop */}
+          <div className="hidden lg:flex gap-2">
             {section3Charts.map((chart) => (
               <div
                 key={chart.id}
@@ -676,9 +676,44 @@ export default function Home() {
                   selectedChart === chart.key ? "shadow-card grow" : ""
                 }`}
                 style={{
-                  width: selectedChart === chart.key ? "70%" : "40px",
+                  width: selectedChart === chart.key ? "70%" : "3rem",
                   flexShrink: selectedChart === chart.key ? 0 : 1,
-                  transition: "transform ease-in-out duration-200",
+                  transition:
+                    "width 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                }}
+              >
+                <Image
+                  src={chart.image}
+                  alt={`section3-chart-${chart.key}`}
+                  width={608}
+                  height={304}
+                  unoptimized
+                  className="h-full w-full object-cover mt-8"
+                  style={{
+                    opacity: selectedChart === chart.key ? 1 : 0,
+                    filter:
+                      selectedChart === chart.key ? "blur(0rem)" : "blur(2rem)",
+                    transition:
+                      "opacity 0.3s ease-in-out, filter 0.5s ease-in-out",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* 차트 프레임 - tablet */}
+          <div className="hidden md:flex lg:hidden flex-col justify-center gap-2 h-140">
+            {section3Charts.map((chart) => (
+              <div
+                key={chart.id}
+                className={`bg-white rounded overflow-hidden ${
+                  selectedChart === chart.key ? "shadow-card" : ""
+                }`}
+                style={{
+                  height: selectedChart === chart.key ? "60%" : "24px",
+                  flexShrink: selectedChart === chart.key ? 0 : 1,
+                  transition:
+                    "height 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
               >
                 <Image
@@ -700,18 +735,19 @@ export default function Home() {
             ))}
           </div>
 
-          {/* 차트 프레임 - vertical */}
-          <div className="hidden md:flex flex-col justify-center gap-2 lg:hidden h-140">
+          {/* 차트 프레임 - mobile */}
+          <div className="flex md:hidden">
             {section3Charts.map((chart) => (
               <div
                 key={chart.id}
-                className={`bg-white rounded overflow-hidden ${
-                  selectedChart === chart.key ? "shadow-card" : ""
+                className={`bg-white rounded h-72 overflow-hidden ${
+                  selectedChart === chart.key ? "shadow-card grow" : ""
                 }`}
                 style={{
-                  height: selectedChart === chart.key ? "60%" : "24px",
+                  width: selectedChart === chart.key ? "80%" : "0%",
                   flexShrink: selectedChart === chart.key ? 0 : 1,
-                  transition: "transform ease-in-out duration-200",
+                  transition:
+                    "width 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
               >
                 <Image
@@ -720,7 +756,7 @@ export default function Home() {
                   width={608}
                   height={304}
                   unoptimized
-                  className="h-full w-full object-cover mt-8"
+                  className="h-full w-full object-cover mt-5 scale-110"
                   style={{
                     opacity: selectedChart === chart.key ? 1 : 0,
                     filter:
