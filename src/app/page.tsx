@@ -702,8 +702,9 @@ export default function Home() {
             <span className="font-bold text-brand-primary">FPMate</span>는
             지속적으로 진화합니다.
           </p> */}
-          <Typography variant="title2" align="center">
-            당신의 SW 사업 성공과 Fine 프로젝트를 위하여 <br />
+          <Typography variant="title2" align="center" className="break-keep">
+            당신의 SW 사업 성공과 <br className="md:hidden" />
+            Fine 프로젝트를 위하여 <br className="hidden md:block" />
             <span className="font-bold text-brand-primary">FPMate</span>는
             지속적으로 진화합니다.
           </Typography>
