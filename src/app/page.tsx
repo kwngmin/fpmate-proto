@@ -187,17 +187,26 @@ export default function Home() {
     return () => window.removeEventListener("resize", updateContainerWidth);
   }, []);
 
-  // 프로그레스 자동 진행
+  // 프로그레스 자동 진행 (BlurFade delay 후 시작)
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStep((prev) => {
-        if (prev >= 7) return 1;
-        return prev + 1;
-      });
-    }, 4000);
+    let interval: NodeJS.Timeout;
 
-    return () => clearInterval(interval);
-  }, [currentStep]);
+    // 1200ms 후에 interval 시작
+    const initialDelay = setTimeout(() => {
+      // 그 이후 4초마다 반복
+      interval = setInterval(() => {
+        setCurrentStep((prev) => {
+          if (prev >= 7) return 1;
+          return prev + 1;
+        });
+      }, 4000);
+    }, 1200);
+
+    return () => {
+      clearTimeout(initialDelay);
+      if (interval) clearInterval(interval);
+    };
+  }, []);
 
   // translateX 계산
   const translateX = useMemo(() => {
