@@ -275,7 +275,7 @@ export default function Home() {
                       ? "bg-accent-primary"
                       : step.id < currentStep
                       ? "bg-brand-primary"
-                      : "bg-bg-tertiary border border-gray-200"
+                      : "bg-bg-tertiary"
                   }`}
                 >
                   {step.id < currentStep ? (
@@ -305,7 +305,7 @@ export default function Home() {
                         key={currentStep}
                         className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
                         style={{
-                          animation: "progressBar 3.9s forwards",
+                          animation: "progressBar 4s forwards",
                         }}
                       />
                     )}
