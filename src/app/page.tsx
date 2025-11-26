@@ -160,7 +160,9 @@ const section4Contents = [
 export default function Home() {
   const [selectedChart, setSelectedChart] = useState<string>("function");
   const [currentStep, setCurrentStep] = useState<number>(1);
+  const [containerWidth, setContainerWidth] = useState<number>(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // 카드 너비와 갭 상수
@@ -170,6 +172,19 @@ export default function Home() {
   const handleChartClick = (key: string) => {
     setSelectedChart(key);
   };
+
+  // 컨테이너 너비 측정 (resize 이벤트 구독)
+  useEffect(() => {
+    const updateContainerWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.clientWidth);
+      }
+    };
+
+    updateContainerWidth();
+    window.addEventListener("resize", updateContainerWidth);
+    return () => window.removeEventListener("resize", updateContainerWidth);
+  }, []);
 
   // 프로그레스 자동 진행
   useEffect(() => {
@@ -183,12 +198,17 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // state 대신 useMemo 사용
+  // translateX 계산
   const translateX = useMemo(() => {
+    if (containerWidth === 0) return 0;
+
     const totalCards = processSteps.length;
     const carouselWidth = totalCards * CARD_WIDTH + (totalCards - 1) * CARD_GAP;
-    const containerWidth = 1200 - 48; // max-width - padding (24px * 2)
-    const maxTranslate = carouselWidth - containerWidth;
+
+    // clientWidth는 padding을 포함하므로, 실제 보이는 영역은 padding 제외
+    const PADDING = 48; // px-6 = 24px * 2
+    const visibleWidth = containerWidth - PADDING;
+    const maxTranslate = Math.max(0, carouselWidth - visibleWidth);
 
     // 현재 카드의 왼쪽 위치
     const cardLeftPosition = (currentStep - 1) * (CARD_WIDTH + CARD_GAP);
@@ -203,7 +223,7 @@ export default function Home() {
 
     // 음수 방지 (첫 번째 카드)
     return Math.max(0, newTranslateX);
-  }, [currentStep, processSteps.length]);
+  }, [currentStep, containerWidth]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -357,14 +377,16 @@ export default function Home() {
         {/* 카드 영역 - Linear.app 스타일 Inset 캐로셀 */}
         <div className="w-full py-4 overflow-hidden">
           {/* 1200px 컨테이너 - main과 동일한 정렬 */}
-          <div className="max-w-[1200px] mx-auto px-6 overflow-visible">
+          <div
+            ref={containerRef}
+            className="max-w-[1200px] mx-auto px-6 overflow-visible"
+          >
             {/* 캐로셀 트랙 */}
             <div
               ref={carouselRef}
               className="flex gap-2 transition-transform duration-500 ease-out"
               style={{
                 transform: `translateX(-${translateX}px)`,
-                // 오른쪽으로 넘치도록 충분한 너비 확보
                 width: "max-content",
               }}
             >
@@ -376,7 +398,7 @@ export default function Home() {
                   }}
                   variant="elevated"
                   padding="none"
-                  className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer ${
+                  className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer border border-border-primary ${
                     step.id === currentStep
                       ? "scale-100 opacity-100 ring-4 ring-brand-primary"
                       : "scale-[0.98] opacity-70 hover:opacity-90"
