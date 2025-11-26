@@ -4,7 +4,7 @@ import { Button, Card, Typography } from "@/shared/ui";
 import InsightCard from "@/shared/ui/InsightCard";
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 
 /**
  * 프로세스 단계 카드 데이터
@@ -159,10 +159,23 @@ const section4Contents = [
 
 export default function Home() {
   const [selectedChart, setSelectedChart] = useState<string>("function");
+  const [currentStep, setCurrentStep] = useState<number>(1);
 
   const handleChartClick = (key: string) => {
     setSelectedChart(key);
   };
+
+  // 프로그레스 자동 진행
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentStep((prev) => {
+        if (prev >= 7) return 1;
+        return prev + 1;
+      });
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -256,21 +269,61 @@ export default function Home() {
           <div className="flex items-center w-full max-w-xs sm:max-w-lg md:max-w-2xl pb-6 md:pt-6">
             {processSteps.map((step, index) => (
               <Fragment key={step.id}>
-                <div className="size-8 sm:size-9 md:size-10 bg-brand-primary rounded-full flex items-center justify-center">
-                  <Image
-                    src={`/assets/svgs/number-${step.key}-bold.svg`}
-                    alt={`process-step-${step.id}`}
-                    width={32}
-                    height={32}
-                    className="size-4.5 md:size-5 brightness-0 invert"
-                  />
+                <div
+                  className={`size-8 sm:size-9 md:size-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                    step.id === currentStep
+                      ? "bg-accent-primary"
+                      : step.id < currentStep
+                      ? "bg-brand-primary"
+                      : "bg-bg-tertiary border border-gray-200"
+                  }`}
+                >
+                  {step.id < currentStep ? (
+                    <Image
+                      src="/assets/svgs/check-bold.svg"
+                      alt={`completed-step-${step.id}`}
+                      width={32}
+                      height={32}
+                      className="size-4.5 md:size-5 brightness-0 invert"
+                    />
+                  ) : (
+                    <Image
+                      src={`/assets/svgs/number-${step.key}-bold.svg`}
+                      alt={`process-step-${step.id}`}
+                      width={32}
+                      height={32}
+                      className={`size-4.5 md:size-5 ${
+                        step.id === currentStep ? "brightness-0 invert" : ""
+                      }`}
+                    />
+                  )}
                 </div>
                 {index < processSteps.length - 1 && (
-                  <div className="grow h-1 border-t border-border-primary" />
+                  <div className="grow h-0.5 bg-border-primary relative overflow-hidden">
+                    {step.id === currentStep && (
+                      <div
+                        key={currentStep}
+                        className="absolute inset-0 bg-brand-primary origin-left"
+                        style={{
+                          animation: "progressBar 4s forwards",
+                        }}
+                      />
+                    )}
+                  </div>
                 )}
               </Fragment>
             ))}
           </div>
+          <style jsx>{`
+            @keyframes progressBar {
+              from {
+                transform: scaleX(0);
+              }
+              to {
+                transform: scaleX(1);
+              }
+            }
+          `}</style>
 
           {/* 카드 영역 */}
           <div className="flex gap-2 py-4">
@@ -694,7 +747,7 @@ export default function Home() {
                     filter:
                       selectedChart === chart.key ? "blur(0rem)" : "blur(2rem)",
                     transition:
-                      "opacity 0.3s ease-in-out, filter 0.5s ease-in-out",
+                      "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
                   }}
                 />
               </div>
@@ -728,7 +781,7 @@ export default function Home() {
                     filter:
                       selectedChart === chart.key ? "blur(0rem)" : "blur(1rem)",
                     transition:
-                      "opacity 0.3s ease-in-out, filter 0.5s ease-in-out",
+                      "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
                   }}
                 />
               </div>
@@ -762,7 +815,7 @@ export default function Home() {
                     filter:
                       selectedChart === chart.key ? "blur(0rem)" : "blur(1rem)",
                     transition:
-                      "opacity 0.3s ease-in-out, filter 0.5s ease-in-out",
+                      "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
                   }}
                 />
               </div>
