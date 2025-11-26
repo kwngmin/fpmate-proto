@@ -7,7 +7,8 @@ export const theme = {
   meta: {
     source: "Linear.app (typography & layout) + Minimals.cc (colors)",
     extractedAt: "2024-11-24",
-    description: "Linear의 디자인 시스템에 Minimals의 라이트 모드 색상을 적용한 하이브리드 테마",
+    description:
+      "Linear의 디자인 시스템에 Minimals의 라이트 모드 색상을 적용한 하이브리드 테마",
   },
   colors: {
     brand: {
@@ -78,9 +79,11 @@ export const theme = {
   },
   typography: {
     fontFamily: {
-      regular: '"Noto Sans KR","Inter Variable","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Open Sans","Helvetica Neue",sans-serif',
+      regular:
+        '"Noto Sans KR","Inter Variable","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Open Sans","Helvetica Neue",sans-serif',
       monospace: '"Berkeley Mono",ui-monospace,"SF Mono","Menlo",monospace',
-      serifDisplay: '"Tiempos Headline",ui-serif,Georgia,Cambria,"Times New Roman",Times,serif',
+      serifDisplay:
+        '"Tiempos Headline",ui-serif,Georgia,Cambria,"Times New Roman",Times,serif',
     },
     fontWeight: {
       light: "300",
@@ -122,10 +125,10 @@ export const theme = {
     medium: "0px 4px 24px rgba(145, 158, 171, 0.2)",
     high: "0px 7px 32px rgba(145, 158, 171, 0.35)",
     card: "0 0 2px 0 rgba(145, 158, 171, 0.2), 0 12px 24px -4px rgba(145, 158, 171, 0.12)",
-    dropdown: "0 0 2px 0 rgba(145, 158, 171, 0.24), -20px 20px 40px -4px rgba(145, 158, 171, 0.24)",
+    dropdown:
+      "0 0 2px 0 rgba(145, 158, 171, 0.24), -20px 20px 40px -4px rgba(145, 158, 171, 0.24)",
     dialog: "-40px 40px 80px -8px rgba(0, 0, 0, 0.24)",
   },
 } as const;
 
 export type Theme = typeof theme;
-
