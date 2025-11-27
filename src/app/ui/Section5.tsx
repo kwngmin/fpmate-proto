@@ -5,8 +5,8 @@ const Section5 = () => {
   return (
     <section className="bg-gray-50 py-32 md:py-40 overflow-hidden relative">
       {/* Content */}
-      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-12 relative z-20">
-        <div className="flex flex-col gap-4">
+      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-16 relative z-20">
+        <div className="flex flex-col gap-8">
           {/* logo */}
           <div className="flex justify-center items-center">
             <Image
@@ -14,7 +14,7 @@ const Section5 = () => {
               alt="FPMate"
               width={112}
               height={40}
-              className="size-24 sm:size-32"
+              className="size-28 sm:size-32"
             />
           </div>
 
@@ -77,7 +77,7 @@ const Section5 = () => {
           alt="FPMate"
           width={112}
           height={40}
-          className="size-3/5"
+          className="size-4/5 md:size-2/3"
         />
       </div>
     </section>
