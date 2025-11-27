@@ -14,7 +14,7 @@ const Section5 = () => {
               alt="FPMate"
               width={112}
               height={40}
-              className="size-28 sm:size-32"
+              className="size-20 sm:size-32"
             />
           </div>
 
