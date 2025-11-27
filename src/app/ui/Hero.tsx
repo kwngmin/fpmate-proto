@@ -326,10 +326,10 @@ const Hero = () => {
                   }}
                   variant="elevated"
                   padding="none"
-                  className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer border overflow-hidden ${
+                  className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer overflow-hidden ${
                     step.id === currentStep
-                      ? "scale-100 opacity-100 ring-4 ring-brand-primary border-transparent"
-                      : "scale-[0.98] opacity-70 hover:opacity-90 border-border-primary hover:border-border-secondary"
+                      ? "scale-100 opacity-100 ring-4 ring-brand-primary"
+                      : "outline-2   outline-action-hover hover:outline-accent-hover"
                   }`}
                   onClick={handleStepClick(step.id)}
                 >
