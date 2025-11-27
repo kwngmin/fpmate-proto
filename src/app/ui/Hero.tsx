@@ -160,7 +160,7 @@ const Hero = () => {
             className="text-[0.9375rem] md:text-[1.0625rem] tracking-tight font-semibold text-text-tertiary"
             delay={500}
           />
-          <div className="text-[2.5rem] md:text-[3.75rem] leading-[1.1] tracking-[-0.022em] font-bold">
+          <div className="text-[2.5rem] md:text-[3.75rem] leading-[1.15] tracking-tight font-bold">
             <div>
               <BlurFadeText
                 text="FPMate"
