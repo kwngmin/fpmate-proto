@@ -206,8 +206,6 @@ const Hero = () => {
               delay={950}
               className="mr-1"
             />
-            {/* <br className="md:hidden" /> */}
-            {/* <BlurFadeText text="" delay={1000} /> */}
             <br />
             <BlurFadeText
               text="사업 단계별 변경 관리도 어렵지 않아요."
@@ -282,7 +280,6 @@ const Hero = () => {
       </div>
 
       {/* 카드 영역 - Linear.app 스타일 Inset 캐로셀 */}
-
       <div className='className="w-full py-4 overflow-hidden'>
         {/* 1200px 컨테이너 - main과 동일한 정렬 */}
         <div

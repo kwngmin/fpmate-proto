@@ -23,7 +23,6 @@ const Section5 = () => {
             <div className="text-[1.3125rem] md:text-[2rem]  leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">
               진화하는{" "}
               <span className="font-extrabold text-brand-primary">FPMate</span>,{" "}
-              <br className="sm:hidden" />
               사업 성공 도우미
             </div>
             <p className="text-[1.0625rem] sm:text-[1.3125rem] leading-snug tracking-tighter break-keep text-center text-text-primary">
