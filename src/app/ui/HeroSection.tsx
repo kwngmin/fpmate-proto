@@ -175,18 +175,22 @@ const HeroSection = () => {
               className="break-keep"
             />
           </div>
-          <p className="text-[1.3125rem] leading-[1.33] tracking-[-0.012em] font-medium break-keep">
+          <p className="text-[1.0625rem] md:text-[1.3125rem] leading-snug tracking-tight break-keep">
+            <BlurFadeText text="FPMate" delay={900} className="font-semibold" />
             <BlurFadeText
-              text="FPMate는 AI 비서와 함께 쉽고
-          빠르게 SW 사업 비용을 알아 볼 수 있습니다. "
-              delay={900}
-              className="break-keep"
+              text="는 AI 비서와 함께 쉽고
+          빠르게"
+              delay={950}
+            />
+            <br className="md:hidden" />
+            <BlurFadeText
+              text="SW 사업 비용을 알아 볼 수 있습니다. "
+              delay={1000}
             />
             <br />
             <BlurFadeText
               text="사업 단계별 변경 관리도 어렵지 않아요."
-              delay={1000}
-              className="break-keep"
+              delay={1100}
             />
           </p>
         </div>

@@ -82,13 +82,14 @@ const Section1 = () => {
 
   return (
     <section className="bg-gray-50 py-20 md:py-40 overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
-        <div className="text-[2rem] leading-[1.325] tracking-[-0.022em] font-semibold break-keep">
-          <span className="font-bold text-brand-primary">FPMate</span>는{" "}
-          <br className="sm:hidden" />
-          SW 사업 파트너로서 <br />
-          SW 사업 관리를 돕고자 탄생하였습니다.
+      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-1">
+        <div className="text-[2rem] md:text-[2.5rem] leading-[1.325] tracking-[-0.022em] font-semibold break-keep">
+          <span className="font-bold text-brand-primary">FPMate</span>는?{" "}
         </div>
+        <p className="text-[1.5rem] md:text-[2rem] leading-snug tracking-tight break-keep text-text-secondary">
+          SW 사업 파트너로서 SW 사업 관리를 돕고자 <br className="sm:hidden" />
+          탄생하였습니다.
+        </p>
       </div>
 
       {/* 카드 영역 - 1024px 이하에서 캐로셀 */}
@@ -149,7 +150,7 @@ const Section1 = () => {
 
       {/* Section 1 Description */}
       <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em] break-keep">
+        <p className="text-[0.9375rem] leading-snug tracking-tight break-keep text-text-tertiary">
           FPMate에서는 국제표준(ISO/IEC 14143)에 기반한 방법으로 SW 사업 비용을
           산정합니다.
         </p>
