@@ -13,7 +13,7 @@ const Header = () => {
         {/* Logo */}
         <div className="flex items-center">
           <Image
-            src="/assets/logo/fpmate-symbol-black.svg"
+            src="/assets/logo/fpmate-logo-black.svg"
             alt="FPmate"
             width={112}
             height={40}

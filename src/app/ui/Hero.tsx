@@ -216,26 +216,6 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* Action Buttons - Mobile*/}
-        {/* <div className="flex items-center gap-2 md:hidden">
-        <Button variant="primary" size="md">
-          제품도입문의
-        </Button>
-        <Button variant="ghost" size="md">
-          로그인/회원가입
-        </Button>
-      </div> */}
-
-        {/* Action Buttons - Desktop*/}
-        {/* <div className="hidden md:flex items-center gap-2">
-        <Button variant="primary" size="lg">
-          제품도입문의
-        </Button>
-        <Button variant="ghost" size="lg">
-          로그인/회원가입
-        </Button>
-      </div> */}
-
         {/* progress bar */}
         <BlurFadeDiv className="w-full" delay={1200}>
           <div className="flex items-center w-full max-w-xs sm:max-w-lg md:max-w-xl pb-6 md:pt-6">

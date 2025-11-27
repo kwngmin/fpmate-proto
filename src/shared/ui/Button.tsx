@@ -34,7 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-medium transition-all duration-[0.25s] rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary disabled:cursor-not-allowed";
+      "inline-flex items-center justify-center font-medium transition-all duration-[0.25s] rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary disabled:cursor-not-allowed";
 
     const variantStyles = {
       primary:
@@ -50,9 +50,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const sizeStyles = {
-      sm: "px-3 py-1.5 text-[0.8125rem] leading-[1.5] tracking-[-0.01em] min-h-[32px]",
-      md: "px-4 py-2 text-[0.9375rem] leading-[1.6] tracking-[-0.011em] min-h-[40px]",
-      lg: "px-6 py-3 text-[1.0625rem] leading-[1.6] tracking-[0] min-h-[48px]",
+      sm: "px-3 text-[0.8125rem] leading-[1.5] tracking-[-0.01em] min-h-[32px]",
+      md: "px-4 text-[0.9375rem] leading-[1.6] tracking-[-0.011em] min-h-[40px]",
+      lg: "px-6 text-[1.0625rem] leading-[1.6] tracking-[0] min-h-[48px]",
     };
 
     const widthStyles = fullWidth ? "w-full" : "";
