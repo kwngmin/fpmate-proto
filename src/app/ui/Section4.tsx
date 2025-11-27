@@ -191,23 +191,23 @@ const Section4 = () => {
                 key={content.id}
               >
                 <div
-                  className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center rounded shadow-md ${backgroundColor}`}
+                  className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center rounded-md shadow-lg ${backgroundColor}`}
                 >
                   {content.title}
                   <div
-                    className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0"
+                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0"
                     style={{
-                      borderLeft: "6px solid transparent",
-                      borderRight: "6px solid transparent",
-                      borderTop: `6px solid green`,
+                      borderLeft: "0.5rem solid transparent",
+                      borderRight: "0.5rem solid transparent",
+                      borderTop: `0.5rem solid green`,
                     }}
                   />
                 </div>
-                <ul className="flex flex-col gap-1 px-6 py-8 bg-gray-50 grow border border-transparent hover:border-border-primary transition-colors duration-300 rounded">
+                <ul className="flex flex-col gap-1 px-6 pt-8 pb-10 bg-gray-50 grow border border-transparent hover:border-border-primary transition-colors duration-300 rounded-md">
                   {content.listItems.map((item) => (
                     <li
                       key={item.title}
-                      className="text-base sm:text-[0.9375rem] leading-snug tracking-tight break-keep list-disc ml-4 text-text-primary"
+                      className="text-base sm:text-[0.9375rem] leading-snug tracking-tight break-keep list-disc ml-4 text-text-primary font-medium"
                     >
                       {item.title}
                       {item?.description && (
