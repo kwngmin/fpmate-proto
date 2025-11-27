@@ -40,14 +40,30 @@ const Section3 = () => {
       <section className="bg-gray-50 py-20 md:py-40 overflow-hidden sticky top-16 md:top-0">
         {/* 테이블 영역 */}
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-12 mb-20">
-          <p className="text-[1.5rem] sm:text-[2rem] md:text-[2rem] leading-tight tracking-tighter break-keep text-text-primary">
+          <div className="flex flex-col gap-4">
+            <div className="text-[2rem] md:text-[3.5rem] leading-[1.15] tracking-tighter font-semibold break-keep">
+              <span className="font-bold text-brand-primary">데이터 기반</span>
+              의 <br className="lg:hidden" />
+              합리적인 의사결정 지원
+            </div>
+            <p className="text-[1.0625rem] md:text-[1.3125rem] leading-snug tracking-tight break-keep text-text-primary max-w-xl md:max-w-3xl">
+              <span className="font-semibold">축적된 데이터</span>를 활용하여
+              유사 사업 비용을 빠르게 예측하고,{" "}
+              {/* <br className="hidden sm:block" /> */}
+              <span className="font-semibold">보고서</span>,{" "}
+              <span className="font-semibold">시각화된 통계</span> 제공으로
+              객관적인 의사결정을 돕습니다.
+            </p>
+          </div>
+
+          {/* <p className="text-[1.5rem] sm:text-[2rem] leading-tight tracking-tighter break-keep text-text-primary">
             <span className="font-semibold">리포팅 기능</span>을 통해{" "}
             <br className="sm:hidden" />
             <span className="font-semibold">소프트웨어 사업 추진</span>에{" "}
             <br className="hidden sm:block" />
             <span className="font-bold text-brand-primary">인사이트</span>를
             더해 드립니다.
-          </p>
+          </p> */}
 
           {/* 테이블 */}
           <div className="relative p-6 bg-white rounded-lg flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default">
@@ -249,22 +265,21 @@ const Section3 = () => {
                 onClick={() => handleChartClick(chart.key)}
               >
                 <div
-                  className={`w-1.5 h-10 md:h-14 rounded-full ${
+                  className={`w-1.5 h-10 md:h-11 rounded-full ${
                     selectedChart === chart.key
                       ? "bg-brand-primary"
                       : "bg-gray-200"
                   }`}
                 />
-                <Typography
-                  variant="title1"
-                  className={`text-text-primary ${
+                <span
+                  className={`text-[1.0625rem] sm:text-[1.3125rem] leading-tight tracking-tighter text-text-primary ${
                     selectedChart === chart.key
-                      ? "opacity-100"
-                      : "opacity-50 hover:opacity-80"
+                      ? "opacity-100 font-semibold"
+                      : "opacity-50 hover:opacity-80 font-medium"
                   }`}
                 >
                   {chart.title}
-                </Typography>
+                </span>
               </button>
             ))}
           </div>

@@ -20,12 +20,12 @@ const Section5 = () => {
 
           {/* text content */}
           <div className="flex flex-col gap-2">
-            <div className="text-[1.3125rem] md:text-[2rem]  leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">
+            <div className="text-[1.5rem] md:text-[2rem]  leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">
               진화하는{" "}
               <span className="font-extrabold text-brand-primary">FPMate</span>,{" "}
               사업 성공 도우미
             </div>
-            <p className="text-[1.0625rem] sm:text-[1.3125rem] leading-snug tracking-tighter break-keep text-center text-text-primary">
+            <p className="text-[1.0625rem] md:text-[1.3125rem] leading-snug tracking-tighter break-keep text-center text-text-primary">
               당신의 <span className="font-medium">SW 사업 성공</span>과{" "}
               <span className="font-medium">Fine 프로젝트</span>를 위하여{" "}
               <br className="sm:hidden" />
