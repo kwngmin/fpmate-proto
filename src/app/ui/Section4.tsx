@@ -158,25 +158,25 @@ const Section4 = () => {
           </div>
 
           {/* icons */}
-          <div className="flex justify-center flex-wrap gap-2">
+          <div className="flex justify-center flex-wrap gap-3">
             {Contents.map((content) => (
               <div
                 key={content.id}
-                className="rounded-full bg-white p-2 border border-border-primary"
+                className="rounded-full bg-white md:p-2 md:border border-border-primary"
               >
                 <Image
                   src={`/assets/svgs/${content.icon}.svg`}
                   alt={content.title}
                   width={100}
                   height={100}
-                  className="size-5 md:size-7"
+                  className="size-6"
                 />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-6 my-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-6 my-6 max-w-2xl lg:max-w-none mx-auto w-full">
           {Contents.map((content, index) => {
             const backgroundColor =
               (index + 1) % 3 === 0
@@ -191,7 +191,7 @@ const Section4 = () => {
                 key={content.id}
               >
                 <div
-                  className={`relative text-[1.0625rem] sm:text-base text-white font-semibold h-11 px-6 flex justify-center items-center rounded shadow-md ${backgroundColor}`}
+                  className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center rounded shadow-md ${backgroundColor}`}
                 >
                   {content.title}
                   <div
@@ -203,7 +203,7 @@ const Section4 = () => {
                     }}
                   />
                 </div>
-                <ul className="flex flex-col gap-1 px-6 py-10 bg-gray-50 grow border border-border-primary rounded">
+                <ul className="flex flex-col gap-1 px-6 py-8 bg-gray-50 grow border border-transparent hover:border-border-primary transition-colors duration-300 rounded">
                   {content.listItems.map((item) => (
                     <li
                       key={item.title}
