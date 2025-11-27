@@ -45,7 +45,7 @@ const Section3 = () => {
     <section className="bg-gray-50 py-20 md:py-40 overflow-hidden">
       {/* 테이블 영역 */}
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8 mb-20">
-        <p className="text-[1.5rem] sm:text-[2rem] md:text-[2rem] leading-tight tracking-tight break-keep text-text-primary">
+        <p className="text-[1.5rem] sm:text-[2rem] md:text-[2rem] leading-tight tracking-tighter break-keep text-text-primary">
           <span className="font-semibold">리포팅 기능</span>을 통해{" "}
           <br className="sm:hidden" />
           <span className="font-semibold">소프트웨어 사업 추진</span>에{" "}

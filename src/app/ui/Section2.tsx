@@ -5,8 +5,8 @@ const Section2 = () => {
   return (
     <section className="bg-white py-20 md:py-40 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
-        <div className="flex flex-col gap-2">
-          <div className="text-[2rem] md:text-[3.5rem] leading-tight tracking-tight font-semibold break-keep">
+        <div className="flex flex-col gap-4">
+          <div className="text-[2rem] md:text-[3.5rem] leading-[1.15] tracking-tighter font-semibold break-keep">
             SW 사업 추진{" "}
             <span className="font-bold text-brand-primary">인사이트+</span>
           </div>
