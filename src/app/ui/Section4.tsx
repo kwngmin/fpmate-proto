@@ -178,12 +178,15 @@ const Section4 = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-6 my-6 max-w-2xl lg:max-w-none mx-auto w-full">
           {Contents.map((content, index) => {
-            const backgroundColor =
+            const labelColor =
               (index + 1) % 3 === 0
                 ? "bg-green-600"
                 : (index + 1) % 3 === 1
                 ? "bg-lime-600"
                 : "bg-teal-600";
+
+            const containerColor =
+              (index + 1) % 2 === 0 ? "bg-slate-50" : "bg-stone-50";
 
             return (
               <div
@@ -191,7 +194,7 @@ const Section4 = () => {
                 key={content.id}
               >
                 <div
-                  className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center rounded-md shadow-lg ${backgroundColor}`}
+                  className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center rounded-md shadow-lg ${labelColor}`}
                 >
                   {content.title}
                   <div
@@ -203,7 +206,9 @@ const Section4 = () => {
                     }}
                   />
                 </div>
-                <ul className="flex flex-col gap-1 px-6 pt-8 pb-10 bg-gray-50 grow border border-transparent hover:border-gray-200 hover:bg-white hover:shadow-md transition-colors duration-300 rounded-md">
+                <ul
+                  className={`flex flex-col gap-1 px-6 pt-8 pb-10 grow rounded-md ${containerColor}`}
+                >
                   {content.listItems.map((item) => (
                     <li
                       key={item.title}

@@ -165,6 +165,7 @@ const Hero = () => {
               <BlurFadeText
                 text="FPMate"
                 className="font-extrabold text-brand-primary"
+                // className="font-extrabold bg-linear-to-r from-brand-primary to-semantic-success bg-clip-text text-transparent"
                 delay={700}
               />
               <BlurFadeText text="로" delay={700} />
