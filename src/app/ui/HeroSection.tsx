@@ -251,7 +251,7 @@ const HeroSection = () => {
                   <div className="grow h-1 sm:h-0.75 bg-border-primary relative overflow-hidden">
                     {isAnimationStarted && step.id === currentStep && (
                       <div
-                        key={currentStep}
+                        key={`${currentStep}-${resetTrigger}`}
                         className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
                         style={{
                           animation: "progressBar 4s forwards",
