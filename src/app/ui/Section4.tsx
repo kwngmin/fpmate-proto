@@ -191,7 +191,7 @@ const Section4 = () => {
                 key={content.id}
               >
                 <div
-                  className={`relative text-white font-semibold h-11 px-6 flex justify-center items-center rounded shadow-md ${backgroundColor}`}
+                  className={`relative text-[1.0625rem] sm:text-base text-white font-semibold h-11 px-6 flex justify-center items-center rounded shadow-md ${backgroundColor}`}
                 >
                   {content.title}
                   <div
@@ -207,7 +207,7 @@ const Section4 = () => {
                   {content.listItems.map((item) => (
                     <li
                       key={item.title}
-                      className="text-[0.9375rem] leading-snug tracking-tight break-keep list-disc ml-4 text-text-primary"
+                      className="text-base sm:text-[0.9375rem] leading-snug tracking-tight break-keep list-disc ml-4 text-text-primary"
                     >
                       {item.title}
                       {item?.description && (
