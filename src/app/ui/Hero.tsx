@@ -296,7 +296,7 @@ const Hero = () => {
             }}
           >
             {processSteps.map((step, index) => (
-              <BlurFadeDiv key={step.id} delay={1700 + index * 100}>
+              <BlurFadeDiv key={step.id} delay={1700 + index * 150}>
                 <Card
                   ref={(el) => {
                     cardRefs.current[index] = el;

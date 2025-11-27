@@ -187,7 +187,7 @@ const Section4 = () => {
 
             return (
               <div
-                className="flex flex-col gap-2 h-full shrink-0 overflow-hidden w-full max-w-sm mx-auto md:max-w-none"
+                className="flex flex-col gap-2 h-full shrink-0 w-full max-w-sm mx-auto md:max-w-none"
                 key={content.id}
               >
                 <div
@@ -203,7 +203,7 @@ const Section4 = () => {
                     }}
                   />
                 </div>
-                <ul className="flex flex-col gap-1 px-6 pt-8 pb-10 bg-gray-50 grow border border-transparent hover:border-border-primary transition-colors duration-300 rounded-md">
+                <ul className="flex flex-col gap-1 px-6 pt-8 pb-10 bg-gray-50 grow border border-transparent hover:border-gray-200 hover:bg-white hover:shadow-md transition-colors duration-300 rounded-md">
                   {content.listItems.map((item) => (
                     <li
                       key={item.title}
