@@ -176,17 +176,38 @@ const HeroSection = () => {
             />
           </div>
           <p className="text-[1.0625rem] md:text-[1.3125rem] leading-snug tracking-tight break-keep">
-            <BlurFadeText text="FPMate" delay={900} className="font-semibold" />
             <BlurFadeText
-              text="는 AI 비서와 함께 쉽고
-          빠르게"
+              text="FPMate"
+              delay={900}
+              className="font-semibold text-accent-primary"
+            />
+            <BlurFadeText
+              text="는"
+              //   text="는 AI 비서와 함께"
               delay={950}
+              className="
+            mr-1"
             />
-            <br className="md:hidden" />
             <BlurFadeText
-              text="SW 사업 비용을 알아 볼 수 있습니다. "
-              delay={1000}
+              text="AI 비서"
+              //   text="는 AI 비서와 함께"
+              delay={950}
+              className="font-semibold"
             />
+            <BlurFadeText
+              text="와"
+              //   text="는 AI 비서와 함께"
+              delay={950}
+              className="mr-1"
+            />
+            <BlurFadeText
+              text="쉽고 빠르게 SW 사업 비용을 알아 볼 수 있습니다. "
+              //   text="는 AI 비서와 함께"
+              delay={950}
+              className="mr-1"
+            />
+            {/* <br className="md:hidden" /> */}
+            {/* <BlurFadeText text="" delay={1000} /> */}
             <br />
             <BlurFadeText
               text="사업 단계별 변경 관리도 어렵지 않아요."
