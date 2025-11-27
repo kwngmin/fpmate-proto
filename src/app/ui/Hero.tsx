@@ -61,7 +61,7 @@ const processSteps = [
   },
 ];
 
-const HeroSection = () => {
+const Hero = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [containerWidth, setContainerWidth] = useState<number>(0);
   const [isAnimationStarted, setIsAnimationStarted] = useState<boolean>(false);
@@ -358,4 +358,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Hero;

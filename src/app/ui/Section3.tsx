@@ -45,12 +45,14 @@ const Section3 = () => {
     <section className="bg-gray-50 py-20 md:py-40 overflow-hidden">
       {/* 테이블 영역 */}
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8 mb-20">
-        <div className="text-[2rem] md:text-[2rem] leading-tight tracking-[-0.022em] font-semibold break-keep">
-          리포팅 기능을 통해 <br className="sm:hidden" />
-          소프트웨어 사업 추진에 <br className="hidden sm:block" />
+        <p className="text-[1.5rem] sm:text-[2rem] md:text-[2rem] leading-tight tracking-tight break-keep text-text-primary">
+          <span className="font-semibold">리포팅 기능</span>을 통해{" "}
+          <br className="sm:hidden" />
+          <span className="font-semibold">소프트웨어 사업 추진</span>에{" "}
+          <br className="hidden sm:block" />
           <span className="font-bold text-brand-primary">인사이트</span>를 더해
           드립니다.
-        </div>
+        </p>
 
         {/* 테이블 */}
         <div className="relative p-6 bg-white rounded-lg flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0">
@@ -247,7 +249,7 @@ const Section3 = () => {
               onClick={() => handleChartClick(chart.key)}
             >
               <div
-                className={`w-1.5 h-11 sm:h-14 rounded-full ${
+                className={`w-1.5 h-10 sm:h-14 rounded-full ${
                   selectedChart === chart.key
                     ? "bg-brand-primary"
                     : "bg-gray-200"
@@ -255,11 +257,11 @@ const Section3 = () => {
               />
               <Typography
                 variant="title1"
-                className={
+                className={`text-text-primary ${
                   selectedChart === chart.key
                     ? "opacity-100"
                     : "opacity-50 hover:opacity-80"
-                }
+                }`}
               >
                 {chart.title}
               </Typography>

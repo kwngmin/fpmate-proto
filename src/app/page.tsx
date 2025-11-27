@@ -1,5 +1,5 @@
 import Section1 from "./ui/Section1";
-import HeroSection from "./ui/HeroSection";
+import Hero from "./ui/Hero";
 import Header from "./ui/Header";
 import Section2 from "./ui/Section2";
 import Section3 from "./ui/Section3";
@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <HeroSection />
+      <Hero />
 
       {/* Section 1 */}
       <Section1 />

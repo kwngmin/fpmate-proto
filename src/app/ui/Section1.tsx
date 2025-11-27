@@ -136,10 +136,10 @@ const Section1 = () => {
                     height={124}
                     className="shrink-0 size-28 mb-2"
                   />
-                  <span className="text-lg tracking-tight font-bold break-keep">
+                  <span className="text-lg tracking-tight font-semibold break-keep">
                     {content.title}
                   </span>
-                  <span className="text-[1.0625rem] leading-normal tracking-[0] text-center break-keep max-w-48">
+                  <span className="text-[1.0625rem] leading-normal text-center break-keep max-w-48">
                     {content.description}
                   </span>
                 </div>
@@ -151,7 +151,7 @@ const Section1 = () => {
 
       {/* Section 1 Description */}
       <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-[0.9375rem] leading-snug tracking-tight break-keep text-text-secondary">
+        <p className="text-[0.9375rem] leading-normal tracking-tight break-keep text-text-secondary">
           FPMate에서는 국제표준(ISO/IEC 14143)에 기반한 방법으로 SW 사업 비용을
           산정합니다.
         </p>
