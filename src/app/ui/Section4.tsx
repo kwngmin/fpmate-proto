@@ -169,7 +169,7 @@ const Section4 = () => {
                   alt={content.title}
                   width={100}
                   height={100}
-                  className="size-6"
+                  className="size-5 md:size-7"
                 />
               </div>
             ))}
