@@ -86,8 +86,9 @@ const Section1 = () => {
         <div className="text-[2rem] md:text-[2.5rem] leading-[1.325] tracking-[-0.022em] font-semibold break-keep">
           <span className="font-bold text-brand-primary">FPMate</span>는?{" "}
         </div>
-        <p className="text-[1.5rem] md:text-[2rem] leading-snug tracking-tight break-keep text-text-secondary">
-          SW 사업 파트너로서 SW 사업 관리를 돕고자 <br className="sm:hidden" />
+        <p className="max-w-96 sm:max-w-none text-[1.5rem] md:text-[2rem] leading-tight tracking-tighter break-keep text-text-primary">
+          <span className="font-medium">SW 사업 파트너</span>
+          로서 <span className="font-medium">SW 사업 관리</span>를 돕고자
           탄생하였습니다.
         </p>
       </div>
@@ -150,7 +151,7 @@ const Section1 = () => {
 
       {/* Section 1 Description */}
       <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-[0.9375rem] leading-snug tracking-tight break-keep text-text-tertiary">
+        <p className="text-[0.9375rem] leading-snug tracking-tight break-keep text-text-secondary">
           FPMate에서는 국제표준(ISO/IEC 14143)에 기반한 방법으로 SW 사업 비용을
           산정합니다.
         </p>
