@@ -157,14 +157,14 @@ const HeroSection = () => {
         <div className="py-10 space-y-6 flex flex-col">
           <BlurFadeText
             text="FINE PROJECT MATE"
-            className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold"
+            className="text-[0.9375rem] md:text-[1.0625rem] tracking-tight font-semibold text-text-tertiary"
             delay={500}
           />
           <div className="text-[2.5rem] md:text-[3.75rem] leading-[1.1] tracking-[-0.022em] font-bold">
             <div>
               <BlurFadeText
                 text="FPMate"
-                className="font-bold text-brand-primary"
+                className="font-extrabold text-brand-primary"
                 delay={700}
               />
               <BlurFadeText text="로" delay={700} />

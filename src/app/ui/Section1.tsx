@@ -83,12 +83,12 @@ const Section1 = () => {
   return (
     <section className="bg-gray-50 py-20 md:py-40 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-1">
-        <div className="text-[2rem] md:text-[2.5rem] leading-[1.325] tracking-[-0.022em] font-semibold break-keep">
-          <span className="font-bold text-brand-primary">FPMate</span>는?{" "}
+        <div className="text-[2rem] md:text-[3rem] leading-[1.325] tracking-[-0.022em] font-semibold break-keep">
+          <span className="font-extrabold text-brand-primary">FPMate</span>는?{" "}
         </div>
         <p className="max-w-96 sm:max-w-none text-[1.5rem] md:text-[2rem] leading-tight tracking-tighter break-keep text-text-primary">
-          <span className="font-medium">SW 사업 파트너</span>
-          로서 <span className="font-medium">SW 사업 관리</span>를 돕고자
+          <span className="font-semibold">SW 사업 파트너</span>
+          로서 <span className="font-semibold">SW 사업 관리</span>를 돕고자
           탄생하였습니다.
         </p>
       </div>

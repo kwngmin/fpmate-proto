@@ -5,14 +5,18 @@ const Section2 = () => {
   return (
     <section className="bg-white py-20 md:py-40 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
-        <div className="text-[2rem] md:text-[3.5rem] leading-[1.1] tracking-[-0.022em] font-semibold break-keep">
-          SW 사업 추진{" "}
-          <span className="font-bold text-brand-primary">인사이트+</span>
+        <div className="flex flex-col gap-2">
+          <div className="text-[2rem] md:text-[3.5rem] leading-tight tracking-tight font-semibold break-keep">
+            SW 사업 추진{" "}
+            <span className="font-bold text-brand-primary">인사이트+</span>
+          </div>
+          <p className="text-[1.0625rem] leading-snug tracking-tight break-keep text-text-primary">
+            <span className="font-medium">고유 작업 공간</span>에서 그동안
+            작업했던 <br />
+            <span className="font-medium">SW 사업 비용 산정 내역</span>을 한눈에
+            파악해보세요.
+          </p>
         </div>
-        <p className="text-[1.0625rem] leading-[1.6] tracking-[0] font-medium break-keep">
-          고유 작업 공간에서 그동안 작업했던 <br />
-          SW 사업 비용 산정 내역을 한눈에 파악해보세요.
-        </p>
 
         {/* Insight Cards */}
         <div className="grid grid-cols-3 gap-2 w-[1000px] md:w-[1152px]">
