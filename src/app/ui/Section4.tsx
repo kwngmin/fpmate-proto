@@ -46,26 +46,20 @@ const Section4 = () => {
   return (
     <section className="bg-white py-20 md:py-40 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
-        <div className="text-[2rem] leading-[1.125] tracking-[-0.022em] md:text-[3.5rem] md:leading-[1.1] md:tracking-[-0.022em] font-semibold break-keep text-center">
-          진화하는 <span className="font-bold text-brand-primary">FPMate</span>,{" "}
-          <br className="lg:hidden" />
-          SW 사업 성공 도우미
-        </div>
-        {/* <p className="text-[1.0625rem] leading-[1.6] tracking-[0] font-medium break-keep text-center">
-            당신의 SW 사업 성공과 Fine 프로젝트를 위하여 <br />
+        <div className="flex flex-col gap-4">
+          <div className="text-[2rem] md:text-[3.5rem] leading-[1.15] tracking-tighter font-semibold break-keep text-center text-text-primary">
+            진화하는{" "}
+            <span className="font-extrabold text-brand-primary">FPMate</span>,{" "}
+            <br className="lg:hidden" />
+            SW 사업 성공 도우미
+          </div>
+          <p className="text-[1.0625rem] sm:text-[1.3125rem] leading-snug tracking-tight break-keep text-center text-text-primary">
+            당신의 <span className="font-semibold">SW 사업 성공</span>과{" "}
+            <span className="font-semibold">Fine 프로젝트</span>를 위하여 <br />
             <span className="font-bold text-brand-primary">FPMate</span>는
             지속적으로 진화합니다.
-          </p> */}
-        <Typography
-          variant="title2"
-          align="center"
-          className="break-keep max-w-80 sm:max-w-none mx-auto"
-        >
-          당신의 SW 사업 성공과 <br className="md:hidden" />
-          Fine 프로젝트를 위하여 <br className="hidden md:inline" />
-          <span className="font-bold text-brand-primary">FPMate</span>는
-          지속적으로 진화합니다.
-        </Typography>
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 my-6">
           {section4Contents.map((content) => (
@@ -74,10 +68,10 @@ const Section4 = () => {
               variant="bordered"
               hoverable
               padding="none"
-              className="shrink-0 overflow-hidden"
+              className="shrink-0 overflow-hidden w-full max-w-md mx-auto md:max-w-none"
             >
               <div className="h-4 bg-gray-100" />
-              <div className="flex flex-col gap-6 px-6 py-8">
+              <div className="flex flex-col gap-6 px-6 pt-8 pb-16">
                 {/* <div className="w-12 h-12 rounded-full bg-gray-100" /> */}
                 <Typography variant="title3">{content.title}</Typography>
                 <div className="flex flex-col gap-2">
@@ -86,7 +80,7 @@ const Section4 = () => {
                     {content.sectionTitle.map((title) => (
                       <div key={title} className="flex items-center gap-2">
                         <div className="w-1 h-7 rounded-full bg-gray-200" />
-                        <span className="text-[1.0625rem] md:text-[0.9375rem] font-medium">
+                        <span className="text-[1.0625rem] sm:text-[0.9375rem] font-medium">
                           {title}
                         </span>
                       </div>
@@ -110,7 +104,7 @@ const Section4 = () => {
                     {content.values.map((value) => (
                       <li
                         key={value}
-                        className="text-[1.0625rem] md:text-[0.9375rem]  font-medium break-keep list-disc ml-4"
+                        className="text-[1.0625rem] sm:text-[0.9375rem]  font-medium break-keep list-disc ml-4"
                       >
                         {value}
                       </li>
