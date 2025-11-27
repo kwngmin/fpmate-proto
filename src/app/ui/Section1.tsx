@@ -1,6 +1,8 @@
 "use client";
 
+import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
 import { Card } from "@/shared/ui";
+import { BlurFadeDiv, BlurFadeText } from "@/shared/ui/BlurFadeText";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -80,8 +82,14 @@ const Section1 = () => {
     }
   }, [section1Step, section1ContainerWidth, isMobile]);
 
+  const { ref, isIntersecting } = useIntersectionObserver({
+    threshold: 0.5,
+  });
+
+  console.log(isIntersecting);
+
   return (
-    <section className="bg-gray-50 py-20 md:py-40 overflow-hidden">
+    <section ref={ref} className="bg-gray-50 py-20 md:py-40 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-2">
         <div className="text-[2rem] md:text-[3rem] leading-[1.15] tracking-tighter font-semibold break-keep">
           <span className="font-extrabold text-brand-primary">FPMate</span>는?{" "}
@@ -112,7 +120,7 @@ const Section1 = () => {
               transformStyle: "preserve-3d",
             }}
           >
-            {section1Contents.map((content) => (
+            {section1Contents.map((content, index) => (
               <Card
                 key={content.id}
                 variant="elevated"
@@ -129,19 +137,44 @@ const Section1 = () => {
                 onClick={() => isMobile && setSection1Step(content.id)}
               >
                 <div className="flex flex-col gap-1 items-center px-4 pt-6 pb-8">
-                  <Image
-                    src={content.image}
-                    alt={`section1-${content.id}`}
-                    width={124}
-                    height={124}
-                    className="shrink-0 size-28 mb-2"
+                  <BlurFadeDiv
+                    delay={(index + 1) * 100}
+                    intersectionOptions={{
+                      threshold: 0.5,
+                    }}
+                    useIntersection={true}
+                  >
+                    {/* image */}
+                    <Image
+                      src={content.image}
+                      alt={`section1-${content.id}`}
+                      width={124}
+                      height={124}
+                      className="shrink-0 size-28 mb-2"
+                    />
+                  </BlurFadeDiv>
+
+                  {/* title */}
+                  <BlurFadeText
+                    className="text-lg tracking-tight font-semibold break-keep"
+                    text={content.title}
+                    delay={100 + (index + 1) * 200}
+                    useIntersection={true}
+                    intersectionOptions={{
+                      threshold: 0.5,
+                    }}
                   />
-                  <span className="text-lg tracking-tight font-semibold break-keep">
-                    {content.title}
-                  </span>
-                  <span className="text-[1.0625rem] leading-normal text-center break-keep max-w-48">
-                    {content.description}
-                  </span>
+
+                  {/* description */}
+                  <BlurFadeText
+                    className="text-[1.0625rem] leading-normal text-center break-keep max-w-48"
+                    text={content.description}
+                    delay={200 + (index + 1) * 300}
+                    useIntersection={true}
+                    intersectionOptions={{
+                      threshold: 0.5,
+                    }}
+                  />
                 </div>
               </Card>
             ))}
