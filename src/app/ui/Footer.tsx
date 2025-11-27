@@ -15,7 +15,7 @@ const Footer = () => {
             alt="IBKSystem CI"
             width={120}
             height={120}
-            className="shrink-0 min-w-28 md:min-w-32"
+            className="shrink-0 min-w-32"
           />
         </Link>
         <div className="flex flex-col gap-2 grow">
