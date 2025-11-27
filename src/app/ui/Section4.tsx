@@ -47,15 +47,16 @@ const Section4 = () => {
     <section className="bg-white py-20 md:py-40 overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
         <div className="flex flex-col gap-4">
-          <div className="text-[2rem] md:text-[3.5rem] leading-[1.15] tracking-tighter font-semibold break-keep text-center text-text-primary">
+          <div className="text-[2rem] md:text-[3.5rem] leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">
             진화하는{" "}
             <span className="font-extrabold text-brand-primary">FPMate</span>,{" "}
-            <br className="lg:hidden" />
+            <br className="sm:hidden" />
             SW 사업 성공 도우미
           </div>
-          <p className="text-[1.0625rem] sm:text-[1.3125rem] leading-snug tracking-tight break-keep text-center text-text-primary">
+          <p className="text-[1.3125rem] md:text-[2rem]  leading-snug tracking-tighter break-keep text-center text-text-primary">
             당신의 <span className="font-semibold">SW 사업 성공</span>과{" "}
-            <span className="font-semibold">Fine 프로젝트</span>를 위하여 <br />
+            <span className="font-semibold">Fine 프로젝트</span>를 위하여{" "}
+            <br className="hidden sm:block" />
             <span className="font-bold text-brand-primary">FPMate</span>는
             지속적으로 진화합니다.
           </p>

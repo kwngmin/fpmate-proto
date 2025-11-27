@@ -152,8 +152,10 @@ const Section1 = () => {
       {/* Section 1 Description */}
       <div className="max-w-[1200px] mx-auto px-6">
         <p className="text-[0.9375rem] leading-normal tracking-tight break-keep text-text-secondary">
-          FPMate에서는 국제표준(ISO/IEC 14143)에 기반한 방법으로 SW 사업 비용을
-          산정합니다.
+          <span className="font-semibold">FPMate</span>에서는{" "}
+          <span className="font-medium">국제표준</span>(ISO/IEC 14143)에 기반한
+          방법으로 <span className="font-medium">SW 사업 비용을 산정</span>
+          합니다.
         </p>
       </div>
     </section>
