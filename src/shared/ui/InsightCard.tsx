@@ -19,6 +19,45 @@ interface InsightCardProps {
   managerImage: string;
   isFirst?: boolean;
 }
+
+const GradientRingButton = ({
+  onClick,
+  isFirstCard = false,
+  children,
+}: {
+  onClick: () => void;
+  isFirstCard: boolean;
+  children: React.ReactNode;
+}) => {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative size-9 rounded-full flex items-center justify-center bg-white z-10 ${
+        isFirstCard
+          ? "cursor-pointer active:scale-90"
+          : "xl:cursor-pointer xl:active:scale-90"
+      }`}
+    >
+      {/* 회전하는 그라데이션 ring */}
+      <span
+        className={`absolute inset-0 rounded-full -z-10 animate-spin ${
+          isFirstCard ? "" : "hidden xl:block"
+        }`}
+        style={{
+          padding: "1px",
+          background:
+            "conic-gradient(from 0deg, #10b981, #119799, white, #066847)",
+          animationDuration: "3s",
+        }}
+      >
+        <span className="flex size-full rounded-full bg-white" />
+      </span>
+      {children}
+    </button>
+  );
+};
+
 const InsightCard = ({
   chips,
   title,
@@ -49,29 +88,32 @@ const InsightCard = ({
             <Badge
               key={chip.id}
               color={chip.color}
-              className="active:scale-90 select-none"
+              className={`select-none font-medium ${
+                isFirst
+                  ? "cursor-pointer active:scale-85"
+                  : "xl:cursor-pointer xl:active:scale-85"
+              }`}
+              variant={
+                chip.color === "red"
+                  ? "error"
+                  : chip.color === "blue"
+                  ? "info"
+                  : chip.color === "green"
+                  ? "success"
+                  : "default"
+              }
+              // variant="info"
+              size="lg"
             >
               {chip.label}
             </Badge>
           ))}
         </div>
         <div className="flex gap-2 items-center">
-          <button
-            type="button"
+          <GradientRingButton
             onClick={() => scrollToTable("section3-table")}
-            className="relative size-9 rounded-full flex items-center justify-center bg-white z-10"
+            isFirstCard={isFirst}
           >
-            <span
-              className="absolute inset-0 rounded-full -z-10 animate-spin"
-              style={{
-                padding: "1px",
-                background:
-                  "conic-gradient(from 0deg, #10b981, #119799, white, #066847)",
-                animationDuration: "3s",
-              }}
-            >
-              <span className="flex size-full rounded-full bg-white" />
-            </span>
             <Image
               src="/assets/svgs/note.svg"
               alt="noter-icon"
@@ -79,24 +121,11 @@ const InsightCard = ({
               height={28}
               className="size-5.5"
             />
-          </button>
-          <button
-            type="button"
+          </GradientRingButton>
+          <GradientRingButton
             onClick={() => scrollToChart("section3-chart")}
-            className="relative size-9 rounded-full flex items-center justify-center bg-white z-10"
+            isFirstCard={isFirst}
           >
-            {/* 회전하는 그라데이션 ring */}
-            <span
-              className="absolute inset-0 rounded-full -z-10 animate-spin"
-              style={{
-                padding: "1px",
-                background:
-                  "conic-gradient(from 0deg, #10b981, #119799, white, #066847)",
-                animationDuration: "3s",
-              }}
-            >
-              <span className="flex size-full rounded-full bg-white" />
-            </span>
             <Image
               src="/assets/svgs/chart-bar.svg"
               alt="noter-icon"
@@ -104,7 +133,7 @@ const InsightCard = ({
               height={28}
               className="size-5.5"
             />
-          </button>
+          </GradientRingButton>
         </div>
       </div>
 
@@ -151,9 +180,9 @@ const InsightCard = ({
         <Image
           src={managerImage}
           alt="avatar-placeholder"
-          width={28}
-          height={28}
-          className="size-7 bg-gray-200 rounded-full"
+          width={36}
+          height={36}
+          className="size-8 bg-gray-200 rounded-full"
         />
       </div>
     </Card>
