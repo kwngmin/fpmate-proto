@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Badge } from "./Badge";
 import { Card } from "./Card";
+import { useScrollTo } from "../lib/use-scroll-to";
 
 interface InsightCardProps {
   chips: {
@@ -26,6 +29,9 @@ const InsightCard = ({
   managerImage,
   isFirst = false,
 }: InsightCardProps) => {
+  const { scrollTo: scrollToTable } = useScrollTo(64);
+  const { scrollTo: scrollToChart } = useScrollTo(320);
+
   return (
     <Card
       variant="bordered"
@@ -50,7 +56,11 @@ const InsightCard = ({
           ))}
         </div>
         <div className="flex gap-2 items-center">
-          <div className="size-7 rounded flex items-center justify-center">
+          <button
+            type="button"
+            onClick={() => scrollToTable("section3-table")}
+            className="size-7 rounded flex items-center justify-center"
+          >
             <Image
               src="/assets/svgs/note.svg"
               alt="noter-icon"
@@ -58,8 +68,12 @@ const InsightCard = ({
               height={28}
               className="size-6"
             />
-          </div>
-          <div className="size-7 rounded flex items-center justify-center">
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollToChart("section3-chart")}
+            className="size-7 rounded flex items-center justify-center"
+          >
             <Image
               src="/assets/svgs/chart-bar.svg"
               alt="noter-icon"
@@ -67,7 +81,7 @@ const InsightCard = ({
               height={28}
               className="size-6"
             />
-          </div>
+          </button>
         </div>
       </div>
 
