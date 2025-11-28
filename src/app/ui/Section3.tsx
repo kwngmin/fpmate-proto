@@ -341,9 +341,9 @@ const Section3 = () => {
         {/* 테이블 영역 */}
         <div
           id="section3-table"
-          className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8 mb-20 overflow-hidden"
+          className="max-w-[1200px] mx-auto flex flex-col gap-8 mb-20"
         >
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 px-6">
             <div className="text-[2rem] md:text-[3.5rem] leading-[1.15] tracking-tighter font-semibold break-keep">
               <span className="font-bold text-brand-primary">데이터 기반</span>
               의 <br className="lg:hidden" />
@@ -369,7 +369,7 @@ const Section3 = () => {
           </p> */}
 
           {/* 테이블 */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 px-6 overflow-hidden">
             <span className="text-[0.9375rem] tracking-tight text-text-tertiary font-medium">
               보고서
             </span>
