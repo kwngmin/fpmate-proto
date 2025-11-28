@@ -29,7 +29,7 @@ const GradientRingButton = ({
   onClick: () => void;
   isFirstCard: boolean;
   children: React.ReactNode;
-  delay?: number;
+  order?: number;
 }) => {
   return (
     <button

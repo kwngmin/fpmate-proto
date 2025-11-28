@@ -14,11 +14,11 @@ const FpChart = ({
 }) => {
   return (
     <div
-      className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl"
+      className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
       style={{
         opacity: selectedChart === chartKey ? 1 : 0,
         filter: selectedChart === chartKey ? "blur(0rem)" : "blur(2rem)",
-        transition: "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
+        transition: "opacity 0.3s ease-in-out, filter 0.4s ease-in-out",
       }}
     >
       <div className="flex items-center justify-between gap-4 z-10">
@@ -75,11 +75,11 @@ const FpRate = ({
 }) => {
   return (
     <div
-      className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl"
+      className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
       style={{
         opacity: selectedChart === chartKey ? 1 : 0,
         filter: selectedChart === chartKey ? "blur(0rem)" : "blur(2rem)",
-        transition: "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
+        transition: "opacity 0.3s ease-in-out, filter 0.4s ease-in-out",
       }}
     >
       <div className="flex items-center justify-between gap-4 z-10">
@@ -185,11 +185,11 @@ const FpReport = ({
   const manMonth = 497.5;
   return (
     <div
-      className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl"
+      className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
       style={{
         opacity: selectedChart === chartKey ? 1 : 0,
         filter: selectedChart === chartKey ? "blur(0rem)" : "blur(2rem)",
-        transition: "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
+        transition: "opacity 0.3s ease-in-out, filter 0.4s ease-in-out",
       }}
     >
       <div
@@ -597,9 +597,9 @@ const Section3 = () => {
             {chartData.map((chart) => (
               <div
                 key={chart.id}
-                className={`rounded h-96 overflow-hidden flex items-end justify-center transition-transform duration-200 ease-out ${
+                className={`rounded h-96 overflow-hidden flex items-end justify-center ${
                   selectedChart === chart.key
-                    ? "shadow-card grow bg-white delay-200"
+                    ? "shadow-card grow bg-linear-to-b from-white via-white to-gray-200/50"
                     : "bg-white/50"
                 }`}
                 style={{
@@ -625,7 +625,7 @@ const Section3 = () => {
                 key={chart.id}
                 className={`rounded h-64 overflow-hidden flex items-end justify-center ${
                   selectedChart === chart.key
-                    ? "shadow-card grow bg-white"
+                    ? "shadow-card grow bg-linear-to-b from-white via-white to-gray-200/50"
                     : "bg-white/50"
                 }`}
                 style={{
@@ -651,7 +651,7 @@ const Section3 = () => {
                 key={chart.id}
                 className={`rounded h-84 overflow-hidden flex items-end justify-center ${
                   selectedChart === chart.key
-                    ? "shadow-card grow bg-white"
+                    ? "shadow-card grow bg-linear-to-b from-white via-white to-gray-200/50"
                     : "bg-white/50"
                 }`}
                 // className={`bg-white rounded h-72 overflow-hidden ${
