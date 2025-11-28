@@ -3,7 +3,15 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-20 overflow-hidden relative z-80 gpu-layer">
+    <footer
+      className="bg-gray-100 py-20 overflow-hidden relative z-80"
+      style={{
+        transform: "translate3d(0, 0, 0)",
+        WebkitBackfaceVisibility: "hidden",
+        backfaceVisibility: "hidden",
+        isolation: "isolate",
+      }}
+    >
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row gap-6">
         <Link
           href="https://www.ibksystem.co.kr/"

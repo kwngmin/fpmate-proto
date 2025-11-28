@@ -554,10 +554,26 @@ const Section3 = () => {
       </section>
 
       {/* 스티커 영역 - 그라데이션 효과 */}
-      <div className="bg-linear-to-b from-transparent to-gray-50 w-full h-12 z-20" />
+      <div
+        className="bg-linear-to-b from-transparent to-gray-50 w-full h-12 z-20"
+        style={{
+          transform: "translate3d(0, 0, 0)",
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
+          isolation: "isolate",
+        }}
+      />
 
       {/* 차트 그래픽 영역 */}
-      <section className="bg-gray-50 pb-20 md:pb-40 relative z-30">
+      <section
+        className="bg-gray-50 pb-20 md:pb-40 relative z-30"
+        style={{
+          transform: "translate3d(0, 0, 0)",
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
+          isolation: "isolate",
+        }}
+      >
         <div
           id="section3-chart"
           className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20 relative z-10"
