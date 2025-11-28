@@ -331,7 +331,13 @@ const Section3 = () => {
 
   return (
     <Fragment>
-      <section className="bg-gray-50 py-16 md:py-40 sticky top-16 md:top-0">
+      <section
+        className="bg-gray-50 py-16 md:py-40 sticky top-16 md:top-0"
+        style={{
+          transform: "translate3d(0, 0, 0)", // GPU 가속 강제
+          WebkitBackfaceVisibility: "hidden", // 깜빡임 방지
+        }}
+      >
         {/* 테이블 영역 */}
         <div
           id="section3-table"
@@ -559,7 +565,7 @@ const Section3 = () => {
       <section className="bg-gray-50 pb-20 md:pb-40 z-10">
         <div
           id="section3-chart"
-          className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20 sticky z-30"
+          className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20 z-30"
         >
           {/* 차트 셀렉터 */}
           <div className="flex flex-col gap-2 min-w-xs sm:min-w-2/5 lg:min-w-1/3 py-4 sm:py-6">
