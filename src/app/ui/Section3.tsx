@@ -33,7 +33,7 @@ const FpChart = ({
       </div>
       <div className="flex flex-col gap-0.5 relative after:content-[''] after:absolute after:h-full after:left-0 after:top-0 after:bg-linear-to-r after:from-white/80 after:to-transparent after:w-1/3 after:z-20 after:pointer-events-none">
         <div
-          className="absolute top-8 left-2/5 z-30 bg-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-text-primary font-medium transition-transform duration-200 ease-out"
+          className="absolute top-8 left-2/5 z-30 bg-white/70 backdrop-blur-xl shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-text-primary font-medium transition-transform duration-200 ease-out"
           style={{
             transform: `translateY(${floatingOffset}px)`,
           }}
@@ -158,7 +158,7 @@ const FpRate = ({
 
         {/* Floating 정보 카드 */}
         <div
-          className="absolute bottom-20 left-0 z-20 bg-black/20 backdrop-blur-md backdrop-saturate-150 shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-white font-medium transition-transform duration-200 ease-out"
+          className="absolute bottom-20 left-0 z-20 bg-black/20 backdrop-blur-md shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-white font-medium transition-transform duration-200 ease-out"
           style={{
             transform: `translateY(${floatingOffset}px)`,
           }}

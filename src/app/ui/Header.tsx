@@ -7,6 +7,7 @@ const Header = () => {
       style={{
         height: "64px",
       }}
+      // className="sticky top-0 z-100 bg-(--header-bg) border-b border-(--header-border)"
       className="sticky top-0 z-100 bg-(--header-bg) backdrop-blur-(--header-blur) border-b border-(--header-border)"
     >
       <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
