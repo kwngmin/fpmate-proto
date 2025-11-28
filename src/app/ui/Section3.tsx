@@ -39,7 +39,10 @@ const Section3 = () => {
     <Fragment>
       <section className="bg-gray-50 py-16 md:py-40 sticky top-16 md:top-0">
         {/* 테이블 영역 */}
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8 mb-20 overflow-hidden">
+        <div
+          id="section3-table"
+          className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8 mb-20 overflow-hidden"
+        >
           <div className="flex flex-col gap-4">
             <div className="text-[2rem] md:text-[3.5rem] leading-[1.15] tracking-tighter font-semibold break-keep">
               <span className="font-bold text-brand-primary">데이터 기반</span>
@@ -260,10 +263,13 @@ const Section3 = () => {
 
       {/* 차트 그래픽 영역 */}
       <section className="bg-gray-50 pb-20 md:pb-40 z-10">
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20 sticky z-30">
+        <div
+          id="section3-chart"
+          className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20 sticky z-30"
+        >
           {/* 차트 셀렉터 */}
           <div className="flex flex-col gap-2 min-w-xs sm:min-w-2/5 lg:min-w-1/3 py-4 sm:py-6">
-            <span className="text-[0.9375rem] tracking-tight text-text-tertiary font-medium">
+            <span className="text-[0.9375rem] tracking-tight text-text-tertiary font-medium mb-2">
               시각화된 통계
             </span>
             {section3Charts.map((chart) => (

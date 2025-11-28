@@ -26,7 +26,7 @@ const cardData = [
     fp: 339.08,
     amount: 209815430,
     date: "2025.06.20",
-    managerImage: "김철수",
+    managerImage: "/assets/images/avatar-1.png",
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ const cardData = [
     fp: 339.08,
     amount: 209815430,
     date: "2025.06.20",
-    managerImage: "김철수",
+    managerImage: "/assets/images/avatar-2.png",
   },
   {
     id: 3,
@@ -78,7 +78,7 @@ const cardData = [
     fp: 339.08,
     amount: 209815430,
     date: "2025.06.20",
-    managerImage: "김철수",
+    managerImage: "/assets/images/avatar-3.png",
   },
 ];
 
@@ -99,7 +99,7 @@ const SkeletonBar = ({
 const Section2 = () => {
   return (
     <section className="bg-white py-20 md:py-40 overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
+      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8 relative">
         <div className="flex flex-col gap-4">
           <div className="text-[2rem] md:text-[3.5rem] leading-[1.15] tracking-tighter font-semibold break-keep">
             SW 사업 추진{" "}
@@ -113,72 +113,87 @@ const Section2 = () => {
           </p>
         </div>
 
-        {/* Insight Cards */}
-        <div className="grid grid-cols-3 gap-2 w-[1000px] md:w-[1152px]">
-          <InsightCard />
-          <InsightCard />
-          <InsightCard />
-        </div>
+        {/* card container */}
+        <div className="flex flex-col gap-4 relative after:content-[''] after:absolute after:inset-0 after:w-1/2 sm:after:w-2/3 after:left-auto after:-right-6 after:bg-linear-to-r after:from-transparent after:to-white/90 after:pointer-events-none xl:after:hidden">
+          {/* Insight Cards */}
+          <div className="grid grid-cols-3 gap-2 w-[1000px] md:w-[1152px]">
+            {cardData.map((card) => (
+              <InsightCard key={card.id} {...card} isFirst={card.id === 1} />
+            ))}
+          </div>
 
-        {/* Dummy cards */}
-        <div className="relative grid grid-cols-3 gap-2 after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-white after:pointer-events-none w-[1000px] md:w-[1152px]">
-          <Card variant="bordered" padding="sm" className="flex flex-col gap-3">
-            <div className="flex justify-between gap-2">
+          {/* Dummy cards */}
+          <div className="relative grid grid-cols-3 gap-2 after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-white after:pointer-events-none w-[1000px] md:w-[1152px]">
+            <Card
+              variant="bordered"
+              padding="sm"
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between gap-2">
+                <div className="flex gap-1 items-center">
+                  <SkeletonBar width={12} height={7} />
+                  <SkeletonBar width={14} height={7} />
+                  <SkeletonBar width={20} height={7} />
+                </div>
+                <div className="flex gap-2 items-center">
+                  <SkeletonBar width={7} height={7} />
+                  <SkeletonBar width={7} height={7} />
+                </div>
+              </div>
+
               <div className="flex gap-1 items-center">
-                <SkeletonBar width={12} height={7} />
-                <SkeletonBar width={14} height={7} />
-                <SkeletonBar width={20} height={7} />
+                <SkeletonBar width={14} height={4} />
+                <SkeletonBar width={28} height={4} />
+                <SkeletonBar width={8} height={4} />
               </div>
-              <div className="flex gap-2 items-center">
-                <SkeletonBar width={7} height={7} />
-                <SkeletonBar width={7} height={7} />
+            </Card>
+            <Card
+              variant="bordered"
+              padding="sm"
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between gap-2">
+                <div className="flex gap-1 items-center">
+                  <SkeletonBar width={12} height={7} />
+                  <SkeletonBar width={14} height={7} />
+                  <SkeletonBar width={20} height={7} />
+                </div>
+                <div className="flex gap-2 items-center">
+                  <SkeletonBar width={7} height={7} />
+                  <SkeletonBar width={7} height={7} />
+                </div>
               </div>
-            </div>
 
-            <div className="flex gap-1 items-center">
-              <SkeletonBar width={14} height={4} />
-              <SkeletonBar width={28} height={4} />
-              <SkeletonBar width={8} height={4} />
-            </div>
-          </Card>
-          <Card variant="bordered" padding="sm" className="flex flex-col gap-3">
-            <div className="flex justify-between gap-2">
               <div className="flex gap-1 items-center">
-                <SkeletonBar width={12} height={7} />
-                <SkeletonBar width={14} height={7} />
-                <SkeletonBar width={20} height={7} />
+                <SkeletonBar width={10} height={4} />
+                <SkeletonBar width={20} height={4} />
+                <SkeletonBar width={12} height={4} />
               </div>
-              <div className="flex gap-2 items-center">
-                <SkeletonBar width={7} height={7} />
-                <SkeletonBar width={7} height={7} />
+            </Card>
+            <Card
+              variant="bordered"
+              padding="sm"
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between gap-2">
+                <div className="flex gap-1 items-center">
+                  <SkeletonBar width={12} height={7} />
+                  <SkeletonBar width={14} height={7} />
+                  <SkeletonBar width={20} height={7} />
+                </div>
+                <div className="flex gap-2 items-center">
+                  <SkeletonBar width={7} height={7} />
+                  <SkeletonBar width={7} height={7} />
+                </div>
               </div>
-            </div>
 
-            <div className="flex gap-1 items-center">
-              <SkeletonBar width={10} height={4} />
-              <SkeletonBar width={20} height={4} />
-              <SkeletonBar width={12} height={4} />
-            </div>
-          </Card>
-          <Card variant="bordered" padding="sm" className="flex flex-col gap-3">
-            <div className="flex justify-between gap-2">
               <div className="flex gap-1 items-center">
-                <SkeletonBar width={12} height={7} />
-                <SkeletonBar width={14} height={7} />
-                <SkeletonBar width={20} height={7} />
+                <SkeletonBar width={10} height={4} />
+                <SkeletonBar width={20} height={4} />
+                <SkeletonBar width={12} height={4} />
               </div>
-              <div className="flex gap-2 items-center">
-                <SkeletonBar width={7} height={7} />
-                <SkeletonBar width={7} height={7} />
-              </div>
-            </div>
-
-            <div className="flex gap-1 items-center">
-              <SkeletonBar width={10} height={4} />
-              <SkeletonBar width={20} height={4} />
-              <SkeletonBar width={12} height={4} />
-            </div>
-          </Card>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

@@ -1,33 +1,83 @@
+import Image from "next/image";
 import { Badge } from "./Badge";
 import { Card } from "./Card";
 
-const InsightCard = () => {
+interface InsightCardProps {
+  chips: {
+    id: number;
+    label: string;
+    color: string;
+  }[];
+  title: string;
+  description: string;
+  fp: number;
+  amount: number;
+  date: string;
+  managerImage: string;
+  isFirst?: boolean;
+}
+const InsightCard = ({
+  chips,
+  title,
+  description,
+  fp,
+  amount,
+  date,
+  managerImage,
+  isFirst = false,
+}: InsightCardProps) => {
   return (
     <Card
       variant="bordered"
       hoverable
       padding="sm"
-      className="flex flex-col gap-3 hover:translate-y-[-4px]"
+      className={`flex flex-col gap-3 hover:translate-y-[-4px] ${
+        isFirst
+          ? "translate-y-[-4px] shadow-card xl:translate-y-0 xl:shadow-none"
+          : "opacity-80 md:opacity-100 pointer-events-none xl:pointer-events-auto"
+      }`}
     >
       <div className="flex justify-between gap-2">
         <div className="flex gap-1">
-          <Badge>신규</Badge>
-          <Badge>간이법</Badge>
-          <Badge>프로젝트 계획</Badge>
+          {chips.map((chip) => (
+            <Badge
+              key={chip.id}
+              color={chip.color}
+              className="active:scale-90 select-none"
+            >
+              {chip.label}
+            </Badge>
+          ))}
         </div>
         <div className="flex gap-2 items-center">
-          <div className="size-7 bg-gray-100 rounded-full" />
-          <div className="size-7 bg-gray-100 rounded-full" />
+          <div className="size-7 rounded flex items-center justify-center">
+            <Image
+              src="/assets/svgs/note.svg"
+              alt="noter-icon"
+              width={28}
+              height={28}
+              className="size-6"
+            />
+          </div>
+          <div className="size-7 rounded flex items-center justify-center">
+            <Image
+              src="/assets/svgs/chart-bar.svg"
+              alt="noter-icon"
+              width={28}
+              height={28}
+              className="size-6"
+            />
+          </div>
         </div>
       </div>
 
       {/* 프로젝트 정보 */}
       <div className="flex flex-col">
         <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
-          모바일 플랫폼 구현
+          {title}
         </span>
         <span className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em]">
-          모바일 플랫폼 구현 FP
+          {description} FP
         </span>
       </div>
 
@@ -39,7 +89,7 @@ const InsightCard = () => {
           </span>
           <span className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em]">
             <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-bold mr-2">
-              1,000.6
+              {fp}
             </span>
             FP
           </span>
@@ -50,7 +100,7 @@ const InsightCard = () => {
           </span>
           <span className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em]">
             <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-bold mr-2">
-              473,798,508
+              {amount.toLocaleString()}
             </span>
             원
           </span>
@@ -59,9 +109,15 @@ const InsightCard = () => {
 
       <div className="flex justify-end items-center gap-2">
         <span className="text-[0.875rem] tracking-[-0.013em]">
-          선정완료일: 2023.06.20 담당자:
+          {`선정완료일: ${date} 담당자:`}
         </span>{" "}
-        <div className="size-7 bg-gray-200 rounded-full" />
+        <Image
+          src={managerImage}
+          alt="avatar-placeholder"
+          width={28}
+          height={28}
+          className="size-7 bg-gray-200 rounded-full"
+        />
       </div>
     </Card>
   );
