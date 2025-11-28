@@ -37,7 +37,7 @@ const Section3 = () => {
 
   return (
     <Fragment>
-      <section className="bg-gray-50 py-20 md:py-40 overflow-hidden sticky top-16 md:top-0">
+      <section className="bg-gray-50 py-20 md:py-40 sticky top-16 md:top-0">
         {/* 테이블 영역 */}
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-12 mb-20">
           <div className="flex flex-col gap-4">
@@ -254,7 +254,7 @@ const Section3 = () => {
       <div className="bg-linear-to-b from-transparent to-gray-50 w-full h-12 z-10" />
 
       {/* 차트 그래픽 영역 */}
-      <section className="bg-gray-50 pb-20 md:pb-40 overflow-hidden z-10">
+      <section className="bg-gray-50 pb-20 md:pb-40 z-10">
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20 sticky z-30">
           {/* 차트 셀렉터 */}
           <div className="flex flex-col gap-2 min-w-xs sm:min-w-2/5 lg:min-w-1/3 py-4 sm:py-6">
