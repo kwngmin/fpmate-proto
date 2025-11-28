@@ -66,7 +66,7 @@ const InsightCard = ({
               style={{
                 padding: "1px",
                 background:
-                  "conic-gradient(from 0deg, #10b981, #8b5cf6, white, #10b981)",
+                  "conic-gradient(from 0deg, #10b981, #119799, white, #066847)",
                 animationDuration: "3s",
               }}
             >
@@ -91,7 +91,7 @@ const InsightCard = ({
               style={{
                 padding: "1px",
                 background:
-                  "conic-gradient(from 0deg, #10b981, #8b5cf6, white, #10b981)",
+                  "conic-gradient(from 0deg, #10b981, #119799, white, #066847)",
                 animationDuration: "3s",
               }}
             >

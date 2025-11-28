@@ -96,16 +96,16 @@ const Section2 = () => {
         </div>
 
         {/* card container */}
-        <div className="flex flex-col gap-4 relative sm:after:content-[''] sm:after:absolute sm:after:inset-0 sm:after:w-1/2 sm:after:w-2/3 sm:after:left-auto sm:after:-right-6 sm:after:bg-linear-to-r sm:after:from-transparent sm:after:to-white/90 sm:after:pointer-events-none xl:after:hidden">
+        <div className="flex flex-col gap-4 relative sm:after:content-[''] sm:after:absolute sm:after:inset-0 sm:after:w-2/3 sm:after:left-auto sm:after:-right-6 sm:after:bg-linear-to-r sm:after:from-transparent sm:after:to-white/90 sm:after:pointer-events-none xl:after:hidden">
           {/* Insight Cards */}
-          <div className="grid grid-cols-3 gap-2 w-[1000px] md:w-[1152px]">
+          <div className="grid grid-cols-3 gap-2 w-[1040px] md:w-[1152px]">
             {cardData.map((card) => (
               <InsightCard key={card.id} {...card} isFirst={card.id === 1} />
             ))}
           </div>
 
           {/* Dummy cards */}
-          <div className="relative grid grid-cols-3 gap-2 after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-white after:pointer-events-none w-[1000px] md:w-[1152px]">
+          <div className="relative grid grid-cols-3 gap-2 after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-white after:pointer-events-none w-[1040px] md:w-[1152px]">
             <Card
               variant="bordered"
               padding="sm"
