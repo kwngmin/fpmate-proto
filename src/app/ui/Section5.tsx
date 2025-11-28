@@ -3,9 +3,9 @@ import Image from "next/image";
 
 const Section5 = () => {
   return (
-    <section className="bg-gray-50 py-32 md:py-40 overflow-hidden relative z-10">
+    <section className="bg-gray-50 py-32 md:py-40 overflow-hidden relative z-50">
       {/* Content */}
-      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-16 relative z-20">
+      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-16 relative z-60">
         <div className="flex flex-col gap-8">
           {/* logo */}
           <div className="flex justify-center items-center">
@@ -71,7 +71,7 @@ const Section5 = () => {
       </div>
 
       {/* logo background */}
-      <div className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center w-full h-full z-10">
+      <div className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center w-full h-full z-70">
         <Image
           src="/assets/logo/fpmate-logo-shape.svg"
           alt="FPMate"

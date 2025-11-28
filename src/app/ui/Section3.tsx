@@ -332,10 +332,14 @@ const Section3 = () => {
   return (
     <Fragment>
       <section
-        className="bg-gray-50 py-16 md:py-40 sticky top-16 md:top-0"
+        className="bg-gray-50 py-16 md:py-40 sticky top-16 md:top-0 z-10"
         style={{
-          transform: "translate3d(0, 0, 0)", // GPU 가속 강제
-          WebkitBackfaceVisibility: "hidden", // 깜빡임 방지
+          transform: "translate3d(0, 0, 0)",
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
+          WebkitPerspective: 1000,
+          perspective: 1000,
+          willChange: "transform", // iOS 레이어 힌트
         }}
       >
         {/* 테이블 영역 */}
@@ -358,15 +362,6 @@ const Section3 = () => {
               객관적인 의사결정을 돕습니다.
             </p>
           </div>
-
-          {/* <p className="text-[1.5rem] sm:text-[2rem] leading-tight tracking-tighter break-keep text-text-primary">
-            <span className="font-semibold">리포팅 기능</span>을 통해{" "}
-            <br className="sm:hidden" />
-            <span className="font-semibold">소프트웨어 사업 추진</span>에{" "}
-            <br className="hidden sm:block" />
-            <span className="font-bold text-brand-primary">인사이트</span>를
-            더해 드립니다.
-          </p> */}
 
           {/* 테이블 */}
           <div className="flex flex-col gap-2 px-6 overflow-hidden">
@@ -559,10 +554,10 @@ const Section3 = () => {
       </section>
 
       {/* 스티커 영역 - 그라데이션 효과 */}
-      <div className="bg-linear-to-b from-transparent to-gray-50 w-full h-12 z-10" />
+      <div className="bg-linear-to-b from-transparent to-gray-50 w-full h-12 z-20" />
 
       {/* 차트 그래픽 영역 */}
-      <section className="bg-gray-50 pb-20 md:pb-40 z-10">
+      <section className="bg-gray-50 pb-20 md:pb-40 z-30">
         <div
           id="section3-chart"
           className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20 z-10"

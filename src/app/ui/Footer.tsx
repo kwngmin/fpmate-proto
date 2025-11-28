@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-20 overflow-hidden z-10">
+    <footer className="bg-gray-100 py-20 overflow-hidden z-80">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row gap-6">
         <Link
           href="https://www.ibksystem.co.kr/"
