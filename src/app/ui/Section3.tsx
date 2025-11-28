@@ -1,7 +1,242 @@
 "use client";
 
-import Image from "next/image";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
+import SkeletonBar from "./SkeletonBar";
+
+const FpChart = ({
+  chartKey,
+  selectedChart,
+  floatingOffset,
+}: {
+  chartKey: string;
+  selectedChart: string;
+  floatingOffset: number;
+}) => {
+  return (
+    <div
+      className="scale-90 origin-bottom sm:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl"
+      style={{
+        opacity: selectedChart === chartKey ? 1 : 0,
+        filter: selectedChart === chartKey ? "blur(0rem)" : "blur(2rem)",
+        transition: "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
+      }}
+    >
+      <div className="flex items-center justify-between gap-4 z-10">
+        {chart1Data.map((item) => (
+          <div key={item.label} className="flex items-center gap-1.5">
+            <div className={`size-3 rounded-full ${item.color}`} />
+            <span className="[0.9375rem] leading-none tracking-tight text-text-primary font-medium pb-0.5">
+              {item.label}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col gap-0.5 relative after:content-[''] after:absolute after:h-full after:left-0 after:top-0 after:bg-linear-to-r after:from-white/80 after:to-transparent after:w-1/3 after:z-20 after:pointer-events-none">
+        <div
+          className="absolute top-6 left-1/3 z-30 bg-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-text-primary font-medium transition-transform duration-200 ease-out"
+          style={{
+            transform: `translateY(${floatingOffset}px)`,
+          }}
+        >
+          <div className="rounded-full size-4 bg-amber-500 ring-3 ring-white mr-1" />
+          <span>ELF</span>
+          <span>2683.8</span>
+        </div>
+        {chart1Data.map((item) => (
+          <div
+            key={item.label}
+            className={`z-10 relative h-8 rounded-r shadow-sm ${item.color}`}
+            style={{ width: `${item.width}%` }}
+          ></div>
+        ))}
+      </div>
+      <div className="flex justify-between border-t border-border-primary/50 pt-2">
+        {["0", "1000", "2000", "3000", "4000", "5000"].map((item) => (
+          <span
+            key={item}
+            className="text-[0.875rem] leading-none tracking-tight text-text-secondary font-medium"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const FpRate = ({
+  chartKey,
+  selectedChart,
+  floatingOffset,
+}: {
+  chartKey: string;
+  selectedChart: string;
+  floatingOffset: number;
+}) => {
+  return (
+    <div
+      className="scale-90 origin-bottom sm:scale-100 w-96 h-88 object-cover flex flex-col border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl"
+      style={{
+        opacity: selectedChart === chartKey ? 1 : 0,
+        filter: selectedChart === chartKey ? "blur(0rem)" : "blur(2rem)",
+        transition: "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
+      }}
+    >
+      <div className="flex items-center justify-between gap-4 z-10">
+        {chart1Data.map((item) => (
+          <div key={item.label} className="flex items-center gap-1.5">
+            <div className={`size-3 rounded-full ${item.color}`} />
+            <span className="[0.9375rem] leading-none tracking-tight text-text-primary font-medium pb-0.5">
+              {item.label}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="flex items-center justify-center relative h-full">
+        {/* 도넛 차트 */}
+        <svg
+          width="280"
+          height="280"
+          viewBox="0 0 280 280"
+          className="transform -rotate-90 size-64"
+        >
+          {(() => {
+            const total = chart1Data.reduce((sum, item) => sum + item.width, 0);
+            const radius = 100;
+            const circumference = 2 * Math.PI * radius;
+
+            const colorMap: { [key: string]: string } = {
+              "bg-green-500": "#22c55e",
+              "bg-amber-500": "#f59e0b",
+              "bg-sky-500": "#0ea5e9",
+              "bg-red-500": "#ef4444",
+              "bg-teal-500": "#14b8a6",
+            };
+
+            // 각 항목의 offset을 미리 계산
+            const segments = chart1Data.map((item, index) => {
+              const percentage = (item.width / total) * 100;
+              const strokeLength = (percentage / 100) * circumference;
+              const offset = chart1Data
+                .slice(0, index)
+                .reduce((sum, prevItem) => {
+                  const prevPercentage = (prevItem.width / total) * 100;
+                  return sum + (prevPercentage / 100) * circumference;
+                }, 0);
+
+              return { item, strokeLength, offset };
+            });
+
+            return segments.map(({ item, strokeLength, offset }) => (
+              <circle
+                key={item.label}
+                cx="140"
+                cy="140"
+                r={radius}
+                fill="none"
+                stroke={colorMap[item.color] || "#gray"}
+                strokeWidth="48"
+                strokeDasharray={`${strokeLength} ${
+                  circumference - strokeLength
+                }`}
+                strokeDashoffset={-offset}
+                className="transition-all duration-500"
+              />
+            ));
+          })()}
+        </svg>
+
+        {/* 중앙 정보 */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10">
+          <div className="text-[2.5rem] font-extrabold text-text-primary leading-tight tracking-tighter">
+            {chart1Data.reduce((sum, item) => sum + item.width, 0)}
+          </div>
+          <div className="text-[0.9375rem] text-text-secondary font-medium">
+            Total FP
+          </div>
+        </div>
+
+        {/* Floating 정보 카드 */}
+        <div
+          className="absolute bottom-1/3 left-0 z-20 bg-black/20 backdrop-blur-md backdrop-saturate-150 shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-white font-medium transition-transform duration-200 ease-out"
+          style={{
+            transform: `translateY(${floatingOffset}px)`,
+          }}
+        >
+          <div className="rounded-full size-4 bg-red-500 ring-3 ring-white mr-1" />
+          <span>EO</span>
+          <span>40%</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const FpReport = ({
+  chartKey,
+  selectedChart,
+  floatingOffset,
+}: {
+  chartKey: string;
+  selectedChart: string;
+  floatingOffset: number;
+}) => {
+  const amount = 740141670;
+  const manMonth = 497.5;
+  return (
+    <div
+      className="scale-90 origin-bottom sm:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl"
+      style={{
+        opacity: selectedChart === chartKey ? 1 : 0,
+        filter: selectedChart === chartKey ? "blur(0rem)" : "blur(2rem)",
+        transition: "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
+      }}
+    >
+      <div
+        className="text-center text-[1.0625rem] leading-snug tracking-tight mt-4"
+        style={{
+          transform: `translateY(${floatingOffset}px)`,
+        }}
+      >
+        <p>소프트웨어 개발비는</p>
+        <p className="text-[1.3125rem] sm:text-[1.5rem] font-bold mb-2">
+          {amount.toLocaleString()}원,
+        </p>
+        <p>입력된 1인 생산성 20(FP/MM) 기준</p>
+        <p className="text-[1.3125rem] sm:text-[1.5rem] font-bold mb-2">
+          소요 M/M는 {manMonth.toLocaleString()} M/M
+        </p>
+        <p>로 추정됩니다.</p>
+      </div>
+      <div
+        className="flex flex-col gap-1 items-center"
+        style={{
+          transform: `translateY(${floatingOffset}px)`,
+        }}
+      >
+        <div className="flex gap-1">
+          <SkeletonBar width={2} height={1} />
+          <SkeletonBar width={5} height={1} />
+          <SkeletonBar width={3} height={1} />
+          <SkeletonBar width={6} height={1} />
+        </div>
+        <div className="flex gap-1">
+          <SkeletonBar width={2} height={1} />
+          <SkeletonBar width={1} height={1} />
+          <SkeletonBar width={2.5} height={1} />
+          <SkeletonBar width={3.5} height={1} />
+        </div>
+        <div className="flex gap-1">
+          <SkeletonBar width={1} height={1} />
+          <SkeletonBar width={3} height={1} />
+          <SkeletonBar width={1.5} height={1} />
+          <SkeletonBar width={2} height={1} />
+          <SkeletonBar width={4} height={1} />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /**
  * Section 3 차트 그래픽 데이터
@@ -10,29 +245,89 @@ const chartData = [
   {
     id: 1,
     key: "function",
-    title: "기능점수",
+    title: "기능점수(Function Point)",
     image: "/assets/images/section3-chart-1.png",
+    slider: FpChart,
   },
   {
     id: 2,
     key: "ratio",
     title: "기능별 비율",
     image: "/assets/images/section3-chart-3.png",
+    slider: FpRate,
   },
   {
     id: 3,
     key: "cost",
     title: "기능 점수 산정 결과",
     image: "/assets/images/section3-chart-4.png",
+    slider: FpReport,
+  },
+];
+
+const chart1Data = [
+  {
+    color: "bg-green-500",
+    label: "ILF",
+    width: 25,
+  },
+  {
+    color: "bg-amber-500",
+    label: "EIF",
+    width: 50,
+  },
+  {
+    color: "bg-sky-500",
+    label: "EL",
+    width: 20,
+  },
+  {
+    color: "bg-red-500",
+    label: "EO",
+    width: 86,
+  },
+  {
+    color: "bg-teal-500",
+    label: "EQ",
+    width: 35,
   },
 ];
 
 const Section3 = () => {
   const [selectedChart, setSelectedChart] = useState<string>("function");
+  const [floatingOffset, setFloatingOffset] = useState<number>(0);
+  const chartContainerRef = useRef<HTMLDivElement>(null);
 
   const handleChartClick = (key: string) => {
     setSelectedChart(key);
   };
+
+  // 스크롤 기반 패럴랙스 효과
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!chartContainerRef.current) return;
+
+      const rect = chartContainerRef.current.getBoundingClientRect();
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      const windowHeight = window.innerHeight;
+
+      // 요소가 viewport에 있을 때만 계산
+      if (elementTop < windowHeight && elementTop + elementHeight > 0) {
+        // viewport 내에서의 진행도 계산 (0 ~ 1)
+        // 요소가 아래에서 들어올 때 0, 위로 나갈 때 1
+        const progress =
+          (windowHeight - elementTop) / (windowHeight + elementHeight);
+        // 30px 범위에서 이동 (위에서 아래로)
+        const offset = progress * 60;
+        setFloatingOffset(offset);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // 초기 위치 계산
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <Fragment>
@@ -298,69 +593,53 @@ const Section3 = () => {
           </div>
 
           {/* 차트 프레임 - desktop */}
-          <div className="hidden lg:flex gap-2">
+          <div ref={chartContainerRef} className="hidden lg:flex gap-2">
             {chartData.map((chart) => (
               <div
                 key={chart.id}
-                className={`bg-white rounded h-96 overflow-hidden ${
-                  selectedChart === chart.key ? "shadow-card grow" : ""
+                className={`rounded h-96 overflow-hidden flex items-end justify-center transition-transform duration-200 ease-out ${
+                  selectedChart === chart.key
+                    ? "shadow-card grow bg-white delay-200"
+                    : "bg-white/50"
                 }`}
                 style={{
-                  width: selectedChart === chart.key ? "70%" : "3rem",
+                  width: selectedChart === chart.key ? "35rem" : "3rem",
                   flexShrink: selectedChart === chart.key ? 0 : 1,
                   transition:
                     "width 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
               >
-                <Image
-                  src={chart.image}
-                  alt={`section3-chart-${chart.key}`}
-                  width={608}
-                  height={304}
-                  unoptimized
-                  className="h-full w-full object-cover mt-8"
-                  style={{
-                    opacity: selectedChart === chart.key ? 1 : 0,
-                    filter:
-                      selectedChart === chart.key ? "blur(0rem)" : "blur(2rem)",
-                    transition:
-                      "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
-                  }}
-                />
+                {chart.slider({
+                  chartKey: chart.key,
+                  selectedChart: selectedChart,
+                  floatingOffset: floatingOffset,
+                })}
               </div>
             ))}
           </div>
 
           {/* 차트 프레임 - tablet */}
-          <div className="hidden md:flex lg:hidden flex-col justify-center gap-2 h-128">
+          <div className="hidden md:flex lg:hidden flex-col justify-center gap-2 h-112 grow">
             {chartData.map((chart) => (
               <div
                 key={chart.id}
-                className={`bg-white rounded overflow-hidden ${
-                  selectedChart === chart.key ? "shadow-card" : ""
+                className={`rounded h-64 overflow-hidden flex items-end justify-center transition-transform duration-200 ease-out ${
+                  selectedChart === chart.key
+                    ? "shadow-card grow bg-white delay-200"
+                    : "bg-white/50"
                 }`}
                 style={{
-                  height: selectedChart === chart.key ? "60%" : "24px",
+                  height: selectedChart === chart.key ? "12rem" : "1.5rem",
                   flexShrink: selectedChart === chart.key ? 0 : 1,
                   transition:
                     "height 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
               >
-                <Image
-                  src={chart.image}
-                  alt={`section3-chart-${chart.key}`}
-                  width={608}
-                  height={304}
-                  unoptimized
-                  className="h-full w-full object-cover mt-8"
-                  style={{
-                    opacity: selectedChart === chart.key ? 1 : 0,
-                    filter:
-                      selectedChart === chart.key ? "blur(0rem)" : "blur(1rem)",
-                    transition:
-                      "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
-                  }}
-                />
+                {chart.slider({
+                  chartKey: chart.key,
+                  selectedChart: selectedChart,
+                  floatingOffset: floatingOffset,
+                })}
               </div>
             ))}
           </div>
@@ -370,9 +649,14 @@ const Section3 = () => {
             {chartData.map((chart) => (
               <div
                 key={chart.id}
-                className={`bg-white rounded h-72 overflow-hidden ${
-                  selectedChart === chart.key ? "shadow-card grow" : ""
+                className={`rounded h-84 overflow-hidden flex items-end justify-center transition-transform duration-200 ease-out ${
+                  selectedChart === chart.key
+                    ? "shadow-card grow bg-white delay-200"
+                    : "bg-white/50"
                 }`}
+                // className={`bg-white rounded h-72 overflow-hidden ${
+                //   selectedChart === chart.key ? "shadow-card grow" : ""
+                // }`}
                 style={{
                   width: selectedChart === chart.key ? "80%" : "0%",
                   flexShrink: selectedChart === chart.key ? 0 : 1,
@@ -380,21 +664,11 @@ const Section3 = () => {
                     "width 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
               >
-                <Image
-                  src={chart.image}
-                  alt={`section3-chart-${chart.key}`}
-                  width={608}
-                  height={304}
-                  unoptimized
-                  className="h-full w-full object-cover mt-5 scale-110"
-                  style={{
-                    opacity: selectedChart === chart.key ? 1 : 0,
-                    filter:
-                      selectedChart === chart.key ? "blur(0rem)" : "blur(1rem)",
-                    transition:
-                      "opacity 0.5s ease-in-out, filter 0.5s ease-in-out",
-                  }}
-                />
+                {chart.slider({
+                  chartKey: chart.key,
+                  selectedChart: selectedChart,
+                  floatingOffset: floatingOffset,
+                })}
               </div>
             ))}
           </div>
