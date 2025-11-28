@@ -33,7 +33,7 @@ const FpChart = ({
       </div>
       <div className="flex flex-col gap-0.5 relative after:content-[''] after:absolute after:h-full after:left-0 after:top-0 after:bg-linear-to-r after:from-white/80 after:to-transparent after:w-1/3 after:z-20 after:pointer-events-none">
         <div
-          className="absolute top-6 left-1/3 z-30 bg-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-text-primary font-medium transition-transform duration-200 ease-out"
+          className="absolute top-8 left-2/5 z-30 bg-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-text-primary font-medium transition-transform duration-200 ease-out"
           style={{
             transform: `translateY(${floatingOffset}px)`,
           }}
@@ -158,7 +158,7 @@ const FpRate = ({
 
         {/* Floating 정보 카드 */}
         <div
-          className="absolute bottom-1/3 left-0 z-20 bg-black/20 backdrop-blur-md backdrop-saturate-150 shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-white font-medium transition-transform duration-200 ease-out"
+          className="absolute bottom-20 left-0 z-20 bg-black/20 backdrop-blur-md backdrop-saturate-150 shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-white font-medium transition-transform duration-200 ease-out"
           style={{
             transform: `translateY(${floatingOffset}px)`,
           }}
@@ -193,9 +193,9 @@ const FpReport = ({
       }}
     >
       <div
-        className="text-center text-[1.0625rem] leading-snug tracking-tight mt-4"
+        className="text-center text-[1.0625rem] leading-snug tracking-tight mt-4 md:mt-0"
         style={{
-          transform: `translateY(${floatingOffset}px)`,
+          transform: `translateY(${floatingOffset / 2}px)`,
         }}
       >
         <p>소프트웨어 개발비는</p>
