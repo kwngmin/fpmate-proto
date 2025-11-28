@@ -24,10 +24,12 @@ const GradientRingButton = ({
   onClick,
   isFirstCard = false,
   children,
+  order = 1,
 }: {
   onClick: () => void;
   isFirstCard: boolean;
   children: React.ReactNode;
+  delay?: number;
 }) => {
   return (
     <button
@@ -48,7 +50,7 @@ const GradientRingButton = ({
           padding: "1px",
           background:
             "conic-gradient(from 0deg, #10b981, #119799, white, #066847)",
-          animationDuration: "3s",
+          animationDuration: `${order * 0.5 * 3}s`,
         }}
       >
         <span className="flex size-full rounded-full bg-white" />
@@ -125,6 +127,7 @@ const InsightCard = ({
           <GradientRingButton
             onClick={() => scrollToChart("section3-chart")}
             isFirstCard={isFirst}
+            order={2}
           >
             <Image
               src="/assets/svgs/chart-bar.svg"
