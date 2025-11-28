@@ -274,7 +274,7 @@ const Section3 = () => {
             {chartData.map((chart) => (
               <button
                 key={chart.id}
-                className={`flex gap-3 items-center rounded overflow-hidden`}
+                className={`flex gap-3 items-center rounded overflow-hidden cursor-pointer`}
                 onClick={() => handleChartClick(chart.key)}
               >
                 <div

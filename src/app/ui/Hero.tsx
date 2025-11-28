@@ -177,11 +177,7 @@ const Hero = () => {
             />
           </div>
           <p className="text-[1.0625rem] md:text-[1.3125rem] leading-snug tracking-tight break-keep">
-            <BlurFadeText
-              text="FPMate"
-              delay={900}
-              className="font-semibold text-accent-primary"
-            />
+            <BlurFadeText text="FPMate" delay={900} className="font-semibold" />
             <BlurFadeText
               text="는"
               //   text="는 AI 비서와 함께"
@@ -223,7 +219,7 @@ const Hero = () => {
                 <button
                   type="button"
                   onClick={handleStepClick(step.id)}
-                  className={`size-8 sm:size-9 md:size-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                  className={`size-8 sm:size-9 md:size-10 rounded-full flex items-center justify-center transition-colors duration-300 cursor-pointer ${
                     step.id === currentStep
                       ? "bg-brand-primary"
                       : step.id < currentStep

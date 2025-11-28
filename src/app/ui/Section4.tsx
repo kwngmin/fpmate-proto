@@ -212,13 +212,13 @@ const Section4 = () => {
                   {content.listItems.map((item) => (
                     <li
                       key={item.title}
-                      className="text-base sm:text-[0.9375rem] leading-snug tracking-tight break-keep list-disc ml-4 text-text-primary font-medium"
+                      className="text-[1.0625rem] sm:text-base leading-snug tracking-tight break-keep list-disc ml-4 text-text-primary font-medium"
                     >
                       {item.title}
                       {item?.description && (
                         <Fragment>
                           <br />
-                          <span className="text-[0.875rem] text-text-secondary">
+                          <span className="text-text-secondary">
                             ({item.description})
                           </span>
                         </Fragment>
