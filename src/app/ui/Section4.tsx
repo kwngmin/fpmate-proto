@@ -149,7 +149,7 @@ const Contents = [
 
 const Section4 = () => {
   return (
-    <section className="bg-white py-20 md:py-40 overflow-hidden z-40">
+    <section className="bg-white py-20 md:py-40 overflow-hidden relative z-40">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
         <div className="flex flex-col gap-4">
           <div className="text-[2rem] md:text-[3.5rem] leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">

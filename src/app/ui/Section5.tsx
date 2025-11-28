@@ -71,7 +71,7 @@ const Section5 = () => {
       </div>
 
       {/* logo background */}
-      <div className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center w-full h-full z-70">
+      <div className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center w-full h-full z-30">
         <Image
           src="/assets/logo/fpmate-logo-shape.svg"
           alt="FPMate"

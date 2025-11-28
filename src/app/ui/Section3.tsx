@@ -557,10 +557,10 @@ const Section3 = () => {
       <div className="bg-linear-to-b from-transparent to-gray-50 w-full h-12 z-20" />
 
       {/* 차트 그래픽 영역 */}
-      <section className="bg-gray-50 pb-20 md:pb-40 z-30">
+      <section className="bg-gray-50 pb-20 md:pb-40 relative z-30">
         <div
           id="section3-chart"
-          className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20 z-10"
+          className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row md:items-center gap-4 lg:gap-20 relative z-10"
         >
           {/* 차트 셀렉터 */}
           <div className="flex flex-col gap-2 min-w-xs sm:min-w-2/5 lg:min-w-1/3 py-4 sm:py-6">
