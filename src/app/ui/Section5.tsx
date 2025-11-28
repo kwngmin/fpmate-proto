@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Section5 = () => {
   return (
-    <section className="bg-gray-50 py-32 md:py-40 overflow-hidden relative">
+    <section className="bg-gray-50 py-32 md:py-40 overflow-hidden relative z-10">
       {/* Content */}
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-16 relative z-20">
         <div className="flex flex-col gap-8">
