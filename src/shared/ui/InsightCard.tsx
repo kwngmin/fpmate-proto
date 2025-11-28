@@ -12,7 +12,7 @@ interface InsightCardProps {
     color: string;
   }[];
   title: string;
-  description: string;
+  // description: string;
   fp: number;
   amount: number;
   date: string;
@@ -22,7 +22,7 @@ interface InsightCardProps {
 const InsightCard = ({
   chips,
   title,
-  description,
+  // description,
   fp,
   amount,
   date,
@@ -30,17 +30,17 @@ const InsightCard = ({
   isFirst = false,
 }: InsightCardProps) => {
   const { scrollTo: scrollToTable } = useScrollTo(64);
-  const { scrollTo: scrollToChart } = useScrollTo(320);
+  const { scrollTo: scrollToChart } = useScrollTo(316);
 
   return (
     <Card
       variant="bordered"
       hoverable
       padding="sm"
-      className={`flex flex-col gap-3 hover:translate-y-[-4px] ${
+      className={`flex flex-col gap-4 hover:translate-y-[-4px] ${
         isFirst
           ? "translate-y-[-4px] shadow-card xl:translate-y-0 xl:shadow-none"
-          : "opacity-80 md:opacity-100 pointer-events-none xl:pointer-events-auto"
+          : "opacity-50 sm:opacity-80 md:opacity-100 pointer-events-none xl:pointer-events-auto"
       }`}
     >
       <div className="flex justify-between gap-2">
@@ -59,40 +59,63 @@ const InsightCard = ({
           <button
             type="button"
             onClick={() => scrollToTable("section3-table")}
-            className="size-7 rounded flex items-center justify-center"
+            className="relative size-9 rounded-full flex items-center justify-center bg-white z-10"
           >
+            <span
+              className="absolute inset-0 rounded-full -z-10 animate-spin"
+              style={{
+                padding: "1px",
+                background:
+                  "conic-gradient(from 0deg, #10b981, #8b5cf6, white, #10b981)",
+                animationDuration: "3s",
+              }}
+            >
+              <span className="flex size-full rounded-full bg-white" />
+            </span>
             <Image
               src="/assets/svgs/note.svg"
               alt="noter-icon"
               width={28}
               height={28}
-              className="size-6"
+              className="size-5.5"
             />
           </button>
           <button
             type="button"
             onClick={() => scrollToChart("section3-chart")}
-            className="size-7 rounded flex items-center justify-center"
+            className="relative size-9 rounded-full flex items-center justify-center bg-white z-10"
           >
+            {/* 회전하는 그라데이션 ring */}
+            <span
+              className="absolute inset-0 rounded-full -z-10 animate-spin"
+              style={{
+                padding: "1px",
+                background:
+                  "conic-gradient(from 0deg, #10b981, #8b5cf6, white, #10b981)",
+                animationDuration: "3s",
+              }}
+            >
+              <span className="flex size-full rounded-full bg-white" />
+            </span>
             <Image
               src="/assets/svgs/chart-bar.svg"
               alt="noter-icon"
               width={28}
               height={28}
-              className="size-6"
+              className="size-5.5"
             />
           </button>
         </div>
       </div>
 
       {/* 프로젝트 정보 */}
-      <div className="flex flex-col">
-        <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
+      <div className="flex flex-col gap-0.25">
+        <span className="text-[1.0625rem] tracking-tight font-semibold">
           {title}
         </span>
-        <span className="text-[0.9375rem] leading-[1.6] tracking-[-0.011em]">
+        {/* <span className="text-[0.9375rem] tracking-tight text-text-tertiary">
           {description} FP
-        </span>
+        </span> */}
       </div>
 
       {/* 내역 */}

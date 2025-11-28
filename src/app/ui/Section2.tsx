@@ -1,5 +1,6 @@
 import { Card } from "@/shared/ui";
 import InsightCard from "@/shared/ui/InsightCard";
+import SkeletonBar from "./SkeletonBar";
 
 const cardData = [
   {
@@ -21,11 +22,11 @@ const cardData = [
         color: "green",
       },
     ],
-    title: "대금 결제 APP 구축",
-    description: "",
-    fp: 339.08,
-    amount: 209815430,
-    date: "2025.06.20",
+    title: "클라우드 시스템 도입 및 구축",
+    description: "클라우드 시스템 도입 및 구축",
+    fp: 495.6,
+    amount: 384576128,
+    date: "2025.10.20",
     managerImage: "/assets/images/avatar-1.png",
   },
   {
@@ -38,17 +39,17 @@ const cardData = [
       },
       {
         id: 2,
-        label: "금융",
+        label: "간이법",
         color: "blue",
       },
       {
         id: 3,
-        label: "사업 기획",
+        label: "개발 테스트",
         color: "green",
       },
     ],
     title: "대금 결제 APP 구축",
-    description: "",
+    description: "대금 결제 APP 구축",
     fp: 339.08,
     amount: 209815430,
     date: "2025.06.20",
@@ -59,42 +60,23 @@ const cardData = [
     chips: [
       {
         id: 1,
-        label: "신규",
-        color: "red",
-      },
-      {
-        id: 2,
         label: "금융",
         color: "blue",
       },
       {
-        id: 3,
-        label: "사업 기획",
+        id: 2,
+        label: "프로젝트 종료",
         color: "green",
       },
     ],
-    title: "대금 결제 APP 구축",
-    description: "",
+    title: "소프트웨어 비용 산정 솔루션 구축",
+    description: "소프트웨어 비용 산정 솔루션 구축",
     fp: 339.08,
     amount: 209815430,
     date: "2025.06.20",
     managerImage: "/assets/images/avatar-3.png",
   },
 ];
-
-const SkeletonBar = ({
-  width,
-  height = 7,
-}: {
-  width: number;
-  height?: number;
-}) => {
-  return (
-    <div
-      className={`w-${width} h-${height} bg-gray-100 rounded-full animate-pulse`}
-    />
-  );
-};
 
 const Section2 = () => {
   return (
@@ -114,7 +96,7 @@ const Section2 = () => {
         </div>
 
         {/* card container */}
-        <div className="flex flex-col gap-4 relative after:content-[''] after:absolute after:inset-0 after:w-1/2 sm:after:w-2/3 after:left-auto after:-right-6 after:bg-linear-to-r after:from-transparent after:to-white/90 after:pointer-events-none xl:after:hidden">
+        <div className="flex flex-col gap-4 relative sm:after:content-[''] sm:after:absolute sm:after:inset-0 sm:after:w-1/2 sm:after:w-2/3 sm:after:left-auto sm:after:-right-6 sm:after:bg-linear-to-r sm:after:from-transparent sm:after:to-white/90 sm:after:pointer-events-none xl:after:hidden">
           {/* Insight Cards */}
           <div className="grid grid-cols-3 gap-2 w-[1000px] md:w-[1152px]">
             {cardData.map((card) => (
@@ -131,20 +113,20 @@ const Section2 = () => {
             >
               <div className="flex justify-between gap-2">
                 <div className="flex gap-1 items-center">
-                  <SkeletonBar width={12} height={7} />
-                  <SkeletonBar width={14} height={7} />
-                  <SkeletonBar width={20} height={7} />
+                  <SkeletonBar width={3} height={1.75} isRound />
+                  <SkeletonBar width={3.5} height={1.75} isRound />
+                  <SkeletonBar width={5} height={1.75} isRound />
                 </div>
                 <div className="flex gap-2 items-center">
-                  <SkeletonBar width={7} height={7} />
-                  <SkeletonBar width={7} height={7} />
+                  <SkeletonBar width={1.75} height={1.75} isRound />
+                  <SkeletonBar width={1.75} height={1.75} isRound />
                 </div>
               </div>
 
               <div className="flex gap-1 items-center">
-                <SkeletonBar width={14} height={4} />
-                <SkeletonBar width={28} height={4} />
-                <SkeletonBar width={8} height={4} />
+                <SkeletonBar width={3.5} height={1} />
+                <SkeletonBar width={7} height={1} />
+                <SkeletonBar width={8} height={1} />
               </div>
             </Card>
             <Card
@@ -154,20 +136,20 @@ const Section2 = () => {
             >
               <div className="flex justify-between gap-2">
                 <div className="flex gap-1 items-center">
-                  <SkeletonBar width={12} height={7} />
-                  <SkeletonBar width={14} height={7} />
-                  <SkeletonBar width={20} height={7} />
+                  <SkeletonBar width={3} height={1.75} isRound />
+                  <SkeletonBar width={3.5} height={1.75} isRound />
+                  <SkeletonBar width={5} height={1.75} isRound />
                 </div>
-                <div className="flex gap-2 items-center">
-                  <SkeletonBar width={7} height={7} />
-                  <SkeletonBar width={7} height={7} />
+                <div className="flex gap-2 items-center shrink-0">
+                  <SkeletonBar width={1.75} height={1.75} isRound />
+                  <SkeletonBar width={1.75} height={1.75} isRound />
                 </div>
               </div>
 
               <div className="flex gap-1 items-center">
-                <SkeletonBar width={10} height={4} />
-                <SkeletonBar width={20} height={4} />
-                <SkeletonBar width={12} height={4} />
+                <SkeletonBar width={2.5} height={1} />
+                <SkeletonBar width={5} height={1} />
+                <SkeletonBar width={3} height={1} />
               </div>
             </Card>
             <Card
@@ -177,20 +159,20 @@ const Section2 = () => {
             >
               <div className="flex justify-between gap-2">
                 <div className="flex gap-1 items-center">
-                  <SkeletonBar width={12} height={7} />
-                  <SkeletonBar width={14} height={7} />
-                  <SkeletonBar width={20} height={7} />
+                  <SkeletonBar width={3} height={1.75} isRound />
+                  <SkeletonBar width={3.5} height={1.75} isRound />
+                  <SkeletonBar width={5} height={1.75} isRound />
                 </div>
                 <div className="flex gap-2 items-center">
-                  <SkeletonBar width={7} height={7} />
-                  <SkeletonBar width={7} height={7} />
+                  <SkeletonBar width={1.75} height={1.75} isRound />
+                  <SkeletonBar width={1.75} height={1.75} isRound />
                 </div>
               </div>
 
               <div className="flex gap-1 items-center">
-                <SkeletonBar width={10} height={4} />
-                <SkeletonBar width={20} height={4} />
-                <SkeletonBar width={12} height={4} />
+                <SkeletonBar width={2.5} height={1} />
+                <SkeletonBar width={5} height={1} />
+                <SkeletonBar width={3} height={1} />
               </div>
             </Card>
           </div>

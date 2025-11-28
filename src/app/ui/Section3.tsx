@@ -1,13 +1,12 @@
 "use client";
 
-import { Typography } from "@/shared/ui";
 import Image from "next/image";
 import { Fragment, useState } from "react";
 
 /**
  * Section 3 차트 그래픽 데이터
  */
-const section3Charts = [
+const chartData = [
   {
     id: 1,
     key: "function",
@@ -272,7 +271,7 @@ const Section3 = () => {
             <span className="text-[0.9375rem] tracking-tight text-text-tertiary font-medium mb-2">
               시각화된 통계
             </span>
-            {section3Charts.map((chart) => (
+            {chartData.map((chart) => (
               <button
                 key={chart.id}
                 className={`flex gap-3 items-center rounded overflow-hidden`}
@@ -300,7 +299,7 @@ const Section3 = () => {
 
           {/* 차트 프레임 - desktop */}
           <div className="hidden lg:flex gap-2">
-            {section3Charts.map((chart) => (
+            {chartData.map((chart) => (
               <div
                 key={chart.id}
                 className={`bg-white rounded h-96 overflow-hidden ${
@@ -334,7 +333,7 @@ const Section3 = () => {
 
           {/* 차트 프레임 - tablet */}
           <div className="hidden md:flex lg:hidden flex-col justify-center gap-2 h-128">
-            {section3Charts.map((chart) => (
+            {chartData.map((chart) => (
               <div
                 key={chart.id}
                 className={`bg-white rounded overflow-hidden ${
@@ -368,7 +367,7 @@ const Section3 = () => {
 
           {/* 차트 프레임 - mobile */}
           <div className="flex md:hidden">
-            {section3Charts.map((chart) => (
+            {chartData.map((chart) => (
               <div
                 key={chart.id}
                 className={`bg-white rounded h-72 overflow-hidden ${
