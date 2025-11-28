@@ -42,7 +42,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       secondary:
         "bg-bg-secondary text-text-primary hover:bg-bg-tertiary active:bg-bg-quaternary disabled:bg-action-disabled-bg disabled:text-action-disabled",
       outline:
-        "border-2 border-border-primary bg-transparent text-text-primary hover:bg-action-hover active:bg-action-selected disabled:border-border-primary disabled:text-action-disabled",
+        "border border-border-primary bg-transparent text-text-primary hover:bg-action-hover active:bg-action-selected disabled:border-border-primary disabled:text-action-disabled",
       ghost:
         "bg-transparent text-text-primary hover:bg-action-hover active:bg-action-selected disabled:text-action-disabled",
       danger:
