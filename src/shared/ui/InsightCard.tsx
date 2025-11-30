@@ -92,8 +92,8 @@ const InsightCard = ({
               color={chip.color}
               className={`select-none font-medium ${
                 isFirst
-                  ? "cursor-pointer active:scale-85"
-                  : "xl:cursor-pointer xl:active:scale-85"
+                  ? "cursor-pointer active:scale-90"
+                  : "xl:cursor-pointer xl:active:scale-90"
               }`}
               variant={
                 chip.color === "red"

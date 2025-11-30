@@ -31,11 +31,12 @@ export function Badge({
     default: "bg-bg-tertiary text-text-primary",
     primary: "bg-brand-tint text-brand-primary",
     success:
-      "bg-semantic-success/7 hover:bg-semantic-success/10 text-accent-primary",
+      "bg-gray-100 text-text-secondary hover:bg-semantic-success/10 hover:text-accent-primary",
     warning:
-      "bg-semantic-warning/7 hover:bg-semantic-warning/10 text-semantic-warning",
-    error: "bg-semantic-error/7 hover:bg-semantic-error/10 text-semantic-red",
-    info: "bg-semantic-info/7 hover:bg-semantic-info/10 text-blue-600",
+      "bg-gray-100 text-text-secondary hover:bg-semantic-warning/10 hover:text-semantic-warning",
+    error:
+      "bg-gray-100 text-text-secondary hover:bg-semantic-error/10 hover:text-semantic-red",
+    info: "bg-gray-100 text-text-secondary hover:bg-semantic-info/10 hover:text-blue-600",
   };
 
   const sizeStyles = {
