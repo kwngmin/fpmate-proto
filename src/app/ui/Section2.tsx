@@ -112,14 +112,14 @@ const Section2 = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between gap-2">
-                <div className="flex gap-1 items-center">
-                  <SkeletonBar width={3} height={1.75} isRound />
-                  <SkeletonBar width={3.5} height={1.75} isRound />
-                  <SkeletonBar width={5} height={1.75} isRound />
+                <div className="flex gap-1 items-center opacity-50">
+                  <SkeletonBar width={3} height={2.25} isRound />
+                  <SkeletonBar width={3.5} height={2.25} isRound />
+                  <SkeletonBar width={5} height={2.25} isRound />
                 </div>
                 <div className="flex gap-2 items-center">
-                  <SkeletonBar width={1.75} height={1.75} isRound />
-                  <SkeletonBar width={1.75} height={1.75} isRound />
+                  <SkeletonBar width={2.25} height={2.25} isRound />
+                  <SkeletonBar width={2.25} height={2.25} isRound />
                 </div>
               </div>
 
@@ -135,14 +135,14 @@ const Section2 = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between gap-2">
-                <div className="flex gap-1 items-center">
-                  <SkeletonBar width={3} height={1.75} isRound />
-                  <SkeletonBar width={3.5} height={1.75} isRound />
-                  <SkeletonBar width={5} height={1.75} isRound />
+                <div className="flex gap-1 items-center opacity-50">
+                  <SkeletonBar width={3} height={2.25} isRound />
+                  <SkeletonBar width={3.5} height={2.25} isRound />
+                  <SkeletonBar width={5} height={2.25} isRound />
                 </div>
                 <div className="flex gap-2 items-center shrink-0">
-                  <SkeletonBar width={1.75} height={1.75} isRound />
-                  <SkeletonBar width={1.75} height={1.75} isRound />
+                  <SkeletonBar width={2.25} height={2.25} isRound />
+                  <SkeletonBar width={2.25} height={2.25} isRound />
                 </div>
               </div>
 
@@ -158,14 +158,14 @@ const Section2 = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between gap-2">
-                <div className="flex gap-1 items-center">
-                  <SkeletonBar width={3} height={1.75} isRound />
-                  <SkeletonBar width={3.5} height={1.75} isRound />
-                  <SkeletonBar width={5} height={1.75} isRound />
+                <div className="flex gap-1 items-center opacity-50">
+                  <SkeletonBar width={3} height={2.25} isRound />
+                  <SkeletonBar width={3.5} height={2.25} isRound />
+                  <SkeletonBar width={5} height={2.25} isRound />
                 </div>
                 <div className="flex gap-2 items-center">
-                  <SkeletonBar width={1.75} height={1.75} isRound />
-                  <SkeletonBar width={1.75} height={1.75} isRound />
+                  <SkeletonBar width={2.25} height={2.25} isRound />
+                  <SkeletonBar width={2.25} height={2.25} isRound />
                 </div>
               </div>
 
