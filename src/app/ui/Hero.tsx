@@ -240,7 +240,7 @@ const CardStep6 = () => {
             </tr>
             <tr>
               <td className="border border-border-primary h-14 w-12"></td>
-              <td className="border-r border-border-primary h-14 w-40 bg-amber-100 p-3 text-end flex items-center justify-end gap-2">
+              <td className="border border-border-secondary h-14 w-40 bg-amber-100 p-3 text-end flex items-center justify-end gap-2">
                 <div className="h-6.5 w-0.5 bg-zinc-800 animate-cursor-blink" />
                 <span className="text-2xl font-medium mb-1">%</span>
               </td>
