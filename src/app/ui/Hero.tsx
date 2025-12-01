@@ -5,6 +5,291 @@ import { BlurFadeDiv, BlurFadeText } from "@/shared/ui/BlurFadeText";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { Card } from "@/shared/ui";
+import SkeletonBar from "./SkeletonBar";
+
+const CardStep1 = () => {
+  return (
+    <div className="w-[256px] h-[130px] bg-gray-100 pl-10 overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
+      <div className="bg-white w-full h-full border-l border-border-primary shadow-lg shadow-black/15 flex flex-col gap-2.5 pt-2.5 pl-6">
+        <div className="flex items-center gap-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+            className="size-7 mr-1 text-brand-primary"
+          >
+            <path d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+          </svg>
+          <SkeletonBar width={2.5} height={1} />
+          <SkeletonBar width={4} height={1} />
+          <SkeletonBar width={1.5} height={1} />
+        </div>
+        <div className="rounded-md border-2 border-border-secondary h-14 w-lg relative flex items-center pl-3.5">
+          <div className="absolute left-4 -top-2 flex items-center gap-1 px-1 bg-white">
+            <SkeletonBar width={2.5} height={1} />
+            <SkeletonBar width={1} height={1} />
+            <SkeletonBar width={4} height={1} />
+          </div>
+          <div className="h-6.5 w-0.5 bg-zinc-800 animate-cursor-blink" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CardStep2 = () => {
+  return (
+    <div className="w-[256px] h-[130px] bg-gray-100 pl-10 overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
+      <div className="bg-white w-full h-full border-l border-border-primary shadow-lg shadow-black/5 flex flex-col gap-2.5 justify-center pl-6">
+        {/* check */}
+        <div className="flex items-center gap-1">
+          <div className="bg-brand-primary rounded-sm flex items-center justify-center size-8 shrink-0 mr-1">
+            <Image
+              src="/assets/svgs/check-bold.svg"
+              alt="check-icon"
+              width={32}
+              height={32}
+              className="size-6 brightness-0 invert"
+            />
+          </div>
+          <Image
+            src="/assets/svgs/xlsx.svg"
+            alt="xlsx-icon"
+            width={32}
+            height={32}
+            className="size-10 shrink-0"
+          />
+          <SkeletonBar width={2.5} height={1} />
+          <SkeletonBar width={6} height={1} />
+        </div>
+        {/* sparkles */}
+        <div className="flex items-center gap-1">
+          <div className="border-2 border-border-secondary rounded-sm flex items-center justify-center size-8 shrink-0 mr-1">
+            <Image
+              src="/assets/svgs/check-bold.svg"
+              alt="check-icon"
+              width={32}
+              height={32}
+              className="size-6 brightness-0 invert"
+            />
+          </div>
+          <Image
+            src="/assets/svgs/sparkles.svg"
+            alt="sparkles-icon"
+            width={32}
+            height={32}
+            className="size-10 shrink-0"
+          />
+          <SkeletonBar width={5} height={1} />
+          <SkeletonBar width={6} height={1} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CardStep3 = () => {
+  return (
+    <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
+      <div className="bg-white w-full h-full flex flex-col gap-3 justify-center after:content-[''] relative after:absolute after:w-20 after:h-full after:left-0 after:top-0 after:bg-linear-to-r after:from-white after:to-transparent after:pointer-events-none">
+        <div className="flex items-center gap-1">
+          <SkeletonBar width={1.5} height={1} />
+          <SkeletonBar width={2} height={1} />
+        </div>
+        <div className="flex items-center gap-4">
+          <div className="rounded-r-md border-t-2 border-r-2 border-b-2 border-border-primary h-14 w-40 relative flex items-center pl-3.5">
+            <div className="absolute left-0 -top-2 flex items-center gap-1 pr-1 bg-white">
+              <SkeletonBar width={1} height={1} />
+              <SkeletonBar width={3.5} height={1} />
+            </div>
+          </div>
+          <div className="flex items-center gap-3 relative">
+            <div className="flex items-center justify-center size-12 shrink-0 z-10">
+              <Image
+                src="/assets/svgs/plus-bold.svg"
+                alt="cursor-icon"
+                width={24}
+                height={24}
+                className="size-6 absolute"
+              />
+            </div>
+
+            {/* pulse animation */}
+            <div className="absolute right-0 bottom-0 bg-gray-200 rounded-full flex items-center justify-center size-12 shrink-0  animate-pulse" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CardStep4 = () => {
+  return (
+    <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none pl-10 flex flex-col gap-2">
+      <div className="shrink-0 h-3 overflow-hidden relative">
+        <div className="absolute bottom-0 flex items-center gap-4 bg-[#5F933A] h-6 w-32 rounded-l rounded-full shrink-0" />
+      </div>
+      <div className="bg-white w-full border-l border-t rounded-lg overflow-hidden border-border-primary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0">
+        {/* sparkles */}
+        <div className="flex items-center gap-1 p-2 pl-4 bg-slate-100">
+          <Image
+            src="/assets/svgs/sparkles.svg"
+            alt="sparkles-icon"
+            width={32}
+            height={32}
+            className="size-10 shrink-0 mr-2"
+          />
+          <SkeletonBar width={5} height={1} />
+          <SkeletonBar width={6} height={1} />
+        </div>
+
+        {/* tree nodes */}
+        <div className="flex items-center gap-1 p-2 pl-4">
+          <div className="size-10 shrink-0 flex items-center justify-center mr-2">
+            <Image
+              src="/assets/svgs/tree-node.svg"
+              alt="sparkles-icon"
+              width={32}
+              height={32}
+              className="size-8 shrink-0"
+            />
+          </div>
+          <SkeletonBar width={2.5} height={1} />
+          <SkeletonBar width={6} height={1} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CardStep5 = () => {
+  return (
+    <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
+      <table className="absolute -top-5 -left-1 min-w-lg">
+        <tbody>
+          <tr>
+            <td className="border border-border-primary h-14 w-16"></td>
+            <td className="border border-border-primary h-14 w-lg pl-3 pb-3 bg-gray-100">
+              <div className="border border-brand-primary h-full rounded outline-4 outline-brand-primary/30 pl-3 flex items-center gap-1 bg-white relative">
+                <SkeletonBar width={4} height={1} />
+                <SkeletonBar width={2} height={1} />
+
+                {/* select box */}
+                <div className="bg-white w-full border-l-2 border-t-2 rounded-lg overflow-hidden border-border-primary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0 absolute top-12 left-0">
+                  {/* sparkles */}
+                  <div className="flex items-center gap-1 p-2 pl-4 bg-slate-100">
+                    <div className="size-10 shrink-0 flex items-center justify-center">
+                      <Image
+                        src="/assets/svgs/number-one-bold.svg"
+                        alt="sparkles-icon"
+                        width={32}
+                        height={32}
+                        className="size-6.5 shrink-0"
+                      />
+                    </div>
+                    <SkeletonBar width={5} height={1} />
+                    <SkeletonBar width={6} height={1} />
+                  </div>
+
+                  {/* tree nodes */}
+                  <div className="flex items-center gap-1 p-2 pl-4">
+                    <div className="size-10 shrink-0 flex items-center justify-center">
+                      <Image
+                        src="/assets/svgs/number-two-bold.svg"
+                        alt="sparkles-icon"
+                        width={32}
+                        height={32}
+                        className="size-6.5 shrink-0"
+                      />
+                    </div>
+                    <SkeletonBar width={2.5} height={1} />
+                    <SkeletonBar width={6} height={1} />
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-border-primary h-14 w-16"></td>
+            <td className="border border-border-primary h-14 w-lg"></td>
+          </tr>
+          <tr>
+            <td className="border border-border-primary h-14 w-16"></td>
+            <td className="border border-border-primary h-14 w-lg"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+const CardStep6 = () => {
+  return (
+    <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
+      <div className="absolute -top-5 -left-1 w-72">
+        <table className="relative w-full h-full after:content-[''] after:absolute after:h-full after:w-20 after:bottom-0 after:left-0 after:bg-linear-to-r after:from-white after:to-transparent after:pointer-events-none">
+          <tbody>
+            <tr>
+              <td
+                className="border border-border-primary h-14 w-36"
+                colSpan={2}
+              />
+              <td className="border border-border-primary h-14 w-20" />
+            </tr>
+            <tr>
+              <td className="border border-border-primary h-14 w-12"></td>
+              <td className="border-r border-border-primary h-14 w-40 bg-amber-100 p-3 text-end flex items-center justify-end gap-2">
+                <div className="h-6.5 w-0.5 bg-zinc-800 animate-cursor-blink" />
+                <span className="text-2xl font-medium mb-1">%</span>
+              </td>
+            </tr>
+            <tr>
+              <td
+                className="border border-border-primary h-14 w-36"
+                colSpan={2}
+              />
+              <td className="border border-border-primary h-14 w-20" />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+const CardStep7 = () => {
+  return (
+    <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
+      <div className="flex flex-col gap-0.5 pt-3 relative after:content-[''] after:absolute after:top-0 after:left-0 after:h-full after:bg-linear-to-r after:w-24 after:from-white/50 after:to-transparent after:pointer-events-none">
+        {/* green - ILF */}
+        <div className="flex items-center gap-3">
+          <div className="h-7 w-12 rounded-r-sm shadow shadow-black/20 bg-linear-to-r from-green-300 to-green-400" />
+          <span className="text-sm font-semibold tracking-tight">ILF</span>
+        </div>
+
+        {/* amber - ELF */}
+        <div className="flex items-center gap-3">
+          <div className="h-7 w-36 rounded-r-sm shadow shadow-black/20 bg-linear-to-r from-amber-300 to-amber-400" />
+          <span className="text-sm font-semibold tracking-tight">ELF</span>
+        </div>
+
+        {/* sky - EI */}
+        <div className="flex items-center gap-3">
+          <div className="h-7 w-20 rounded-r-sm shadow shadow-black/20 bg-linear-to-r from-sky-300 to-sky-400" />
+          <span className="text-sm font-semibold tracking-tight">EI</span>
+        </div>
+
+        {/* red - EO */}
+        <div className="flex items-center gap-3">
+          <div className="h-7 w-48 rounded-r-sm shadow shadow-black/20 bg-linear-to-r from-red-300 to-red-400" />
+          <span className="text-sm font-semibold tracking-tight">EO</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /**
  * 프로세스 단계 카드 데이터
@@ -15,6 +300,7 @@ const processSteps = [
     number: "01",
     key: "one",
     title: "SW 사업 정보 정보 등록",
+    content: <CardStep1 />,
     image: "/assets/images/main-card-01.png",
   },
   {
@@ -22,6 +308,7 @@ const processSteps = [
     number: "02",
     key: "two",
     title: "SW 비용 산정 정보 등록",
+    content: <CardStep2 />,
     image: "/assets/images/main-card-02.png",
   },
   {
@@ -29,6 +316,7 @@ const processSteps = [
     number: "03",
     key: "three",
     title: "개발 범위 식별",
+    content: <CardStep3 />,
     image: "/assets/images/main-card-03.png",
   },
   {
@@ -36,6 +324,7 @@ const processSteps = [
     number: "04",
     key: "four",
     title: "기능 규모 산정",
+    content: <CardStep4 />,
     image: "/assets/images/main-card-04.png",
   },
   {
@@ -43,6 +332,7 @@ const processSteps = [
     number: "05",
     key: "five",
     title: "보정계수 결정",
+    content: <CardStep5 />,
     image: "/assets/images/main-card-05.png",
   },
   {
@@ -50,6 +340,7 @@ const processSteps = [
     number: "06",
     key: "six",
     title: "SW 사업비용 산정",
+    content: <CardStep6 />,
     image: "/assets/images/main-card-06.png",
   },
   {
@@ -57,6 +348,7 @@ const processSteps = [
     number: "07",
     key: "seven",
     title: "리포팅",
+    content: <CardStep7 />,
     image: "/assets/images/main-card-07.png",
   },
 ];
@@ -307,13 +599,14 @@ const Hero = () => {
                   }`}
                   onClick={handleStepClick(step.id)}
                 >
-                  <Image
+                  {/* <Image
                     src={step.image}
                     alt={`step-${step.number}`}
                     width={256}
                     height={152}
                     className="w-[256px] h-[130px] object-cover"
-                  />
+                  /> */}
+                  {step.content}
                   <div className="flex flex-col px-4 py-6">
                     <span className="text-[27px] text-brand-primary font-base">
                       {step.number}
