@@ -668,7 +668,7 @@ const Section3 = () => {
                 key={chart.id}
                 className={`rounded h-84 overflow-hidden flex items-end justify-center ${
                   selectedChart === chart.key
-                    ? "shadow-card grow bg-linear-to-b from-white via-white to-gray-200/50"
+                    ? "shadow-card grow bg-linear-to-b from-white via-white to-gray-100"
                     : "bg-white/50"
                 }`}
                 // className={`bg-white rounded h-72 overflow-hidden ${

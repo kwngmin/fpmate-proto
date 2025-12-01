@@ -129,7 +129,7 @@ const Section1 = () => {
                   isMobile ? "cursor-pointer" : ""
                 } ${
                   isMobile && content.id === section1Step
-                    ? "scale-100 opacity-100"
+                    ? "scale-100 opacity-100 ring ring-accent-primary"
                     : isMobile
                     ? "scale-[0.98] opacity-70"
                     : ""
@@ -178,6 +178,45 @@ const Section1 = () => {
                 </div>
               </Card>
             ))}
+          </div>
+          <div className="flex lg:hidden items-center gap-2 mt-6">
+            <button
+              type="button"
+              onClick={() =>
+                section1Step > 1 && setSection1Step(section1Step - 1)
+              }
+              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-secondary hover:border-accent-hover active:scale-95 ${
+                section1Step > 1 ? "opacity-100" : "opacity-50"
+              }`}
+            >
+              <Image
+                src="/assets/svgs/caret-left.svg"
+                alt="caret-left"
+                width={24}
+                height={24}
+                className="size-6"
+              />
+            </button>
+            <button
+              type="button"
+              onClick={() =>
+                section1Step < section1Contents.length &&
+                setSection1Step(section1Step + 1)
+              }
+              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-secondary hover:border-accent-hover active:scale-95 ${
+                section1Step < section1Contents.length
+                  ? "opacity-100"
+                  : "opacity-50"
+              }`}
+            >
+              <Image
+                src="/assets/svgs/caret-right.svg"
+                alt="caret-right"
+                width={24}
+                height={24}
+                className="size-6"
+              />
+            </button>
           </div>
         </div>
       </div>

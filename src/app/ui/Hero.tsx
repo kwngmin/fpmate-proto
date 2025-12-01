@@ -28,9 +28,9 @@ const CardStep1 = () => {
         </div>
         <div className="rounded-md border-2 border-border-secondary h-14 w-lg relative flex items-center pl-3.5">
           <div className="absolute left-4 -top-2 flex items-center gap-1 px-1 bg-white">
-            <SkeletonBar width={2.5} height={1} />
-            <SkeletonBar width={1} height={1} />
-            <SkeletonBar width={4} height={1} />
+            <SkeletonBar width={2.5} height={1} emphasize />
+            <SkeletonBar width={1} height={1} emphasize />
+            <SkeletonBar width={4} height={1} emphasize />
           </div>
           <div className="h-6.5 w-0.5 bg-zinc-800 animate-cursor-blink" />
         </div>
@@ -42,7 +42,7 @@ const CardStep1 = () => {
 const CardStep2 = () => {
   return (
     <div className="w-[256px] h-[130px] bg-gray-100 pl-10 overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
-      <div className="bg-white w-full h-full border-l border-border-primary shadow-lg shadow-black/5 flex flex-col gap-2.5 justify-center pl-6">
+      <div className="bg-white w-full h-full border-l border-border-primary shadow-lg shadow-black/15 flex flex-col gap-2.5 justify-center pl-6">
         {/* check */}
         <div className="flex items-center gap-1">
           <div className="bg-brand-primary rounded-sm flex items-center justify-center size-8 shrink-0 mr-1">
@@ -99,10 +99,10 @@ const CardStep3 = () => {
           <SkeletonBar width={2} height={1} />
         </div>
         <div className="flex items-center gap-4">
-          <div className="rounded-r-md border-t-2 border-r-2 border-b-2 border-border-primary h-14 w-40 relative flex items-center pl-3.5">
+          <div className="rounded-r-md border-t-2 border-r-2 border-b-2 border-border-secondary h-14 w-40 relative flex items-center pl-3.5">
             <div className="absolute left-0 -top-2 flex items-center gap-1 pr-1 bg-white">
-              <SkeletonBar width={1} height={1} />
-              <SkeletonBar width={3.5} height={1} />
+              <SkeletonBar width={1} height={1} emphasize />
+              <SkeletonBar width={3.5} height={1} emphasize />
             </div>
           </div>
           <div className="flex items-center gap-3 relative">
@@ -131,7 +131,7 @@ const CardStep4 = () => {
       <div className="shrink-0 h-3 overflow-hidden relative">
         <div className="absolute bottom-0 flex items-center gap-4 bg-[#5F933A] h-6 w-32 rounded-l rounded-full shrink-0" />
       </div>
-      <div className="bg-white w-full border-l border-t rounded-lg overflow-hidden border-border-primary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0">
+      <div className="bg-white w-full border-l border-t rounded-lg overflow-hidden border-border-tertiary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0">
         {/* sparkles */}
         <div className="flex items-center gap-1 p-2 pl-4 bg-slate-100">
           <Image
@@ -141,8 +141,8 @@ const CardStep4 = () => {
             height={32}
             className="size-10 shrink-0 mr-2"
           />
-          <SkeletonBar width={5} height={1} />
-          <SkeletonBar width={6} height={1} />
+          <SkeletonBar width={5} height={1} emphasize />
+          <SkeletonBar width={6} height={1} emphasize />
         </div>
 
         {/* tree nodes */}
@@ -177,7 +177,7 @@ const CardStep5 = () => {
                 <SkeletonBar width={2} height={1} />
 
                 {/* select box */}
-                <div className="bg-white w-full border-l-2 border-t-2 rounded-lg overflow-hidden border-border-primary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0 absolute top-12 -left-0.5">
+                <div className="bg-white w-full border-l border-t rounded-lg overflow-hidden border-border-tertiary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0 absolute top-12.5 -left-0.5">
                   {/* sparkles */}
                   <div className="flex items-center gap-1 p-2 pl-4 bg-slate-100">
                     <div className="size-10 shrink-0 flex items-center justify-center">
@@ -189,8 +189,8 @@ const CardStep5 = () => {
                         className="size-6.5 shrink-0"
                       />
                     </div>
-                    <SkeletonBar width={5} height={1} />
-                    <SkeletonBar width={6} height={1} />
+                    <SkeletonBar width={5} height={1} emphasize />
+                    <SkeletonBar width={6} height={1} emphasize />
                   </div>
 
                   {/* tree nodes */}
@@ -233,24 +233,24 @@ const CardStep6 = () => {
           <tbody>
             <tr>
               <td
-                className="border border-border-primary h-14 w-36"
+                className="border border-border-secondary h-14 w-36"
                 colSpan={2}
               />
-              <td className="border border-border-primary h-14 w-20" />
+              <td className="border border-border-secondary h-14 w-20" />
             </tr>
             <tr>
-              <td className="border border-border-primary h-14 w-12"></td>
-              <td className="border border-border-secondary h-14 w-40 bg-amber-100 p-3 text-end flex items-center justify-end gap-2">
+              <td className="border border-border-secondary h-14 w-12"></td>
+              <td className="border border-accent-primary h-14 w-40 bg-amber-100 p-3 text-end flex items-center justify-end gap-2">
                 <div className="h-6.5 w-0.5 bg-zinc-800 animate-cursor-blink" />
                 <span className="text-2xl font-medium mb-1">%</span>
               </td>
             </tr>
             <tr>
               <td
-                className="border border-border-primary h-14 w-36"
+                className="border border-border-tertiary h-14 w-36"
                 colSpan={2}
               />
-              <td className="border border-border-primary h-14 w-20" />
+              <td className="border border-border-tertiary h-14 w-20" />
             </tr>
           </tbody>
         </table>
