@@ -36,6 +36,7 @@
   letter-spacing: -0.05em;
   font-weight: 600;
   word-break: keep-all;
+  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -55,6 +56,7 @@
   letter-spacing: -0.025em;
   word-break: keep-all;
   color: rgb(17 24 39);
+  margin: 0;
 }
 
 @media (min-width: 768px) {

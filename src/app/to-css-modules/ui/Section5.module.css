@@ -68,6 +68,7 @@
   word-break: keep-all;
   text-align: center;
   color: rgb(17 24 39);
+  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -88,6 +89,7 @@
   word-break: keep-all;
   text-align: center;
   color: rgb(17 24 39);
+  margin: 0;
 }
 
 @media (min-width: 768px) {

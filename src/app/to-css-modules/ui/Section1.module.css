@@ -28,6 +28,7 @@
   line-height: 1.15;
   letter-spacing: -0.05em;
   font-weight: 600;
+  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -48,6 +49,7 @@
   letter-spacing: -0.05em;
   word-break: keep-all;
   color: rgb(17 24 39);
+  margin: 0;
 }
 
 @media (min-width: 640px) {
@@ -205,6 +207,7 @@
   letter-spacing: -0.025em;
   word-break: keep-all;
   color: rgb(107 114 128);
+  margin: 0;
 }
 
 .footerBold {

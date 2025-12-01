@@ -1,0 +1,39 @@
+/* CSS Reset for to-css-modules components */
+
+/* Remove default margins and paddings */
+.resetBase p {
+  margin: 0;
+  padding: 0;
+}
+
+.resetBase h1,
+.resetBase h2,
+.resetBase h3,
+.resetBase h4,
+.resetBase h5,
+.resetBase h6 {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.resetBase ul,
+.resetBase ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.resetBase button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.resetBase * {
+  box-sizing: border-box;
+}
