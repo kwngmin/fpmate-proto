@@ -262,7 +262,7 @@ const CardStep6 = () => {
 const CardStep7 = () => {
   return (
     <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
-      <div className="flex flex-col gap-0.5 pt-3 relative after:content-[''] after:absolute after:top-0 after:left-0 after:h-full after:bg-linear-to-r after:w-24 after:from-white/50 after:to-transparent after:pointer-events-none">
+      <div className="flex flex-col gap-0.5 pt-3 relative after:content-[''] after:absolute after:top-0 after:left-0 after:h-full after:bg-linear-to-r after:w-24 after:from-white/80 after:to-transparent after:pointer-events-none">
         {/* green - ILF */}
         <div className="flex items-center gap-3">
           <div className="h-7 w-12 rounded-r-sm shadow shadow-black/20 bg-linear-to-r from-green-300 to-green-400" />
