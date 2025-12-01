@@ -138,7 +138,7 @@ const Section1 = () => {
               >
                 <div className="flex flex-col gap-1 items-center px-4 pt-6 pb-8">
                   <BlurFadeDiv
-                    delay={(index + 1) * 100}
+                    // delay={(index + 1) * 100}
                     intersectionOptions={{
                       threshold: 0.5,
                     }}
@@ -158,7 +158,7 @@ const Section1 = () => {
                   <BlurFadeText
                     className="text-lg tracking-tight font-semibold break-keep"
                     text={content.title}
-                    delay={100 + (index + 1) * 200}
+                    delay={100 + (index + 1) * 100}
                     useIntersection={true}
                     intersectionOptions={{
                       threshold: 0.5,
@@ -169,7 +169,7 @@ const Section1 = () => {
                   <BlurFadeText
                     className="text-[1.0625rem] leading-normal text-center break-keep max-w-48"
                     text={content.description}
-                    delay={200 + (index + 1) * 300}
+                    delay={200 + (index + 1) * 150}
                     useIntersection={true}
                     intersectionOptions={{
                       threshold: 0.5,
