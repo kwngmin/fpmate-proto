@@ -443,7 +443,8 @@ const Hero = () => {
   }, [currentStep, containerWidth]);
 
   return (
-    <main className="pb-20 md:pb-40 overflow-hidden">
+    <main className="relative pb-20 md:pb-40 overflow-hidden">
+      {/* text & progress bar container */}
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Title */}
         <div className="py-10 space-y-6 flex flex-col">
@@ -457,7 +458,6 @@ const Hero = () => {
               <BlurFadeText
                 text="FPMate"
                 className="font-extrabold text-brand-primary"
-                // className="font-extrabold bg-linear-to-r from-brand-primary to-semantic-success bg-clip-text text-transparent"
                 delay={700}
               />
               <BlurFadeText text="로" delay={700} />
@@ -595,7 +595,7 @@ const Hero = () => {
                   className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer overflow-hidden ${
                     step.id === currentStep
                       ? "scale-100 opacity-100 ring-4 ring-brand-primary"
-                      : "outline-2   outline-action-hover hover:outline-accent-hover"
+                      : "outline-2 outline-gray-300 hover:outline-accent-hover"
                   }`}
                   onClick={handleStepClick(step.id)}
                 >
@@ -619,6 +619,239 @@ const Hero = () => {
               </BlurFadeDiv>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* bottom background gradient */}
+      <div className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-48 -z-10 opacity-50" />
+
+      {/* bottom center background gradient */}
+      <div
+        className="absolute h-[1722px] left-[50%] top-12 md:top-24 -translate-x-1/2 w-[1952.78px] pointer-events-none select-none -z-10"
+        data-name="background 4"
+      >
+        <div className="absolute inset-[-29.04%_-25.6%]">
+          <svg
+            className="block size-full scale-65"
+            fill="none"
+            preserveAspectRatio="none"
+            viewBox="0 0 2953 2722"
+          >
+            <g id="background 4">
+              <g filter="url(#filter0_f_1_1053)" id="Ellipse 2">
+                <ellipse
+                  cx="1476.54"
+                  cy="1236"
+                  fill="url(#paint0_radial_1_1053)"
+                  fillOpacity="0.1"
+                  rx="450"
+                  ry="736"
+                />
+              </g>
+              <g filter="url(#filter1_f_1_1053)" id="Ellipse 1">
+                <ellipse
+                  cx="1476.39"
+                  cy="1235.81"
+                  fill="url(#paint1_radial_1_1053)"
+                  rx="976.388"
+                  ry="709.001"
+                />
+              </g>
+              <g filter="url(#filter2_f_1_1053)" id="Ellipse 5">
+                <ellipse
+                  cx="1476.54"
+                  cy="1486"
+                  fill="url(#paint2_radial_1_1053)"
+                  rx="720"
+                  ry="736"
+                />
+              </g>
+              <g filter="url(#filter3_f_1_1053)" id="Ellipse 4">
+                <ellipse
+                  cx="1476.54"
+                  cy="1271.5"
+                  fill="url(#paint3_linear_1_1053)"
+                  rx="381"
+                  ry="635.5"
+                />
+              </g>
+              <g filter="url(#filter4_f_1_1053)" id="Ellipse 6">
+                <ellipse
+                  cx="1476.54"
+                  cy="1271.5"
+                  fill="url(#paint4_linear_1_1053)"
+                  rx="656"
+                  ry="139.5"
+                />
+              </g>
+            </g>
+            <defs>
+              <filter
+                colorInterpolationFilters="sRGB"
+                filterUnits="userSpaceOnUse"
+                height="2472"
+                id="filter0_f_1_1053"
+                width="1900"
+                x="526.542"
+                y="0"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  mode="normal"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  result="effect1_foregroundBlur_1_1053"
+                  stdDeviation="250"
+                />
+              </filter>
+              <filter
+                colorInterpolationFilters="sRGB"
+                filterUnits="userSpaceOnUse"
+                height="2418"
+                id="filter1_f_1_1053"
+                width="2952.78"
+                x="-1.52588e-05"
+                y="26.8041"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  mode="normal"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  result="effect1_foregroundBlur_1_1053"
+                  stdDeviation="250"
+                />
+              </filter>
+              <filter
+                colorInterpolationFilters="sRGB"
+                filterUnits="userSpaceOnUse"
+                height="2472"
+                id="filter2_f_1_1053"
+                width="2440"
+                x="256.542"
+                y="250"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  mode="normal"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  result="effect1_foregroundBlur_1_1053"
+                  stdDeviation="250"
+                />
+              </filter>
+              <filter
+                colorInterpolationFilters="sRGB"
+                filterUnits="userSpaceOnUse"
+                height="2071"
+                id="filter3_f_1_1053"
+                width="1562"
+                x="695.542"
+                y="236"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  mode="normal"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  result="effect1_foregroundBlur_1_1053"
+                  stdDeviation="200"
+                />
+              </filter>
+              <filter
+                colorInterpolationFilters="sRGB"
+                filterUnits="userSpaceOnUse"
+                height="479"
+                id="filter4_f_1_1053"
+                width="1512"
+                x="720.542"
+                y="1032"
+              >
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend
+                  in="SourceGraphic"
+                  in2="BackgroundImageFix"
+                  mode="normal"
+                  result="shape"
+                />
+                <feGaussianBlur
+                  result="effect1_foregroundBlur_1_1053"
+                  stdDeviation="50"
+                />
+              </filter>
+              <radialGradient
+                cx="0"
+                cy="0"
+                gradientTransform="matrix(-22.447 659.623 -403.302 -36.771 1479.19 1345.36)"
+                gradientUnits="userSpaceOnUse"
+                id="paint0_radial_1_1053"
+                r="1"
+              >
+                <stop stopColor="#FFDED0" />
+                <stop offset="0.577448" stopColor="#FF7D45" />
+              </radialGradient>
+              <radialGradient
+                cx="0"
+                cy="0"
+                gradientTransform="matrix(-48.7043 635.426 -875.065 -35.4221 1482.14 1341.15)"
+                gradientUnits="userSpaceOnUse"
+                id="paint1_radial_1_1053"
+                r="1"
+              >
+                <stop stopColor="#FDFF85" />
+                <stop
+                  offset="0.984375"
+                  stopColor="#FDFF85"
+                  stopOpacity="0.43"
+                />
+              </radialGradient>
+              <radialGradient
+                cx="0"
+                cy="0"
+                gradientTransform="matrix(-2.8913e-05 770.61 -785.777 -44.5471 1475.99 1485.46)"
+                gradientUnits="userSpaceOnUse"
+                id="paint2_radial_1_1053"
+                r="1"
+              >
+                <stop stopColor="#00C9D2" />
+                <stop offset="0.536458" stopColor="#00C9D2" />
+              </radialGradient>
+              <linearGradient
+                gradientUnits="userSpaceOnUse"
+                id="paint3_linear_1_1053"
+                x1="1476.54"
+                x2="1476.54"
+                y1="636"
+                y2="1907"
+              >
+                <stop stopColor="#00AB55" stopOpacity="0.82" />
+                <stop offset="1" stopColor="#00AB55" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient
+                gradientUnits="userSpaceOnUse"
+                id="paint4_linear_1_1053"
+                x1="1476.54"
+                x2="1476.54"
+                y1="1132"
+                y2="1411"
+              >
+                <stop stopColor="#007B55" stopOpacity="0.82" />
+                <stop offset="1" stopColor="#00AB55" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
       </div>
     </main>
