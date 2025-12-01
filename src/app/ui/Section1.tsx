@@ -179,13 +179,13 @@ const Section1 = () => {
               </Card>
             ))}
           </div>
-          <div className="flex lg:hidden items-center gap-2 mt-6">
+          <div className="flex lg:hidden items-center gap-2 mt-4">
             <button
               type="button"
               onClick={() =>
                 section1Step > 1 && setSection1Step(section1Step - 1)
               }
-              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-secondary hover:border-accent-hover active:scale-95 ${
+              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:border-accent-hover active:scale-95 ${
                 section1Step > 1 ? "opacity-100" : "opacity-50"
               }`}
             >
@@ -203,7 +203,7 @@ const Section1 = () => {
                 section1Step < section1Contents.length &&
                 setSection1Step(section1Step + 1)
               }
-              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-secondary hover:border-accent-hover active:scale-95 ${
+              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:border-accent-hover active:scale-95 ${
                 section1Step < section1Contents.length
                   ? "opacity-100"
                   : "opacity-50"
