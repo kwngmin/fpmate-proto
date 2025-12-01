@@ -131,7 +131,7 @@ const CardStep4 = () => {
       <div className="shrink-0 h-3 overflow-hidden relative">
         <div className="absolute bottom-0 flex items-center gap-4 bg-[#5F933A] h-6 w-32 rounded-l rounded-full shrink-0" />
       </div>
-      <div className="bg-white w-full border-l border-t rounded-lg overflow-hidden border-border-tertiary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0">
+      <div className="bg-white w-full border-l border-t rounded-tl-lg overflow-hidden border-border-tertiary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0">
         {/* sparkles */}
         <div className="flex items-center gap-1 p-2 pl-4 bg-slate-100">
           <Image
