@@ -353,7 +353,7 @@ const Section3 = () => {
               의 <br className="lg:hidden" />
               합리적인 의사결정 지원
             </div>
-            <p className="text-[1.0625rem] md:text-[1.3125rem] leading-snug tracking-tight break-keep text-text-primary max-w-xl md:max-w-3xl">
+            <p className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep text-text-primary max-w-xl md:max-w-3xl">
               <span className="font-semibold">축적된 데이터</span>를 활용하여
               유사 사업 비용을 빠르게 예측하고,{" "}
               {/* <br className="hidden sm:block" /> */}

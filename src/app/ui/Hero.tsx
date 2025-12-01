@@ -468,7 +468,7 @@ const Hero = () => {
               className="break-keep"
             />
           </div>
-          <p className="text-[1.0625rem] md:text-[1.3125rem] leading-snug tracking-tight break-keep">
+          <p className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep">
             <BlurFadeText text="FPMate" delay={900} className="font-semibold" />
             <BlurFadeText
               text="는"

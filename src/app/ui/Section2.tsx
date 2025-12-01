@@ -87,7 +87,7 @@ const Section2 = () => {
             SW 사업 추진{" "}
             <span className="font-bold text-brand-primary">인사이트+</span>
           </div>
-          <p className="text-[1.0625rem] md:text-[1.3125rem] leading-snug tracking-tight break-keep text-text-primary">
+          <p className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep text-text-primary">
             <span className="font-semibold">고유 작업 공간</span>에서 그동안
             작업했던 <br />
             <span className="font-semibold">SW 사업 비용 산정 내역</span>을
