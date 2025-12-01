@@ -170,3 +170,64 @@
   }
 }
 
+/* Button Styles */
+.buttonBase {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.buttonBase:active {
+  transform: scale(0.98);
+}
+
+/* Button Variants */
+.buttonPrimary {
+  background-color: #00ab55;
+  color: white;
+}
+
+.buttonPrimary:hover {
+  background-color: #007b3e;
+}
+
+.buttonBlack {
+  background-color: rgb(0 0 0);
+  color: white;
+}
+
+.buttonBlack:hover {
+  background-color: rgb(39 39 42);
+}
+
+.buttonGhost {
+  background-color: transparent;
+  color: rgb(17 24 39);
+  border: 1px solid rgb(229 231 235);
+}
+
+.buttonGhost:hover {
+  background-color: rgb(249 250 251);
+  border-color: rgb(209 213 219);
+}
+
+/* Button Sizes */
+.buttonMd {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}
+
+.buttonLg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}

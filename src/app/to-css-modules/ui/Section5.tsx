@@ -1,6 +1,42 @@
-import { Button } from "@/shared/ui";
 import Image from "next/image";
+import { HTMLAttributes, ReactNode } from "react";
 import styles from "./Section5.module.css";
+
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "ghost";
+  size?: "md" | "lg";
+  children: ReactNode;
+  isBlack?: boolean;
+}
+
+/**
+ * Section5 전용 Button 컴포넌트
+ */
+const Button = ({
+  variant = "primary",
+  size = "md",
+  isBlack = false,
+  className = "",
+  children,
+  ...props
+}: ButtonProps) => {
+  const variantClass =
+    variant === "primary"
+      ? isBlack
+        ? styles.buttonBlack
+        : styles.buttonPrimary
+      : styles.buttonGhost;
+  const sizeClass = size === "md" ? styles.buttonMd : styles.buttonLg;
+
+  return (
+    <button
+      className={`${styles.buttonBase} ${variantClass} ${sizeClass} ${className}`}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
 
 const Section5 = () => {
   return (
@@ -37,11 +73,7 @@ const Section5 = () => {
 
         {/* Action Buttons - Mobile*/}
         <div className={styles.buttonsMobile}>
-          <Button
-            variant="primary"
-            size="md"
-            className={`bg-black! ${styles.button}`}
-          >
+          <Button variant="primary" size="md" isBlack className={styles.button}>
             제품도입문의
           </Button>
           <Button variant="ghost" size="md" className={styles.button}>
@@ -61,7 +93,8 @@ const Section5 = () => {
           <Button
             variant="primary"
             size="lg"
-            className={`bg-black! ${styles.buttonLg}`}
+            isBlack
+            className={styles.buttonLg}
           >
             제품도입문의
           </Button>

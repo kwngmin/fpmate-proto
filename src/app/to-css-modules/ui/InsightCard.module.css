@@ -1,0 +1,228 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.cardFirst {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 1280px) {
+  .cardFirst {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+.cardNotFirst {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .cardNotFirst {
+    opacity: 0.8;
+  }
+}
+
+@media (min-width: 768px) {
+  .cardNotFirst {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1280px) {
+  .cardNotFirst {
+    pointer-events: auto;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.chips {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.badge {
+  user-select: none;
+  font-weight: 500;
+}
+
+.badgeFirst {
+  cursor: pointer;
+}
+
+.badgeFirst:active {
+  transform: scale(0.9);
+}
+
+.badgeNotFirst {
+  cursor: default;
+}
+
+@media (min-width: 1280px) {
+  .badgeNotFirst {
+    cursor: pointer;
+  }
+  
+  .badgeNotFirst:active {
+    transform: scale(0.9);
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.gradientButton {
+  position: relative;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  z-index: 10;
+}
+
+.gradientButtonFirst {
+  cursor: pointer;
+}
+
+.gradientButtonFirst:active {
+  transform: scale(0.9);
+}
+
+.gradientButtonNotFirst {
+  cursor: default;
+}
+
+@media (min-width: 1280px) {
+  .gradientButtonNotFirst {
+    cursor: pointer;
+  }
+  
+  .gradientButtonNotFirst:active {
+    transform: scale(0.9);
+  }
+}
+
+.gradientRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  z-index: -10;
+  padding: 1px;
+  animation: spin 4.5s linear infinite;
+}
+
+.gradientRingHidden {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .gradientRingHidden {
+    display: block;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gradientInner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: white;
+}
+
+.icon {
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.0625rem;
+}
+
+.titleText {
+  font-size: 1.0625rem;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.detailLabel {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: -0.013em;
+  font-weight: 500;
+}
+
+.detailValue {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+}
+
+.detailValueBold {
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footerText {
+  font-size: 0.875rem;
+  letter-spacing: -0.013em;
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  background-color: rgb(229 231 235);
+  border-radius: 9999px;
+}
+

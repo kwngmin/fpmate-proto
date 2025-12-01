@@ -1,7 +1,7 @@
 "use client";
 
 import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
-import { Card } from "@/shared/ui";
+import { Card } from "./Card";
 import { BlurFadeDiv, BlurFadeText } from "@/shared/ui/BlurFadeText";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";

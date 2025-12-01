@@ -4,7 +4,7 @@ import Image from "next/image";
 import { BlurFadeDiv, BlurFadeText } from "@/shared/ui/BlurFadeText";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
-import { Card } from "@/shared/ui";
+import { Card } from "./Card";
 import SkeletonBar from "./SkeletonBar";
 import styles from "./Hero.module.css";
 

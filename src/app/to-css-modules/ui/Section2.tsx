@@ -1,5 +1,5 @@
-import { Card } from "@/shared/ui";
-import InsightCard from "@/shared/ui/InsightCard";
+import { Card } from "./Card";
+import InsightCard from "./InsightCard";
 import styles from "./Section2.module.css";
 import SkeletonBar from "./SkeletonBar";
 

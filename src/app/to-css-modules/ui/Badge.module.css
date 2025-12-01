@@ -1,0 +1,104 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.1s ease-in-out;
+}
+
+/* Variants */
+.default {
+  background-color: rgb(243 244 246);
+  color: rgb(17 24 39);
+}
+
+.primary {
+  background-color: rgba(0, 171, 85, 0.1);
+  color: #00ab55;
+}
+
+.success {
+  background-color: rgb(243 244 246);
+  color: rgb(107 114 128);
+}
+
+.success:hover {
+  background-color: rgba(0, 171, 85, 0.1);
+  color: #00ab55;
+}
+
+.warning {
+  background-color: rgb(243 244 246);
+  color: rgb(107 114 128);
+}
+
+.warning:hover {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: rgb(245 158 11);
+}
+
+.error {
+  background-color: rgb(243 244 246);
+  color: rgb(107 114 128);
+}
+
+.error:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: rgb(239 68 68);
+}
+
+.info {
+  background-color: rgb(243 244 246);
+  color: rgb(107 114 128);
+}
+
+.info:hover {
+  background-color: rgba(37, 99, 235, 0.1);
+  color: rgb(37 99 235);
+}
+
+/* Sizes */
+.sm {
+  padding: 0.125rem 0.5rem;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  letter-spacing: 0;
+  min-height: 18px;
+}
+
+.md {
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0;
+  min-height: 22px;
+}
+
+.lg {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  min-height: 26px;
+}
+
+/* Dot */
+.withDot {
+  gap: 0.375rem;
+}
+
+.dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+}
+
+.dotDefault {
+  background-color: rgb(17 24 39);
+}
+
+.dotCurrent {
+  background-color: currentColor;
+}
+
