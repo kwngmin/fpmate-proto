@@ -46,7 +46,7 @@
 
 .brandText {
   font-weight: 700;
-  color: rgb(59 130 246);
+  color: #00ab55;
 }
 
 .description {
@@ -75,7 +75,7 @@
 }
 
 .cardContainer::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   width: 66.666667%;
@@ -87,7 +87,7 @@
 
 @media (min-width: 640px) {
   .cardContainer::after {
-    content: '';
+    content: "";
   }
 }
 
@@ -125,7 +125,7 @@
 }
 
 .dummyCards::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(to bottom, transparent, white);
@@ -166,4 +166,3 @@
   gap: 0.25rem;
   align-items: center;
 }
-

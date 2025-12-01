@@ -73,7 +73,6 @@ export function BlurFadeText({
         display: "inline-block",
         opacity: isVisible ? 1 : 0,
         filter: isVisible ? "blur(0px)" : "blur(10px)",
-        // transform: isVisible ? "translateY(0%)" : "translateY(20%)",
         transition: "all 0.75s cubic-bezier(0.25, 0.4, 0.25, 1)",
       }}
       {...props}

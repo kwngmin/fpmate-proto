@@ -55,7 +55,7 @@
 
 .brandText {
   font-weight: 700;
-  color: rgb(59 130 246);
+  color: #00ab55;
 }
 
 .description {
@@ -485,7 +485,7 @@
 }
 
 .chartIndicatorActive {
-  background-color: rgb(59 130 246);
+  background-color: #00ab55;
 }
 
 .chartIndicatorInactive {

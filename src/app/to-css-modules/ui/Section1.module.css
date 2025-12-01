@@ -38,7 +38,7 @@
 
 .brandText {
   font-weight: 800;
-  color: rgb(59 130 246);
+  color: #00ab55;
 }
 
 .description {
@@ -108,7 +108,7 @@
 .cardActive {
   transform: scale(1);
   opacity: 1;
-  box-shadow: 0 0 0 1px rgb(59 130 246);
+  box-shadow: 0 0 0 1px #00ab55;
 }
 
 .cardInactive {
@@ -175,7 +175,7 @@
 
 .controlButton:hover {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  border-color: rgb(59 130 246);
+  border-color: #00ab55;
 }
 
 .controlButton:active {

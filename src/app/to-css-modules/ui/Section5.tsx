@@ -22,9 +22,8 @@ const Section5 = () => {
           {/* text content */}
           <div className={styles.textContent}>
             <div className={styles.title}>
-              진화하는{" "}
-              <span className={styles.brandText}>FPMate</span>,{" "}
-              사업 성공 도우미
+              진화하는 <span className={styles.brandText}>FPMate</span>, 사업
+              성공 도우미
             </div>
             <p className={styles.description}>
               당신의 <span className={styles.medium}>SW 사업 성공</span>과{" "}
@@ -38,7 +37,11 @@ const Section5 = () => {
 
         {/* Action Buttons - Mobile*/}
         <div className={styles.buttonsMobile}>
-          <Button variant="primary" size="md" className={`bg-black! ${styles.button}`}>
+          <Button
+            variant="primary"
+            size="md"
+            className={`bg-black! ${styles.button}`}
+          >
             제품도입문의
           </Button>
           <Button variant="ghost" size="md" className={styles.button}>
@@ -55,7 +58,11 @@ const Section5 = () => {
 
         {/* Action Buttons - Desktop*/}
         <div className={styles.buttonsDesktop}>
-          <Button variant="primary" size="lg" className={`bg-black! ${styles.buttonLg}`}>
+          <Button
+            variant="primary"
+            size="lg"
+            className={`bg-black! ${styles.buttonLg}`}
+          >
             제품도입문의
           </Button>
           <Button variant="ghost" size="lg" className={styles.buttonLg}>
@@ -86,4 +93,3 @@ const Section5 = () => {
 };
 
 export default Section5;
-

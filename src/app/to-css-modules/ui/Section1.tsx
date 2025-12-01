@@ -83,11 +83,9 @@ const Section1 = () => {
     }
   }, [section1Step, section1ContainerWidth, isMobile]);
 
-  const { ref, isIntersecting } = useIntersectionObserver({
+  const { ref } = useIntersectionObserver({
     threshold: 0.5,
   });
-
-  console.log(isIntersecting);
 
   return (
     <section ref={ref} className={styles.section}>
@@ -236,4 +234,3 @@ const Section1 = () => {
 };
 
 export default Section1;
-

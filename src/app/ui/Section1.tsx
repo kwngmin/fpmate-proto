@@ -82,11 +82,9 @@ const Section1 = () => {
     }
   }, [section1Step, section1ContainerWidth, isMobile]);
 
-  const { ref, isIntersecting } = useIntersectionObserver({
+  const { ref } = useIntersectionObserver({
     threshold: 0.5,
   });
-
-  console.log(isIntersecting);
 
   return (
     <section ref={ref} className="bg-gray-50 py-20 md:py-40 overflow-hidden">

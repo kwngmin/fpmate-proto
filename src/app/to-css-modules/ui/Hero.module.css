@@ -780,3 +780,60 @@
   transform: scale(0.65);
 }
 
+/* BlurFadeText Utility Classes */
+.brandText {
+  font-weight: 800;
+  color: #00ab55;
+}
+
+.breakKeep {
+  word-break: keep-all;
+}
+
+.fontSemibold {
+  font-weight: 600;
+}
+
+.mr1 {
+  margin-right: 0.25rem;
+}
+
+/* Progress Icon Styles */
+.progressCheckIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 768px) {
+  .progressCheckIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.progressNumberIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  .progressNumberIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.progressNumberIconActive {
+  width: 1.125rem;
+  height: 1.125rem;
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 768px) {
+  .progressNumberIconActive {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+

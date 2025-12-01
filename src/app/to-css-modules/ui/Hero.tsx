@@ -187,9 +187,7 @@ const CardStep5 = () => {
         <tbody>
           <tr>
             <td className={`${styles.step5Cell} ${styles.step5CellSmall}`} />
-            <td
-              className={`${styles.step5Cell} ${styles.step5CellLarge}`}
-            >
+            <td className={`${styles.step5Cell} ${styles.step5CellLarge}`}>
               <div className={styles.step5Input}>
                 <SkeletonBar width={4} height={1} />
                 <SkeletonBar width={2} height={1} />
@@ -259,14 +257,10 @@ const CardStep6 = () => {
                 className={`${styles.step6Cell} ${styles.step6CellMedium}`}
                 colSpan={2}
               />
-              <td
-                className={`${styles.step6Cell} ${styles.step6CellLarge}`}
-              />
+              <td className={`${styles.step6Cell} ${styles.step6CellLarge}`} />
             </tr>
             <tr>
-              <td
-                className={`${styles.step6Cell} ${styles.step6CellSmall}`}
-              />
+              <td className={`${styles.step6Cell} ${styles.step6CellSmall}`} />
               <td className={styles.step6CellHighlight}>
                 <div className={styles.cursor} />
                 <span className={styles.step6Percent}>%</span>
@@ -277,9 +271,7 @@ const CardStep6 = () => {
                 className={`${styles.step6Cell} ${styles.step6CellMedium}`}
                 colSpan={2}
               />
-              <td
-                className={`${styles.step6Cell} ${styles.step6CellLarge}`}
-              />
+              <td className={`${styles.step6Cell} ${styles.step6CellLarge}`} />
             </tr>
           </tbody>
         </table>
@@ -492,7 +484,7 @@ const Hero = () => {
             <div>
               <BlurFadeText
                 text="FPMate"
-                className="font-extrabold text-brand-primary"
+                className={styles.brandText}
                 delay={700}
               />
               <BlurFadeText text="로" delay={700} />
@@ -500,22 +492,26 @@ const Hero = () => {
             <BlurFadeText
               text="SW 사업 비용 산정과 관리를 한번에"
               delay={800}
-              className="break-keep"
+              className={styles.breakKeep}
             />
           </div>
           <p className={styles.description}>
-            <BlurFadeText text="FPMate" delay={900} className="font-semibold" />
-            <BlurFadeText text="는" delay={950} className="mr-1" />
+            <BlurFadeText
+              text="FPMate"
+              delay={900}
+              className={styles.fontSemibold}
+            />
+            <BlurFadeText text="는" delay={950} className={styles.mr1} />
             <BlurFadeText
               text="AI 비서"
               delay={950}
-              className="font-semibold"
+              className={styles.fontSemibold}
             />
-            <BlurFadeText text="와" delay={950} className="mr-1" />
+            <BlurFadeText text="와" delay={950} className={styles.mr1} />
             <BlurFadeText
               text="쉽고 빠르게 SW 사업 비용을 알아 볼 수 있습니다. "
               delay={950}
-              className="mr-1"
+              className={styles.mr1}
             />
             <br />
             <BlurFadeText
@@ -547,7 +543,7 @@ const Hero = () => {
                       alt={`completed-step-${step.id}`}
                       width={32}
                       height={32}
-                      className="size-4.5 md:size-5 brightness-0 invert"
+                      className={styles.progressCheckIcon}
                     />
                   ) : (
                     <Image
@@ -555,9 +551,11 @@ const Hero = () => {
                       alt={`process-step-${step.id}`}
                       width={32}
                       height={32}
-                      className={`size-4.5 md:size-5 ${
-                        step.id === currentStep ? "brightness-0 invert" : ""
-                      }`}
+                      className={
+                        step.id === currentStep
+                          ? styles.progressNumberIconActive
+                          : styles.progressNumberIcon
+                      }
                     />
                   )}
                 </button>
@@ -848,4 +846,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
