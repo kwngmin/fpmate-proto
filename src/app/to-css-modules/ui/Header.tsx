@@ -1,17 +1,17 @@
 import { Button } from "@/shared/ui";
 import Image from "next/image";
+import styles from "./Header.module.css";
 
+/**
+ * Header 컴포넌트 - CSS Modules 버전
+ * Tailwind CSS를 바닐라 CSS로 변환한 버전
+ */
 const Header = () => {
   return (
-    <header
-      style={{
-        height: "64px",
-      }}
-      className="sticky top-0 z-100 bg-(--header-bg) backdrop-blur-(--header-blur) border-b border-(--header-border)"
-    >
-      <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+    <header className={styles.header}>
+      <div className={styles.container}>
         {/* Logo */}
-        <div className="flex items-center">
+        <div className={styles.logoContainer}>
           <Image
             src="/assets/logo/fpmate-logo-black.svg"
             alt="FPmate"
@@ -22,7 +22,7 @@ const Header = () => {
         </div>
 
         {/* Action Buttons - Mobile */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className={styles.actionsMobile}>
           <Button variant="primary" size="sm">
             도입문의
           </Button>
@@ -32,7 +32,7 @@ const Header = () => {
         </div>
 
         {/* Action Buttons - Desktop */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className={styles.actionsDesktop}>
           <Button variant="primary" size="md">
             제품도입문의
           </Button>

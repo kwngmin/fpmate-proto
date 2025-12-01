@@ -1,0 +1,782 @@
+/* Main Container */
+.main {
+  position: relative;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-bottom: 10rem;
+  }
+}
+
+/* Text & Progress Bar Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Title Section */
+.titleSection {
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 1.0625rem;
+  }
+}
+
+.titleWrapper {
+  font-size: 2.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .titleWrapper {
+    font-size: 3.75rem;
+  }
+}
+
+.description {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+  word-break: keep-all;
+}
+
+@media (min-width: 768px) {
+  .description {
+    font-size: 1.3125rem;
+    line-height: 1.6;
+  }
+}
+
+/* Progress Bar */
+.progressContainer {
+  width: 100%;
+}
+
+.progressBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 20rem;
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .progressBar {
+    max-width: 32rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .progressBar {
+    max-width: 36rem;
+    padding-top: 1.5rem;
+  }
+}
+
+.progressStep {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 300ms;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .progressStep {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .progressStep {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+.progressStep.current {
+  background-color: var(--brand-primary);
+}
+
+.progressStep.completed {
+  background-color: var(--accent-primary);
+}
+
+.progressStep.pending {
+  background-color: var(--bg-tertiary);
+}
+
+.progressLine {
+  flex-grow: 1;
+  height: 0.25rem;
+  background-color: var(--border-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .progressLine {
+    height: 0.1875rem;
+  }
+}
+
+.progressFill {
+  position: absolute;
+  inset: 0;
+  background-color: var(--brand-primary);
+  transform-origin: left;
+  will-change: transform;
+  animation: progressBar 4s forwards;
+}
+
+@keyframes progressBar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Carousel */
+.carouselWrapper {
+  width: 100%;
+  padding: 1rem 0;
+  overflow: hidden;
+}
+
+.carouselContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  overflow: visible;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 0.5rem;
+  transition: transform 500ms ease-out;
+  width: max-content;
+}
+
+.card {
+  width: 16rem;
+  flex-shrink: 0;
+  transition: all 500ms ease-out;
+  cursor: pointer;
+  overflow: hidden;
+  outline: 2px solid var(--grey-300);
+}
+
+.card:hover {
+  outline-color: var(--accent-hover);
+}
+
+.card.active {
+  transform: scale(1);
+  opacity: 1;
+  outline: 4px solid var(--brand-primary);
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 1.5rem;
+}
+
+.cardNumber {
+  font-size: 1.6875rem;
+  color: var(--brand-primary);
+  font-weight: 400;
+}
+
+.cardTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Card Steps Common Styles */
+.cardStepBase {
+  width: 256px;
+  height: 130px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cardStepBase::after {
+  content: '';
+  position: absolute;
+  height: 33.333333%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to bottom, transparent, rgb(229 231 235));
+  pointer-events: none;
+}
+
+/* CardStep1 */
+.step1Container {
+  background-color: rgb(243 244 246);
+  padding-left: 2.5rem;
+}
+
+.step1Inner {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid var(--border-primary);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding-top: 0.625rem;
+  padding-left: 1.5rem;
+}
+
+.step1Row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.step1Check {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 0.25rem;
+  color: var(--brand-primary);
+}
+
+.step1Input {
+  border-radius: 0.375rem;
+  border: 2px solid var(--border-secondary);
+  height: 3.5rem;
+  width: 32rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 0.875rem;
+}
+
+.step1Label {
+  position: absolute;
+  left: 1rem;
+  top: -0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 0.25rem;
+  background-color: white;
+}
+
+.cursor {
+  height: 1.625rem;
+  width: 2px;
+  background-color: rgb(39 39 42);
+  animation: cursorBlink 2s infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* CardStep2 */
+.step2Container {
+  background-color: rgb(243 244 246);
+  padding-left: 2.5rem;
+}
+
+.step2Inner {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid var(--border-primary);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  justify-content: center;
+  padding-left: 1.5rem;
+}
+
+.step2Row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.checkBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  margin-right: 0.25rem;
+  border-radius: 0.125rem;
+}
+
+.checkBoxFilled {
+  background-color: var(--brand-primary);
+}
+
+.checkBoxOutline {
+  border: 2px solid var(--border-secondary);
+}
+
+.checkIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: brightness(0) invert(1);
+}
+
+.fileIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+}
+
+/* CardStep3 */
+.step3Inner {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+  position: relative;
+}
+
+.step3Inner::after {
+  content: '';
+  position: absolute;
+  width: 5rem;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to right, white, transparent);
+  pointer-events: none;
+}
+
+.step3Row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.step3InputRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.step3Input {
+  border-radius: 0 0.375rem 0.375rem 0;
+  border-top: 2px solid var(--border-secondary);
+  border-right: 2px solid var(--border-secondary);
+  border-bottom: 2px solid var(--border-secondary);
+  height: 3.5rem;
+  width: 10rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 0.875rem;
+}
+
+.step3Label {
+  position: absolute;
+  left: 0;
+  top: -0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-right: 0.25rem;
+  background-color: white;
+}
+
+.step3ButtonGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.step3Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.step3Icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+}
+
+.step3Pulse {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(229 231 235);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  flex-shrink: 0;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* CardStep4 */
+.step4Container {
+  padding-left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.step4TabWrapper {
+  flex-shrink: 0;
+  height: 0.75rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.step4Tab {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #5F933A;
+  height: 1.5rem;
+  width: 8rem;
+  border-radius: 0.375rem 0 0 0.375rem;
+  flex-shrink: 0;
+}
+
+.step4Inner {
+  background-color: white;
+  width: 100%;
+  border-left: 1px solid var(--border-tertiary);
+  border-top: 1px solid var(--border-tertiary);
+  border-top-left-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step4Row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.step4RowHighlight {
+  background-color: rgb(241 245 249);
+}
+
+.step4IconWrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+}
+
+.step4Icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+}
+
+.step4TreeIcon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
+
+/* CardStep5 */
+.step5Table {
+  position: absolute;
+  top: -1.25rem;
+  left: -0.25rem;
+  min-width: 32rem;
+}
+
+.step5Cell {
+  border: 1px solid var(--border-primary);
+  height: 3.5rem;
+}
+
+.step5CellSmall {
+  width: 4rem;
+}
+
+.step5CellLarge {
+  width: 32rem;
+  padding-left: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: rgb(243 244 246);
+}
+
+.step5Input {
+  border: 1px solid var(--brand-primary);
+  height: 100%;
+  border-radius: 0.375rem;
+  outline: 4px solid rgba(0, 171, 85, 0.3);
+  padding-left: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: white;
+  position: relative;
+}
+
+.step5Dropdown {
+  background-color: white;
+  width: 100%;
+  border-left: 1px solid var(--border-tertiary);
+  border-top: 1px solid var(--border-tertiary);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  position: absolute;
+  top: 3.125rem;
+  left: -0.125rem;
+}
+
+.step5DropdownRow {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+}
+
+.step5DropdownHighlight {
+  background-color: rgb(241 245 249);
+}
+
+.step5NumberIcon {
+  width: 1.625rem;
+  height: 1.625rem;
+  flex-shrink: 0;
+}
+
+/* CardStep6 */
+.step6Wrapper {
+  position: absolute;
+  top: -1.25rem;
+  left: -0.25rem;
+  width: 18rem;
+}
+
+.step6Table {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.step6Table::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 5rem;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+  pointer-events: none;
+}
+
+.step6Cell {
+  border: 1px solid var(--border-secondary);
+  height: 3.5rem;
+}
+
+.step6CellSmall {
+  width: 3rem;
+}
+
+.step6CellMedium {
+  width: 10rem;
+}
+
+.step6CellLarge {
+  width: 5rem;
+}
+
+.step6CellHighlight {
+  border: 1px solid var(--accent-primary);
+  background-color: rgb(254 243 199);
+  padding: 0.75rem;
+  text-align: end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.step6Percent {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+/* CardStep7 */
+.step7Inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding-top: 0.75rem;
+  position: relative;
+}
+
+.step7Inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
+  width: 6rem;
+  pointer-events: none;
+}
+
+.step7Row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.step7Bar {
+  height: 1.75rem;
+  border-radius: 0 0.125rem 0.125rem 0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.step7BarGreen {
+  width: 3rem;
+  background: linear-gradient(to right, rgb(134 239 172), rgb(74 222 128));
+}
+
+.step7BarAmber {
+  width: 9rem;
+  background: linear-gradient(to right, rgb(252 211 77), rgb(251 191 36));
+}
+
+.step7BarSky {
+  width: 5rem;
+  background: linear-gradient(to right, rgb(125 211 252), rgb(56 189 248));
+}
+
+.step7BarRed {
+  width: 12rem;
+  background: linear-gradient(to right, rgb(252 165 165), rgb(248 113 113));
+}
+
+.step7Label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+/* Background Gradients */
+.bgGradientBottom {
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: linear-gradient(to top, #00AB55, #80D5AA, white);
+  height: 12rem;
+  z-index: -10;
+  opacity: 0.5;
+}
+
+.bgGradientCenter {
+  position: absolute;
+  height: 1722px;
+  left: 50%;
+  top: 3rem;
+  transform: translateX(-50%);
+  width: 1952.78px;
+  pointer-events: none;
+  user-select: none;
+  z-index: -10;
+}
+
+@media (min-width: 768px) {
+  .bgGradientCenter {
+    top: 6rem;
+  }
+}
+
+.bgGradientInner {
+  position: absolute;
+  inset: -29.04% -25.6%;
+}
+
+.bgSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scale(0.65);
+}
+

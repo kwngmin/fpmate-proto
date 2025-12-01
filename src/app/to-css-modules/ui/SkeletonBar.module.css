@@ -1,0 +1,30 @@
+.skeletonBar {
+  flex-shrink: 0;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.roundedFull {
+  border-radius: 9999px;
+}
+
+.normal {
+  background-color: rgb(229 231 235);
+}
+
+.emphasize {
+  background-color: rgb(209 213 219);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

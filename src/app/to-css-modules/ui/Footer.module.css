@@ -1,0 +1,99 @@
+.footer {
+  background-color: rgb(243 244 246);
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 80;
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  isolation: isolate;
+}
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    flex-direction: row;
+  }
+}
+
+.logoLink {
+  margin-right: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  flex-shrink: 0;
+  min-width: 8rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.termsLink {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.addressSection {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.address {
+  line-height: 1.25;
+  word-break: keep-all;
+}
+
+.contactInfo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.contactLink {
+  font-weight: 500;
+}
+
+.divider {
+  height: 1.25rem;
+  width: 1px;
+  background-color: rgb(229 231 235);
+}
+
+.gsLink {
+  display: flex;
+  align-items: center;
+}
+
+.gsImage {
+  min-width: 4rem;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .gsImage {
+    display: block;
+  }
+}
+
