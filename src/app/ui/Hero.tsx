@@ -127,7 +127,7 @@ const CardStep3 = () => {
 
 const CardStep4 = () => {
   return (
-    <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none pl-10 flex flex-col gap-2">
+    <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none pl-10 flex flex-col gap-1">
       <div className="shrink-0 h-3 overflow-hidden relative">
         <div className="absolute bottom-0 flex items-center gap-4 bg-[#5F933A] h-6 w-32 rounded-l rounded-full shrink-0" />
       </div>
@@ -177,7 +177,7 @@ const CardStep5 = () => {
                 <SkeletonBar width={2} height={1} />
 
                 {/* select box */}
-                <div className="bg-white w-full border-l-2 border-t-2 rounded-lg overflow-hidden border-border-primary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0 absolute top-12 left-0">
+                <div className="bg-white w-full border-l-2 border-t-2 rounded-lg overflow-hidden border-border-primary shadow-lg shadow-black/20 flex flex-col justify-center shrink-0 absolute top-12 -left-0.5">
                   {/* sparkles */}
                   <div className="flex items-center gap-1 p-2 pl-4 bg-slate-100">
                     <div className="size-10 shrink-0 flex items-center justify-center">
