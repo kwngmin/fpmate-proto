@@ -364,11 +364,12 @@ const Section3 = () => {
           </div>
 
           {/* 테이블 */}
-          <div className="flex flex-col gap-2 px-6 overflow-hidden">
+          <div className="flex flex-col gap-2 px-6 overflow-hidden perspective-[1000px] transform-3d">
             <span className="text-[0.9375rem] tracking-tight text-text-tertiary font-medium">
               보고서
             </span>
-            <div className="relative p-6 bg-white rounded-lg flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default">
+            {/* 보고서 내역 - desktop */}
+            <div className="relative p-6 bg-white rounded-lg hidden lg:flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default">
               {/* 개발원가 산정 */}
               <div className="flex justify-between gap-4">
                 <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
@@ -548,6 +549,199 @@ const Section3 = () => {
                   </tr>
                 </tbody>
               </table>
+            </div>
+
+            {/* 보고서 내역 - mobile & tablet */}
+            <div className="relative h-106 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:scale-125 after:bg-linear-to-t after:from-gray-50 via-gray-50 after:to-transparent after:h-1/2 after:pointer-events-none after:z-40">
+              <div className="absolute top-0 left-0 translate-x-4 translate-y-0 z-30 shadow-lg">
+                <div className="relative p-6 bg-white rounded-lg flex lg:hidden flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default">
+                  {/* 개발원가 산정 */}
+                  <div className="flex justify-between gap-4">
+                    <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
+                      개발원가 산정
+                    </span>
+                    <span>(단위: 원)</span>
+                  </div>
+                  <table className="w-full border-collapse origin-top-left scale-65 sm:scale-90 md:scale-100 -mb-26 sm:-mb-8 md:mb-0">
+                    <thead>
+                      <tr>
+                        <th
+                          rowSpan={2}
+                          className="border border-border-primary bg-bg-tertiary p-3"
+                        >
+                          총 기능점수
+                        </th>
+                        <th
+                          rowSpan={2}
+                          className="border border-border-primary bg-bg-tertiary p-3"
+                        >
+                          기능점수당 단가
+                        </th>
+                        <th
+                          colSpan={5}
+                          className="border border-border-primary bg-bg-tertiary p-3"
+                        >
+                          보정 계수
+                        </th>
+                        <th
+                          rowSpan={2}
+                          className="border border-border-primary bg-bg-tertiary p-3"
+                        >
+                          개발 원가
+                        </th>
+                      </tr>
+                      <tr>
+                        <th className="border border-border-primary bg-bg-tertiary p-3">
+                          SW 규모
+                        </th>
+                        <th className="border border-border-primary bg-bg-tertiary p-3">
+                          연계복잡성
+                        </th>
+                        <th className="border border-border-primary bg-bg-tertiary p-3">
+                          성능 요구수준
+                        </th>
+                        <th className="border border-border-primary bg-bg-tertiary p-3">
+                          운영환경 호환성
+                        </th>
+                        <th className="border border-border-primary bg-bg-tertiary p-3">
+                          보안성 요구수준
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {/* 1row */}
+                      <tr>
+                        <td
+                          className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
+                          // rowSpan={4}
+                        >
+                          1000.6
+                        </td>
+                        <td
+                          className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
+                          // rowSpan={4}
+                        >
+                          <span>605,784</span>원
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
+                          1.1530
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
+                          0.94
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
+                          1.00
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
+                          1.00
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
+                          1.03
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
+                          <span>6,728,560,634</span>원
+                        </td>
+                      </tr>
+
+                      {/* 2row */}
+                      <tr>
+                        <td
+                          className="border border-border-primary bg-bg-primary p-3"
+                          colSpan={7}
+                        >
+                          합계(보정 후 개발원가)
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
+                          <span>6,728,560,634</span>원
+                        </td>
+                      </tr>
+
+                      {/* 3row */}
+                      <tr>
+                        <td
+                          className="border border-border-primary bg-bg-primary p-3"
+                          colSpan={6}
+                        >
+                          이윤 (※이윤은 개발원가의 25% 이내에서 산정한다.)
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-300 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
+                          <span>11</span>%
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
+                          <span>740,141,670</span>원
+                        </td>
+                      </tr>
+
+                      {/* 4row */}
+                      <tr>
+                        <td
+                          className="border border-border-primary bg-bg-secondary p-3"
+                          colSpan={6}
+                        >
+                          소프트웨어 개발비 (부가세 별도)
+                        </td>
+                        <td
+                          className="border border-border-primary bg-bg-secondary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
+                          colSpan={2}
+                        >
+                          {/* <div className="w-full flex justify-between">
+                <span>합계:</span>
+                <span>
+                  <span>740,141,670</span>원
+                </span>
+              </div> */}
+                          합계: <span>740,141,670</span>원
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p className="mb-10 text-xs md:text-[0.9375rem] leading-[1.6] tracking-[-0.011em]">
+                    ※ 적용 단가: 553,111원(2024년 기준)
+                  </p>
+
+                  <div className="flex justify-between gap-4">
+                    <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
+                      직접경비
+                    </span>
+                    <div className="w-12 h-5 rounded bg-gray-100" />
+                  </div>
+                  <table className="w-full border-collapse origin-top-left scale-65 sm:scale-90 md:scale-100 -mb-12 sm:-mb-4 md:mb-0">
+                    <thead>
+                      <tr>
+                        <th className="border border-border-primary bg-bg-tertiary p-3">
+                          <div className="w-28 h-5 rounded bg-gray-200" />
+                        </th>
+                        <th className="border border-border-primary bg-bg-tertiary p-3">
+                          <div className="w-16 h-5 rounded bg-gray-200" />
+                        </th>
+                        <th className="border border-border-primary bg-bg-tertiary p-3">
+                          <div className="w-20 h-5 rounded bg-gray-200" />
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {/* 1row */}
+                      <tr>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-center">
+                          <div className="w-12 h-5 rounded bg-gray-100" />
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-center">
+                          <div className="w-24 h-5 rounded bg-gray-100" />
+                        </td>
+                        <td className="border border-border-primary bg-bg-primary p-3 text-center">
+                          <div className="w-16 h-5 rounded bg-gray-100" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="absolute top-0 left-0 rotate-y-12 -translate-x-2 translate-y-8 z-20 shadow-lg">
+                <div className="relative p-6 bg-gray-100 rounded-md flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-md before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default h-108" />
+              </div>
+              <div className="absolute top-0 left-0 rotate-y-12 -translate-x-4 translate-y-16 z-10 opacity-50 shadow-lg">
+                <div className="relative p-6 bg-gray-200 rounded-md flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-md before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default h-96" />
+              </div>
             </div>
           </div>
         </div>
