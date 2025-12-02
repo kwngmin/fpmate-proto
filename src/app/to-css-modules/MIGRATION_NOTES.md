@@ -4,7 +4,38 @@ Next.js 13 + MUI 환경으로 이식 시 발생할 수 있는 CSS Reset 이슈�
 
 ## 주요 수정 사항
 
-### 1. P 태그 마진 제거
+### 1. Button 태그 Reset
+Next.js 13 + MUI 환경에서 button의 기본 배경색과 border가 적용되는 문제를 해결했습니다.
+
+**수정된 모든 CSS 파일:**
+- Hero.module.css
+- Header.module.css
+- Footer.module.css
+- Section1~5.module.css
+- Card.module.css
+- Badge.module.css
+- InsightCard.module.css
+- reset.css
+
+**적용된 CSS:**
+```css
+/* CSS Modules에서는 :global() wrapper 사용 */
+:global(button) {
+  background: none;
+  background-color: transparent;
+  border: none;
+  border-width: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  outline: none;
+}
+```
+
+**중요:** CSS Modules는 순수 태그 셀렉터를 허용하지 않으므로 `:global()` wrapper를 사용해야 합니다.
+
+### 2. P 태그 마진 제거
 Tailwind CSS의 reset이 없는 환경에서 `<p>` 태그의 기본 상하단 마진이 레이아웃을 틀어뜨리는 문제를 해결했습니다.
 
 **수정된 파일:**
@@ -19,7 +50,7 @@ Tailwind CSS의 reset이 없는 환경에서 `<p>` 태그의 기본 상하단 �
 margin: 0;
 ```
 
-### 2. 제목(Heading) 태그 마진 제거
+### 3. 제목(Heading) 태그 마진 제거
 모든 section의 제목 요소에 `margin: 0` 추가:
 
 **수정된 파일:**
@@ -30,13 +61,13 @@ margin: 0;
 - `Section4.module.css` - `.title`
 - `Section5.module.css` - `.title`
 
-### 3. List 아이템 마진 제거
+### 4. List 아이템 마진 제거
 Section4의 리스트 아이템에 기본 마진 제거:
 
 **수정된 파일:**
 - `Section4.module.css` - `.listItem`, `.cardContent ul`
 
-### 4. Filter 속성 수정
+### 5. Filter 속성 수정
 `filter: brightness(0) invert(1)`이 검은 ring을 생성하는 문제를 해결하기 위해 더 정확한 white filter로 변경:
 
 **수정된 파일:**
@@ -52,7 +83,7 @@ filter: brightness(0) invert(1);
 filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 ```
 
-### 5. Shadow 스타일 최적화
+### 6. Shadow 스타일 최적화
 과도한 shadow 값을 MUI 환경에 맞게 조정:
 
 **수정된 파일:**
@@ -79,6 +110,7 @@ import './reset.css';
 ## Next.js 13 + MUI 환경으로 이식 시 체크리스트
 
 ✅ **완료된 사항:**
+- [x] button 태그 background & border 제거
 - [x] p 태그 margin 제거
 - [x] heading 태그 margin 제거
 - [x] list 요소 margin 제거
