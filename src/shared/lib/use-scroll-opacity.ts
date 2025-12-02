@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 
 interface UseScrollOpacityOptions {
   /** 스크롤 시작 위치 (이 위치부터 opacity 감소 시작) */
@@ -11,42 +11,28 @@ interface UseScrollOpacityOptions {
   maxOpacity?: number;
 }
 
-function getInitialOpacity(
-  startOffset: number,
-  endOffset: number,
-  minOpacity: number,
-  maxOpacity: number
-): number {
-  // SSR 환경에서는 window가 없으므로 maxOpacity 반환
-  if (typeof window === "undefined") {
-    return maxOpacity;
-  }
-
-  const scrollY = window.scrollY;
-
-  if (scrollY <= startOffset) {
-    return maxOpacity;
-  }
-
-  if (scrollY >= endOffset) {
-    return minOpacity;
-  }
-
-  const progress = (scrollY - startOffset) / (endOffset - startOffset);
-  return maxOpacity - progress * (maxOpacity - minOpacity);
-}
-
 export function useScrollOpacity({
   startOffset = 0,
   endOffset = 500,
   minOpacity = 0,
   maxOpacity = 1,
 }: UseScrollOpacityOptions = {}) {
-  const [opacity, setOpacity] = useState(() =>
-    getInitialOpacity(startOffset, endOffset, minOpacity, maxOpacity)
-  );
+  const subscribe = useCallback((onStoreChange: () => void) => {
+    let rafId: number;
 
-  const calculateOpacity = useCallback(() => {
+    const handleScroll = () => {
+      rafId = requestAnimationFrame(onStoreChange);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  const getSnapshot = useCallback(() => {
     const scrollY = window.scrollY;
 
     if (scrollY <= startOffset) {
@@ -61,22 +47,8 @@ export function useScrollOpacity({
     return maxOpacity - progress * (maxOpacity - minOpacity);
   }, [startOffset, endOffset, minOpacity, maxOpacity]);
 
-  useEffect(() => {
-    let rafId: number;
+  // SSR에서 사용될 값 - 클라이언트 초기 하이드레이션과 일치해야 함
+  const getServerSnapshot = useCallback(() => maxOpacity, [maxOpacity]);
 
-    const handleScroll = () => {
-      rafId = requestAnimationFrame(() => {
-        setOpacity(calculateOpacity());
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      cancelAnimationFrame(rafId);
-    };
-  }, [calculateOpacity]);
-
-  return opacity;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }
