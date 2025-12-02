@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { Card } from "@/shared/ui";
 import SkeletonBar from "./SkeletonBar";
+import { useScrollOpacity } from "@/shared/lib/use-scroll-opacity";
 
 const CardStep1 = () => {
   return (
@@ -362,6 +363,13 @@ const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const opacity = useScrollOpacity({
+    startOffset: 0,
+    endOffset: 700,
+    minOpacity: 0,
+    maxOpacity: 1,
+  });
+
   // 카드 너비와 갭 상수
   const CARD_WIDTH = 256; // w-64
   const CARD_GAP = 8; // gap-2
@@ -623,12 +631,20 @@ const Hero = () => {
       </div>
 
       {/* bottom background gradient */}
-      <div className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-48 -z-10 opacity-50" />
+      <div
+        className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-48 -z-10 opacity-50"
+        style={{
+          opacity: opacity,
+        }}
+      />
 
       {/* bottom center background gradient */}
       <div
         className="absolute h-[1722px] left-[50%] top-12 md:top-24 -translate-x-1/2 w-[1952.78px] pointer-events-none select-none -z-10"
         data-name="background 4"
+        style={{
+          opacity: opacity,
+        }}
       >
         <div className="absolute inset-[-29.04%_-25.6%]">
           <svg
