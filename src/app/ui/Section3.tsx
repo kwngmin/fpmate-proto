@@ -332,7 +332,7 @@ const Section3 = () => {
   return (
     <Fragment>
       <section
-        className="bg-gray-50 py-16 md:py-40 sticky top-16 md:top-0 z-10"
+        className="bg-gray-50 py-16 md:pt-40 sticky top-16 md:top-0 z-10"
         style={{
           transform: "translate3d(0, 0, 0)",
           WebkitBackfaceVisibility: "hidden",
@@ -552,9 +552,9 @@ const Section3 = () => {
             </div>
 
             {/* 보고서 내역 - mobile & tablet */}
-            <div className="relative h-106 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:scale-125 after:bg-linear-to-t after:from-gray-50 via-gray-50 after:to-transparent after:h-1/2 after:pointer-events-none after:z-40">
+            <div className="lg:hidden relative h-136 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:scale-125 after:bg-linear-to-t after:from-gray-50 via-gray-50 after:to-transparent after:h-1/2 after:pointer-events-none after:z-40">
               <div className="absolute top-0 left-0 translate-x-4 translate-y-0 z-30 shadow-lg">
-                <div className="relative p-6 bg-white rounded-lg flex lg:hidden flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default">
+                <div className="relative p-6 bg-white rounded-lg flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default">
                   {/* 개발원가 산정 */}
                   <div className="flex justify-between gap-4">
                     <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
