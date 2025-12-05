@@ -363,9 +363,16 @@ const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const opacity = useScrollOpacity({
+  const opacityGradationCenter = useScrollOpacity({
     startOffset: 0,
     endOffset: 700,
+    minOpacity: 0,
+    maxOpacity: 1,
+  });
+
+  const opacityGradationBottom = useScrollOpacity({
+    startOffset: 0,
+    endOffset: 400,
     minOpacity: 0,
     maxOpacity: 1,
   });
@@ -513,18 +520,18 @@ const Hero = () => {
 
         {/* progress bar */}
         <BlurFadeDiv className="w-full" delay={1200}>
-          <div className="flex items-center w-full max-w-xs sm:max-w-lg md:max-w-xl pb-6 md:pt-6">
+          <div className="flex items-center w-full max-w-xs sm:max-w-lg pb-4 md:pt-4">
             {processSteps.map((step, index) => (
               <Fragment key={step.id}>
                 <button
                   type="button"
                   onClick={handleStepClick(step.id)}
-                  className={`size-8 sm:size-9 md:size-10 rounded-full flex items-center justify-center transition-colors duration-300 cursor-pointer ${
+                  className={`size-8 sm:size-9 rounded-full flex items-center justify-center transition-colors duration-300 cursor-pointer ${
                     step.id === currentStep
                       ? "bg-brand-primary"
                       : step.id < currentStep
                       ? "bg-accent-primary"
-                      : "bg-bg-tertiary"
+                      : "bg-white border border-border-primary"
                   }`}
                 >
                   {step.id < currentStep ? (
@@ -600,21 +607,23 @@ const Hero = () => {
                   }}
                   variant="elevated"
                   padding="none"
-                  className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer overflow-hidden ${
+                  className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer overflow-hidden group ${
                     step.id === currentStep
-                      ? "scale-100 opacity-100 ring-4 ring-brand-primary"
-                      : "outline-2 outline-gray-300 hover:outline-accent-hover"
+                      ? "scale-100 opacity-100 ring-4 ring-black mx-1" // ring-brand-primary
+                      : "scale-98 outline-1 outline-gray-300 hover:outline-accent-hover"
                   }`}
                   onClick={handleStepClick(step.id)}
                 >
-                  {/* <Image
-                    src={step.image}
-                    alt={`step-${step.number}`}
-                    width={256}
-                    height={152}
-                    className="w-[256px] h-[130px] object-cover"
-                  /> */}
-                  {step.content}
+                  <div className="relative">
+                    <div
+                      className={
+                        step.id === currentStep
+                          ? "bg-transparent"
+                          : "absolute top-0 left-0 z-20 w-full h-full bg-white/20 backdrop-blur-[2px]"
+                      }
+                    />
+                    {step.content}
+                  </div>
                   <div className="flex flex-col px-4 py-6">
                     <span className="text-[27px] text-brand-primary font-base">
                       {step.number}
@@ -632,9 +641,9 @@ const Hero = () => {
 
       {/* bottom background gradient */}
       <div
-        className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-48 -z-10 opacity-50"
+        className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-32 -z-10 opacity-50"
         style={{
-          opacity: opacity,
+          opacity: opacityGradationBottom,
         }}
       />
 
@@ -643,7 +652,7 @@ const Hero = () => {
         className="absolute h-[1722px] left-[50%] top-12 md:top-24 -translate-x-1/2 w-[1952.78px] pointer-events-none select-none -z-10"
         data-name="background 4"
         style={{
-          opacity: opacity,
+          opacity: opacityGradationCenter,
         }}
       >
         <div className="absolute inset-[-29.04%_-25.6%]">

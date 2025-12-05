@@ -87,14 +87,19 @@ const Section1 = () => {
   });
 
   return (
-    <section ref={ref} className="bg-gray-50 py-20 md:py-40 overflow-hidden">
+    <section
+      ref={ref}
+      className="bg-gray-50 py-20 md:py-40 overflow-hidden space-y-2 sm:space-y-4"
+    >
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-2">
-        <div className="text-[2rem] md:text-[3rem] leading-[1.15] tracking-tighter font-semibold break-keep">
+        {/* <div className="text-[2rem] md:text-[3rem] leading-[1.15] tracking-tighter font-semibold break-keep">
           <span className="font-extrabold text-brand-primary">FPMate</span>는?{" "}
-        </div>
-        <p className="max-w-96 sm:max-w-none text-[1.5rem] md:text-[2rem] leading-tight tracking-tighter break-keep text-text-primary">
+        </div> */}
+        <p className="max-w-96 sm:max-w-none text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] leading-tight tracking-tighter break-keep text-text-primary">
+          <span className="font-extrabold text-brand-primary">FPMate</span>는{" "}
           <span className="font-semibold">SW 사업 파트너</span>
-          로서 <span className="font-semibold">SW 사업 관리</span>를 돕고자
+          로서 <br />
+          <span className="font-semibold">SW 사업 관리</span>를 돕고자
           탄생하였습니다.
         </p>
       </div>
@@ -147,7 +152,7 @@ const Section1 = () => {
                       alt={`section1-${content.id}`}
                       width={124}
                       height={124}
-                      className="shrink-0 size-28 mb-2"
+                      className="shrink-0 size-24"
                     />
                   </BlurFadeDiv>
 
@@ -164,7 +169,7 @@ const Section1 = () => {
 
                   {/* description */}
                   <BlurFadeText
-                    className="text-[1.0625rem] leading-normal text-center break-keep max-w-48"
+                    className="text-[1.0625rem] leading-normal text-center break-keep max-w-48 text-text-secondary"
                     text={content.description}
                     delay={200 + (index + 1) * 100}
                     useIntersection={true}
@@ -220,7 +225,7 @@ const Section1 = () => {
 
       {/* Section 1 Description */}
       <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-[0.9375rem] leading-normal tracking-tight break-keep text-text-secondary">
+        <p className="text-[0.9375rem] leading-normal tracking-tight break-keep text-text-tertiary">
           <span className="font-semibold">FPMate</span>에서는{" "}
           <span className="font-medium">국제표준</span>(ISO/IEC 14143)에 기반한
           방법으로 <span className="font-medium">SW 사업 비용을 산정</span>

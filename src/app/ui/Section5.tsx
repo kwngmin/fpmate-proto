@@ -27,8 +27,8 @@ const Section5 = () => {
           </div>
 
           {/* text content */}
-          <div className="flex flex-col gap-2">
-            <div className="text-[1.5rem] md:text-[2rem]  leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">
+          <div className="flex flex-col gap-4">
+            <div className="text-[1.5rem] sm:text-[2rem] md:text-[3rem] lg:text-[3.5rem] leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">
               진화하는{" "}
               <span className="font-extrabold text-brand-primary">FPMate</span>,{" "}
               사업 성공 도우미

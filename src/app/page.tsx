@@ -6,6 +6,7 @@ import Section3 from "./ui/Section3";
 import Section4 from "./ui/Section4";
 import Footer from "./ui/Footer";
 import Section5 from "./ui/Section5";
+import Diagram from "./ui/Diagram";
 
 export default function Home() {
   return (
@@ -15,6 +16,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <Hero />
+
+      {/* Diagram */}
+      <Diagram />
 
       {/* Section 1 */}
       <Section1 />
