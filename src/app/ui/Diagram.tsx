@@ -439,7 +439,7 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-xl sm:max-w-md bg-zinc-50 pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                className={`relative text-left p-6 pt-4 rounded-xl sm:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
                   isSmartPricing ? "bg-white sm:outline" : ""
                 }`}
               >
@@ -480,7 +480,7 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-xl sm:max-w-md bg-zinc-50 pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                className={`relative text-left p-6 pt-4 rounded-xl sm:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
                   isErrorValidation ? "bg-white sm:outline" : ""
                 }`}
               >

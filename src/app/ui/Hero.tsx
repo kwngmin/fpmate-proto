@@ -478,7 +478,7 @@ const Hero = () => {
               <BlurFadeText text="로" delay={700} />
             </div>
             <BlurFadeText
-              text="SW 사업 비용 산정과 관리를 한번에"
+              text="SW 사업 비용 산정과 관리를 한 번에"
               delay={800}
               className="break-keep"
             />

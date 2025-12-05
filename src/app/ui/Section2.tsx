@@ -96,11 +96,11 @@ const Section2 = () => {
         </div>
 
         {/* card container */}
-        <div className="flex flex-col gap-4 relative sm:after:content-[''] sm:after:absolute sm:after:inset-0 sm:after:w-2/3 sm:after:left-auto sm:after:-right-6 sm:after:bg-linear-to-r sm:after:from-transparent sm:after:to-white/90 sm:after:pointer-events-none xl:after:hidden">
+        <div className="flex flex-col gap-4 relative sm:after:content-[''] sm:after:absolute sm:after:inset-0 sm:after:w-1/3 sm:after:left-auto sm:after:-top-8 sm:after:-right-6 sm:after:bg-linear-to-r sm:after:from-transparent sm:after:to-white/90 sm:after:pointer-events-none xl:after:hidden after:z-30">
           {/* Insight Cards */}
           <div className="grid grid-cols-3 gap-2 w-[1040px] md:w-[1152px]">
-            {cardData.map((card) => (
-              <InsightCard key={card.id} {...card} isFirst={card.id === 1} />
+            {cardData.map((card, index) => (
+              <InsightCard key={card.id} {...card} cardIndex={index + 1} />
             ))}
           </div>
 

@@ -89,7 +89,7 @@ const Section1 = () => {
   return (
     <section
       ref={ref}
-      className="bg-gray-50 py-20 md:py-40 overflow-hidden space-y-2 sm:space-y-4"
+      className="bg-gray-50 py-20 md:py-40 overflow-hidden space-y-2 sm:space-y-6"
     >
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-2">
         {/* <div className="text-[2rem] md:text-[3rem] leading-[1.15] tracking-tighter font-semibold break-keep">
@@ -114,7 +114,7 @@ const Section1 = () => {
           }}
         >
           <div
-            className="flex gap-2 transition-transform duration-500 ease-out"
+            className="grid grid-cols-3 gap-2 lg:gap-4 transition-transform duration-500 ease-out"
             style={{
               transform: isMobile
                 ? `translateX(-${section1TranslateX}px)`
@@ -126,9 +126,9 @@ const Section1 = () => {
             {section1Contents.map((content, index) => (
               <Card
                 key={content.id}
-                variant="elevated"
+                // variant="elevated"
                 padding="none"
-                className={`grow min-w-72 shrink-0 transition-all duration-500 ease-out ${
+                className={`grow min-w-72 shrink-0 transition-all duration-500 ease-out group select-none shadow-lg shadow-black/5 hover:shadow-black/15 ${
                   isMobile ? "cursor-pointer" : ""
                 } ${
                   isMobile && content.id === section1Step
@@ -139,7 +139,7 @@ const Section1 = () => {
                 }`}
                 onClick={() => isMobile && setSection1Step(content.id)}
               >
-                <div className="flex flex-col gap-1 items-center px-4 pt-6 pb-8">
+                <div className="flex flex-col gap-1 items-center px-4 pt-8 pb-10">
                   <BlurFadeDiv
                     intersectionOptions={{
                       threshold: 0.5,
@@ -152,7 +152,13 @@ const Section1 = () => {
                       alt={`section1-${content.id}`}
                       width={124}
                       height={124}
-                      className="shrink-0 size-24"
+                      className={`shrink-0 size-28 group-hover:scale-110 saturate-30 group-hover:saturate-100 group-hover:opacity-100 transition-all duration-500 ease-out mb-2 ${
+                        index === 2 ? "opacity-60" : "opacity-90"
+                      } ${
+                        content.id === section1Step && isMobile
+                          ? "saturate-100 "
+                          : ""
+                      }`}
                     />
                   </BlurFadeDiv>
 
@@ -169,7 +175,7 @@ const Section1 = () => {
 
                   {/* description */}
                   <BlurFadeText
-                    className="text-[1.0625rem] leading-normal text-center break-keep max-w-48 text-text-secondary"
+                    className="text-[0.9375rem] leading-normal text-center break-keep max-w-48 text-text-secondary"
                     text={content.description}
                     delay={200 + (index + 1) * 100}
                     useIntersection={true}

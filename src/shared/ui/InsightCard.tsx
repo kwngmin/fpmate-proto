@@ -17,7 +17,7 @@ interface InsightCardProps {
   amount: number;
   date: string;
   managerImage: string;
-  isFirst?: boolean;
+  cardIndex: number;
 }
 
 const GradientRingButton = ({
@@ -35,7 +35,7 @@ const GradientRingButton = ({
     <button
       type="button"
       onClick={onClick}
-      className={`relative size-9 rounded-full flex items-center justify-center bg-white z-10 ${
+      className={`relative group size-9 rounded-full flex items-center justify-center bg-white z-10 ${
         isFirstCard
           ? "cursor-pointer active:scale-90"
           : "xl:cursor-pointer xl:active:scale-90"
@@ -68,19 +68,21 @@ const InsightCard = ({
   amount,
   date,
   managerImage,
-  isFirst = false,
+  cardIndex,
 }: InsightCardProps) => {
   const { scrollTo: scrollToTable } = useScrollTo(64);
   const { scrollTo: scrollToChart } = useScrollTo(316);
+
+  const isFirst = cardIndex === 1;
 
   return (
     <Card
       variant="bordered"
       hoverable
       padding="sm"
-      className={`flex flex-col gap-4 hover:translate-y-[-4px] ${
+      className={`flex flex-col gap-4 hover:translate-y-[-4px] hover:border-accent-primary ${
         isFirst
-          ? "translate-y-[-4px] shadow-card xl:translate-y-0 xl:shadow-none"
+          ? "translate-y-[-4px] shadow-card xl:translate-y-0 xl:shadow-none border-accent-primary! xl:border-border-primary! xl:hover:border-accent-primary!"
           : "opacity-50 sm:opacity-80 md:opacity-100 pointer-events-none xl:pointer-events-auto"
       }`}
     >
@@ -116,6 +118,25 @@ const InsightCard = ({
             onClick={() => scrollToTable("section3-table")}
             isFirstCard={isFirst}
           >
+            <div
+              className={`absolute -top-10.5 left-1/2 translate-x-[-50%] translate-y-1 items-center justify-center h-7 pb-0.5 w-22 bg-black rounded text-white font-semibold text-sm ${
+                cardIndex === 1
+                  ? "hidden group-hover:flex"
+                  : cardIndex === 2
+                  ? "hidden xl:flex animate-bounce"
+                  : "hidden group-hover:flex xl:group-hover:hidden"
+              }`}
+            >
+              최종 리포트
+              <div
+                className="flex absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0"
+                style={{
+                  borderLeft: "0.375rem solid transparent",
+                  borderRight: "0.375rem solid transparent",
+                  borderTop: `0.375rem solid black`,
+                }}
+              />
+            </div>
             <Image
               src="/assets/svgs/note.svg"
               alt="noter-icon"
@@ -129,6 +150,25 @@ const InsightCard = ({
             isFirstCard={isFirst}
             order={2}
           >
+            <div
+              className={`absolute -top-10.5 left-1/2 translate-x-[-50%] translate-y-1 items-center justify-center h-7 pb-0.5 w-22 bg-black rounded text-white font-semibold text-sm ${
+                cardIndex === 1
+                  ? "hidden group-hover:flex"
+                  : cardIndex === 2
+                  ? "hidden group-hover:flex xl:group-hover:hidden"
+                  : "hidden xl:flex animate-bounce delay-200"
+              }`}
+            >
+              분석 그래프
+              <div
+                className="flex absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0"
+                style={{
+                  borderLeft: "0.375rem solid transparent",
+                  borderRight: "0.375rem solid transparent",
+                  borderTop: `0.375rem solid black`,
+                }}
+              />
+            </div>
             <Image
               src="/assets/svgs/chart-bar.svg"
               alt="noter-icon"
