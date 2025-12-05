@@ -282,7 +282,7 @@ const Diagram = () => {
       setFocusState((prev) =>
         prev === "smart-pricing" ? "error-validation" : "smart-pricing"
       );
-    }, 8000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [resetTrigger, isAnimationStarted]);
@@ -389,12 +389,28 @@ const Diagram = () => {
   const ACTIVE_COLOR = "#00AB55";
 
   return (
-    <div className="my-40">
+    <div className="my-20 md:my-40">
       {/* title */}
-      <div className="relative z-30 max-w-[1200px] mx-auto px-6 text-[2rem] md:text-[3.5rem] leading-[1.15] tracking-tighter font-semibold break-keep">
-        성공적인 SW 사업을 위한 파트너
-        <br />
-        <span className="font-bold text-brand-primary">FPMate</span>
+      <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-6">
+        <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
+          <span className="font-bold text-brand-primary">FPMate</span>로 쉽게{" "}
+          <br />
+          {/* <br className="sm:hidden" /> */}
+          SW 사업비용을 산정해 보세요
+        </div>
+        <div className="text-[0.9375rem] md:text-[1.0625rem]  leading-normal tracking-tight break-keep max-w-xl md:max-w-3xl space-y-2">
+          <p className="text-text-secondary">
+            반복되고 소모적인 작업은 줄이고 더 합리적인 비용 판단 분석에 집중해
+            보세요. <br className="hidden sm:block" />
+            표준화된 프로세스*로 일관된 산정을 제공합니다.
+            <br />
+          </p>
+          <p className="text-[0.9375rem] text-text-tertiary">
+            * FPMate는{" "}
+            <span className="font-medium text-text-secondary">기능점수</span>{" "}
+            기반의 소프트웨어 대가산정 가이드를 준수합니다.
+          </p>
+        </div>
       </div>
 
       {/* Diagram */}
@@ -411,9 +427,9 @@ const Diagram = () => {
         `}</style>
 
         {/* selected section */}
-        <div className="py-20 z-30 mb-6">
-          <div className="mx-auto w-full max-w-[1200px] h-96 px-6">
-            <div className="relative z-10 flex grow flex-col justify-end md:max-w-prose gap-10">
+        <div className="py-8 sm:py-20 z-30 mb-6">
+          <div className="mx-auto w-full max-w-[1200px] sm:h-96 px-6">
+            <div className="relative z-10 flex grow flex-col justify-end md:max-w-prose gap-4">
               {/* 스마트 대가산정 버튼 */}
               <button
                 type="button"
@@ -423,26 +439,28 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className="relative text-left"
+                className={`relative text-left p-6 pt-4 rounded-xl sm:max-w-md bg-zinc-50 pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                  isSmartPricing ? "bg-white sm:outline" : ""
+                }`}
               >
-                <div className="pointer-events-none flex w-full cursor-pointer items-center justify-center gap-3 py-2 transition-all duration-400 ease-out md:pointer-events-auto md:justify-start text-fg3">
+                <div className="flex w-full items-center gap-3 py-2 transition-all duration-400 ease-out">
                   <span
-                    className={`text-[1.0625rem] sm:text-[1.3125rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
+                    className={`text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
                   >
                     AI와 자동산정으로 구현하는 스마트 대가산정
                   </span>
                   {isSmartPricing && (
-                    <span className="relative flex h-3 w-3">
+                    <span className="relative hidden sm:flex h-3 w-3">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
                     </span>
                   )}
                 </div>
                 <p
-                  className={`text-[0.9375rem] sm:text-base max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
+                  className={`text-[0.9375rem] leading-normal max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
                     isSmartPricing
                       ? "text-text-secondary" // max-h-28
-                      : " text-text-tertiary" // max-h-0
+                      : "text-text-tertiary" // max-h-0
                   }`}
                 >
                   요구사항 문서를 입력하는 순간, AI가 내용을 분석해 기능을 자동
@@ -451,7 +469,7 @@ const Diagram = () => {
                 </p>
               </button>
 
-              <div className="h-px bg-border-primary max-w-96" />
+              {/* <div className="h-px bg-border-primary max-w-96" /> */}
 
               {/* 오류 검증 버튼 */}
               <button
@@ -462,26 +480,28 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className="relative text-left"
+                className={`relative text-left p-6 pt-4 rounded-xl sm:max-w-md bg-zinc-50 pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                  isErrorValidation ? "bg-white sm:outline" : ""
+                }`}
               >
-                <div className="pointer-events-none flex w-full cursor-pointer items-center justify-center gap-3 py-2 transition-all duration-400 ease-out md:pointer-events-auto md:justify-start text-fg3">
+                <div className="flex w-full items-center gap-3 py-2 transition-all duration-400 ease-out">
                   <span
-                    className={`text-[1.0625rem] sm:text-[1.3125rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
+                    className={`text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
                   >
                     편리한 오류 검증으로 향상되는 업무 효율
                   </span>
                   {isErrorValidation && (
-                    <span className="relative flex h-3 w-3">
+                    <span className="relative hidden sm:flex h-3 w-3">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
                     </span>
                   )}
                 </div>
                 <p
-                  className={`text-[0.9375rem] sm:text-base max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden text-text-secondary ${
+                  className={`text-[0.9375rem] leading-normal max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
                     isErrorValidation
                       ? "text-text-secondary" // max-h-28
-                      : " text-text-tertiary" // max-h-0
+                      : "text-text-tertiary" // max-h-0
                   }`}
                 >
                   FPMate가 데이터의 중복, 오류, 누락을 확인해 업무 부담은 줄이고
@@ -493,7 +513,7 @@ const Diagram = () => {
         </div>
 
         {/* background grid */}
-        <div className="absolute top-0 h-[838px] w-full -translate-x-1/3 translate-y-20 scale-[0.5] md:-top-20 md:-translate-x-1/4 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 hidden md:block pointer-events-none">
+        <div className="absolute top- h-[838px] w-full -translate-x-1/3 translate-y-20 scale-[0.5] md:-top-20 md:-translate-x-1/4 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 hidden md:block pointer-events-none">
           <div className="h-[838px] w-full relative" style={{ opacity: 1 }}>
             <div className="absolute left-[calc(50%-550px)] -top-20 h-[1095px] w-[1580px] -rotate-30 skew-x-30">
               {/* grid image */}
@@ -876,27 +896,36 @@ const Diagram = () => {
           </div>
         </div>
 
-        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-6 relative z-30">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="border-t border-border-primary lg:px-4 py-6 bg-white hover:border-accent-hover"
-            >
-              <div className="text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-medium mb-2 flex items-center gap-2">
-                <Image
-                  src={`/assets/svgs/${feature.icon}.svg`}
-                  alt={feature.title}
-                  width={16}
-                  height={16}
-                  className="size-5"
-                />
-                {feature.title}
+        <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6">
+          {/* title */}
+          {/* <div className="text-[1.5rem] md:text-[2rem] leading-tight tracking-tighter font-semibold break-keep">
+            성공적인 SW 사업을 위한 파트너,
+            <span className="font-bold text-brand-primary">FPMate</span>
+          </div> */}
+
+          {/* grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="border-t border-border-primary lg:px-4 py-6 bg-white hover:border-accent-hover"
+              >
+                <div className="text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-medium mb-2 flex items-center gap-2">
+                  <Image
+                    src={`/assets/svgs/${feature.icon}.svg`}
+                    alt={feature.title}
+                    width={16}
+                    height={16}
+                    className="size-5"
+                  />
+                  {feature.title}
+                </div>
+                <p className="text-[0.8125rem] sm:text-[0.9375rem] break-keep max-w-56 leading-normal text-text-tertiary">
+                  {feature.description}
+                </p>
               </div>
-              <p className="text-[0.8125rem] sm:text-[0.9375rem] break-keep max-w-56 leading-normal text-text-tertiary">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
