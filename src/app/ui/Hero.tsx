@@ -381,6 +381,8 @@ const Hero = () => {
   const CARD_WIDTH = 256; // w-64
   const CARD_GAP = 8; // gap-2
 
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+
   // 컨테이너 너비 측정 (resize 이벤트 구독)
   useEffect(() => {
     const updateContainerWidth = () => {
@@ -616,11 +618,11 @@ const Hero = () => {
                 >
                   <div className="relative">
                     <div
-                      className={
+                      className={`${
                         step.id === currentStep
                           ? "bg-transparent"
-                          : "absolute top-0 left-0 z-20 w-full h-full bg-white/20 backdrop-blur-[2px]"
-                      }
+                          : "absolute top-0 left-0 z-20 w-full h-full bg-white/20"
+                      } ${isMobile ? "" : "backdrop-blur-[2px]"}`}
                     />
                     {step.content}
                   </div>
