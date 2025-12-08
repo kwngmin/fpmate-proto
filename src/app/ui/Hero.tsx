@@ -649,9 +649,9 @@ const Hero = () => {
       {/* bottom background gradient */}
       <div
         className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-32 -z-10 opacity-50 transition-opacity duration-1500 ease-in"
-        style={{
-          opacity: isAnimationStarted ? opacityGradationBottom : 0,
-        }}
+        // style={{
+        //   opacity: isAnimationStarted ? opacityGradationBottom : 0,
+        // }}
       />
 
       {/* bottom center background gradient */}
@@ -660,9 +660,9 @@ const Hero = () => {
           isAnimationStarted ? "-translate-x-1/2" : ""
         }`}
         data-name="background 4"
-        style={{
-          opacity: isAnimationStarted ? opacityGradationCenter : 0,
-        }}
+        // style={{
+        //   opacity: isAnimationStarted ? opacityGradationCenter : 0,
+        // }}
       >
         <div className="absolute inset-[-29.04%_-25.6%]">
           <svg
