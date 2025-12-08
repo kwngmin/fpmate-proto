@@ -462,7 +462,7 @@ const Hero = () => {
       {/* text & progress bar container */}
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Title */}
-        <div className="py-10 space-y-6 flex flex-col">
+        <div className="py-10 space-y-6 flex flex-col relative z-20">
           <FadeText
             text="FINE PROJECT MATE"
             className="text-[0.9375rem] md:text-[1.0625rem] tracking-tight font-semibold text-text-tertiary"
