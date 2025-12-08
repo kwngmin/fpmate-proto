@@ -2,19 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface BlurFadeTextProps {
+interface FadeTextProps {
   text: string;
-  className?: string;
-  delay?: number;
-  hasBlur?: boolean;
-  /** IntersectionObserver 사용 여부 (true면 viewport에 들어올 때 애니메이션 시작) */
-  useIntersection?: boolean;
-  /** IntersectionObserver 옵션 */
-  intersectionOptions?: IntersectionObserverInit;
-}
-
-interface BlurFadeDivProps {
-  children: React.ReactNode;
   className?: string;
   delay?: number;
   hasBlur?: boolean;
@@ -32,15 +21,14 @@ export function FadeText({
   intersectionOptions,
   hasBlur = true,
   ...props
-}: BlurFadeTextProps) {
+}: FadeTextProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
   // IntersectionObserver 설정
   useEffect(() => {
-    if (!useIntersection) return;
-    if (!ref.current) return;
+    if (!useIntersection || !ref.current) return;
 
     const observer = new IntersectionObserver((entries) => {
       const [entry] = entries;
@@ -55,17 +43,13 @@ export function FadeText({
   }, [useIntersection, intersectionOptions, hasIntersected]);
 
   // 애니메이션 트리거
+
   useEffect(() => {
-    if (useIntersection) {
-      // IntersectionObserver 사용: intersection 후 delay
-      if (!hasIntersected) return;
-      const timer = setTimeout(() => setIsVisible(true), delay);
-      return () => clearTimeout(timer);
-    } else {
-      // 기존 동작: mount 시점부터 delay
-      const timer = setTimeout(() => setIsVisible(true), delay);
-      return () => clearTimeout(timer);
-    }
+    const shouldStart = useIntersection ? hasIntersected : true;
+    if (!shouldStart) return;
+
+    const timer = setTimeout(() => setIsVisible(true), delay);
+    return () => clearTimeout(timer);
   }, [useIntersection, hasIntersected, delay]);
 
   return (
@@ -85,7 +69,18 @@ export function FadeText({
   );
 }
 
-export function BlurFadeDiv({
+interface FadeDivProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  hasBlur?: boolean;
+  /** IntersectionObserver 사용 여부 (true면 viewport에 들어올 때 애니메이션 시작) */
+  useIntersection?: boolean;
+  /** IntersectionObserver 옵션 */
+  intersectionOptions?: IntersectionObserverInit;
+}
+
+export function FadeDiv({
   children,
   className = "",
   delay = 0,
@@ -93,7 +88,7 @@ export function BlurFadeDiv({
   useIntersection = false,
   intersectionOptions,
   ...props
-}: BlurFadeDivProps) {
+}: FadeDivProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
   const ref = useRef<HTMLDivElement>(null);

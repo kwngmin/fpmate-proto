@@ -8,9 +8,29 @@ import Section3 from "./ui/Section3";
 import Section4 from "./ui/Section4";
 import Footer from "./ui/Footer";
 import Section5 from "./ui/Section5";
+import { useEffect, useRef, useState } from "react";
 // import Diagram from "./ui/Diagram";
 
 export default function Home() {
+  const [isHeroComplete, setIsHeroComplete] = useState(false);
+  const rafIdRef = useRef<number>(0);
+  const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    rafIdRef.current = requestAnimationFrame(() => {
+      timeoutIdRef.current = setTimeout(() => {
+        setIsHeroComplete(true);
+      }, 2650);
+    });
+
+    return () => {
+      cancelAnimationFrame(rafIdRef.current);
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
@@ -19,26 +39,26 @@ export default function Home() {
       {/* Hero Section */}
       <Hero />
 
-      {/* Diagram */}
-      {/* <Diagram /> */}
-
-      {/* Section 1 */}
-      <Section1 />
-
-      {/* Section 2 */}
-      <Section2 />
-
-      {/* Section 3 */}
-      <Section3 />
-
-      {/* Section 4 */}
-      <Section4 />
-
-      {/* Section 5 */}
-      <Section5 />
-
-      {/* Footer */}
-      <Footer />
+      {isHeroComplete ? (
+        <>
+          {/* Diagram */}
+          {/* <Diagram /> */}
+          {/* Section 1 */}
+          <Section1 />
+          {/* Section 2 */}
+          <Section2 />
+          {/* Section 3 */}
+          <Section3 />
+          {/* Section 4 */}
+          <Section4 />
+          {/* Section 5 */}
+          <Section5 />
+          {/* Footer */}
+          <Footer />
+        </>
+      ) : (
+        <div className="h-screen" aria-hidden={true} />
+      )}
     </div>
   );
 }

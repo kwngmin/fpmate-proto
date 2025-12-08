@@ -2,7 +2,7 @@
 
 import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
 import { Card } from "@/shared/ui";
-import { BlurFadeDiv, FadeText } from "@/shared/ui/BlurFadeText";
+import { FadeDiv, FadeText } from "@/shared/ui/FadeMotion";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -140,7 +140,7 @@ const Section1 = () => {
                 onClick={() => isMobile && setSection1Step(content.id)}
               >
                 <div className="flex flex-col gap-1 items-center px-4 pt-8 pb-10">
-                  <BlurFadeDiv
+                  <FadeDiv
                     intersectionOptions={{
                       threshold: 0.5,
                     }}
@@ -161,7 +161,7 @@ const Section1 = () => {
                           : ""
                       }`}
                     />
-                  </BlurFadeDiv>
+                  </FadeDiv>
 
                   {/* title */}
                   <FadeText

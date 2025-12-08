@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { BlurFadeDiv, FadeText } from "@/shared/ui/BlurFadeText";
+import { FadeDiv, FadeText } from "@/shared/ui/FadeMotion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { Card } from "@/shared/ui";
@@ -521,7 +521,7 @@ const Hero = () => {
         </div>
 
         {/* progress bar */}
-        <BlurFadeDiv className="w-full" delay={1200}>
+        <FadeDiv className="w-full" delay={1200}>
           <div className="flex items-center w-full max-w-xs sm:max-w-lg pb-4 md:pt-4">
             {processSteps.map((step, index) => (
               <Fragment key={step.id}>
@@ -582,7 +582,7 @@ const Hero = () => {
               }
             }
           `}</style>
-        </BlurFadeDiv>
+        </FadeDiv>
       </div>
 
       {/* 카드 영역 - Linear.app 스타일 Inset 캐로셀 */}
@@ -602,7 +602,7 @@ const Hero = () => {
             }}
           >
             {processSteps.map((step, index) => (
-              <BlurFadeDiv key={step.id} delay={1700 + index * 150}>
+              <FadeDiv key={step.id} delay={1700 + index * 150}>
                 <Card
                   ref={(el) => {
                     cardRefs.current[index] = el;
@@ -635,7 +635,7 @@ const Hero = () => {
                     </span>
                   </div>
                 </Card>
-              </BlurFadeDiv>
+              </FadeDiv>
             ))}
           </div>
         </div>
