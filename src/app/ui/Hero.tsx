@@ -584,7 +584,7 @@ const Hero = () => {
       </div>
 
       {/* 카드 영역 - Linear.app 스타일 Inset 캐로셀 */}
-      <div className='hidden className="w-full py-4 overflow-hidden'>
+      <div className='className="w-full py-4 overflow-hidden'>
         {/* 1200px 컨테이너 - main과 동일한 정렬 */}
         <div
           ref={containerRef}
@@ -643,7 +643,7 @@ const Hero = () => {
       <div
         className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-32 -z-10 opacity-50 transition-opacity duration-1500 ease-in"
         style={{
-          opacity: isAnimationStarted ? opacityGradation : 0,
+          opacity: opacityGradation * 0.5,
         }}
       />
 
@@ -652,7 +652,7 @@ const Hero = () => {
         className="absolute h-[1722px] left-[50%] top-12 md:top-24 w-[1952.78px] pointer-events-none select-none -z-10 scale-90 transition-opacity duration-500 ease-in -translate-x-1/2"
         data-name="background 4"
         style={{
-          opacity: isAnimationStarted ? opacityGradation : 0,
+          opacity: opacityGradation,
         }}
       >
         <div className="absolute inset-[-29.04%_-25.6%]">
