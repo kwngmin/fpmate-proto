@@ -366,7 +366,7 @@ const Diagram = () => {
   const ACTIVE_COLOR = "#00AB55";
 
   return (
-    <div className="mt-20 md:mt-40 space-y-20">
+    <div className="mt-20 md:mt-40 space-y-20 md:space-y-0">
       {/* title */}
       <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-6">
         <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
@@ -407,7 +407,7 @@ const Diagram = () => {
         `}</style>
 
         {/* selected section */}
-        <div className="py-8 md:pt-20 z-30 mb-6 mt-68 sm:mt-108 md:mt-80 lg:mt-0">
+        <div className="py-16 md:pt-20 z-30 mb-6 mt-68 sm:mt-108 md:mt-80 lg:mt-0">
           <div className="mx-auto w-full max-w-[1200px] lg:h-96 px-6">
             <div className="relative z-10 flex grow flex-col justify-end md:max-w-prose gap-4">
               {/* 스마트 대가산정 버튼 */}
@@ -509,7 +509,7 @@ const Diagram = () => {
         </div>
 
         {/* background grid */}
-        <div className="absolute -top-72 h-[838px] left-1/2 transform -translate-x-38 translate-y-20 scale-[0.55] sm:scale-[0.85] sm:-top-40 sm:-translate-x-60 md:-top-28 lg:-top-20 md:-translate-x-48 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 pointer-events-none bg-red-500">
+        <div className="absolute -top-72 h-[838px] left-1/2 transform -translate-x-38 translate-y-20 scale-[0.55] sm:scale-[0.875] sm:-top-40 sm:-translate-x-60 md:-top-28 lg:-top-20 md:-translate-x-48 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 pointer-events-none bg-red-500">
           <div className="h-[838px] w-full relative" style={{ opacity: 1 }}>
             <div className="absolute left-[calc(50%-550px)] -top-20 h-[1095px] w-[1580px] -rotate-30 skew-x-30">
               {/* grid image */}

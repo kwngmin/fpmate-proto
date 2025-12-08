@@ -368,7 +368,7 @@ const Hero = () => {
 
   const opacityGradation = useScrollOpacity({
     startOffset: 0,
-    endOffset: 600,
+    endOffset: 500,
     minOpacity: 0,
     maxOpacity: 1,
   });
@@ -458,7 +458,7 @@ const Hero = () => {
   }, [currentStep, containerWidth]);
 
   return (
-    <main className="relative pb-20 md:pb-32 lg:pb-40 overflow-hidden">
+    <main className="relative pb-24 md:pb-40 overflow-hidden">
       {/* text & progress bar container */}
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Title */}
