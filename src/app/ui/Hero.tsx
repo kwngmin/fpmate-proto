@@ -556,7 +556,7 @@ const Hero = () => {
                 </button>
                 {index < processSteps.length - 1 && (
                   <div className="grow h-1 sm:h-0.75 bg-border-primary relative overflow-hidden">
-                    {isAnimationStarted && step.id === currentStep && (
+                    {Boolean(isAnimationStarted) && step.id === currentStep && (
                       <div
                         key={`${currentStep}-${resetTrigger}`}
                         className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
@@ -600,7 +600,7 @@ const Hero = () => {
             }}
           >
             {processSteps.map((step, index) => (
-              <FadeDiv key={step.id} delay={1700 + index * 150}>
+              <FadeDiv key={step.id} delay={2000 + index * 150}>
                 <Card
                   ref={(el) => {
                     cardRefs.current[index] = el;
