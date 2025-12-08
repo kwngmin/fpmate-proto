@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Header from "./ui/Header";
 import Hero from "./ui/Hero";
 import Section1 from "./ui/Section1";
@@ -8,8 +9,7 @@ import Section3 from "./ui/Section3";
 import Section4 from "./ui/Section4";
 import Footer from "./ui/Footer";
 import Section5 from "./ui/Section5";
-import { useEffect, useRef, useState } from "react";
-// import Diagram from "./ui/Diagram";
+import Diagram from "./ui/Diagram";
 
 export default function Home() {
   const [isHeroComplete, setIsHeroComplete] = useState(false);
@@ -42,7 +42,7 @@ export default function Home() {
       {isHeroComplete ? (
         <>
           {/* Diagram */}
-          {/* <Diagram /> */}
+          <Diagram />
           {/* Section 1 */}
           <Section1 />
           {/* Section 2 */}

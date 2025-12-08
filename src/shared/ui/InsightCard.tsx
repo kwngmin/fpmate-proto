@@ -82,7 +82,7 @@ const InsightCard = ({
       padding="sm"
       className={`flex flex-col gap-4 hover:translate-y-[-4px] hover:border-accent-primary ${
         isFirst
-          ? "translate-y-[-4px] shadow-card xl:translate-y-0 xl:shadow-none border-accent-primary! xl:border-border-primary! xl:hover:border-accent-primary!"
+          ? "translate-y-[-4px] shadow-card xl:translate-y-0 xl:shadow-none outline! xl:outline-0! xl:border-border-primary! xl:hover:border-accent-primary!"
           : "opacity-50 sm:opacity-80 md:opacity-100 pointer-events-none xl:pointer-events-auto"
       }`}
     >

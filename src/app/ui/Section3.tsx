@@ -499,12 +499,6 @@ const Section3 = () => {
                       className="border border-border-primary bg-bg-secondary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
                       colSpan={2}
                     >
-                      {/* <div className="w-full flex justify-between">
-                <span>합계:</span>
-                <span>
-                  <span>740,141,670</span>원
-                </span>
-              </div> */}
                       합계: <span>740,141,670</span>원
                     </td>
                   </tr>
@@ -552,7 +546,7 @@ const Section3 = () => {
             </div>
 
             {/* 보고서 내역 - mobile & tablet */}
-            <div className="lg:hidden relative h-136 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:scale-125 after:bg-linear-to-t after:from-gray-50 via-gray-50 after:to-transparent after:h-1/2 after:pointer-events-none after:z-40">
+            <div className="lg:hidden relative h-136 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-16 after:md:bottom-0 after:scale-125 after:bg-linear-to-t after:from-gray-50 after:via-gray-50 after:to-transparent after:h-1/3 after:pointer-events-none after:z-40">
               <div className="absolute top-0 left-0 translate-x-4 translate-y-0 z-30 shadow-lg">
                 <div className="relative p-6 bg-white rounded-lg flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default">
                   {/* 개발원가 산정 */}

@@ -3,29 +3,6 @@
 import Image from "next/image";
 import { useState, useEffect, useCallback, useMemo } from "react";
 
-const features = [
-  {
-    title: "신규 개발",
-    description: "초기 개발 규모 산정의 정확도 향상",
-    icon: "magic-wand",
-  },
-  {
-    title: "유지보수",
-    description: "변경개선 요청에 대한 업무량 산정의 객관성과 신뢰도 향상",
-    icon: "toolbox",
-  },
-  {
-    title: "발주사",
-    description: "견적 비교와 기능점수 검증에 효과적으로 대응",
-    icon: "building-office",
-  },
-  {
-    title: "개발사",
-    description: "견적제안서 작성에 필요한 기능점수 기반 근거 자료 자동 생성",
-    icon: "code",
-  },
-];
-
 type FocusState = "smart-pricing" | "error-validation";
 
 interface Point {
@@ -389,7 +366,7 @@ const Diagram = () => {
   const ACTIVE_COLOR = "#00AB55";
 
   return (
-    <div className="my-20 md:my-40">
+    <div className="mt-20 md:mt-40">
       {/* title */}
       <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-6">
         <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
@@ -439,7 +416,7 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-xl sm:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                className={`relative text-left p-6 pt-4 rounded-md sm:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
                   isSmartPricing ? "bg-white sm:outline" : ""
                 }`}
               >
@@ -469,8 +446,6 @@ const Diagram = () => {
                 </p>
               </button>
 
-              {/* <div className="h-px bg-border-primary max-w-96" /> */}
-
               {/* 오류 검증 버튼 */}
               <button
                 type="button"
@@ -480,7 +455,7 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-xl sm:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                className={`relative text-left p-6 pt-4 rounded-md sm:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
                   isErrorValidation ? "bg-white sm:outline" : ""
                 }`}
               >
@@ -893,38 +868,6 @@ const Diagram = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6">
-          {/* title */}
-          {/* <div className="text-[1.5rem] md:text-[2rem] leading-tight tracking-tighter font-semibold break-keep">
-            성공적인 SW 사업을 위한 파트너,
-            <span className="font-bold text-brand-primary">FPMate</span>
-          </div> */}
-
-          {/* grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="border-t border-border-primary lg:px-4 py-6 bg-white hover:border-accent-hover"
-              >
-                <div className="text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-medium mb-2 flex items-center gap-2">
-                  <Image
-                    src={`/assets/svgs/${feature.icon}.svg`}
-                    alt={feature.title}
-                    width={16}
-                    height={16}
-                    className="size-5"
-                  />
-                  {feature.title}
-                </div>
-                <p className="text-[0.8125rem] sm:text-[0.9375rem] break-keep max-w-56 leading-normal text-text-tertiary">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </div>

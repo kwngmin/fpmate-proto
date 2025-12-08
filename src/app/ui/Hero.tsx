@@ -368,7 +368,7 @@ const Hero = () => {
 
   const opacityGradation = useScrollOpacity({
     startOffset: 0,
-    endOffset: 700,
+    endOffset: 600,
     minOpacity: 0,
     maxOpacity: 1,
   });
@@ -520,7 +520,7 @@ const Hero = () => {
 
         {/* progress bar */}
         <FadeDiv className="w-full" delay={1200}>
-          <div className="flex items-center w-full max-w-xs sm:max-w-lg pb-4 md:pt-4">
+          <div className="flex items-center w-full max-w-xs sm:max-w-lg pb-4 md:py-4 lg:py-8">
             {processSteps.map((step, index) => (
               <Fragment key={step.id}>
                 <button
@@ -641,7 +641,7 @@ const Hero = () => {
 
       {/* bottom background gradient */}
       <div
-        className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-32 -z-10 opacity-50 transition-opacity duration-1500 ease-in"
+        className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-32 -z-10 opacity-50 transition-opacity duration-500 ease-in"
         style={{
           opacity: opacityGradation * 0.5,
         }}
@@ -881,15 +881,16 @@ const Hero = () => {
       </div>
 
       {/* arrow down */}
-      <div className="absolute bottom-6 md:bottom-12 lg:bottom-16 left-0 right-0 w-full h-10 flex items-center justify-center animate-bounce">
+      {/* <div className="absolute bottom-6 md:bottom-12 lg:bottom-20 left-0 right-0 w-full h-10 flex items-center justify-center animate-bounce text-white opacity-75 font-semibold">
         <Image
           src="/assets/svgs/caret-down.svg"
           alt="arrow-down"
           width={24}
           height={24}
-          className="size-12 md:size-16 brightness-0 invert opacity-70"
+          className="size-12 md:size-14 brightness-0 invert mr-2"
         />
-      </div>
+        아래로 스크롤
+      </div> */}
     </main>
   );
 };

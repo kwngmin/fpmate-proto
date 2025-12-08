@@ -6,6 +6,29 @@ import { FadeDiv, FadeText } from "@/shared/ui/FadeMotion";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
+const features = [
+  {
+    title: "신규 개발",
+    description: "초기 개발 규모 산정의 정확도 향상",
+    icon: "magic-wand",
+  },
+  {
+    title: "유지보수",
+    description: "변경개선 요청에 대한 업무량 산정의 객관성과 신뢰도 향상",
+    icon: "toolbox",
+  },
+  {
+    title: "발주사",
+    description: "견적 비교와 기능점수 검증에 효과적으로 대응",
+    icon: "building-office",
+  },
+  {
+    title: "개발사",
+    description: "견적제안서 작성에 필요한 기능점수 기반 근거 자료 자동 생성",
+    icon: "code",
+  },
+];
+
 /**
  * Section 1 카드 데이터
  */
@@ -91,7 +114,7 @@ const Section1 = () => {
       ref={ref}
       className="bg-gray-50 py-20 md:py-40 overflow-hidden space-y-2 sm:space-y-6"
     >
-      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-2">
+      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-4">
         {/* <div className="text-[2rem] md:text-[3rem] leading-[1.15] tracking-tighter font-semibold break-keep">
           <span className="font-extrabold text-brand-primary">FPMate</span>는?{" "}
         </div> */}
@@ -102,6 +125,17 @@ const Section1 = () => {
           <span className="font-semibold">SW 사업 관리</span>를 돕고자
           탄생하였습니다.
         </p>
+
+        <p className="text-[0.9375rem] leading-normal tracking-tight break-keep text-text-tertiary">
+          <span className="font-semibold">FPMate</span>에서는{" "}
+          <span className="font-medium">국제표준</span>(ISO/IEC 14143)에 기반한
+          방법으로 <span className="font-medium">SW 사업 비용을 산정</span>
+          합니다.
+        </p>
+        {/* Section 1 Description */}
+        {/* <div className="max-w-[1200px] mx-auto px-6">
+        
+      </div> */}
       </div>
 
       {/* 카드 영역 - 1024px 이하에서 캐로셀 */}
@@ -128,11 +162,11 @@ const Section1 = () => {
                 key={content.id}
                 // variant="elevated"
                 padding="none"
-                className={`grow min-w-72 shrink-0 transition-all duration-500 ease-out group select-none shadow-lg shadow-black/5 hover:shadow-black/15 ${
+                className={`grow min-w-72 shrink-0 transition-[outline, scale,opacity] duration-500 ease-out group select-none hover:shadow-xl hover:shadow-black/5 ${
                   isMobile ? "cursor-pointer" : ""
                 } ${
                   isMobile && content.id === section1Step
-                    ? "scale-100 opacity-100 ring ring-accent-primary"
+                    ? "scale-100 opacity-100 outline"
                     : isMobile
                     ? "scale-[0.98] opacity-70"
                     : ""
@@ -153,13 +187,7 @@ const Section1 = () => {
                       alt={`section1-${content.id}`}
                       width={124}
                       height={124}
-                      className={`shrink-0 size-28 group-hover:scale-110 saturate-30 group-hover:saturate-100 group-hover:opacity-100 transition-all duration-500 ease-out mb-2 ${
-                        index === 2 ? "opacity-60" : "opacity-90"
-                      } ${
-                        content.id === section1Step && isMobile
-                          ? "saturate-100 "
-                          : ""
-                      }`}
+                      className="shrink-0 size-28 group-hover:scale-110 transition-[scale,opacity] duration-500 ease-out mb-2"
                     />
                   </FadeDiv>
 
@@ -167,7 +195,6 @@ const Section1 = () => {
                   <FadeText
                     className="text-lg tracking-tight font-semibold break-keep"
                     text={content.title}
-                    delay={100 + (index + 1) * 75}
                     hasBlur={false}
                     useIntersection={true}
                     intersectionOptions={{
@@ -179,7 +206,6 @@ const Section1 = () => {
                   <FadeText
                     className="text-[0.9375rem] leading-normal text-center break-keep max-w-48 text-text-secondary"
                     text={content.description}
-                    delay={200 + (index + 1) * 100}
                     hasBlur={false}
                     useIntersection={true}
                     intersectionOptions={{
@@ -196,7 +222,7 @@ const Section1 = () => {
               onClick={() =>
                 section1Step > 1 && setSection1Step(section1Step - 1)
               }
-              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:border-accent-hover active:scale-95 ${
+              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:outline active:scale-95 ${
                 section1Step > 1 ? "opacity-100" : "opacity-50"
               }`}
             >
@@ -214,7 +240,7 @@ const Section1 = () => {
                 section1Step < section1Contents.length &&
                 setSection1Step(section1Step + 1)
               }
-              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:border-accent-hover active:scale-95 ${
+              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:outline active:scale-95 ${
                 section1Step < section1Contents.length
                   ? "opacity-100"
                   : "opacity-50"
@@ -232,14 +258,29 @@ const Section1 = () => {
         </div>
       </div>
 
-      {/* Section 1 Description */}
-      <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-[0.9375rem] leading-normal tracking-tight break-keep text-text-tertiary">
-          <span className="font-semibold">FPMate</span>에서는{" "}
-          <span className="font-medium">국제표준</span>(ISO/IEC 14143)에 기반한
-          방법으로 <span className="font-medium">SW 사업 비용을 산정</span>
-          합니다.
-        </p>
+      <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="border-t border-border-primary px-4 py-6 lg:px-6 bg-white hover:border-accent-hover"
+            >
+              <div className="text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-medium mb-2 flex items-center gap-2">
+                <Image
+                  src={`/assets/svgs/${feature.icon}.svg`}
+                  alt={feature.title}
+                  width={16}
+                  height={16}
+                  className="size-5"
+                />
+                {feature.title}
+              </div>
+              <p className="text-[0.8125rem] sm:text-[0.9375rem] break-keep max-w-56 leading-normal text-text-tertiary">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
