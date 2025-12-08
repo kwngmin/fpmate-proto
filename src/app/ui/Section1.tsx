@@ -178,7 +178,7 @@ const Section1 = () => {
                       threshold: 0.5,
                     }}
                     hasBlur={false}
-                    useIntersection={true}
+                    useIntersection={!isMobile}
                   >
                     {/* image */}
                     <Image
@@ -195,7 +195,7 @@ const Section1 = () => {
                     className="text-lg tracking-tight font-semibold break-keep"
                     text={content.title}
                     hasBlur={false}
-                    useIntersection={true}
+                    useIntersection={!isMobile}
                     intersectionOptions={{
                       threshold: 0.5,
                     }}
@@ -206,7 +206,7 @@ const Section1 = () => {
                     className="text-base leading-normal text-center break-keep max-w-48 text-text-secondary"
                     text={content.description}
                     hasBlur={false}
-                    useIntersection={true}
+                    useIntersection={!isMobile}
                     intersectionOptions={{
                       threshold: 0.5,
                     }}

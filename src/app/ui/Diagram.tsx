@@ -408,7 +408,7 @@ const Diagram = () => {
 
         {/* selected section */}
         <div className="py-8 md:pt-20 z-30 mb-6 mt-64 md:mt-80 lg:mt-0">
-          <div className="mx-auto w-full max-w-[1200px] lg:h-96 px-6">
+          <div className="mx-auto w-full max-w-[1200px] lg:h-96 sm:px-6">
             <div className="relative z-10 flex grow flex-col justify-end md:max-w-prose gap-4">
               {/* 스마트 대가산정 버튼 */}
               <button
@@ -419,8 +419,8 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
-                  isSmartPricing ? "bg-white sm:outline" : ""
+                className={`relative text-left p-6 pt-4 sm:rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                  isSmartPricing ? "bg-white sm:outline" : "hidden sm:block"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">
@@ -438,7 +438,7 @@ const Diagram = () => {
                       AI와 자동산정으로 구현하는 스마트 대가산정
                     </span>
                     {isSmartPricing && (
-                      <span className="relative flex h-3 w-3">
+                      <span className="relative hidden sm:flex h-3 w-3">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
                       </span>
@@ -467,8 +467,8 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
-                  isErrorValidation ? "bg-white sm:outline" : ""
+                className={`relative text-left p-6 pt-4 sm:rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                  isErrorValidation ? "bg-white sm:outline" : "hidden sm:block"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">
@@ -486,7 +486,7 @@ const Diagram = () => {
                       편리한 오류 검증으로 향상되는 업무 효율
                     </span>
                     {isErrorValidation && (
-                      <span className="relative flex h-3 w-3">
+                      <span className="relative hidden sm:flex h-3 w-3">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
                       </span>
