@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { BlurFadeDiv, BlurFadeText } from "@/shared/ui/BlurFadeText";
+import { BlurFadeDiv, FadeText } from "@/shared/ui/BlurFadeText";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { Card } from "@/shared/ui";
@@ -465,55 +465,55 @@ const Hero = () => {
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Title */}
         <div className="py-10 space-y-6 flex flex-col">
-          <BlurFadeText
+          <FadeText
             text="FINE PROJECT MATE"
             className="text-[0.9375rem] md:text-[1.0625rem] tracking-tight font-semibold text-text-tertiary"
             delay={500}
           />
           <div className="text-[2.5rem] md:text-[3.75rem] leading-[1.15] tracking-tighter font-bold">
             <div>
-              <BlurFadeText
+              <FadeText
                 text="FPMate"
                 className="font-extrabold text-brand-primary"
                 delay={700}
               />
-              <BlurFadeText text="로" delay={700} />
+              <FadeText text="로" delay={700} />
             </div>
-            <BlurFadeText
+            <FadeText
               text="SW 사업 비용 산정과 관리를 한 번에"
               delay={800}
               className="break-keep"
             />
           </div>
           <p className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep">
-            <BlurFadeText text="FPMate" delay={900} className="font-semibold" />
-            <BlurFadeText
+            <FadeText text="FPMate" delay={900} className="font-semibold" />
+            <FadeText
               text="는"
               //   text="는 AI 비서와 함께"
               delay={950}
               className="
             mr-1"
             />
-            <BlurFadeText
+            <FadeText
               text="AI 비서"
               //   text="는 AI 비서와 함께"
               delay={950}
               className="font-semibold"
             />
-            <BlurFadeText
+            <FadeText
               text="와"
               //   text="는 AI 비서와 함께"
               delay={950}
               className="mr-1"
             />
-            <BlurFadeText
+            <FadeText
               text="쉽고 빠르게 SW 사업 비용을 알아 볼 수 있습니다. "
               //   text="는 AI 비서와 함께"
               delay={950}
               className="mr-1"
             />
             <br />
-            <BlurFadeText
+            <FadeText
               text="사업 단계별 변경 관리도 어렵지 않아요."
               delay={1100}
             />

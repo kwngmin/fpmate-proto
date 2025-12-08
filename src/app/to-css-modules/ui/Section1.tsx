@@ -2,7 +2,7 @@
 
 import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
 import { Card } from "./Card";
-import { BlurFadeDiv, BlurFadeText } from "@/shared/ui/BlurFadeText";
+import { BlurFadeDiv, FadeText } from "@/shared/ui/BlurFadeText";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Section1.module.css";
@@ -153,7 +153,7 @@ const Section1 = () => {
                   </BlurFadeDiv>
 
                   {/* title */}
-                  <BlurFadeText
+                  <FadeText
                     className={styles.cardTitle}
                     text={content.title}
                     delay={100 + (index + 1) * 75}
@@ -164,7 +164,7 @@ const Section1 = () => {
                   />
 
                   {/* description */}
-                  <BlurFadeText
+                  <FadeText
                     className={styles.cardDescription}
                     text={content.description}
                     delay={200 + (index + 1) * 100}

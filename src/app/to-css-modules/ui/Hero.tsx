@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { BlurFadeDiv, BlurFadeText } from "@/shared/ui/BlurFadeText";
+import { BlurFadeDiv, FadeText } from "@/shared/ui/BlurFadeText";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import { Card } from "./Card";
@@ -475,46 +475,46 @@ const Hero = () => {
       <div className={styles.container}>
         {/* Title */}
         <div className={styles.titleSection}>
-          <BlurFadeText
+          <FadeText
             text="FINE PROJECT MATE"
             className={styles.subtitle}
             delay={500}
           />
           <div className={styles.titleWrapper}>
             <div>
-              <BlurFadeText
+              <FadeText
                 text="FPMate"
                 className={styles.brandText}
                 delay={700}
               />
-              <BlurFadeText text="로" delay={700} />
+              <FadeText text="로" delay={700} />
             </div>
-            <BlurFadeText
+            <FadeText
               text="SW 사업 비용 산정과 관리를 한번에"
               delay={800}
               className={styles.breakKeep}
             />
           </div>
           <p className={styles.description}>
-            <BlurFadeText
+            <FadeText
               text="FPMate"
               delay={900}
               className={styles.fontSemibold}
             />
-            <BlurFadeText text="는" delay={950} className={styles.mr1} />
-            <BlurFadeText
+            <FadeText text="는" delay={950} className={styles.mr1} />
+            <FadeText
               text="AI 비서"
               delay={950}
               className={styles.fontSemibold}
             />
-            <BlurFadeText text="와" delay={950} className={styles.mr1} />
-            <BlurFadeText
+            <FadeText text="와" delay={950} className={styles.mr1} />
+            <FadeText
               text="쉽고 빠르게 SW 사업 비용을 알아 볼 수 있습니다. "
               delay={950}
               className={styles.mr1}
             />
             <br />
-            <BlurFadeText
+            <FadeText
               text="사업 단계별 변경 관리도 어렵지 않아요."
               delay={1100}
             />

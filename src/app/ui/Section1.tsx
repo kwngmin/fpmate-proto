@@ -2,7 +2,7 @@
 
 import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
 import { Card } from "@/shared/ui";
-import { BlurFadeDiv, BlurFadeText } from "@/shared/ui/BlurFadeText";
+import { BlurFadeDiv, FadeText } from "@/shared/ui/BlurFadeText";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -144,6 +144,7 @@ const Section1 = () => {
                     intersectionOptions={{
                       threshold: 0.5,
                     }}
+                    hasBlur={false}
                     useIntersection={true}
                   >
                     {/* image */}
@@ -163,10 +164,11 @@ const Section1 = () => {
                   </BlurFadeDiv>
 
                   {/* title */}
-                  <BlurFadeText
+                  <FadeText
                     className="text-lg tracking-tight font-semibold break-keep"
                     text={content.title}
                     delay={100 + (index + 1) * 75}
+                    hasBlur={false}
                     useIntersection={true}
                     intersectionOptions={{
                       threshold: 0.5,
@@ -174,10 +176,11 @@ const Section1 = () => {
                   />
 
                   {/* description */}
-                  <BlurFadeText
+                  <FadeText
                     className="text-[0.9375rem] leading-normal text-center break-keep max-w-48 text-text-secondary"
                     text={content.description}
                     delay={200 + (index + 1) * 100}
+                    hasBlur={false}
                     useIntersection={true}
                     intersectionOptions={{
                       threshold: 0.5,

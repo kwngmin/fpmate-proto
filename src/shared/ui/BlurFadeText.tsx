@@ -6,6 +6,7 @@ interface BlurFadeTextProps {
   text: string;
   className?: string;
   delay?: number;
+  hasBlur?: boolean;
   /** IntersectionObserver 사용 여부 (true면 viewport에 들어올 때 애니메이션 시작) */
   useIntersection?: boolean;
   /** IntersectionObserver 옵션 */
@@ -16,18 +17,20 @@ interface BlurFadeDivProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  hasBlur?: boolean;
   /** IntersectionObserver 사용 여부 (true면 viewport에 들어올 때 애니메이션 시작) */
   useIntersection?: boolean;
   /** IntersectionObserver 옵션 */
   intersectionOptions?: IntersectionObserverInit;
 }
 
-export function BlurFadeText({
+export function FadeText({
   text,
   className = "",
   delay = 0,
   useIntersection = false,
   intersectionOptions,
+  hasBlur = true,
   ...props
 }: BlurFadeTextProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -72,7 +75,7 @@ export function BlurFadeText({
       style={{
         display: "inline-block",
         opacity: isVisible ? 1 : 0,
-        filter: isVisible ? "blur(0px)" : "blur(10px)",
+        filter: hasBlur ? (isVisible ? "blur(0px)" : "blur(10px)") : "none",
         transition: "all 0.75s cubic-bezier(0.25, 0.4, 0.25, 1)",
       }}
       {...props}
@@ -86,6 +89,7 @@ export function BlurFadeDiv({
   children,
   className = "",
   delay = 0,
+  hasBlur = true,
   useIntersection = false,
   intersectionOptions,
   ...props
@@ -132,7 +136,7 @@ export function BlurFadeDiv({
       style={{
         display: "inline-block",
         opacity: isVisible ? 1 : 0,
-        filter: isVisible ? "blur(0px)" : "blur(10px)",
+        filter: hasBlur ? (isVisible ? "blur(0px)" : "blur(10px)") : "none",
         transition: "all 0.75s cubic-bezier(0.25, 0.4, 0.25, 1)",
       }}
       {...props}

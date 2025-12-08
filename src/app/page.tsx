@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "./ui/Header";
 import Hero from "./ui/Hero";
 import Section1 from "./ui/Section1";
