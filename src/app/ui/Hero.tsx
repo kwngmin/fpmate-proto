@@ -611,18 +611,18 @@ const Hero = () => {
                   padding="none"
                   className={`w-64 shrink-0 transition-all duration-500 ease-out cursor-pointer overflow-hidden group ${
                     step.id === currentStep
-                      ? "scale-100 opacity-100 ring-4 ring-black mx-1" // ring-brand-primary
-                      : "scale-98 outline-1 outline-gray-300 hover:outline-accent-hover"
+                      ? "ring-4 ring-black mx-1" // ring-brand-primary
+                      : "outline-1 outline-gray-300 hover:outline-accent-hover"
                   }`}
                   onClick={handleStepClick(step.id)}
                 >
                   <div className="relative">
                     <div
-                      className={`${
+                      className={
                         step.id === currentStep
                           ? "bg-transparent"
                           : "absolute top-0 left-0 z-20 w-full h-full bg-white/20"
-                      } ${isMobile ? "" : "backdrop-blur-[2px]"}`}
+                      }
                     />
                     {step.content}
                   </div>
