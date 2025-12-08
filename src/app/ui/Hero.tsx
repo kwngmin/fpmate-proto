@@ -643,7 +643,7 @@ const Hero = () => {
       <div
         className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-32 -z-10 opacity-50 transition-opacity duration-500 ease-in"
         style={{
-          opacity: opacityGradation * 0.5,
+          opacity: Boolean(isAnimationStarted) ? opacityGradation * 0.5 : 0,
         }}
       />
 
@@ -652,7 +652,7 @@ const Hero = () => {
         className="absolute h-[1722px] left-[50%] top-12 md:top-24 w-[1952.78px] pointer-events-none select-none -z-10 scale-90 transition-opacity duration-500 ease-in -translate-x-1/2"
         data-name="background 4"
         style={{
-          opacity: opacityGradation,
+          opacity: Boolean(isAnimationStarted) ? opacityGradation : 0,
         }}
       >
         <div className="absolute inset-[-29.04%_-25.6%]">
