@@ -595,12 +595,23 @@ const Hero = () => {
             ref={carouselRef}
             className="flex gap-2 transition-transform duration-500 ease-out"
             style={{
-              transform: `translateX(-${translateX}px)`,
+              transform: `translate3d(-${translateX}px, 0, 0)`,
               width: "max-content",
+              willChange: "transform",
+              WebkitBackfaceVisibility: "hidden",
+              backfaceVisibility: "hidden",
             }}
           >
             {processSteps.map((step, index) => (
-              <FadeDiv key={step.id} delay={2000 + index * 150}>
+              <FadeDiv
+                key={step.id}
+                delay={2000 + index * 100}
+                useIntersection={true}
+                intersectionOptions={{
+                  rootMargin: "50px",
+                  threshold: 0.1,
+                }}
+              >
                 <Card
                   ref={(el) => {
                     cardRefs.current[index] = el;
@@ -613,6 +624,11 @@ const Hero = () => {
                       : "outline-1 outline-gray-300 hover:outline-accent-hover"
                   }`}
                   onClick={handleStepClick(step.id)}
+                  style={{
+                    willChange: "transform, outline",
+                    WebkitBackfaceVisibility: "hidden",
+                    backfaceVisibility: "hidden",
+                  }}
                 >
                   <div className="relative">
                     <div
