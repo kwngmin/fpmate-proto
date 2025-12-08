@@ -376,19 +376,19 @@ const Diagram = () => {
           SW 사업비용을 산정해 보세요
         </div>
         <div className="leading-normal tracking-tight break-keep max-w-xl md:max-w-3xl space-y-2">
-          <p className="text-[1.0625rem] text-text-secondary">
+          <p className="text-[1.0625rem] md:text-[1.3125rem] text-text-primary">
             반복되고 소모적인 작업은 줄이고 더 합리적인 비용 판단 분석에 집중해
             보세요. <br className="hidden sm:block" />
-            <span className="outline outline-amber-400 outline-dashed bg-amber-50 px-0.5 leading-none h-6 mr-0.5 pt-0.75 inline-block text-amber-700">
+            <span className="outline outline-amber-400 outline-dashed bg-amber-50 px-0.5 leading-none h-7 mr-0.5 pt-0.75 inline-block text-amber-700">
               표준화된 프로세스
             </span>
             로 일관된 산정을 제공합니다.
             <br />
           </p>
-          <p className="text-[0.9375rem] text-text-tertiary">
-            <span className="font-medium text-text-secondary">FPMate</span>는{" "}
-            <span className="font-medium text-text-secondary">기능점수</span>{" "}
-            기반의 소프트웨어 대가산정 가이드를 준수합니다.
+          <p className="text-[0.9375rem] text-text-secondary">
+            <span className="font-medium">FPMate</span>는{" "}
+            <span className="font-medium">기능점수</span> 기반의 소프트웨어
+            대가산정 가이드를 준수합니다.
           </p>
         </div>
       </div>
@@ -407,8 +407,8 @@ const Diagram = () => {
         `}</style>
 
         {/* selected section */}
-        <div className="py-8 md:pt-20 z-30 mb-6 mt-64 md:mt-80 lg:mt-0">
-          <div className="mx-auto w-full max-w-[1200px] lg:h-96 sm:px-6">
+        <div className="py-8 md:pt-20 z-30 mb-6 mt-64 sm:mt-96 md:mt-80 lg:mt-0">
+          <div className="mx-auto w-full max-w-[1200px] lg:h-96 px-6">
             <div className="relative z-10 flex grow flex-col justify-end md:max-w-prose gap-4">
               {/* 스마트 대가산정 버튼 */}
               <button
@@ -419,8 +419,8 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 sm:rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
-                  isSmartPricing ? "bg-white sm:outline" : "hidden sm:block"
+                className={`relative text-left p-6 pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                  isSmartPricing ? "bg-white md:outline" : "hidden sm:block"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">
@@ -467,8 +467,8 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 sm:rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
-                  isErrorValidation ? "bg-white sm:outline" : "hidden sm:block"
+                className={`relative text-left p-6 pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                  isErrorValidation ? "bg-white md:outline" : "hidden sm:block"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">
@@ -509,7 +509,7 @@ const Diagram = () => {
         </div>
 
         {/* background grid */}
-        <div className="absolute -top-76 h-[838px] left-1/2 transform -translate-x-38 translate-y-20 scale-[0.5] md:-top-28 lg:-top-20 md:-translate-x-48 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 pointer-events-none bg-red-500">
+        <div className="absolute -top-76 h-[838px] left-1/2 transform -translate-x-38 translate-y-20 scale-[0.5] sm:scale-[0.75] sm:-top-52 sm:-translate-x-60 md:-top-28 lg:-top-20 md:-translate-x-48 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 pointer-events-none bg-red-500">
           <div className="h-[838px] w-full relative" style={{ opacity: 1 }}>
             <div className="absolute left-[calc(50%-550px)] -top-20 h-[1095px] w-[1580px] -rotate-30 skew-x-30">
               {/* grid image */}
