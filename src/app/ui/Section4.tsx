@@ -158,15 +158,21 @@ const Section4 = () => {
         isolation: "isolate",
       }}
     >
-      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
+      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <div className="text-[2rem] md:text-[3.5rem] leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">
             <span className="font-extrabold text-brand-primary">FPMate</span>{" "}
             주요 기능
           </div>
 
+          <p className="text-[1.0625rem] md:text-[1.3125rem] text-center leading-normal tracking-tight break-keep text-text-primary">
+            어떤 사업이든, <span className="font-semibold">더 정확하게</span>.
+            <br className="sm:hidden" />
+            어떤 역할이든, <span className="font-semibold">더 효율적으로</span>.
+          </p>
+
           {/* icons */}
-          <div className="flex justify-center flex-wrap gap-3">
+          {/* <div className="flex justify-center flex-wrap gap-3">
             {Contents.map((content) => (
               <div
                 key={content.id}
@@ -181,10 +187,10 @@ const Section4 = () => {
                 />
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-6 my-6 max-w-2xl lg:max-w-none mx-auto w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-6 max-w-2xl lg:max-w-none mx-auto w-full">
           {Contents.map((content, index) => {
             const labelColor =
               (index + 1) % 3 === 0
@@ -202,8 +208,15 @@ const Section4 = () => {
                 key={content.id}
               >
                 <div
-                  className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center rounded-md shadow-lg ${labelColor}`}
+                  className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center gap-3 rounded-md shadow-lg ${labelColor}`}
                 >
+                  <Image
+                    src={`/assets/svgs/${content.icon}.svg`}
+                    alt={content.title}
+                    width={100}
+                    height={100}
+                    className="size-6 brightness-0 invert"
+                  />
                   {content.title}
                   <div
                     className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0"
@@ -220,7 +233,7 @@ const Section4 = () => {
                   {content.listItems.map((item) => (
                     <li
                       key={item.title}
-                      className="text-[1.0625rem] sm:text-base leading-snug tracking-tight break-keep list-disc ml-4 text-text-primary font-medium"
+                      className="text-[1.0625rem] sm:text-base leading-snug tracking-tight break-keep list-disc ml-4 text-text-primary"
                     >
                       {item.title}
                       {item?.description && (
