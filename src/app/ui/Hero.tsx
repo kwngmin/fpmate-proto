@@ -363,6 +363,9 @@ const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const rafIdRef = useRef<number>(0);
+  const timeoutIdRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const opacityGradationCenter = useScrollOpacity({
     startOffset: 0,
     endOffset: 700,
@@ -381,8 +384,6 @@ const Hero = () => {
   const CARD_WIDTH = 256; // w-64
   const CARD_GAP = 8; // gap-2
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
-
   // 컨테이너 너비 측정 (resize 이벤트 구독)
   useEffect(() => {
     const updateContainerWidth = () => {
@@ -398,13 +399,17 @@ const Hero = () => {
 
   // 프로그레스 자동 진행 (BlurFade delay 후 시작)
   useEffect(() => {
-    // 1200ms 후에 애니메이션 시작
-    const initialDelay = setTimeout(() => {
-      setIsAnimationStarted(true);
-    }, 1200);
+    rafIdRef.current = requestAnimationFrame(() => {
+      timeoutIdRef.current = setTimeout(() => {
+        setIsAnimationStarted(true);
+      }, 1200);
+    });
 
     return () => {
-      clearTimeout(initialDelay);
+      cancelAnimationFrame(rafIdRef.current);
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+      }
     };
   }, []);
 
