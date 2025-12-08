@@ -366,7 +366,7 @@ const Diagram = () => {
   const ACTIVE_COLOR = "#00AB55";
 
   return (
-    <div className="mt-20 md:mt-40">
+    <div className="mt-20 md:mt-40 space-y-20">
       {/* title */}
       <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-6">
         <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
@@ -375,11 +375,11 @@ const Diagram = () => {
           {/* <br className="sm:hidden" /> */}
           SW 사업비용을 산정해 보세요
         </div>
-        <div className="leading-normal tracking-tight break-keep max-w-xl md:max-w-3xl space-y-2">
+        <div className="leading-normal tracking-tight break-keep max-w-xl md:max-w-3xl space-y-4">
           <p className="text-[1.0625rem] md:text-[1.3125rem] text-text-primary">
             반복되고 소모적인 작업은 줄이고 더 합리적인 비용 판단 분석에 집중해
             보세요. <br className="hidden sm:block" />
-            <span className="outline outline-amber-400 outline-dashed bg-amber-50 px-0.5 leading-none h-7 mr-0.5 pt-0.75 inline-block text-amber-700">
+            <span className="outline outline-amber-400 outline-dashed bg-amber-50 px-0.5 leading-none h-6 md:h-7 mr-0.5 pt-0.75 inline-block text-amber-700">
               표준화된 프로세스
             </span>
             로 일관된 산정을 제공합니다.
@@ -419,8 +419,8 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
-                  isSmartPricing ? "bg-white md:outline" : "hidden sm:block"
+                className={`relative text-left p-6  pt-2 pb-6 sm:pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                  isSmartPricing ? "bg-white outline" : ""
                 }`}
               >
                 <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">
@@ -467,8 +467,8 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
-                  isErrorValidation ? "bg-white md:outline" : "hidden sm:block"
+                className={`relative text-left p-6 pt-2 pb-6 sm:pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                  isErrorValidation ? "bg-white outline" : ""
                 }`}
               >
                 <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">

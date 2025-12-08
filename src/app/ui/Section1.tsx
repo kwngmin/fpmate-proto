@@ -259,12 +259,12 @@ const Section1 = () => {
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6 mt-20 sm:mt-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-2 lg:gap-x-4 gap-y-2 sm:gap-y-4">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="border-t border-border-primary px-4 py-6 md:px-6 bg-white hover:border-accent-hover"
+              className="border-t border-border-primary sm:px-4 py-6 md:px-6 sm:bg-white hover:border-accent-hover"
             >
               <div className="text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-medium mb-2 flex items-center gap-2">
                 <Image
