@@ -651,7 +651,9 @@ const Hero = () => {
 
       {/* bottom center background gradient */}
       <div
-        className="absolute h-[1722px] left-[50%] top-12 md:top-24 -translate-x-1/2 w-[1952.78px] pointer-events-none select-none -z-10 scale-90 transition-opacity duration-500 ease-in delay-500"
+        className={`absolute h-[1722px] left-[50%] top-12 md:top-24 w-[1952.78px] pointer-events-none select-none -z-10 scale-90 transition-opacity duration-500 ease-in delay-500 ${
+          isAnimationStarted ? "-translate-x-1/2" : ""
+        }`}
         data-name="background 4"
         style={{
           opacity: isAnimationStarted ? opacityGradationCenter : 0,
