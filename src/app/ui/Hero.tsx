@@ -584,7 +584,7 @@ const Hero = () => {
       </div>
 
       {/* 카드 영역 - Linear.app 스타일 Inset 캐로셀 */}
-      <div className='className="w-full py-4 overflow-hidden'>
+      <div className='hidden className="w-full py-4 overflow-hidden'>
         {/* 1200px 컨테이너 - main과 동일한 정렬 */}
         <div
           ref={containerRef}
