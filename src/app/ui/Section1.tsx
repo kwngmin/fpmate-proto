@@ -215,6 +215,8 @@ const Section1 = () => {
               </Card>
             ))}
           </div>
+
+          {/* navigation buttons for mobile */}
           <div className="flex lg:hidden items-center gap-2 mt-4">
             <button
               type="button"
