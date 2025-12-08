@@ -404,8 +404,8 @@ const Diagram = () => {
         `}</style>
 
         {/* selected section */}
-        <div className="py-8 sm:py-20 z-30 mb-6">
-          <div className="mx-auto w-full max-w-[1200px] sm:h-96 px-6">
+        <div className="py-8 sm:pt-20 z-30 mb-6 mt-56 md:mt-80 lg:mt-0">
+          <div className="mx-auto w-full max-w-[1200px] lg:h-96 px-6">
             <div className="relative z-10 flex grow flex-col justify-end md:max-w-prose gap-4">
               {/* 스마트 대가산정 버튼 */}
               <button
@@ -416,7 +416,7 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-md sm:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                className={`relative text-left p-6 pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
                   isSmartPricing ? "bg-white sm:outline" : ""
                 }`}
               >
@@ -434,7 +434,7 @@ const Diagram = () => {
                   )}
                 </div>
                 <p
-                  className={`text-[0.9375rem] leading-normal max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
+                  className={`text-[0.9375rem] leading-normal md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
                     isSmartPricing
                       ? "text-text-secondary" // max-h-28
                       : "text-text-tertiary" // max-h-0
@@ -455,7 +455,7 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-4 rounded-md sm:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                className={`relative text-left p-6 pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
                   isErrorValidation ? "bg-white sm:outline" : ""
                 }`}
               >
@@ -473,7 +473,7 @@ const Diagram = () => {
                   )}
                 </div>
                 <p
-                  className={`text-[0.9375rem] leading-normal max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
+                  className={`text-[0.9375rem] leading-normal md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
                     isErrorValidation
                       ? "text-text-secondary" // max-h-28
                       : "text-text-tertiary" // max-h-0
@@ -488,7 +488,7 @@ const Diagram = () => {
         </div>
 
         {/* background grid */}
-        <div className="absolute top- h-[838px] w-full -translate-x-1/3 translate-y-20 scale-[0.5] md:-top-20 md:-translate-x-1/4 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 hidden md:block pointer-events-none">
+        <div className="absolute -top-76 h-[838px] left-1/2 transform -translate-x-36 translate-y-20 scale-[0.5] md:-top-28 lg:-top-20 md:-translate-x-48 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 pointer-events-none bg-red-500">
           <div className="h-[838px] w-full relative" style={{ opacity: 1 }}>
             <div className="absolute left-[calc(50%-550px)] -top-20 h-[1095px] w-[1580px] -rotate-30 skew-x-30">
               {/* grid image */}

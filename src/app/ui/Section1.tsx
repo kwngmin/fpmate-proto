@@ -126,7 +126,7 @@ const Section1 = () => {
           탄생하였습니다.
         </p>
 
-        <p className="text-[0.9375rem] leading-normal tracking-tight break-keep text-text-tertiary">
+        <p className="text-[1.0625rem] leading-normal tracking-tight break-keep text-text-secondary">
           <span className="font-semibold">FPMate</span>에서는{" "}
           <span className="font-medium">국제표준</span>(ISO/IEC 14143)에 기반한
           방법으로 <span className="font-medium">SW 사업 비용을 산정</span>
@@ -259,11 +259,11 @@ const Section1 = () => {
       </div>
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-2 lg:gap-x-4 gap-y-2 sm:gap-y-4">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="border-t border-border-primary px-4 py-6 lg:px-6 bg-white hover:border-accent-hover"
+              className="border-t border-border-primary px-4 py-6 md:px-6 bg-white hover:border-accent-hover"
             >
               <div className="text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-medium mb-2 flex items-center gap-2">
                 <Image
@@ -275,7 +275,7 @@ const Section1 = () => {
                 />
                 {feature.title}
               </div>
-              <p className="text-[0.8125rem] sm:text-[0.9375rem] break-keep max-w-56 leading-normal text-text-tertiary">
+              <p className="text-[0.9375rem] break-keep md:max-w-56 leading-normal text-text-secondary">
                 {feature.description}
               </p>
             </div>
