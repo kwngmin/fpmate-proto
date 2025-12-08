@@ -16,7 +16,6 @@ interface InsightCardProps {
   fp: number;
   amount: number;
   date: string;
-  managerImage: string;
   cardIndex: number;
 }
 
@@ -67,7 +66,6 @@ const InsightCard = ({
   fp,
   amount,
   date,
-  managerImage,
   cardIndex,
 }: InsightCardProps) => {
   const { scrollTo: scrollToTable } = useScrollTo(64);
@@ -80,9 +78,9 @@ const InsightCard = ({
       variant="bordered"
       hoverable
       padding="sm"
-      className={`flex flex-col gap-4 hover:translate-y-[-4px] hover:border-accent-primary ${
+      className={`flex flex-col gap-4 hover:translate-y-[-4px] hover:border-action-active! ${
         isFirst
-          ? "translate-y-[-4px] shadow-card xl:translate-y-0 xl:shadow-none outline! xl:outline-0! xl:border-border-primary! xl:hover:border-accent-primary!"
+          ? "translate-y-[-4px] shadow-card xl:translate-y-0 xl:shadow-none outline! outline-border-secondary xl:outline-0! xl:border-border-primary! xl:hover:outline-border-secondary!"
           : "opacity-50 sm:opacity-80 md:opacity-100 pointer-events-none xl:pointer-events-auto"
       }`}
     >
@@ -220,13 +218,18 @@ const InsightCard = ({
         <span className="text-[0.875rem] tracking-[-0.013em]">
           {`선정완료일: ${date} 담당자:`}
         </span>{" "}
-        <Image
+        <div className="size-8 bg-gray-300 rounded-full relative">
+          {" "}
+          <div className="absolute size-3 top-3 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/80 rounded-full" />
+          <div className="absolute size-6 top-5 left-1/2 -translate-x-1/2 bg-white/80 rounded-full" />
+        </div>
+        {/* <Image
           src={managerImage}
           alt="avatar-placeholder"
           width={36}
           height={36}
           className="size-8 bg-gray-200 rounded-full"
-        />
+        /> */}
       </div>
     </Card>
   );

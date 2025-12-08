@@ -375,15 +375,18 @@ const Diagram = () => {
           {/* <br className="sm:hidden" /> */}
           SW 사업비용을 산정해 보세요
         </div>
-        <div className="text-[0.9375rem] md:text-[1.0625rem]  leading-normal tracking-tight break-keep max-w-xl md:max-w-3xl space-y-2">
-          <p className="text-text-secondary">
+        <div className="leading-normal tracking-tight break-keep max-w-xl md:max-w-3xl space-y-2">
+          <p className="text-[1.0625rem] text-text-secondary">
             반복되고 소모적인 작업은 줄이고 더 합리적인 비용 판단 분석에 집중해
             보세요. <br className="hidden sm:block" />
-            표준화된 프로세스*로 일관된 산정을 제공합니다.
+            <span className="outline outline-amber-400 outline-dashed bg-amber-50 px-0.5 leading-none h-6 mr-0.5 pt-0.75 inline-block text-amber-700">
+              표준화된 프로세스
+            </span>
+            로 일관된 산정을 제공합니다.
             <br />
           </p>
           <p className="text-[0.9375rem] text-text-tertiary">
-            * FPMate는{" "}
+            <span className="font-medium text-text-secondary">FPMate</span>는{" "}
             <span className="font-medium text-text-secondary">기능점수</span>{" "}
             기반의 소프트웨어 대가산정 가이드를 준수합니다.
           </p>
@@ -404,7 +407,7 @@ const Diagram = () => {
         `}</style>
 
         {/* selected section */}
-        <div className="py-8 sm:pt-20 z-30 mb-6 mt-56 md:mt-80 lg:mt-0">
+        <div className="py-8 md:pt-20 z-30 mb-6 mt-64 md:mt-80 lg:mt-0">
           <div className="mx-auto w-full max-w-[1200px] lg:h-96 px-6">
             <div className="relative z-10 flex grow flex-col justify-end md:max-w-prose gap-4">
               {/* 스마트 대가산정 버튼 */}
@@ -420,21 +423,30 @@ const Diagram = () => {
                   isSmartPricing ? "bg-white sm:outline" : ""
                 }`}
               >
-                <div className="flex w-full items-center gap-3 py-2 transition-all duration-400 ease-out">
-                  <span
-                    className={`text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
-                  >
-                    AI와 자동산정으로 구현하는 스마트 대가산정
-                  </span>
-                  {isSmartPricing && (
-                    <span className="relative hidden sm:flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
+                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">
+                  <Image
+                    src={`/assets/svgs/cpu.svg`}
+                    alt="AI와 자동산정으로 구현하는 스마트 대가산정"
+                    width={24}
+                    height={24}
+                    className="size-6 shrink-0"
+                  />
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
+                    >
+                      AI와 자동산정으로 구현하는 스마트 대가산정
                     </span>
-                  )}
+                    {isSmartPricing && (
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <p
-                  className={`text-[0.9375rem] leading-normal md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
+                  className={`text-[0.9375rem] leading-normal sm:max-w-4/5 md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
                     isSmartPricing
                       ? "text-text-secondary" // max-h-28
                       : "text-text-tertiary" // max-h-0
@@ -459,21 +471,30 @@ const Diagram = () => {
                   isErrorValidation ? "bg-white sm:outline" : ""
                 }`}
               >
-                <div className="flex w-full items-center gap-3 py-2 transition-all duration-400 ease-out">
-                  <span
-                    className={`text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
-                  >
-                    편리한 오류 검증으로 향상되는 업무 효율
-                  </span>
-                  {isErrorValidation && (
-                    <span className="relative hidden sm:flex h-3 w-3">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
+                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">
+                  <Image
+                    src={`/assets/svgs/chart-line-up.svg`}
+                    alt="편리한 오류 검증으로 향상되는 업무 효율"
+                    width={16}
+                    height={16}
+                    className="size-6 shrink-0"
+                  />
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
+                    >
+                      편리한 오류 검증으로 향상되는 업무 효율
                     </span>
-                  )}
+                    {isErrorValidation && (
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <p
-                  className={`text-[0.9375rem] leading-normal md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
+                  className={`text-[0.9375rem] leading-normal sm:max-w-4/5 md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
                     isErrorValidation
                       ? "text-text-secondary" // max-h-28
                       : "text-text-tertiary" // max-h-0
@@ -488,7 +509,7 @@ const Diagram = () => {
         </div>
 
         {/* background grid */}
-        <div className="absolute -top-76 h-[838px] left-1/2 transform -translate-x-36 translate-y-20 scale-[0.5] md:-top-28 lg:-top-20 md:-translate-x-48 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 pointer-events-none bg-red-500">
+        <div className="absolute -top-76 h-[838px] left-1/2 transform -translate-x-38 translate-y-20 scale-[0.5] md:-top-28 lg:-top-20 md:-translate-x-48 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 pointer-events-none bg-red-500">
           <div className="h-[838px] w-full relative" style={{ opacity: 1 }}>
             <div className="absolute left-[calc(50%-550px)] -top-20 h-[1095px] w-[1580px] -rotate-30 skew-x-30">
               {/* grid image */}

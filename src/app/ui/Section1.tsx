@@ -157,10 +157,9 @@ const Section1 = () => {
               transformStyle: "preserve-3d",
             }}
           >
-            {section1Contents.map((content, index) => (
+            {section1Contents.map((content) => (
               <Card
                 key={content.id}
-                // variant="elevated"
                 padding="none"
                 className={`grow min-w-72 shrink-0 transition-[outline, scale,opacity] duration-500 ease-out group select-none hover:shadow-xl hover:shadow-black/5 ${
                   isMobile ? "cursor-pointer" : ""
@@ -204,7 +203,7 @@ const Section1 = () => {
 
                   {/* description */}
                   <FadeText
-                    className="text-[0.9375rem] leading-normal text-center break-keep max-w-48 text-text-secondary"
+                    className="text-base leading-normal text-center break-keep max-w-48 text-text-secondary"
                     text={content.description}
                     hasBlur={false}
                     useIntersection={true}

@@ -27,7 +27,6 @@ const cardData = [
     fp: 495.6,
     amount: 384576128,
     date: "2025.10.20",
-    managerImage: "/assets/images/avatar-1.png",
   },
   {
     id: 2,
@@ -53,7 +52,6 @@ const cardData = [
     fp: 339.08,
     amount: 209815430,
     date: "2025.06.20",
-    managerImage: "/assets/images/avatar-2.png",
   },
   {
     id: 3,
@@ -74,7 +72,6 @@ const cardData = [
     fp: 339.08,
     amount: 209815430,
     date: "2025.06.20",
-    managerImage: "/assets/images/avatar-3.png",
   },
 ];
 
@@ -105,11 +102,11 @@ const Section2 = () => {
           </div>
 
           {/* Dummy cards */}
-          <div className="relative grid grid-cols-3 gap-2 after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-white after:pointer-events-none w-[1040px] md:w-[1152px]">
+          <div className="relative grid grid-cols-3 gap-2 after:content-[''] after:absolute after:inset-0 after:bg-linear-to-b after:from-transparent after:to-white after:pointer-events-none w-[1040px] md:w-[1152px] h-56">
             <Card
               variant="bordered"
               padding="sm"
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-4"
             >
               <div className="flex justify-between gap-2">
                 <div className="flex gap-1 items-center opacity-50">
@@ -124,15 +121,15 @@ const Section2 = () => {
               </div>
 
               <div className="flex gap-1 items-center">
-                <SkeletonBar width={3.5} height={1} />
-                <SkeletonBar width={7} height={1} />
-                <SkeletonBar width={8} height={1} />
+                <SkeletonBar width={3.5} height={1.25} />
+                <SkeletonBar width={8} height={1.25} />
+                <SkeletonBar width={4} height={1.25} />
               </div>
             </Card>
             <Card
               variant="bordered"
               padding="sm"
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-4"
             >
               <div className="flex justify-between gap-2">
                 <div className="flex gap-1 items-center opacity-50">
@@ -147,15 +144,16 @@ const Section2 = () => {
               </div>
 
               <div className="flex gap-1 items-center">
-                <SkeletonBar width={2.5} height={1} />
-                <SkeletonBar width={5} height={1} />
-                <SkeletonBar width={3} height={1} />
+                <SkeletonBar width={4} height={1.25} />
+                <SkeletonBar width={2.5} height={1.25} />
+                <SkeletonBar width={4} height={1.25} />
+                <SkeletonBar width={3} height={1.25} />
               </div>
             </Card>
             <Card
               variant="bordered"
               padding="sm"
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-4"
             >
               <div className="flex justify-between gap-2">
                 <div className="flex gap-1 items-center opacity-50">
@@ -170,9 +168,9 @@ const Section2 = () => {
               </div>
 
               <div className="flex gap-1 items-center">
-                <SkeletonBar width={2.5} height={1} />
-                <SkeletonBar width={5} height={1} />
-                <SkeletonBar width={3} height={1} />
+                <SkeletonBar width={4} height={1.25} />
+                <SkeletonBar width={2} height={1.25} />
+                <SkeletonBar width={3} height={1.25} />
               </div>
             </Card>
           </div>
