@@ -2,6 +2,7 @@
 
 import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
 import { Card } from "@/shared/ui";
+import ConnectionLines from "@/shared/ui/ConnectionLines";
 import { FadeDiv, FadeText } from "@/shared/ui/FadeMotion";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -138,149 +139,157 @@ const Section1 = () => {
       </div> */}
       </div>
 
-      {/* 카드 영역 - 1024px 이하에서 캐로셀 */}
-      <div className="w-full py-4 overflow-hidden lg:overflow-visible">
-        <div
-          ref={section1ContainerRef}
-          className="max-w-[1200px] mx-auto px-6 overflow-visible"
-          style={{
-            perspective: isMobile ? "1000px" : "none",
-          }}
-        >
+      <div>
+        {/* 카드 영역 - 1024px 이하에서 캐로셀 */}
+        <div className="w-full py-4 lg:py-0 overflow-hidden lg:overflow-visible relative">
           <div
-            className="grid grid-cols-3 gap-2 lg:gap-4 transition-transform duration-500 ease-out"
+            ref={section1ContainerRef}
+            className="max-w-[1200px] mx-auto px-6 overflow-visible relative z-10"
             style={{
-              transform: isMobile
-                ? `translateX(-${section1TranslateX}px)`
-                : "none",
-              width: isMobile ? "max-content" : "auto",
-              transformStyle: "preserve-3d",
+              perspective: isMobile ? "1000px" : "none",
             }}
           >
-            {section1Contents.map((content) => (
-              <Card
-                key={content.id}
-                padding="none"
-                className={`grow min-w-72 shrink-0 transition-[outline, scale,opacity] duration-500 ease-out group select-none hover:shadow-xl hover:shadow-black/5 ${
-                  isMobile ? "cursor-pointer" : ""
-                } ${
-                  isMobile && content.id === section1Step
-                    ? "scale-100 opacity-100 outline"
-                    : isMobile
-                    ? "scale-[0.98] opacity-70"
-                    : ""
-                }`}
-                onClick={() => isMobile && setSection1Step(content.id)}
-              >
-                <div className="flex flex-col gap-1 items-center px-4 pt-8 pb-10">
-                  <FadeDiv
-                    intersectionOptions={{
-                      threshold: 0.5,
-                    }}
-                    hasBlur={false}
-                    useIntersection={!isMobile}
-                  >
-                    {/* image */}
-                    <Image
-                      src={content.image}
-                      alt={`section1-${content.id}`}
-                      width={124}
-                      height={124}
-                      className="shrink-0 size-28 group-hover:scale-110 transition-[scale,opacity] duration-500 ease-out mb-2"
+            <div
+              className="grid grid-cols-3 gap-2 lg:gap-4 transition-transform duration-500 ease-out"
+              style={{
+                transform: isMobile
+                  ? `translateX(-${section1TranslateX}px)`
+                  : "none",
+                width: isMobile ? "max-content" : "auto",
+                transformStyle: "preserve-3d",
+              }}
+            >
+              {section1Contents.map((content) => (
+                <Card
+                  key={content.id}
+                  padding="none"
+                  className={`grow min-w-72 shrink-0 transition-[outline, scale,opacity] duration-500 ease-out group select-none hover:shadow-xl hover:shadow-black/5 ${
+                    isMobile ? "cursor-pointer" : ""
+                  } ${
+                    isMobile && content.id === section1Step
+                      ? "scale-100 opacity-100 outline"
+                      : isMobile
+                      ? "scale-[0.98] opacity-70"
+                      : ""
+                  }`}
+                  onClick={() => isMobile && setSection1Step(content.id)}
+                >
+                  <div className="flex flex-col gap-1 items-center px-4 pt-8 pb-10">
+                    <FadeDiv
+                      intersectionOptions={{
+                        threshold: 0.5,
+                      }}
+                      hasBlur={false}
+                      useIntersection={!isMobile}
+                    >
+                      {/* image */}
+                      <Image
+                        src={content.image}
+                        alt={`section1-${content.id}`}
+                        width={124}
+                        height={124}
+                        className="shrink-0 size-28 group-hover:scale-110 transition-[scale,opacity] duration-500 ease-out mb-2"
+                      />
+                    </FadeDiv>
+
+                    {/* title */}
+                    <FadeText
+                      className="text-lg tracking-tight font-semibold break-keep"
+                      text={content.title}
+                      hasBlur={false}
+                      useIntersection={!isMobile}
+                      intersectionOptions={{
+                        threshold: 0.5,
+                      }}
                     />
-                  </FadeDiv>
 
-                  {/* title */}
-                  <FadeText
-                    className="text-lg tracking-tight font-semibold break-keep"
-                    text={content.title}
-                    hasBlur={false}
-                    useIntersection={!isMobile}
-                    intersectionOptions={{
-                      threshold: 0.5,
-                    }}
-                  />
+                    {/* description */}
+                    <FadeText
+                      className="text-base leading-normal text-center break-keep max-w-48 text-text-secondary"
+                      text={content.description}
+                      hasBlur={false}
+                      useIntersection={!isMobile}
+                      intersectionOptions={{
+                        threshold: 0.5,
+                      }}
+                    />
+                  </div>
+                </Card>
+              ))}
+            </div>
 
-                  {/* description */}
-                  <FadeText
-                    className="text-base leading-normal text-center break-keep max-w-48 text-text-secondary"
-                    text={content.description}
-                    hasBlur={false}
-                    useIntersection={!isMobile}
-                    intersectionOptions={{
-                      threshold: 0.5,
-                    }}
-                  />
-                </div>
-              </Card>
-            ))}
-          </div>
-
-          {/* navigation buttons for mobile */}
-          <div className="flex lg:hidden items-center gap-2 mt-4">
-            <button
-              type="button"
-              onClick={() =>
-                section1Step > 1 && setSection1Step(section1Step - 1)
-              }
-              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:outline active:scale-95 ${
-                section1Step > 1 ? "opacity-100" : "opacity-50"
-              }`}
-            >
-              <Image
-                src="/assets/svgs/caret-left.svg"
-                alt="caret-left"
-                width={24}
-                height={24}
-                className="size-6"
-              />
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                section1Step < section1Contents.length &&
-                setSection1Step(section1Step + 1)
-              }
-              className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:outline active:scale-95 ${
-                section1Step < section1Contents.length
-                  ? "opacity-100"
-                  : "opacity-50"
-              }`}
-            >
-              <Image
-                src="/assets/svgs/caret-right.svg"
-                alt="caret-right"
-                width={24}
-                height={24}
-                className="size-6"
-              />
-            </button>
+            {/* navigation buttons for mobile */}
+            <div className="flex lg:hidden items-center gap-2 mt-4">
+              <button
+                type="button"
+                onClick={() =>
+                  section1Step > 1 && setSection1Step(section1Step - 1)
+                }
+                className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:outline active:scale-95 ${
+                  section1Step > 1 ? "opacity-100" : "opacity-50"
+                }`}
+              >
+                <Image
+                  src="/assets/svgs/caret-left.svg"
+                  alt="caret-left"
+                  width={24}
+                  height={24}
+                  className="size-6"
+                />
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  section1Step < section1Contents.length &&
+                  setSection1Step(section1Step + 1)
+                }
+                className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:outline active:scale-95 ${
+                  section1Step < section1Contents.length
+                    ? "opacity-100"
+                    : "opacity-50"
+                }`}
+              >
+                <Image
+                  src="/assets/svgs/caret-right.svg"
+                  alt="caret-right"
+                  width={24}
+                  height={24}
+                  className="size-6"
+                />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6 mt-20 sm:mt-0">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-2 lg:gap-x-4 gap-y-2 sm:gap-y-4">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="border-t border-border-primary sm:px-4 py-6 md:px-6 sm:bg-white hover:border-accent-hover"
-            >
-              <div className="text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-medium mb-2 flex items-center gap-2">
-                <Image
-                  src={`/assets/svgs/${feature.icon}.svg`}
-                  alt={feature.title}
-                  width={16}
-                  height={16}
-                  className="size-5"
-                />
-                {feature.title}
+        {/* 연결선 애니메이션 영역 */}
+        <div className="relative max-w-[1200px] mx-auto w-full h-24 hidden lg:block">
+          <ConnectionLines />
+        </div>
+
+        {/* Feature 영역 */}
+        <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-2 lg:gap-x-4 gap-y-2 sm:gap-y-4">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="border-t border-border-primary sm:px-4 py-6 md:px-6 sm:bg-white hover:border-accent-hover z-10"
+              >
+                <div className="text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-medium mb-2 flex items-center gap-2">
+                  <Image
+                    src={`/assets/svgs/${feature.icon}.svg`}
+                    alt={feature.title}
+                    width={16}
+                    height={16}
+                    className="size-5"
+                  />
+                  {feature.title}
+                </div>
+                <p className="text-[0.9375rem] break-keep md:max-w-56 leading-normal text-text-secondary">
+                  {feature.description}
+                </p>
               </div>
-              <p className="text-[0.9375rem] break-keep md:max-w-56 leading-normal text-text-secondary">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
