@@ -204,11 +204,11 @@ const Section4 = () => {
 
             return (
               <div
-                className="flex flex-col gap-2 h-full shrink-0 w-full max-w-sm mx-auto md:max-w-none"
+                className="flex flex-col gap-2 h-full shrink-0 w-full max-w-sm mx-auto md:max-w-none group"
                 key={content.id}
               >
                 <div
-                  className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center gap-3 rounded-md shadow-lg ${labelColor}`}
+                  className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center gap-3 rounded-md shadow-lg transition-[translate,background-color] duration-500 ease-out group-hover:-translate-y-2 group-hover:bg-[#007B55] ${labelColor}`}
                 >
                   <Image
                     src={`/assets/svgs/${content.icon}.svg`}
