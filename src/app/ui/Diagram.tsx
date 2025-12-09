@@ -366,7 +366,7 @@ const Diagram = () => {
   const ACTIVE_COLOR = "#00AB55";
 
   return (
-    <div className="mt-20 md:mt-40 space-y-20 md:space-y-0">
+    <div className="mt-20 md:mt-40 space-y-8 md:space-y-0">
       {/* title */}
       <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-6">
         <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
@@ -379,7 +379,7 @@ const Diagram = () => {
           <p className="text-[1.0625rem] md:text-[1.3125rem] text-text-primary">
             반복되고 소모적인 작업은 줄이고 더 합리적인 비용 판단 분석에 집중해
             보세요. <br className="hidden sm:block" />
-            <span className="outline outline-amber-400 outline-dashed bg-amber-50 px-0.5 leading-none h-6 md:h-7 mr-0.5 pt-0.75 inline-block text-amber-700">
+            <span className="outline outline-amber-400 outline-dashed bg-amber-50 px-1 leading-none h-6 md:h-7 mx-0.5 pt-0.75 inline-block text-amber-700">
               표준화된 프로세스
             </span>
             로 일관된 산정을 제공합니다.
@@ -387,8 +387,8 @@ const Diagram = () => {
           </p>
           <p className="text-[0.9375rem] text-text-secondary">
             <span className="font-medium">FPMate</span>는{" "}
-            <span className="font-medium">기능점수</span> 기반의 소프트웨어
-            대가산정 가이드를 준수합니다.
+            <span className="font-medium text-text-primary">기능점수</span>{" "}
+            기반의 소프트웨어 대가산정 가이드를 준수합니다.
           </p>
         </div>
       </div>
@@ -419,11 +419,11 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6  pt-2 pb-6 sm:pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                className={`relative text-left p-6 pt-2 pb-6 sm:pt-4 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
                   isSmartPricing ? "bg-white outline" : ""
                 }`}
               >
-                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">
+                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-3 transition-all duration-400 ease-out">
                   <Image
                     src={`/assets/svgs/cpu.svg`}
                     alt="AI와 자동산정으로 구현하는 스마트 대가산정"
@@ -467,11 +467,11 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-2 pb-6 sm:pt-4 rounded-md md:max-w-md bg-zinc-100/50 backdrop-blur-xs pointer-events-none md:pointer-events-auto sm:cursor-pointer ${
+                className={`relative text-left p-6 pt-2 pb-6 sm:pt-4 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
                   isErrorValidation ? "bg-white outline" : ""
                 }`}
               >
-                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-2 transition-all duration-400 ease-out">
+                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-3 transition-all duration-400 ease-out">
                   <Image
                     src={`/assets/svgs/chart-line-up.svg`}
                     alt="편리한 오류 검증으로 향상되는 업무 효율"
