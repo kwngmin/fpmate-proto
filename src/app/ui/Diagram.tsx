@@ -74,8 +74,8 @@ const AnimatedLine = ({
       {/* 1. 배경 라인 (비활성 상태일 때 연하게, 활성일 때 조금 더 진하게) */}
       <path
         d={pathD}
-        stroke={isActive ? color : "#e5e7eb"} // 활성: Green, 비활성: Gray
-        strokeWidth="2"
+        stroke={isActive ? color : "#bababa"} // 활성: Green, 비활성: Gray
+        strokeWidth={isActive ? "3" : "2"}
         fill="none"
         strokeLinecap="round"
         strokeOpacity={isActive ? 0.3 : 0.5}
@@ -87,7 +87,7 @@ const AnimatedLine = ({
         <path
           d={pathD}
           stroke={color}
-          strokeWidth="2"
+          strokeWidth={isActive ? "3" : "2"}
           fill="none"
           strokeDasharray="8 8" // 점선 간격
           strokeLinecap="round"
@@ -120,7 +120,7 @@ const Card = ({
     className={`flex items-center justify-center rounded-md bg-white border transition-all duration-500 ease-out ${
       isHighlighted
         ? "border-brand-primary shadow-[-3px_3px_0px_0px_green]"
-        : "border-border-primary shadow-[-3px_3px_0px_0px_lightgray] hover:border-brand-primary hover:shadow-[-3px_3px_0px_0px_green]"
+        : "border-gray-400 shadow-[-3px_3px_0px_0px_gray] hover:border-brand-primary bg-white hover:shadow-[-3px_3px_0px_0px_green]"
     } ${className}`}
   >
     {children}
@@ -142,10 +142,10 @@ const Label = ({
   isHighlighted = false,
 }: LabelProps) => (
   <div
-    className={`rounded-full border bg-white px-2 py-0.5 text-xs transition-all duration-500 ease-out text-center ${
+    className={`rounded-full border bg-white px-2 py-0.5 text-xs transition-all duration-500 ease-out text-center font-medium ${
       isHighlighted
-        ? "border-brand-primary text-brand-primary"
-        : "border-separator1"
+        ? "border-brand-primary text-text-primary"
+        : "border-gray-400 text-text-primary"
     } ${className}`}
   >
     <span style={{ opacity: 1 }}>{children}</span>
@@ -169,8 +169,8 @@ const ButtonLabel = ({
   <div
     className={`rounded-full border bg-white px-3 py-1 text-[0.8125rem] transition-all duration-500 ease-out flex items-center gap-1.5 ${
       isHighlighted
-        ? "border-brand-primary text-brand-primary"
-        : "border-fg0 text-fg0"
+        ? "border-brand-primary text-text-primary"
+        : "border-gray-400 text-text-primary"
     }`}
   >
     <Image src={icon} alt="" width={16} height={16} className="size-4" />
@@ -196,7 +196,7 @@ const FeatureCard = ({
     className={`rounded-md border px-3 py-1.5 text-[0.8125rem] text-fg0 relative z-20 flex gap-1.5 items-center justify-center transition-all duration-500 ease-out ${
       isHighlighted
         ? "border-brand-primary shadow-[-3px_3px_0px_0px_green] bg-green-50"
-        : "border-border-secondary shadow-[-3px_3px_0px_0px_lightgray] hover:border-brand-primary hover:shadow-[-3px_3px_0px_0px_green]"
+        : "border-gray-400 shadow-[-3px_3px_0px_0px_gray] hover:border-brand-primary hover:shadow-[-3px_3px_0px_0px_green] bg-white"
     }`}
   >
     <Image src={icon} alt="" width={16} height={16} className="size-4" />
@@ -219,10 +219,10 @@ const ResultCard = ({
   isHighlighted = false,
 }: ResultCardProps) => (
   <div
-    className={`flex items-center justify-center rounded-md border px-3 py-1.5 text-xs transition-all duration-500 ease-out ${
+    className={`flex items-center justify-center rounded-md border px-3 py-1.5 text-xs transition-all duration-500 ease-out bg-white ${
       isHighlighted
         ? "border-brand-primary shadow-[-3px_3px_0px_0px_green]"
-        : "border-border-primary shadow-[-3px_3px_0px_0px_lightgray] hover:border-brand-primary hover:shadow-[-3px_3px_0px_0px_green]"
+        : "border-gray-400 shadow-[-3px_3px_0px_0px_gray] hover:border-brand-primary hover:shadow-[-3px_3px_0px_0px_green]"
     }`}
   >
     <div
@@ -370,8 +370,8 @@ const Diagram = () => {
       {/* title */}
       <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-6">
         <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
-          <span className="font-bold text-brand-primary">FPMate</span>로 쉽게{" "}
-          <br />
+          <span className="font-extrabold text-brand-primary">FPMate</span>로
+          쉽게 <br />
           {/* <br className="sm:hidden" /> */}
           SW 사업비용을 산정해 보세요
         </div>
@@ -387,7 +387,7 @@ const Diagram = () => {
           </p>
           <p className="text-[0.9375rem] text-text-secondary">
             <span className="font-medium">FPMate</span>는{" "}
-            <span className="font-medium text-text-primary">기능점수</span>{" "}
+            <span className="font-semibold text-text-primary">기능점수</span>{" "}
             기반의 소프트웨어 대가산정 가이드를 준수합니다.
           </p>
         </div>
@@ -706,9 +706,12 @@ const Diagram = () => {
               </div>
 
               {/* FPMate AI */}
-              <div className="absolute left-[1043px] top-[274px] flex h-[150px] w-[250px] flex-col items-center justify-center gap-3.75 rounded bg-white/10 border transition-colors border-dashed border-separator pb-2">
+              <div className="absolute left-[1043px] top-[274px] flex h-[150px] w-[250px] flex-col items-center justify-center gap-3.75 rounded border transition-colors border-dashed border-separator pb-2">
                 {/* FPMate logo */}
-                <Card className="absolute -top-[76px] left-1 z-0 h-12 w-12">
+                <Card
+                  className="absolute -top-[76px] left-1 z-0 h-12 w-12"
+                  isHighlighted
+                >
                   <div className="relative flex items-center justify-center ">
                     <Image
                       src="/assets/logo/fpmate-symbol.svg"
@@ -722,7 +725,7 @@ const Diagram = () => {
 
                 {/* FPMate A.I. label */}
                 <div className="absolute -left-5 -top-4">
-                  <div className="rounded-full border bg-white px-3 py-0.5 text-xxs text-text-primary transition-all duration-500 ease-out border-accent-primary">
+                  <div className="rounded-full border bg-white px-3 py-0.5 text-xxs text-text-primary transition-all duration-500 ease-out border-brand-primary">
                     <span style={{ opacity: 1 }}>FPMate A.I.</span>
                   </div>
                 </div>
@@ -877,17 +880,23 @@ const Diagram = () => {
 
               {/* backboard panel */}
               <div
-                className="absolute border border-border-primary left-[calc(50%-95px)] top-[450px] z-5 flex h-[250px] w-[597px] px-3 py-2"
+                className="absolute border border-action-disabled left-[calc(50%-95px)] top-[450px] z-5 flex h-[250px] w-[597px] px-3 py-2"
                 style={{ opacity: 1 }}
               >
+                {/* background pulse */}
+                <div className="animate-pulse absolute left-0 top-0 w-full h-full bg-green-100/20" />
+
+                {/* content */}
                 <div className="absolute left-4 top-2 z-30 preserve-3d">
                   <div
                     className="absolute left-0 top-0 z-30"
                     style={{ opacity: 1 }}
                   >
-                    <div className="min-w-40 shrink-0">
-                      SW 사업 파트너
-                      <br /> FPMate
+                    <div className="min-w-48 shrink-0 font-medium text-text-tertiary">
+                      산정에서 관리까지,
+                      <br />
+                      쉽고 빠르게, AI로 스마트하게!
+                      {/* FPMate */}
                     </div>
                   </div>
                 </div>

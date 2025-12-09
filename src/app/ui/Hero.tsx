@@ -644,6 +644,7 @@ const Hero = () => {
         className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-transparent h-32 -z-10 opacity-50 transition-opacity duration-500 ease-in animate-fade-in-gradient"
         style={
           {
+            "--target-opacity": opacityGradation * 0.5,
             opacity: opacityGradation * 0.5,
           } as React.CSSProperties
         }
