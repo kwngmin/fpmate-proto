@@ -407,7 +407,7 @@ const Diagram = () => {
         `}</style>
 
         {/* selected section */}
-        <div className="py-16 md:pt-20 z-30 mb-6 mt-68 sm:mt-108 md:mt-80 lg:mt-0">
+        <div className="py-16 md:pt-20 z-30 mb-6 mt-64 sm:mt-108 md:mt-80 lg:mt-0">
           <div className="mx-auto w-full max-w-[1200px] lg:h-96 px-6">
             <div className="relative z-10 flex grow flex-col justify-end md:max-w-prose gap-4">
               {/* 스마트 대가산정 버튼 */}
@@ -424,13 +424,21 @@ const Diagram = () => {
                 }`}
               >
                 <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-3 transition-all duration-400 ease-out">
-                  <Image
-                    src={`/assets/svgs/cpu.svg`}
-                    alt="AI와 자동산정으로 구현하는 스마트 대가산정"
-                    width={24}
-                    height={24}
-                    className="size-6 shrink-0"
-                  />
+                  <div className="flex items-center justify-between">
+                    <Image
+                      src={`/assets/svgs/cpu.svg`}
+                      alt="AI와 자동산정으로 구현하는 스마트 대가산정"
+                      width={24}
+                      height={24}
+                      className="size-6 shrink-0"
+                    />
+                    {isSmartPricing && (
+                      <span className="relative flex sm:hidden h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
+                      </span>
+                    )}
+                  </div>
                   <div className="flex items-center gap-4">
                     <span
                       className={`text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
@@ -472,13 +480,21 @@ const Diagram = () => {
                 }`}
               >
                 <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-3 transition-all duration-400 ease-out">
-                  <Image
-                    src={`/assets/svgs/chart-line-up.svg`}
-                    alt="편리한 오류 검증으로 향상되는 업무 효율"
-                    width={16}
-                    height={16}
-                    className="size-6 shrink-0"
-                  />
+                  <div className="flex items-center justify-between">
+                    <Image
+                      src={`/assets/svgs/chart-line-up.svg`}
+                      alt="편리한 오류 검증으로 향상되는 업무 효율"
+                      width={16}
+                      height={16}
+                      className="size-6 shrink-0"
+                    />
+                    {isErrorValidation && (
+                      <span className="relative flex sm:hidden h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-primary opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-brand-primary"></span>
+                      </span>
+                    )}
+                  </div>
                   <div className="flex items-center gap-4">
                     <span
                       className={`text-[1.0625rem] leading-tight tracking-tighter text-text-primary max-w-96 break-keep font-semibold`}
