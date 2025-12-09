@@ -641,10 +641,7 @@ const Hero = () => {
 
       {/* bottom background gradient */}
       <div
-        className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-32 -z-10 opacity-50 transition-opacity duration-500 ease-in animate-fade-in-gradient"
-        // style={{
-        //   opacity: opacityGradation * 0.5,
-        // }}
+        className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-transparent h-32 -z-10 opacity-50 transition-opacity duration-500 ease-in animate-fade-in-gradient"
         style={
           {
             "--target-opacity": opacityGradation * 0.5,
@@ -654,12 +651,23 @@ const Hero = () => {
       />
 
       {/* bottom center background gradient */}
-      <div
+      <div className="absolute left-[50%] -top-12 md:top-24 w-[1952.78px] pointer-events-none select-none -z-20 scale-90 transition-opacity duration-500 ease-in -translate-x-1/2 animate-fade-in-gradient">
+        <Image
+          src="/assets/images/backgroundBlur.webp"
+          alt="background-blur"
+          width={1952.78}
+          height={1722}
+          className="scale-60 md:scale-100"
+          style={{
+            opacity: opacityGradation,
+          }}
+        />
+      </div>
+
+      {/* PC version - mobile 성능 이슈로 숨김 */}
+      {/* <div
         className="hidden absolute h-[1722px] left-[50%] top-12 md:top-24 w-[1952.78px] pointer-events-none select-none -z-10 scale-90 transition-opacity duration-500 ease-in -translate-x-1/2 animate-fade-in-gradient"
         data-name="background 4"
-        // style={{
-        //   opacity: opacityGradation,
-        // }}
         style={
           {
             "--target-opacity": opacityGradation,
@@ -890,7 +898,7 @@ const Hero = () => {
             </defs>
           </svg>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 };
