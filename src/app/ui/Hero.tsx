@@ -879,18 +879,6 @@ const Hero = () => {
           </svg>
         </div>
       </div>
-
-      {/* arrow down */}
-      {/* <div className="absolute bottom-6 md:bottom-12 lg:bottom-20 left-0 right-0 w-full h-10 flex items-center justify-center animate-bounce text-white opacity-75 font-semibold">
-        <Image
-          src="/assets/svgs/caret-down.svg"
-          alt="arrow-down"
-          width={24}
-          height={24}
-          className="size-12 md:size-14 brightness-0 invert mr-2"
-        />
-        아래로 스크롤
-      </div> */}
     </main>
   );
 };
