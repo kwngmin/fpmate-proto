@@ -371,7 +371,6 @@ const Hero = () => {
     endOffset: 500,
     minOpacity: 0,
     maxOpacity: 1,
-    // initialDelay: 1600,
   });
 
   // 카드 너비와 갭 상수
@@ -643,18 +642,30 @@ const Hero = () => {
       {/* bottom background gradient */}
       <div
         className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-32 -z-10 opacity-50 transition-opacity duration-500 ease-in animate-fade-in-gradient"
-        style={{
-          opacity: opacityGradation * 0.5,
-        }}
+        // style={{
+        //   opacity: opacityGradation * 0.5,
+        // }}
+        style={
+          {
+            "--target-opacity": opacityGradation * 0.5,
+            opacity: opacityGradation * 0.5,
+          } as React.CSSProperties
+        }
       />
 
       {/* bottom center background gradient */}
       <div
         className="absolute h-[1722px] left-[50%] top-12 md:top-24 w-[1952.78px] pointer-events-none select-none -z-10 scale-90 transition-opacity duration-500 ease-in -translate-x-1/2 animate-fade-in-gradient"
         data-name="background 4"
-        style={{
-          opacity: opacityGradation,
-        }}
+        // style={{
+        //   opacity: opacityGradation,
+        // }}
+        style={
+          {
+            "--target-opacity": opacityGradation,
+            opacity: opacityGradation,
+          } as React.CSSProperties
+        }
       >
         <div className="absolute inset-[-29.04%_-25.6%]">
           <svg
