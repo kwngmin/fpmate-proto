@@ -225,7 +225,7 @@ const Section1 = () => {
                 onClick={() =>
                   section1Step > 1 && setSection1Step(section1Step - 1)
                 }
-                className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:outline active:scale-95 ${
+                className={`size-11 flex items-center justify-center bg-zinc-700 rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 active:scale-95 ${
                   section1Step > 1 ? "opacity-100" : "opacity-50"
                 }`}
               >
@@ -234,7 +234,7 @@ const Section1 = () => {
                   alt="caret-left"
                   width={24}
                   height={24}
-                  className="size-6"
+                  className="size-6 brightness-0 invert"
                 />
               </button>
               <button
@@ -243,7 +243,7 @@ const Section1 = () => {
                   section1Step < section1Contents.length &&
                   setSection1Step(section1Step + 1)
                 }
-                className={`size-11 flex items-center justify-center bg-white rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 border border-border-primary hover:outline active:scale-95 ${
+                className={`size-11 flex items-center justify-center bg-zinc-700 rounded-full cursor-pointer shadow-md shadow-black/5 hover:shadow-black/10 active:scale-95 ${
                   section1Step < section1Contents.length
                     ? "opacity-100"
                     : "opacity-50"
@@ -254,7 +254,7 @@ const Section1 = () => {
                   alt="caret-right"
                   width={24}
                   height={24}
-                  className="size-6"
+                  className="size-6 brightness-0 invert"
                 />
               </button>
             </div>

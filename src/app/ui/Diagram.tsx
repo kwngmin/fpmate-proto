@@ -366,7 +366,7 @@ const Diagram = () => {
   const ACTIVE_COLOR = "#00AB55";
 
   return (
-    <div className="mt-20 md:mt-40 space-y-8 md:space-y-0">
+    <div className="mt-20 md:mt-40 space-y-2 md:space-y-0">
       {/* title */}
       <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-6">
         <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
@@ -419,11 +419,11 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-2 pb-6 sm:pt-4 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
+                className={`relative text-left p-6 gap-4 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
                   isSmartPricing ? "bg-white outline" : ""
                 }`}
               >
-                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-3 transition-all duration-400 ease-out">
+                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 transition-all duration-400 ease-out">
                   <div className="flex items-center justify-between">
                     <Image
                       src={`/assets/svgs/cpu.svg`}
@@ -475,11 +475,11 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 pt-2 pb-6 sm:pt-4 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
+                className={`relative text-left p-6 gap-4 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
                   isErrorValidation ? "bg-white outline" : ""
                 }`}
               >
-                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 py-3 transition-all duration-400 ease-out">
+                <div className="flex flex-col sm:flex-row w-full sm:items-center gap-3 transition-all duration-400 ease-out">
                   <div className="flex items-center justify-between">
                     <Image
                       src={`/assets/svgs/chart-line-up.svg`}

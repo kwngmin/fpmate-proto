@@ -217,7 +217,7 @@ const Section4 = () => {
                     height={100}
                     className="size-6 brightness-0 invert"
                   />
-                  {content.title}
+                  <span className="pb-0.5 mr-4">{content.title}</span>
                   <div
                     className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0"
                     style={{
