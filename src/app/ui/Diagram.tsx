@@ -419,7 +419,7 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 gap-4 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
+                className={`relative text-left p-6 gap-3 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
                   isSmartPricing ? "bg-white outline" : ""
                 }`}
               >
@@ -453,13 +453,7 @@ const Diagram = () => {
                     )}
                   </div>
                 </div>
-                <p
-                  className={`text-[0.9375rem] leading-normal sm:max-w-4/5 md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
-                    isSmartPricing
-                      ? "text-text-secondary" // max-h-28
-                      : "text-text-tertiary" // max-h-0
-                  }`}
-                >
+                <p className="text-[0.9375rem] leading-normal sm:max-w-4/5 md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden text-text-secondary">
                   요구사항 문서를 입력하는 순간, AI가 내용을 분석해 기능을 자동
                   추천하고 전문가 도움 없이도 누구나 쉽게 비용을 산정 할 수
                   있습니다.
@@ -475,7 +469,7 @@ const Diagram = () => {
                   }
                   setResetTrigger((prev) => prev + 1);
                 }}
-                className={`relative text-left p-6 gap-4 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
+                className={`relative text-left p-6 gap-3 rounded-md md:max-w-md lg:h-40 bg-zinc-100/50 backdrop-blur-xs sm:cursor-pointer flex flex-col ${
                   isErrorValidation ? "bg-white outline" : ""
                 }`}
               >
@@ -509,13 +503,7 @@ const Diagram = () => {
                     )}
                   </div>
                 </div>
-                <p
-                  className={`text-[0.9375rem] leading-normal sm:max-w-4/5 md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden ${
-                    isErrorValidation
-                      ? "text-text-secondary" // max-h-28
-                      : "text-text-tertiary" // max-h-0
-                  }`}
-                >
+                <p className="text-[0.9375rem] leading-normal sm:max-w-4/5 md:max-w-96 break-keep transition-all duration-400 ease-out overflow-hidden text-text-secondary">
                   FPMate가 데이터의 중복, 오류, 누락을 확인해 업무 부담은 줄이고
                   결과의 신뢰도는 높입니다.
                 </p>

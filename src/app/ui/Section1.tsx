@@ -159,7 +159,7 @@ const Section1 = () => {
                 transformStyle: "preserve-3d",
               }}
             >
-              {section1Contents.map((content) => (
+              {section1Contents.map((content, index) => (
                 <Card
                   key={content.id}
                   padding="none"
@@ -179,6 +179,7 @@ const Section1 = () => {
                       intersectionOptions={{
                         threshold: 0.5,
                       }}
+                      delay={index * 200}
                       hasBlur={false}
                       useIntersection={!isMobile}
                     >
@@ -201,6 +202,7 @@ const Section1 = () => {
                       intersectionOptions={{
                         threshold: 0.5,
                       }}
+                      delay={index * 200 + 100}
                     />
 
                     {/* description */}
@@ -212,6 +214,7 @@ const Section1 = () => {
                       intersectionOptions={{
                         threshold: 0.5,
                       }}
+                      delay={index * 200 + 200}
                     />
                   </div>
                 </Card>
@@ -269,8 +272,13 @@ const Section1 = () => {
         {/* Feature 영역 */}
         <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6 mt-6 lg:mt-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-2 lg:gap-x-4 gap-y-2 sm:gap-y-4">
-            {features.map((feature) => (
-              <div
+            {features.map((feature, index) => (
+              <FadeDiv
+                intersectionOptions={{
+                  threshold: 0.5,
+                }}
+                useIntersection={true}
+                delay={index * 200}
                 key={feature.title}
                 className="border-t border-border-primary sm:px-4 py-6 md:px-6 sm:bg-white hover:border-accent-hover z-10"
               >
@@ -287,7 +295,7 @@ const Section1 = () => {
                 <p className="text-[0.9375rem] break-keep md:max-w-56 leading-normal text-text-secondary">
                   {feature.description}
                 </p>
-              </div>
+              </FadeDiv>
             ))}
           </div>
         </div>
