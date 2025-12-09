@@ -1,4 +1,6 @@
-import { FadeDiv } from "@/shared/ui/FadeMotion";
+"use client";
+
+import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
 import Image from "next/image";
 import { Fragment } from "react/jsx-runtime";
 
@@ -149,8 +151,14 @@ const Contents = [
 ];
 
 const Section4 = () => {
+  const { ref, isIntersecting } = useIntersectionObserver({
+    threshold: 0.5,
+    once: true,
+  });
+
   return (
     <section
+      ref={ref}
       className="bg-white py-20 md:py-40 relative z-40"
       style={{
         transform: "translate3d(0, 0, 0)",
@@ -204,10 +212,19 @@ const Section4 = () => {
               (index + 1) % 2 === 0 ? "bg-slate-50" : "bg-stone-50";
 
             return (
-              <FadeDiv
-                delay={index * 200}
+              <div
                 className="flex flex-col gap-2 h-full shrink-0 w-full max-w-sm mx-auto md:max-w-none group"
                 key={content.id}
+                style={{
+                  opacity: isIntersecting ? 1 : 0,
+                  transform: isIntersecting
+                    ? "translateY(0)"
+                    : "translateY(-10px)",
+                  transition: `opacity 0.6s ease-out ${
+                    index * 0.15
+                  }s, transform 0.6s ease-out ${index * 0.15}s`,
+                  willChange: "opacity, transform",
+                }}
               >
                 <div
                   className={`relative text-[1.0625rem] sm:text-base tracking-tight text-white font-semibold h-12 px-6 pb-0.5 flex justify-center items-center gap-3 rounded-md shadow-lg transition-[translate,background-color] duration-500 ease-out group-hover:-translate-y-2 group-hover:bg-[#007B55] ${labelColor}`}
@@ -249,7 +266,7 @@ const Section4 = () => {
                     </li>
                   ))}
                 </ul>
-              </FadeDiv>
+              </div>
             );
           })}
         </div>
