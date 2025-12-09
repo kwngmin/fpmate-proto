@@ -1,3 +1,4 @@
+import { FadeDiv } from "@/shared/ui/FadeMotion";
 import Image from "next/image";
 import { Fragment } from "react/jsx-runtime";
 
@@ -203,7 +204,8 @@ const Section4 = () => {
               (index + 1) % 2 === 0 ? "bg-slate-50" : "bg-stone-50";
 
             return (
-              <div
+              <FadeDiv
+                delay={index * 200}
                 className="flex flex-col gap-2 h-full shrink-0 w-full max-w-sm mx-auto md:max-w-none group"
                 key={content.id}
               >
@@ -247,7 +249,7 @@ const Section4 = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </FadeDiv>
             );
           })}
         </div>

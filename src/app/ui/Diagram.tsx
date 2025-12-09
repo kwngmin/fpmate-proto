@@ -1,5 +1,6 @@
 "use client";
 
+import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
 import Image from "next/image";
 import { useState, useEffect, useCallback, useMemo } from "react";
 
@@ -242,6 +243,12 @@ const Diagram = () => {
   const [isAnimationStarted, setIsAnimationStarted] = useState<boolean>(false);
   const [resetTrigger, setResetTrigger] = useState<number>(0);
 
+  const { ref: diagramRef, isIntersecting: isDiagramIntersecting } =
+    useIntersectionObserver({
+      threshold: 0.5,
+      once: true,
+    });
+
   useEffect(() => {
     // 1200ms 후에 애니메이션 시작
     const initialDelay = setTimeout(() => {
@@ -366,7 +373,10 @@ const Diagram = () => {
   const ACTIVE_COLOR = "#00AB55";
 
   return (
-    <div className="mt-20 md:mt-40 space-y-2 md:space-y-0">
+    <div
+      className="mt-20 md:mt-40 space-y-2 md:space-y-0"
+      ref={diagramRef as React.RefObject<HTMLDivElement>}
+    >
       {/* title */}
       <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-6">
         <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
@@ -413,6 +423,15 @@ const Diagram = () => {
               {/* 스마트 대가산정 버튼 */}
               <button
                 type="button"
+                style={{
+                  opacity: isDiagramIntersecting ? 1 : 0,
+                  transform: isDiagramIntersecting
+                    ? "translateY(0)"
+                    : "translateY(-10px)",
+                  transition:
+                    "opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s",
+                  willChange: "opacity, transform",
+                }}
                 onClick={() => {
                   if (focusState !== "smart-pricing") {
                     setFocusState("smart-pricing");
@@ -463,6 +482,15 @@ const Diagram = () => {
               {/* 오류 검증 버튼 */}
               <button
                 type="button"
+                style={{
+                  opacity: isDiagramIntersecting ? 1 : 0,
+                  transform: isDiagramIntersecting
+                    ? "translateY(0)"
+                    : "translateY(-10px)",
+                  transition:
+                    "opacity 0.6s ease-out 0.9s, transform 0.6s ease-out 0.9s",
+                  willChange: "opacity, transform",
+                }}
                 onClick={() => {
                   if (focusState !== "error-validation") {
                     setFocusState("error-validation");
@@ -513,7 +541,18 @@ const Diagram = () => {
         </div>
 
         {/* background grid */}
-        <div className="absolute -top-72 h-[838px] left-1/2 transform -translate-x-38 translate-y-20 scale-[0.55] sm:scale-[0.875] sm:-top-40 sm:-translate-x-60 md:-top-28 lg:-top-20 md:-translate-x-48 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 pointer-events-none bg-red-500">
+        <div
+          className="absolute -top-72 h-[838px] left-1/2 transform -translate-x-38 translate-y-20 scale-[0.55] sm:scale-[0.875] sm:-top-40 sm:-translate-x-60 md:-top-28 lg:-top-20 md:-translate-x-48 md:translate-y-8 md:scale-[0.94] lg:translate-x-0 lg:translate-y-0 pointer-events-none bg-red-500"
+          style={{
+            opacity: isDiagramIntersecting ? 1 : 0,
+            transform: isDiagramIntersecting
+              ? "translateY(0)"
+              : "translateY(-10px)",
+            transition:
+              "opacity 0.6s ease-out 1.2s, transform 0.6s ease-out 1.2s",
+            willChange: "opacity, transform",
+          }}
+        >
           <div className="h-[838px] w-full relative" style={{ opacity: 1 }}>
             <div className="absolute left-[calc(50%-550px)] -top-20 h-[1095px] w-[1580px] -rotate-30 skew-x-30">
               {/* grid image */}
