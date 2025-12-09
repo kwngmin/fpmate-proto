@@ -371,7 +371,7 @@ const Hero = () => {
     endOffset: 500,
     minOpacity: 0,
     maxOpacity: 1,
-    initialDelay: 1600,
+    // initialDelay: 1600,
   });
 
   // 카드 너비와 갭 상수
