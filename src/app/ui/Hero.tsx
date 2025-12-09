@@ -371,6 +371,7 @@ const Hero = () => {
     endOffset: 500,
     minOpacity: 0,
     maxOpacity: 1,
+    initialDelay: 1600,
   });
 
   // 카드 너비와 갭 상수
@@ -639,17 +640,12 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="h-40" />
-
       {/* bottom background gradient */}
       <div
         className="absolute -bottom-8 left-0 right-0 w-full bg-linear-to-t from-[#00AB55] via-to-[#80D5AA] to-white h-32 -z-10 opacity-50 transition-opacity duration-500 ease-in"
         style={{
           opacity: opacityGradation * 0.5,
         }}
-        // style={{
-        //   opacity: Boolean(isAnimationStarted) ? opacityGradation * 0.5 : 0,
-        // }}
       />
 
       {/* bottom center background gradient */}
@@ -659,9 +655,6 @@ const Hero = () => {
         style={{
           opacity: opacityGradation,
         }}
-        // style={{
-        //   opacity: Boolean(isAnimationStarted) ? opacityGradation : 0,
-        // }}
       >
         <div className="absolute inset-[-29.04%_-25.6%]">
           <svg
