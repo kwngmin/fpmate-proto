@@ -267,7 +267,7 @@ const Section1 = () => {
         </div>
 
         {/* Feature 영역 */}
-        <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6">
+        <div className="max-w-[1200px] mx-auto px-6 relative z-30 space-y-6 mt-6 lg:mt-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-2 lg:gap-x-4 gap-y-2 sm:gap-y-4">
             {features.map((feature) => (
               <div

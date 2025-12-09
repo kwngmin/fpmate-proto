@@ -9,7 +9,7 @@ const Contents = [
     id: 1,
     key: "ai-recommendation",
     title: "AI 추천 기능",
-    icon: "robot",
+    icon: "cpu",
     listItems: [
       {
         title: "업무 및 기능 식별 자동화",
@@ -166,7 +166,7 @@ const Section4 = () => {
           </div>
 
           <p className="text-[1.0625rem] md:text-[1.3125rem] text-center leading-normal tracking-tight break-keep text-text-primary">
-            어떤 사업이든, <span className="font-semibold">더 정확하게</span>.
+            어떤 사업이든, <span className="font-semibold">더 정확하게</span>.{" "}
             <br className="sm:hidden" />
             어떤 역할이든, <span className="font-semibold">더 효율적으로</span>.
           </p>
