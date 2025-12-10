@@ -283,16 +283,9 @@ const WorkspacePage = () => {
                     </div>
                   </div>
                 </div>
-                <div className="hidden sm:flex items-center text-sm rounded-full px-3 sm:px-5 h-8 sm:h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:bg-[#00AB55]/10 group-active:bg-[#00AB55]/20 group-active:scale-95 transition-[background-color,scale] duration-200 shrink-0">
+                <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:bg-[#00AB55]/10 group-active:bg-[#00AB55]/20 group-active:scale-95 transition-[background-color,scale] duration-200 shrink-0">
                   {index === 0 ? "이어서 진행" : "내역 보기"}
                 </div>
-                {/* (
-                  
-                ) : (
-                  <div className="text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-[#00AB55]/10 group-hover:bg-[#00AB55]/20 group-active:bg-[#00AB55]/30 group-active:scale-95 transition-[background-color,scale] duration-200 shrink-0 flex items-center">
-                    내역 보기
-                  </div>
-                )} */}
               </button>
             ))}
           </div>
@@ -354,11 +347,6 @@ const WorkspacePage = () => {
                 <div className="text-[0.9375rem] leading-snug tracking-tight font-medium text-text-primary group-hover:underline group-hover:underline-offset-4 text-start">
                   {article.title}
                 </div>
-                {/* <span className="text-start text-sm text-text-secondary leading-tight">
-                  {article.date}{" "}
-                  <span className="text-text-tertiary mx-0.5">•</span>{" "}
-                  {article.author}
-                </span> */}
               </button>
             ))}
           </div>
