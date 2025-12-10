@@ -135,7 +135,7 @@ const WorkspacePage = () => {
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <Header />
-      <div className="max-w-[1200px] mx-auto px-6 py-12 flex flex-col gap-6">
+      <div className="w-full max-w-[1200px] mx-auto px-6 py-12 flex flex-col gap-6">
         {/* 상단 navigation */}
         <div className="flex flex-col gap-4 sm:gap-6">
           <div className="text-[1.5rem] sm:text-[2rem] leading-tight tracking-tighter font-semibold break-keep text-text-primary">
@@ -338,7 +338,7 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={article.id}
-                className="py-4 border-b border-border-primary space-y-1.5 group cursor-pointer flex flex-col"
+                className="py-4 border-b border-border-primary space-y-2 group cursor-pointer flex flex-col"
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
@@ -363,7 +363,7 @@ const WorkspacePage = () => {
                     </span>
                   </div>
                 </div>
-                <div className="text-[0.9375rem] leading-snug tracking-tight font-medium text-text-primary group-hover:underline group-hover:underline-offset-4 text-start">
+                <div className="text-[1.0625rem] sm:text-[0.9375rem] leading-snug tracking-tight font-medium text-text-primary sm:group-hover:underline group-hover:underline-offset-4 text-start">
                   {article.title}
                 </div>
               </button>
