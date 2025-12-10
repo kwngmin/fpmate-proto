@@ -170,7 +170,7 @@ const WorkspacePage = () => {
             {/* header */}
             <div className="bg-white flex items-center justify-between h-16 border-b border-accent-primary z-10 sticky top-16">
               {/* tabs */}
-              <div className="flex items-center gap-4">
+              <div className="hidden sm:flex items-center gap-4">
                 <button
                   type="button"
                   className="flex items-center gap-2 h-16 cursor-pointer"
@@ -196,39 +196,56 @@ const WorkspacePage = () => {
                 </button>
               </div>
 
-              {/* more button */}
-              <button
-                type="button"
-                className="cursor-pointer hover:bg-action-hover active:bg-action-selected rounded-full flex items-center justify-center size-12"
-              >
+              {/* combo box */}
+              <div className="w-full flex sm:hidden justify-between items-center gap-4">
+                <div className="flex items-center gap-2 h-16 cursor-pointer grow">
+                  <span className="text-[1.3125rem] leading-[1.33] tracking-[-0.012em] font-medium">
+                    3개월 내 갱신목록
+                  </span>
+                  <div className="h-6 px-1.5 min-w-6 rounded-full bg-red-500 text-white flex items-center justify-center text-base leading-none pb-0.5 font-semibold">
+                    12
+                  </div>
+                </div>
                 <Image
-                  src={`/assets/svgs/funnel-simple.svg`}
-                  alt="arrow-right"
+                  src={`/assets/svgs/caret-down.svg`}
+                  alt="arrow-down"
                   width={24}
                   height={24}
-                  className="size-6"
+                  className="size-4"
                 />
-              </button>
+              </div>
+            </div>
+
+            <div className="h-12 flex items-center justify-between px-3 bg-bg-tertiary">
+              <div className="flex items-center gap-1">
+                <span className="text-[0.8125rem] leading-tight text-text-secondary font-medium">
+                  김광민님이 담당자(수정권한)인 건만 조회합니다.
+                </span>
+              </div>
+              <div className="border border-brand-primary p-0.5 pl-3 bg-[#00AB55] rounded-full">
+                <div className="size-4 rounded-full bg-white" />
+              </div>
             </div>
 
             {/* list content */}
             {Array.from({ length: 10 }).map((_, index) => (
-              <div
+              <button
+                type="button"
                 key={index}
-                className="flex gap-6 py-6 border-b border-border-primary"
+                className="flex gap-6 py-6 border-b border-border-primary cursor-pointer group"
               >
                 <div className="grow">
-                  <h4 className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold text-text-primary hover:underline  underline-offset-4 cursor-pointer">
+                  <h4 className="text-start text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold text-text-primary group-hover:underline  group-hover:underline-offset-4">
                     유망한 사업 ABC
                   </h4>
-                  <p className="font-medium text-text-secondary">
-                    ABC footsal tournament_20251114_V01
+                  <p className="text-start font-medium text-text-secondary">
+                    ABC futsal tournament_20251114_V01
                   </p>
                   <div className="flex items-center gap-2 text-[0.8125rem] tracking-tight py-2">
-                    <div className="size-8 rounded-full bg-zinc-200 flex items-center justify-center">
+                    <div className="size-8 rounded-full bg-zinc-200 flex items-center justify-center shrink-0">
                       김
                     </div>
-                    <span className="text-text-secondary leading-tight">
+                    <span className="text-text-secondary leading-tight text-start break-keep">
                       <span className="font-medium text-text-primary">
                         김광민
                       </span>
@@ -236,40 +253,47 @@ const WorkspacePage = () => {
                       진행했습니다.
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-[0.8125rem] tracking-tight">
-                    <span className="text-text-secondary">사업 담당자</span>
-                    <div className="flex items-center">
-                      <div className="size-8 rounded-full bg-zinc-200 flex items-center justify-center outline-2 outline-white">
-                        김
-                      </div>{" "}
-                      <div className="-translate-x-2 size-8 rounded-full bg-zinc-200 flex items-center justify-center outline-2 outline-white">
-                        김
-                      </div>{" "}
-                      <div className="-translate-x-4 size-8 rounded-full bg-zinc-200 flex items-center justify-center outline-2 outline-white">
-                        김
-                      </div>{" "}
-                      <div className="-translate-x-6 size-8 rounded-full bg-zinc-200 flex items-center justify-center outline-2 outline-white">
-                        김
+                  <div className="flex justify-between items-center gap-2 text-[0.8125rem] tracking-tight">
+                    <div className="flex items-center gap-2">
+                      <span className="text-text-secondary">사업 담당자</span>
+                      <div className="flex items-center">
+                        <div className="size-8 rounded-full bg-zinc-200 flex items-center justify-center outline-2 outline-white">
+                          김
+                        </div>{" "}
+                        <div className="-translate-x-2 size-8 rounded-full bg-zinc-200 flex items-center justify-center outline-2 outline-white">
+                          김
+                        </div>{" "}
+                        <div className="-translate-x-4 size-8 rounded-full bg-zinc-200 flex items-center justify-center outline-2 outline-white">
+                          김
+                        </div>{" "}
+                        <div className="-translate-x-6 size-8 rounded-full bg-zinc-200 flex items-center justify-center outline-2 outline-white">
+                          김
+                        </div>
                       </div>
+                    </div>
+                    <div className="flex sm:hidden items-center gap-1 text-sm h-8 font-medium text-[#007B55] shrink-0">
+                      {index === 0 ? "이어서 진행" : "내역 보기"}
+                      <Image
+                        src={`/assets/svgs/arrow-right.svg`}
+                        alt="arrow-right"
+                        width={24}
+                        height={24}
+                        className="size-4"
+                      />
                     </div>
                   </div>
                 </div>
-                {index === 0 ? (
-                  <button
-                    type="button"
-                    className="text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary cursor-pointer hover:bg-[#00AB55]/10 active:bg-[#00AB55]/20 active:scale-95 transition-[background-color,scale] duration-200 shrink-0"
-                  >
-                    이어서 진행
-                  </button>
+                <div className="hidden sm:flex items-center text-sm rounded-full px-3 sm:px-5 h-8 sm:h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:bg-[#00AB55]/10 group-active:bg-[#00AB55]/20 group-active:scale-95 transition-[background-color,scale] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div>
+                {/* (
+                  
                 ) : (
-                  <button
-                    type="button"
-                    className="text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-[#00AB55]/10 cursor-pointer hover:bg-[#00AB55]/20 active:bg-[#00AB55]/30 active:scale-95 transition-[background-color,scale] duration-200 shrink-0"
-                  >
+                  <div className="text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-[#00AB55]/10 group-hover:bg-[#00AB55]/20 group-active:bg-[#00AB55]/30 group-active:scale-95 transition-[background-color,scale] duration-200 shrink-0 flex items-center">
                     내역 보기
-                  </button>
-                )}
-              </div>
+                  </div>
+                )} */}
+              </button>
             ))}
           </div>
 
@@ -309,10 +333,10 @@ const WorkspacePage = () => {
                     <div
                       className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter px-1 border rounded-sm flex items-center ${
                         article.color === "blue"
-                          ? "border-blue-500/30 text-blue-600"
+                          ? "bg-blue-500/10 border-blue-500/20 text-blue-600"
                           : article.color === "green"
-                          ? "border-green-500/30 text-green-700"
-                          : "border-red-500 text-red-500"
+                          ? "bg-emerald-500/10 border-emerald-500/30 text-green-700"
+                          : "bg-red-500 text-red-500"
                       }`}
                     >
                       {article.category}
