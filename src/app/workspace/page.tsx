@@ -283,7 +283,7 @@ const WorkspacePage = () => {
                     </div>
                   </div>
                 </div>
-                <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:bg-[#00AB55]/10 group-active:bg-[#00AB55]/20 group-active:scale-95 transition-[background-color,scale] duration-200 shrink-0">
+                <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-brand-primary group-hover:text-white group-active:bg-[#00AB55]/20 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
                   {index === 0 ? "이어서 진행" : "내역 보기"}
                 </div>
               </button>
