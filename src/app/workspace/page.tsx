@@ -135,36 +135,34 @@ const WorkspacePage = () => {
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <Header />
-      <div className="py-12 relative z-40 space-y-6 ">
+      <div className="max-w-[1200px] mx-auto px-6 py-12 flex flex-col gap-6">
         {/* 상단 navigation */}
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8">
-          <div className="flex flex-col gap-6">
-            <div className="text-[2rem] leading-tight tracking-tighter font-semibold break-keep text-text-primary">
-              무엇을 하시겠습니까?
-            </div>
+        <div className="flex flex-col gap-4 sm:gap-6">
+          <div className="text-[1.5rem] sm:text-[2rem] leading-tight tracking-tighter font-semibold break-keep text-text-primary">
+            무엇을 하시겠습니까?
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center gap-1 lg:gap-2 max-w-[960px]">
-              {workspaceNav.map((nav) => (
-                <button
-                  type="button"
-                  key={nav.id}
-                  className="h-14 sm:h-16 lg:h-20 flex items-center border border-border-primary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
-                >
-                  {/* thumbnail */}
-                  {nav.thumbnail}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center gap-1 lg:gap-2 max-w-[960px]">
+            {workspaceNav.map((nav) => (
+              <button
+                type="button"
+                key={nav.id}
+                className="h-14 sm:h-16 lg:h-20 flex items-center border border-border-primary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
+              >
+                {/* thumbnail */}
+                {nav.thumbnail}
 
-                  {/* label */}
-                  <div className="text-[1.0625rem] leading-normal tracking-tight break-keep text-text-primary font-medium px-6 h-full grow flex items-center">
-                    {nav.title}
-                  </div>
-                </button>
-              ))}
-            </div>
+                {/* label */}
+                <div className="text-[1.0625rem] leading-normal tracking-tight break-keep text-text-primary font-medium px-6 h-full grow flex items-center">
+                  {nav.title}
+                </div>
+              </button>
+            ))}
           </div>
         </div>
 
         {/* content container*/}
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col lg:flex-row gap-8">
           {/* tabs content */}
           <div className="flex flex-col grow">
             {/* header */}
