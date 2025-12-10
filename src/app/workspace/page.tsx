@@ -284,14 +284,29 @@ const WorkspacePage = () => {
                   </div>
                 </div>
                 {/* brand primary */}
-                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-brand-primary group-hover:text-white group-active:bg-[#00AB55]/20 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-brand-primary group-hover:text-white group-active:bg-[#007B55] group-active:scale-95 transition-[background-color,scale,text-color] duration-200 shrink-0">
                   {index === 0 ? "이어서 진행" : "내역 보기"}
                 </div> */}
 
-                {/* black */}
-                <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-zinc-700 group-hover:text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                {/* accent primary */}
+                <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white border border-accent-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-brand-primary group-hover:text-white group-active:bg-[#007B55] group-active:scale-95 transition-[background-color,scale,text-color] duration-150 shrink-0">
                   {index === 0 ? "이어서 진행" : "내역 보기"}
                 </div>
+
+                {/* black primary */}
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto bg-zinc-600 font-semibold group-hover:bg-brand-primary text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div> */}
+
+                {/* black secondary */}
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto group-hover:font-medium group-hover:text-[#007B55] group-hover:bg-white border group-hover:border-brand-primary border-transparent font-semibold bg-zinc-600 text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div> */}
+
+                {/* hover black */}
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-zinc-700 group-hover:text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div> */}
               </button>
             ))}
           </div>
