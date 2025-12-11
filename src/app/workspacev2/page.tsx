@@ -58,7 +58,7 @@ const articles = [
 
 const ThumbnailPlus = ({ title }: { title: string }) => {
   return (
-    <div className="flex items-center justify-center xl:w-full pt-8 overflow-hidden">
+    <div className="flex items-center justify-center xl:w-full xl:pt-8 overflow-hidden">
       <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-emerald-200 to-emerald-100 relative z-10 overflow-hidden xl:rounded-xl shadow-xl shadow-white/20">
         {/* object container */}
         <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-18 -top-2 -left-2 bg-brand-primary to-white/30 rounded-lg shadow-md" />
@@ -80,7 +80,7 @@ const ThumbnailPlus = ({ title }: { title: string }) => {
 
 const ThumbnailClock = ({ title }: { title: string }) => {
   return (
-    <div className="flex items-center justify-center xl:w-full pt-8 overflow-hidden">
+    <div className="flex items-center justify-center xl:w-full xl:pt-8 overflow-hidden">
       <div className="size-14 sm:size-16 lg:size-20 xl:size-20 flex items-center justify-center bg-linear-to-t from-indigo-200 to-indigo-100 relative z-10 overflow-hidden xl:rounded-xl shadow-xl shadow-white/20">
         {/* object container */}
         <div className="absolute size-16 sm:size-18 lg:size-20 -bottom-5 -left-5 bg-[#748CDC] to-white/30 rounded-full shadow-md" />
@@ -102,7 +102,7 @@ const ThumbnailClock = ({ title }: { title: string }) => {
 
 const ThumbnailList = ({ title }: { title: string }) => {
   return (
-    <div className="flex items-center justify-center xl:w-full pt-8 overflow-hidden">
+    <div className="flex items-center justify-center xl:w-full xl:pt-8 overflow-hidden">
       <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-red-200 to-red-100 relative z-10 overflow-hidden xl:rounded-xl shadow-xl shadow-white/20">
         {/* object container */}
         <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-18 -top-2 -right-2 bg-[#F98D78] to-white/30 rounded-lg shadow-md" />
