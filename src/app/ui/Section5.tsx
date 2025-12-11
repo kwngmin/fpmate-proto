@@ -4,7 +4,7 @@ import Image from "next/image";
 const Section5 = () => {
   return (
     <section
-      className="bg-gray-50 py-32 md:py-40 relative z-50"
+      className="bg-gray-50 py-32 md:py-40 lg:py-60 relative z-50"
       style={{
         transform: "translate3d(0, 0, 0)",
         WebkitBackfaceVisibility: "hidden",
