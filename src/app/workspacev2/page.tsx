@@ -341,7 +341,7 @@ const WorkspacePage = () => {
 
                 {/* accent primary */}
                 <div
-                  className={`hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white border border-border-primary group-hover:border-transparent group-hover:font-semibold group-hover:text-white transition-[background-color,text-color] duration-150 shrink-0 ${
+                  className={`hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white border border-border-secondary group-hover:border-transparent group-hover:font-semibold group-hover:text-white transition-[background-color,text-color] duration-150 shrink-0 ${
                     index === 0
                       ? "group-hover:bg-sky-500"
                       : "group-hover:bg-brand-primary"
