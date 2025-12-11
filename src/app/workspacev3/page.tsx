@@ -166,7 +166,7 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={nav.id}
-                className="h-14 sm:h-16 lg:h-20 xl:h-32 flex items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
+                className="h-14 sm:h-16 lg:h-20 xl:h-32 flex items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-99 transition-[shadow, scale] duration-100 bg-white"
               >
                 {/* thumbnail */}
                 {nav.thumbnail}
@@ -341,7 +341,7 @@ const WorkspacePage = () => {
 
                 {/* accent primary */}
                 <div
-                  className={`hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white group-hover:font-semibold group-hover:text-white transition-[background-color,text-color] duration-150 shrink-0 ${
+                  className={`hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white group-hover:font-semibold group-hover:text-white transition-[background-color,text-color] duration-150 shrink-0 border border-accent-primary group-hover:border-transparent ${
                     index === 0
                       ? "group-hover:bg-sky-500"
                       : "group-hover:bg-brand-primary"

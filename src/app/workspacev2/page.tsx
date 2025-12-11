@@ -172,7 +172,7 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={nav.id}
-                className="h-14 sm:h-16 lg:h-20 xl:h-48 flex xl:flex-col items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
+                className="h-14 sm:h-16 lg:h-20 xl:h-48 flex xl:flex-col items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-99 transition-[shadow, scale] duration-100 bg-white"
               >
                 {/* thumbnail */}
                 {nav.thumbnail}
