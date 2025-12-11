@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Header from "../ui/Header";
 import Link from "next/link";
+import { useState } from "react";
 
 const categories = [
   { title: "서비스 공지사항", color: "blue", key: "service" },
@@ -164,20 +167,23 @@ const dummyData = [
 ];
 
 const BoardsPage = () => {
+  const [myPosts, setMyPosts] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <Header />
       <div className="py-12 relative z-40 space-y-6 ">
         {/* 상단 title & search + write button */}
-        <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
-          <div className="flex flex-col gap-4 sm:gap-6">
-            <div className="text-[1.5rem] sm:text-[2rem] leading-tight tracking-tighter font-semibold break-keep text-text-primary">
-              {/* 공지사항 / 게시글 */}
-              공지사항 및 게시글을 조회합니다.
-            </div>
+        <div className="max-w-[1200px] mx-auto px-6 flex flex-col">
+          <div className="text-[1.5rem] sm:text-[2rem] leading-tight tracking-tighter font-semibold break-keep text-text-primary">
+            {/* 공지사항 / 게시글 */}
+            공지사항 및 게시글을 조회합니다.
+          </div>
 
-            <div className="flex justify-between items-center gap-2">
+          <div>
+            {/* toolbar */}
+            <div className="flex justify-between items-center gap-2 sticky top-16 bg-white z-10 h-16 sm:h-20 border-b border-accent-primary">
               <div className="flex items-center gap-2">
                 <div className="h-11 border border-border-primary rounded-md w-72 flex items-center gap-2 px-3 focus-within:border-brand-primary focus-within:outline-2 outline-brand-tint">
                   <Image
@@ -195,15 +201,24 @@ const BoardsPage = () => {
                 </div>
                 <button
                   type="button"
-                  className="border border-border-primary hover:border-accent-hover h-11 rounded-md flex items-center justify-center font-medium sm:pr-5 active:bg-bg-neutral transition-[border, background-color] duration-200 cursor-pointer"
+                  onClick={() => setMyPosts(!myPosts)}
+                  className={`border border-border-primary hover:border-accent-primary h-11 rounded-md flex items-center justify-center font-medium sm:pr-5 active:bg-bg-neutral transition-[border, background-color] duration-200 cursor-pointer ${
+                    myPosts ? "bg-bg-neutral" : "bg-transparent"
+                  }`}
                 >
                   <div className="shrink-0 size-11 flex items-center justify-center">
                     <Image
-                      src={`/assets/svgs/funnel.svg`}
+                      src={
+                        myPosts
+                          ? `/assets/svgs/funnel-fill.svg`
+                          : `/assets/svgs/funnel.svg`
+                      }
                       alt="funnel"
                       width={24}
                       height={24}
-                      className="size-5 opacity-50"
+                      className={`size-5 ${
+                        myPosts ? "opacity-100" : "opacity-50"
+                      }`}
                     />
                   </div>
                   <div className="hidden sm:flex items-center justify-center grow h-full font-medium">
@@ -213,7 +228,7 @@ const BoardsPage = () => {
               </div>
               <button
                 type="button"
-                className="shrink-0 flex overflow-hidden rounded-full sm:rounded-lg w-11 sm:w-32 h-11 cursor-pointer active:scale-95 transition-[scale] duration-200"
+                className="shrink-0 flex overflow-hidden rounded-md sm:rounded-lg w-11 sm:w-32 h-11 cursor-pointer active:scale-95 transition-[scale] duration-200"
               >
                 <div className="shrink-0 size-11 flex items-center justify-center bg-[#007B55]">
                   <Image
@@ -230,94 +245,94 @@ const BoardsPage = () => {
                 </div>
               </button>
             </div>
-          </div>
 
-          {/* 게시글 목록 */}
-          <div className="flex flex-col border-y border-accent-primary">
-            {dummyData.map((item) => (
-              <Link
-                href={`/boards/details`}
-                key={item.id}
-                className="flex flex-col md:flex-row py-4 md:py-0 justify-between border-b border-border-primary md:h-16 md:hover:bg-bg-neutral cursor-pointer group"
-              >
-                {/* left side */}
-                <div className="flex items-center">
-                  {/* 조회수 */}
-                  <div className="hidden md:flex items-center justify-center text-text-tertiary text-sm w-14">
-                    {item.id}
-                  </div>
+            {/* 게시글 목록 */}
+            <div className="flex flex-col">
+              {dummyData.map((item) => (
+                <Link
+                  href={`/boards/details`}
+                  key={item.id}
+                  className="flex flex-col md:flex-row py-4 md:py-0 justify-between border-b border-border-primary md:h-16 md:hover:bg-bg-neutral cursor-pointer group"
+                >
+                  {/* left side */}
+                  <div className="flex items-center">
+                    {/* 조회수 */}
+                    <div className="hidden md:flex items-center justify-center text-text-tertiary text-sm w-14">
+                      {item.id}
+                    </div>
 
-                  {/* 카테고리, 날짜, 작성자 */}
-                  <div className="flex flex-col md:flex-row md:items-center gap-2 text-sm grow">
-                    <div className="flex items-center gap-2">
-                      {/* category badge */}
-                      <div
-                        className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter px-1 pt-px border rounded-sm flex items-center w-fit ${
-                          item.category.color === "blue"
-                            ? "bg-blue-500/10 border-blue-500/20 text-blue-600"
-                            : item.category.color === "green"
-                            ? "bg-emerald-500/10 border-emerald-500/30 text-green-700"
-                            : "bg-orange-500/10 border-orange-500/30 text-orange-700"
-                        }`}
-                      >
-                        {item.category.title}
+                    {/* 카테고리, 날짜, 작성자 */}
+                    <div className="flex flex-col md:flex-row md:items-center gap-2 text-sm grow">
+                      <div className="flex items-center gap-2">
+                        {/* category badge */}
+                        <div
+                          className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter px-1 pt-px border rounded-sm flex items-center w-fit ${
+                            item.category.color === "blue"
+                              ? "bg-blue-500/10 border-blue-500/20 text-blue-600"
+                              : item.category.color === "green"
+                              ? "bg-emerald-500/10 border-emerald-500/30 text-green-700"
+                              : "bg-orange-500/10 border-orange-500/30 text-orange-700"
+                          }`}
+                        >
+                          {item.category.title}
+                        </div>
+
+                        {/* separator */}
+                        <div className="h-3 w-px bg-border-primary md:hidden" />
+
+                        {/* date */}
+                        <span className="text-sm text-text-secondary leading-tight md:hidden">
+                          {item.date}
+                        </span>
+
+                        {/* separator */}
+                        <div className="h-3 w-px bg-border-primary md:hidden" />
+
+                        {/* author */}
+                        <span className="text-[0.8125rem] font-medium text-text-tertiary leading-tight md:hidden">
+                          {item.author}
+                        </span>
                       </div>
 
-                      {/* separator */}
-                      <div className="h-3 w-px bg-border-primary md:hidden" />
+                      {/* title & new badge */}
+                      <div className="flex items-center gap-2">
+                        {/* title */}
+                        <span className="text-[1.0625rem] text-text-primary font-medium md:group-hover:underline md:group-hover:underline-offset-4">
+                          {item.category.title}
+                        </span>
 
-                      {/* date */}
-                      <span className="text-sm text-text-secondary leading-tight md:hidden">
-                        {item.date}
-                      </span>
-
-                      {/* separator */}
-                      <div className="h-3 w-px bg-border-primary md:hidden" />
-
-                      {/* author */}
-                      <span className="text-[0.8125rem] font-medium text-text-tertiary leading-tight md:hidden">
-                        {item.author}
-                      </span>
-                    </div>
-
-                    {/* title & new badge */}
-                    <div className="flex items-center gap-2">
-                      {/* title */}
-                      <span className="text-[1.0625rem] text-text-primary font-medium md:group-hover:underline md:group-hover:underline-offset-4">
-                        {item.category.title}
-                      </span>
-
-                      {/* new badge */}
-                      {item.isNew && (
-                        <div className="flex items-center justify-center h-4.5 w-8 text-[11px] bg-red-500 text-white tracking-tight font-extrabold rounded-lg">
-                          NEW
-                        </div>
-                      )}
+                        {/* new badge */}
+                        {item.isNew && (
+                          <div className="flex items-center justify-center h-4.5 w-8.5 text-[11px] bg-red-500 text-white tracking-tight font-extrabold rounded-lg pr-0.5">
+                            NEW
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* right side */}
-                <div className="hidden md:flex items-center gap-2">
-                  {/* author */}
-                  <div className="flex items-center gap-2 text-[0.8125rem] tracking-tight py-2">
-                    <div className="size-8 rounded-full bg-zinc-200 flex items-center justify-center shrink-0">
-                      {item.author.charAt(0)}
-                    </div>
-                    <span className="text-text-secondary leading-tight text-start break-keep">
-                      <span className="text-sm font-medium text-text-primary">
-                        {item.author}
+                  {/* right side */}
+                  <div className="hidden md:flex items-center gap-2">
+                    {/* author */}
+                    <div className="flex items-center gap-2 text-[0.8125rem] tracking-tight py-2">
+                      <div className="size-8 rounded-full bg-zinc-200 flex items-center justify-center shrink-0">
+                        {item.author.charAt(0)}
+                      </div>
+                      <span className="text-text-secondary leading-tight text-start break-keep">
+                        <span className="text-sm font-medium text-text-primary">
+                          {item.author}
+                        </span>
                       </span>
+                    </div>
+
+                    {/* date */}
+                    <span className="w-56 px-3 text-end text-sm text-text-tertiary font-medium">
+                      {item.date}
                     </span>
                   </div>
-
-                  {/* date */}
-                  <span className="w-56 px-3 text-end text-sm text-text-tertiary font-medium">
-                    {item.date}
-                  </span>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
