@@ -58,18 +58,18 @@ const articles = [
 
 const ThumbnailPlus = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-emerald-200 to-emerald-100 relative z-10 overflow-hidden">
+    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-emerald-200 to-emerald-100 relative z-10 overflow-hidden xl:rounded-xl">
       {/* object container */}
-      <div className="absolute size-12 sm:size-14 lg:size-16 -top-2 -left-2 bg-brand-primary to-white/30 rounded-lg shadow-md" />
+      <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-18 -top-2 -left-2 bg-brand-primary to-white/30 rounded-lg shadow-md" />
 
       {/* icon container */}
-      <div className="size-10 sm:size-12 flex items-center justify-center bg-linear-to-br from-brand-primary/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
+      <div className="size-10 sm:size-12 xl:size-20 flex items-center justify-center bg-linear-to-br from-brand-primary/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
         <Image
           src={`/assets/svgs/plus-bold.svg`}
           alt={title}
           width={24}
           height={24}
-          className="size-6 brightness-0 invert"
+          className="size-6 xl:size-8 brightness-0 invert"
         />
       </div>
     </div>
@@ -78,18 +78,18 @@ const ThumbnailPlus = ({ title }: { title: string }) => {
 
 const ThumbnailClock = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-indigo-200 to-indigo-100 relative z-10 overflow-hidden">
+    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-indigo-200 to-indigo-100 relative z-10 overflow-hidden xl:rounded-xl">
       {/* object container */}
-      <div className="absolute size-16 sm:size-18 lg:size-20 -bottom-5 -left-5 bg-[#748CDC] to-white/30 rounded-full shadow-md" />
+      <div className="absolute size-16 sm:size-18 lg:size-20 xl:size-22 -bottom-5 -left-5 bg-[#748CDC] to-white/30 rounded-full shadow-md" />
 
       {/* icon container */}
-      <div className="size-10 sm:size-12 flex items-center justify-center bg-linear-to-tr from-[#748CDC]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
+      <div className="size-10 sm:size-12 xl:size-20 flex items-center justify-center bg-linear-to-tr from-[#748CDC]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
         <Image
           src={`/assets/svgs/clock-bold.svg`}
           alt={title}
           width={24}
           height={24}
-          className="size-6 brightness-0 invert"
+          className="size-6 xl:size-8 brightness-0 invert"
         />
       </div>
     </div>
@@ -98,18 +98,18 @@ const ThumbnailClock = ({ title }: { title: string }) => {
 
 const ThumbnailList = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-red-200 to-red-100 relative z-10 overflow-hidden">
+    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-red-200 to-red-100 relative z-10 overflow-hidden xl:rounded-xl">
       {/* object container */}
-      <div className="absolute size-12 sm:size-14 lg:size-16 -top-2 -right-2 bg-[#F98D78] to-white/30 rounded-lg shadow-md" />
+      <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-18 -top-2 -right-2 bg-[#F98D78] to-white/30 rounded-lg shadow-md" />
 
       {/* icon container */}
-      <div className="size-10 sm:size-12 flex items-center justify-center bg-linear-to-bl from-[#F98D78]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
+      <div className="size-10 sm:size-12 xl:size-20 flex items-center justify-center bg-linear-to-bl from-[#F98D78]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
         <Image
           src={`/assets/svgs/list-magnifying-glass-bold.svg`}
           alt={title}
           width={24}
           height={24}
-          className="size-6 brightness-0 invert"
+          className="size-6 xl:size-8 brightness-0 invert"
         />
       </div>
     </div>
@@ -166,7 +166,7 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={nav.id}
-                className="h-14 sm:h-16 lg:h-20 flex items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
+                className="xl:pl-6 h-14 sm:h-16 lg:h-20 xl:h-32 flex items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
               >
                 {/* thumbnail */}
                 {nav.thumbnail}

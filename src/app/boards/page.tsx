@@ -202,8 +202,10 @@ const BoardsPage = () => {
                 <button
                   type="button"
                   onClick={() => setMyPosts(!myPosts)}
-                  className={`border border-border-primary hover:border-accent-primary h-11 rounded-md flex items-center justify-center font-medium sm:pr-5 active:bg-bg-neutral transition-[border, background-color] duration-200 cursor-pointer ${
-                    myPosts ? "bg-bg-neutral" : "bg-transparent"
+                  className={`border  h-11 rounded-md flex items-center justify-center font-medium sm:pr-5 active:bg-bg-neutral transition-[border, background-color] duration-200 cursor-pointer ${
+                    myPosts
+                      ? "bg-bg-neutral border-accent-primary"
+                      : "bg-transparent border-border-primary hover:border-accent-primary"
                   }`}
                 >
                   <div className="shrink-0 size-11 flex items-center justify-center">

@@ -58,19 +58,21 @@ const articles = [
 
 const ThumbnailPlus = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-emerald-200 to-emerald-100 relative z-10 overflow-hidden">
-      {/* object container */}
-      <div className="absolute size-12 sm:size-14 lg:size-16 -top-2 -left-2 bg-brand-primary to-white/30 rounded-lg shadow-md" />
+    <div className="flex items-center justify-center xl:w-full pt-8 overflow-hidden">
+      <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-emerald-200 to-emerald-100 relative z-10 overflow-hidden xl:rounded-xl shadow-xl shadow-white/20">
+        {/* object container */}
+        <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-18 -top-2 -left-2 bg-brand-primary to-white/30 rounded-lg shadow-md" />
 
-      {/* icon container */}
-      <div className="size-10 sm:size-12 flex items-center justify-center bg-linear-to-br from-brand-primary/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
-        <Image
-          src={`/assets/svgs/plus-bold.svg`}
-          alt={title}
-          width={24}
-          height={24}
-          className="size-6 brightness-0 invert"
-        />
+        {/* icon container */}
+        <div className="size-10 sm:size-12 xl:size-20 flex items-center justify-center bg-linear-to-br from-brand-primary/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
+          <Image
+            src={`/assets/svgs/plus-bold.svg`}
+            alt={title}
+            width={24}
+            height={24}
+            className="size-6 xl:size-8 brightness-0 invert"
+          />
+        </div>
       </div>
     </div>
   );
@@ -78,19 +80,21 @@ const ThumbnailPlus = ({ title }: { title: string }) => {
 
 const ThumbnailClock = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-indigo-200 to-indigo-100 relative z-10 overflow-hidden">
-      {/* object container */}
-      <div className="absolute size-16 sm:size-18 lg:size-20 -bottom-5 -left-5 bg-[#748CDC] to-white/30 rounded-full shadow-md" />
+    <div className="flex items-center justify-center xl:w-full pt-8 overflow-hidden">
+      <div className="size-14 sm:size-16 lg:size-20 xl:size-20 flex items-center justify-center bg-linear-to-t from-indigo-200 to-indigo-100 relative z-10 overflow-hidden xl:rounded-xl shadow-xl shadow-white/20">
+        {/* object container */}
+        <div className="absolute size-16 sm:size-18 lg:size-20 -bottom-5 -left-5 bg-[#748CDC] to-white/30 rounded-full shadow-md" />
 
-      {/* icon container */}
-      <div className="size-10 sm:size-12 flex items-center justify-center bg-linear-to-tr from-[#748CDC]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
-        <Image
-          src={`/assets/svgs/clock-bold.svg`}
-          alt={title}
-          width={24}
-          height={24}
-          className="size-6 brightness-0 invert"
-        />
+        {/* icon container */}
+        <div className="size-10 sm:size-12 xl:size-20 flex items-center justify-center bg-linear-to-tr from-[#748CDC]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
+          <Image
+            src={`/assets/svgs/clock-bold.svg`}
+            alt={title}
+            width={24}
+            height={24}
+            className="size-6 xl:size-8 brightness-0 invert"
+          />
+        </div>
       </div>
     </div>
   );
@@ -98,19 +102,21 @@ const ThumbnailClock = ({ title }: { title: string }) => {
 
 const ThumbnailList = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-red-200 to-red-100 relative z-10 overflow-hidden">
-      {/* object container */}
-      <div className="absolute size-12 sm:size-14 lg:size-16 -top-2 -right-2 bg-[#F98D78] to-white/30 rounded-lg shadow-md" />
+    <div className="flex items-center justify-center xl:w-full pt-8 overflow-hidden">
+      <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-red-200 to-red-100 relative z-10 overflow-hidden xl:rounded-xl shadow-xl shadow-white/20">
+        {/* object container */}
+        <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-18 -top-2 -right-2 bg-[#F98D78] to-white/30 rounded-lg shadow-md" />
 
-      {/* icon container */}
-      <div className="size-10 sm:size-12 flex items-center justify-center bg-linear-to-bl from-[#F98D78]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
-        <Image
-          src={`/assets/svgs/list-magnifying-glass-bold.svg`}
-          alt={title}
-          width={24}
-          height={24}
-          className="size-6 brightness-0 invert"
-        />
+        {/* icon container */}
+        <div className="size-10 sm:size-12 xl:size-20 flex items-center justify-center bg-linear-to-bl from-[#F98D78]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
+          <Image
+            src={`/assets/svgs/list-magnifying-glass-bold.svg`}
+            alt={title}
+            width={24}
+            height={24}
+            className="size-6 xl:size-8 brightness-0 invert"
+          />
+        </div>
       </div>
     </div>
   );
@@ -166,13 +172,13 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={nav.id}
-                className="h-14 sm:h-16 lg:h-20 flex items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
+                className="h-14 sm:h-16 lg:h-20 xl:h-48 flex xl:flex-col items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
               >
                 {/* thumbnail */}
                 {nav.thumbnail}
 
                 {/* label */}
-                <div className="text-[1.0625rem] leading-normal tracking-tight break-keep text-text-primary font-medium px-6 h-full flex items-center">
+                <div className="text-[1.0625rem] leading-normal tracking-tight break-keep text-text-primary font-medium px-6 h-full xl:h-auto grow flex items-center">
                   {nav.title}
                 </div>
               </button>
@@ -279,7 +285,7 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={index}
-                className="flex gap-6 p-6 border border-border-primary hover:border-accent-hover cursor-pointer group mt-2 rounded-xl hover:shadow-lg"
+                className="flex gap-6 p-6 border-b hover:outline border-border-primary cursor-pointer group mt-2 hover:rounded-xl hover:shadow-lg shadow-black/5"
               >
                 <div className="grow">
                   <h4 className="text-start text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold text-text-primary group-hover:underline  group-hover:underline-offset-4">
@@ -335,6 +341,21 @@ const WorkspacePage = () => {
                 <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white border border-border-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-brand-primary group-hover:text-white group-active:bg-[#007B55] group-active:scale-95 transition-[background-color,scale,text-color] duration-150 shrink-0">
                   {index === 0 ? "이어서 진행" : "내역 보기"}
                 </div>
+
+                {/* black primary */}
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto bg-zinc-600 font-semibold group-hover:bg-brand-primary text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div> */}
+
+                {/* black secondary */}
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto group-hover:font-medium group-hover:text-[#007B55] group-hover:bg-white border group-hover:border-brand-primary border-transparent font-semibold bg-zinc-600 text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div> */}
+
+                {/* hover black */}
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-zinc-700 group-hover:text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div> */}
               </button>
             ))}
           </div>
@@ -342,7 +363,7 @@ const WorkspacePage = () => {
           {/* boards */}
           <div className="flex flex-col lg:w-[440px] sticky top-16 h-fit">
             {/* boards header */}
-            <div className="bg-white flex items-center justify-between h-16 border-b border-accent-primary z-10 sticky top-16">
+            <div className="bg-white flex items-center justify-between h-16 border-b border-accent-primary z-10 sticky top-16 mb-2">
               <span className="text-[1.3125rem] leading-[1.33] tracking-[-0.012em] font-medium">
                 공지사항 / 게시글
               </span>
@@ -369,16 +390,16 @@ const WorkspacePage = () => {
                 href={`/boards/details`}
                 type="button"
                 key={article.id}
-                className="py-4 border-b border-border-primary space-y-2 group cursor-pointer flex flex-col"
+                className="py-4 border-b border-action-focus space-y-0.5 group cursor-pointer flex flex-col"
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <div
-                      className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter px-1 rounded-sm flex items-center ${
+                      className={`text-[0.8125rem] font-medium leading-tight tracking-tighter ${
                         article.color === "blue"
-                          ? "bg-blue-500/10 text-blue-600"
+                          ? "text-blue-500"
                           : article.color === "green"
-                          ? "bg-emerald-500/10 text-green-700"
+                          ? "text-green-600"
                           : "bg-red-500 text-red-500"
                       }`}
                     >

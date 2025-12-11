@@ -58,19 +58,28 @@ const articles = [
 
 const ThumbnailPlus = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-emerald-200 to-emerald-100 relative z-10 overflow-hidden">
+    <div className="flex items-center justify-center xl:w-full bg-linear-to-b from-emerald-50 via-emerald-400/40 to-emerald-600/30 py-4 overflow-hidden relative">
       {/* object container */}
-      <div className="absolute size-12 sm:size-14 lg:size-16 -top-2 -left-2 bg-brand-primary to-white/30 rounded-lg shadow-md" />
+      <div className="absolute w-36 h-20 -top-2 left-16 bg-linear-to-tl from-brand-primary/40 to-brand-primary/20 rounded-lg" />
+      <div className="absolute w-44 h-20 -bottom-4 -right-24 bg-linear-to-br from-brand-primary/50 to-brand-tint/80 rounded-lg" />
+      <div className="absolute w-44 h-20 -bottom-12 -left-34 bg-linear-to-br from-brand-primary/60 to-brand-tint/80 rounded-lg" />
+      <div className="absolute size-16 top-4 right-10 bg-linear-to-br from-white/40 to-white/30 rounded-lg" />
+      <div className="absolute size-14 -top-6 left-10 bg-linear-to-br from-white/50 to-white/30 rounded-lg" />
 
-      {/* icon container */}
-      <div className="size-10 sm:size-12 flex items-center justify-center bg-linear-to-br from-brand-primary/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
-        <Image
-          src={`/assets/svgs/plus-bold.svg`}
-          alt={title}
-          width={24}
-          height={24}
-          className="size-6 brightness-0 invert"
-        />
+      <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-emerald-200 to-emerald-100 relative z-10 overflow-hidden xl:rounded-xl shadow-2xl">
+        {/* object container */}
+        <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-18 -top-2 -left-2 bg-brand-primary to-white/30 rounded-lg shadow-md" />
+
+        {/* icon container */}
+        <div className="size-10 sm:size-12 xl:size-20 flex items-center justify-center bg-linear-to-br from-brand-primary/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
+          <Image
+            src={`/assets/svgs/plus-bold.svg`}
+            alt={title}
+            width={24}
+            height={24}
+            className="size-6 xl:size-8 brightness-0 invert"
+          />
+        </div>
       </div>
     </div>
   );
@@ -78,19 +87,29 @@ const ThumbnailPlus = ({ title }: { title: string }) => {
 
 const ThumbnailClock = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-indigo-200 to-indigo-100 relative z-10 overflow-hidden">
+    <div className="flex items-center justify-center xl:w-full bg-linear-to-b from-indigo-50 via-indigo-400/40 to-indigo-700/30 py-4 overflow-hidden relative">
       {/* object container */}
-      <div className="absolute size-16 sm:size-18 lg:size-20 -bottom-5 -left-5 bg-[#748CDC] to-white/30 rounded-full shadow-md" />
+      <div className="absolute size-32 -bottom-14 left-20 bg-linear-to-tl from-[#748CDC]/10 to-[#748CDC]/40 rounded-full" />
+      <div className="absolute size-48 bottom-8 -right-16 bg-linear-to-tr from-[#748CDC]/30 to-white/50 rounded-full" />
+      <div className="absolute size-32 -top-15 -left-15 bg-linear-to-bl from-[#748CDC]/10 to-[#748CDC]/40 rounded-full" />
+      <div className="absolute size-16 top-8 right-10 bg-linear-to-br from-white/30 to-white/10 rounded-full" />
+      <div className="absolute size-16 -top-8 -right-8 bg-linear-to-br from-white/20 to-white/30 rounded-full" />
+      <div className="absolute size-14 -top-6 left-10 bg-linear-to-br from-white/30 to-white/20 rounded-full" />
 
-      {/* icon container */}
-      <div className="size-10 sm:size-12 flex items-center justify-center bg-linear-to-tr from-[#748CDC]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
-        <Image
-          src={`/assets/svgs/clock-bold.svg`}
-          alt={title}
-          width={24}
-          height={24}
-          className="size-6 brightness-0 invert"
-        />
+      <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-indigo-200 to-indigo-100 relative z-10 overflow-hidden xl:rounded-xl shadow-2xl">
+        {/* object container */}
+        <div className="absolute size-16 sm:size-18 lg:size-20 xl:size-22 -bottom-5 -left-5 bg-[#748CDC] to-white/30 rounded-full shadow-md" />
+
+        {/* icon container */}
+        <div className="size-10 sm:size-12 xl:size-20 flex items-center justify-center bg-linear-to-tr from-[#748CDC]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
+          <Image
+            src={`/assets/svgs/clock-bold.svg`}
+            alt={title}
+            width={24}
+            height={24}
+            className="size-6 xl:size-8 brightness-0 invert"
+          />
+        </div>
       </div>
     </div>
   );
@@ -98,19 +117,28 @@ const ThumbnailClock = ({ title }: { title: string }) => {
 
 const ThumbnailList = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-red-200 to-red-100 relative z-10 overflow-hidden">
+    <div className="flex items-center justify-center xl:w-full bg-linear-to-b from-red-50 via-red-400/40 to-red-700/30 py-4 overflow-hidden relative">
       {/* object container */}
-      <div className="absolute size-12 sm:size-14 lg:size-16 -top-2 -right-2 bg-[#F98D78] to-white/30 rounded-lg shadow-md" />
+      <div className="absolute w-36 h-20 -top-2 right-16 bg-linear-to-tl from-[#F98D78]/40 to-[#F98D78]/20 rounded-lg" />
+      <div className="absolute w-44 h-16 -bottom-4 -right-32 bg-linear-to-br from-[#F98D78]/20 to-[#F98D78]/80 rounded-lg" />
+      <div className="absolute w-40 h-20 bottom-0 -left-20 bg-linear-to-br from-[#F98D78]/50 to-[#F98D78]/20 rounded-lg" />
+      <div className="absolute size-16 top-4 left-10 bg-linear-to-br from-white/10 to-white/30 rounded-lg" />
+      <div className="absolute size-14 -top-6 right-10 bg-linear-to-br from-white/20 to-white/30 rounded-lg" />
 
-      {/* icon container */}
-      <div className="size-10 sm:size-12 flex items-center justify-center bg-linear-to-bl from-[#F98D78]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
-        <Image
-          src={`/assets/svgs/list-magnifying-glass-bold.svg`}
-          alt={title}
-          width={24}
-          height={24}
-          className="size-6 brightness-0 invert"
-        />
+      <div className="size-14 sm:size-16 lg:size-20 flex items-center justify-center bg-linear-to-t from-red-200 to-red-100 relative z-10 overflow-hidden xl:rounded-xl shadow-2xl">
+        {/* object container */}
+        <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-18 -top-2 -right-2 bg-[#F98D78] to-white/30 rounded-lg shadow-md" />
+
+        {/* icon container */}
+        <div className="size-10 sm:size-12 xl:size-20 flex items-center justify-center bg-linear-to-bl from-[#F98D78]/50 to-white/50 backdrop-blur-xs rounded-lg shadow-md shadow-action-focus relative z-30 border border-white/20 overflow-hidden">
+          <Image
+            src={`/assets/svgs/list-magnifying-glass-bold.svg`}
+            alt={title}
+            width={24}
+            height={24}
+            className="size-6 xl:size-8 brightness-0 invert"
+          />
+        </div>
       </div>
     </div>
   );
@@ -166,13 +194,13 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={nav.id}
-                className="h-14 sm:h-16 lg:h-20 flex items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
+                className="h-14 sm:h-16 lg:h-20 xl:h-48 flex xl:flex-col items-center border border-border-secondary hover:border-accent-primary rounded-md lg:rounded-xl overflow-hidden shadow-sm hover:shadow-black/20 cursor-pointer active:scale-98 transition-[shadow, scale] duration-200 bg-white"
               >
                 {/* thumbnail */}
                 {nav.thumbnail}
 
                 {/* label */}
-                <div className="text-[1.0625rem] leading-normal tracking-tight break-keep text-text-primary font-medium px-6 h-full flex items-center">
+                <div className="text-[1.0625rem] leading-normal tracking-tight break-keep text-text-primary font-medium px-6 h-full xl:h-auto grow flex items-center">
                   {nav.title}
                 </div>
               </button>
@@ -279,7 +307,10 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={index}
-                className="flex gap-6 p-6 border border-border-primary hover:border-accent-hover cursor-pointer group mt-2 rounded-xl hover:shadow-lg"
+                className={`flex gap-6 p-6 cursor-pointer group mt-2 rounded-xl hover:shadow-lg border hover:border-accent-primary ${
+                  index === 0 ? "border-sky-400" : "border-lime-500"
+                }`}
+                // className="flex gap-6 p-6 border-b border-border-primary cursor-pointer group mt-2 hover:rounded-xl hover:shadow-lg shadow-black/5"
               >
                 <div className="grow">
                   <h4 className="text-start text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold text-text-primary group-hover:underline  group-hover:underline-offset-4">
@@ -332,9 +363,28 @@ const WorkspacePage = () => {
                 </div>
 
                 {/* accent primary */}
-                <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white border border-border-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-brand-primary group-hover:text-white group-active:bg-[#007B55] group-active:scale-95 transition-[background-color,scale,text-color] duration-150 shrink-0">
+                <div
+                  className={`hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-semibold group-hover:bg-black text-white group-active:bg-[#007B55] group-active:scale-95 transition-[background-color,scale,text-color] duration-150 shrink-0 ${
+                    index === 0 ? "bg-sky-500" : "bg-lime-600"
+                  }`}
+                >
                   {index === 0 ? "이어서 진행" : "내역 보기"}
                 </div>
+
+                {/* black primary */}
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto bg-zinc-600 font-semibold group-hover:bg-brand-primary text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div> */}
+
+                {/* black secondary */}
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto group-hover:font-medium group-hover:text-[#007B55] group-hover:bg-white border group-hover:border-brand-primary border-transparent font-semibold bg-zinc-600 text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div> */}
+
+                {/* hover black */}
+                {/* <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-[#007B55] bg-white border border-brand-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-zinc-700 group-hover:text-white group-active:bg-zinc-900 group-active:scale-95 transition-[background-color,scale, text-color] duration-200 shrink-0">
+                  {index === 0 ? "이어서 진행" : "내역 보기"}
+                </div> */}
               </button>
             ))}
           </div>
@@ -342,7 +392,7 @@ const WorkspacePage = () => {
           {/* boards */}
           <div className="flex flex-col lg:w-[440px] sticky top-16 h-fit">
             {/* boards header */}
-            <div className="bg-white flex items-center justify-between h-16 border-b border-accent-primary z-10 sticky top-16">
+            <div className="bg-white flex items-center justify-between h-16 border-b border-accent-primary z-10 sticky top-16 mb-3">
               <span className="text-[1.3125rem] leading-[1.33] tracking-[-0.012em] font-medium">
                 공지사항 / 게시글
               </span>
@@ -369,18 +419,12 @@ const WorkspacePage = () => {
                 href={`/boards/details`}
                 type="button"
                 key={article.id}
-                className="py-4 border-b border-border-primary space-y-2 group cursor-pointer flex flex-col"
+                className="py-3 space-y-1.5 group cursor-pointer flex flex-col"
               >
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <div
-                      className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter px-1 rounded-sm flex items-center ${
-                        article.color === "blue"
-                          ? "bg-blue-500/10 text-blue-600"
-                          : article.color === "green"
-                          ? "bg-emerald-500/10 text-green-700"
-                          : "bg-red-500 text-red-500"
-                      }`}
+                      className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter text-text-secondary px-1 bg-bg-neutral border border-border-primary rounded-sm flex items-center`}
                     >
                       {article.category}
                     </div>
