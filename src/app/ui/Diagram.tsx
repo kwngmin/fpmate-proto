@@ -245,7 +245,7 @@ const Diagram = () => {
 
   const { ref: diagramRef, isIntersecting: isDiagramIntersecting } =
     useIntersectionObserver({
-      threshold: 0.5,
+      threshold: 0.4,
       once: true,
     });
 
