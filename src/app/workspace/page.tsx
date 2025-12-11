@@ -336,7 +336,8 @@ const WorkspacePage = () => {
             </div>
 
             {articles.map((article) => (
-              <button
+              <Link
+                href={`/boards/details`}
                 type="button"
                 key={article.id}
                 className="py-4 border-b border-border-primary space-y-2 group cursor-pointer flex flex-col"
@@ -367,7 +368,7 @@ const WorkspacePage = () => {
                 <div className="text-[1.0625rem] sm:text-[0.9375rem] leading-snug tracking-tight font-medium text-text-primary sm:group-hover:underline group-hover:underline-offset-4 text-start">
                   {article.title}
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
         </div>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Header from "../ui/Header";
+import Link from "next/link";
 
 const categories = [
   { title: "서비스 공지사항", color: "blue", key: "service" },
@@ -234,7 +235,8 @@ const BoardsPage = () => {
           {/* 게시글 목록 */}
           <div className="flex flex-col border-y border-accent-primary">
             {dummyData.map((item) => (
-              <div
+              <Link
+                href={`/boards/details`}
                 key={item.id}
                 className="flex flex-col md:flex-row py-4 md:py-0 justify-between border-b border-border-primary md:h-16 md:hover:bg-bg-neutral cursor-pointer group"
               >
@@ -314,7 +316,7 @@ const BoardsPage = () => {
                     {item.date}
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
