@@ -278,7 +278,7 @@ const Section1 = () => {
                   threshold: 0.5,
                 }}
                 useIntersection={true}
-                delay={index * 200}
+                delay={index * 100}
                 key={feature.title}
                 className="border-t border-border-primary sm:px-4 py-6 md:px-6 sm:bg-white hover:border-accent-hover z-10"
               >

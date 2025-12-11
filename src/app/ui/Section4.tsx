@@ -152,7 +152,7 @@ const Contents = [
 
 const Section4 = () => {
   const { ref, isIntersecting } = useIntersectionObserver({
-    threshold: 0.5,
+    threshold: 0.4,
     once: true,
   });
 
@@ -179,24 +179,6 @@ const Section4 = () => {
             <br className="sm:hidden" />
             어떤 역할이든, <span className="font-semibold">더 효율적으로</span>.
           </p>
-
-          {/* icons */}
-          {/* <div className="flex justify-center flex-wrap gap-3">
-            {Contents.map((content) => (
-              <div
-                key={content.id}
-                className="rounded-full bg-white md:p-2 md:border border-border-primary"
-              >
-                <Image
-                  src={`/assets/svgs/${content.icon}.svg`}
-                  alt={content.title}
-                  width={100}
-                  height={100}
-                  className="size-6"
-                />
-              </div>
-            ))}
-          </div> */}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-6 max-w-2xl lg:max-w-none mx-auto w-full">
