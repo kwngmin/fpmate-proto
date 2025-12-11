@@ -172,7 +172,8 @@ const BoardsPage = () => {
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-6">
           <div className="flex flex-col gap-4 sm:gap-6">
             <div className="text-[1.5rem] sm:text-[2rem] leading-tight tracking-tighter font-semibold break-keep text-text-primary">
-              공지사항 / 게시글
+              {/* 공지사항 / 게시글 */}
+              공지사항 및 게시글을 조회합니다.
             </div>
 
             <div className="flex justify-between items-center gap-2">
@@ -223,7 +224,8 @@ const BoardsPage = () => {
                   />
                 </div>
                 <div className="hidden sm:flex items-center justify-center grow h-full bg-brand-primary text-white font-semibold">
-                  글쓰기
+                  {/* 글쓰기 */}
+                  신규 추가
                 </div>
               </button>
             </div>
@@ -308,7 +310,7 @@ const BoardsPage = () => {
                   </div>
 
                   {/* date */}
-                  <span className="w-48 text-end text-sm text-text-tertiary font-medium">
+                  <span className="w-56 px-3 text-end text-sm text-text-tertiary font-medium">
                     {item.date}
                   </span>
                 </div>

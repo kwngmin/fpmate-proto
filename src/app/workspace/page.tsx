@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Header from "../ui/Header";
+import Link from "next/link";
 
 const articles = [
   {
@@ -216,7 +217,7 @@ const WorkspacePage = () => {
 
             <div className="h-12 flex items-center justify-between px-3 bg-bg-tertiary">
               <div className="flex items-center gap-1">
-                <span className="text-[0.8125rem] leading-tight text-text-secondary font-medium">
+                <span className="text-[0.8125rem] sm:text-sm leading-tight text-text-secondary font-medium">
                   김광민님이 담당자(수정권한)인 건만 조회합니다.
                 </span>
               </div>
@@ -317,8 +318,8 @@ const WorkspacePage = () => {
                 공지사항 / 게시글
               </span>
 
-              <button
-                type="button"
+              <Link
+                href="/boards"
                 className="hover:bg-action-hover active:bg-action-selected flex items-center p-2 pl-3.5 rounded cursor-pointer"
               >
                 <span className="text-[0.8125rem] font-medium">
@@ -331,7 +332,7 @@ const WorkspacePage = () => {
                   height={24}
                   className="size-4"
                 />
-              </button>
+              </Link>
             </div>
 
             {articles.map((article) => (

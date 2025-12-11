@@ -429,7 +429,7 @@ const Diagram = () => {
                     ? "translateY(0)"
                     : "translateY(-10px)",
                   transition:
-                    "opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s",
+                    "opacity 0.6s ease-out 0.9s, transform 0.6s ease-out 0.9s",
                   willChange: "opacity, transform",
                 }}
                 onClick={() => {
@@ -488,7 +488,7 @@ const Diagram = () => {
                     ? "translateY(0)"
                     : "translateY(-10px)",
                   transition:
-                    "opacity 0.6s ease-out 0.9s, transform 0.6s ease-out 0.9s",
+                    "opacity 0.6s ease-out 1.2s, transform 0.6s ease-out 1.2s",
                   willChange: "opacity, transform",
                 }}
                 onClick={() => {
@@ -549,7 +549,7 @@ const Diagram = () => {
               ? "translateY(0)"
               : "translateY(-10px)",
             transition:
-              "opacity 0.6s ease-out 1.2s, transform 0.6s ease-out 1.2s",
+              "opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s",
             willChange: "opacity, transform",
           }}
         >
