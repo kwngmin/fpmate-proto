@@ -307,8 +307,11 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={index}
-                className={`flex gap-6 p-6 cursor-pointer group mt-2 rounded-xl hover:shadow-lg border hover:border-accent-primary ${
-                  index === 0 ? "border-sky-400" : "border-lime-500"
+                // className={`flex gap-6 p-6 cursor-pointer group mt-2 rounded-xl hover:shadow-lg border hover:border-accent-primary active:scale-99 transition-[scale] duration-100 ${
+                //   index === 0 ? "border-sky-400" : "border-lime-500"
+                // }`}
+                className={`flex gap-6 p-6 border-b hover:outline border-border-primary cursor-pointer group mt-2 hover:rounded-xl hover:shadow-lg shadow-black/5 active:scale-99 transition-[scale] duration-100 ${
+                  index === 0 ? "outline-sky-400" : "outline-lime-500"
                 }`}
                 // className="flex gap-6 p-6 border-b border-border-primary cursor-pointer group mt-2 hover:rounded-xl hover:shadow-lg shadow-black/5"
               >
@@ -364,8 +367,10 @@ const WorkspacePage = () => {
 
                 {/* accent primary */}
                 <div
-                  className={`hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-semibold group-hover:bg-black text-white group-active:bg-[#007B55] group-active:scale-95 transition-[background-color,scale,text-color] duration-150 shrink-0 ${
-                    index === 0 ? "bg-sky-500" : "bg-lime-600"
+                  className={`hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-semibold text-white transition-[background-color,scale,text-color] duration-150 shrink-0 ${
+                    index === 0
+                      ? "bg-sky-500 group-hover:bg-sky-600"
+                      : "bg-lime-600 group-hover:bg-lime-700"
                   }`}
                 >
                   {index === 0 ? "이어서 진행" : "내역 보기"}

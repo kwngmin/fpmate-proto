@@ -279,11 +279,10 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={index}
-                // className={`flex gap-6 p-6 cursor-pointer group mt-2 rounded-xl hover:shadow-lg ${
-                //   index === 0 ? "bg-sky-50" : "bg-lime-50"
-                // }`}
-                className={`flex gap-6 p-6 cursor-pointer group mt-2 rounded-xl hover:shadow-lg ${
-                  index === 0 ? "bg-[#b2ebf4]" : "bg-[#e4f7ba]"
+                className={`flex gap-6 p-6 cursor-pointer group mt-2 rounded-xl hover:shadow-lg hover:bg-white border-2 border-transparent active:scale-99 transition-[scale] duration-100 ${
+                  index === 0
+                    ? "bg-[#b2ebf4]/40 hover:border-sky-400"
+                    : "bg-[#e4f7ba]/40 hover:border-lime-500"
                 }`}
               >
                 <div className="grow">
@@ -341,7 +340,13 @@ const WorkspacePage = () => {
                 </div> */}
 
                 {/* accent primary */}
-                <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white group-hover:font-semibold group-hover:bg-brand-primary group-hover:text-white group-active:bg-[#007B55] group-active:scale-95 transition-[background-color,scale,text-color] duration-150 shrink-0">
+                <div
+                  className={`hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white group-hover:font-semibold group-hover:text-white transition-[background-color,text-color] duration-150 shrink-0 ${
+                    index === 0
+                      ? "group-hover:bg-sky-500"
+                      : "group-hover:bg-brand-primary"
+                  }`}
+                >
                   {index === 0 ? "이어서 진행" : "내역 보기"}
                 </div>
 

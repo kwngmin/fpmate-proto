@@ -279,7 +279,9 @@ const WorkspacePage = () => {
               <button
                 type="button"
                 key={index}
-                className="flex gap-6 p-6 border border-border-primary hover:border-accent-hover cursor-pointer group mt-2 rounded-xl hover:shadow-lg"
+                className={`flex gap-6 p-6 border border-border-primary hover:border-accent-hover cursor-pointer group mt-2 rounded-xl hover:shadow-lg active:scale-99 transition-[scale] duration-100 ${
+                  index === 0 ? "hover:border-sky-400" : "hover:border-lime-500"
+                }`}
               >
                 <div className="grow">
                   <h4 className="text-start text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold text-text-primary group-hover:underline  group-hover:underline-offset-4">
@@ -332,7 +334,13 @@ const WorkspacePage = () => {
                 </div>
 
                 {/* accent primary */}
-                <div className="hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-medium text-text-primary bg-white border border-border-primary group-hover:border-transparent group-hover:font-semibold group-hover:bg-brand-primary group-hover:text-white group-active:bg-[#007B55] group-active:scale-95 transition-[background-color,scale,text-color] duration-150 shrink-0">
+                <div
+                  className={`hidden sm:flex items-center text-sm rounded-full px-5 h-9 my-auto font-semibold text-white transition-[background-color] duration-150 shrink-0 ${
+                    index === 0
+                      ? "bg-sky-500 group-hover:bg-sky-600"
+                      : "bg-brand-primary group-hover:bg-accent-hover"
+                  }`}
+                >
                   {index === 0 ? "이어서 진행" : "내역 보기"}
                 </div>
               </button>
