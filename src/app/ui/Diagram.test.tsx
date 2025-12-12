@@ -3,7 +3,7 @@
 import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
 import Image from "next/image";
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 
 export function GradientBeamAnimation() {
   return (
@@ -43,18 +43,6 @@ export function GradientBeamAnimation() {
 }
 
 type FocusState = "smart-pricing" | "error-validation";
-type FileType = "hwp" | "pdf" | "xls";
-
-const FILE_TYPE_CONFIG: Record<
-  FileType,
-  { label: string; display: string; bgColor: string }
-> = {
-  hwp: { label: "한글", display: "HWP", bgColor: "bg-blue-600" },
-  pdf: { label: "PDF", display: "PDF", bgColor: "bg-red-500" },
-  xls: { label: "엑셀", display: "XLS", bgColor: "bg-green-700" },
-};
-
-const FILE_TYPE_ORDER: FileType[] = ["hwp", "pdf", "xls"];
 
 interface Point {
   x: number;
@@ -288,67 +276,8 @@ const ResultCard = ({
   </div>
 );
 
-/**
- * 파일 타입 카드 컴포넌트 (애니메이션 포함)
- */
-interface FileTypeCardProps {
-  fileType: FileType;
-  isHighlighted?: boolean;
-}
-
-const FileTypeCard = ({
-  fileType,
-  isHighlighted = false,
-}: FileTypeCardProps) => {
-  const config = FILE_TYPE_CONFIG[fileType];
-
-  return (
-    <motion.div
-      key={fileType}
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 10 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="absolute inset-0"
-    >
-      {/* 라벨 */}
-      <div className="absolute left-[calc(50%+16px+25px)] top-[-6px] z-30 preserve-3d">
-        <div
-          className="absolute left-0 top-0 z-30 -translate-x-1/2 -translate-y-1/2"
-          style={{ opacity: 1 }}
-        >
-          <Label className="w-12" isHighlighted={isHighlighted}>
-            {config.label}
-          </Label>
-        </div>
-      </div>
-
-      {/* 카드 */}
-      <div className="absolute left-[calc(50%+18px+25px)] top-[-12px] z-20 preserve-3d">
-        <div
-          className="absolute"
-          style={{
-            opacity: 0.8,
-            zIndex: 0,
-            transform: "translateY(8px) translateX(-8px)",
-          }}
-        >
-          <Card className="h-12 w-12 px-3 py-3" isHighlighted={isHighlighted}>
-            <span
-              className={`text-white ${config.bgColor} font-bold text-sm px-1 rounded-xs`}
-            >
-              {config.display}
-            </span>
-          </Card>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 const Diagram = () => {
   const [focusState, setFocusState] = useState<FocusState>("smart-pricing");
-  const [fileTypeIndex, setFileTypeIndex] = useState<number>(0);
   const [isAnimationStarted, setIsAnimationStarted] = useState<boolean>(false);
   const [resetTrigger, setResetTrigger] = useState<number>(0);
 
@@ -358,10 +287,8 @@ const Diagram = () => {
       once: true,
     });
 
-  const currentFileType = FILE_TYPE_ORDER[fileTypeIndex];
-
   useEffect(() => {
-    // 300ms 후에 애니메이션 시작
+    // 1200ms 후에 애니메이션 시작
     const initialDelay = setTimeout(() => {
       setIsAnimationStarted(true);
     }, 300);
@@ -371,20 +298,12 @@ const Diagram = () => {
     };
   }, []);
 
-  // 10초마다 focus 상태 자동 전환
+  // 5초마다 focus 상태 자동 전환
   useEffect(() => {
     const interval = setInterval(() => {
-      setFocusState((prev) => {
-        const newState =
-          prev === "smart-pricing" ? "error-validation" : "smart-pricing";
-        // error-validation → smart-pricing 전환 시 파일 타입 순환
-        if (prev === "error-validation" && newState === "smart-pricing") {
-          setFileTypeIndex(
-            (prevIndex) => (prevIndex + 1) % FILE_TYPE_ORDER.length
-          );
-        }
-        return newState;
-      });
+      setFocusState((prev) =>
+        prev === "smart-pricing" ? "error-validation" : "smart-pricing"
+      );
     }, 10000);
 
     return () => clearInterval(interval);
@@ -553,10 +472,6 @@ const Diagram = () => {
                 }}
                 onClick={() => {
                   if (focusState !== "smart-pricing") {
-                    // error-validation → smart-pricing 전환 시 파일 타입 순환
-                    setFileTypeIndex(
-                      (prev) => (prev + 1) % FILE_TYPE_ORDER.length
-                    );
                     setFocusState("smart-pricing");
                   }
                   setResetTrigger((prev) => prev + 1);
@@ -810,26 +725,41 @@ const Diagram = () => {
                   className="absolute left-0 top-0 z-30 -translate-x-1/2 -translate-y-1/2"
                   style={{ opacity: 1 }}
                 >
-                  <div className="min-w-48 shrink-0">
-                    요구사항 (
-                    <span className="text-red-500 font-medium">PDF</span>
-                    <span className="text-text-tertiary">/</span>
-                    <span className="text-blue-500 font-medium">HWP</span>
-                    <span className="text-text-tertiary">/</span>
-                    <span className="text-green-700 font-medium">XLS</span>)
-                  </div>
+                  <div className="min-w-16 shrink-0">요구사항</div>
                 </div>
               </div>
 
-              {/* 파일 타입 카드 (애니메이션 적용) */}
-              <div className="absolute left-[calc(50%-8px)] top-[301px] z-20 preserve-3d">
-                <AnimatePresence mode="wait">
-                  <FileTypeCard
-                    key={currentFileType}
-                    fileType={currentFileType}
+              {/* pdf/hwp/xls label */}
+              <div className="absolute left-[calc(50%+16px+25px)] top-[295px] z-30 preserve-3d">
+                <div
+                  className="absolute left-0 top-0 z-30 -translate-x-1/2 -translate-y-1/2"
+                  style={{ opacity: 1 }}
+                >
+                  <Label className="w-12" isHighlighted={isSmartPricing}>
+                    한글
+                  </Label>
+                </div>
+              </div>
+
+              {/* pdf/hwp/xls */}
+              <div className="absolute left-[calc(50%+18px+25px)] top-[289px] z-20 preserve-3d">
+                <div
+                  className="absolute"
+                  style={{
+                    opacity: 0.8,
+                    zIndex: 0,
+                    transform: "translateY(8px) translateX(-8px)",
+                  }}
+                >
+                  <Card
+                    className="h-12 w-12 px-3 py-3"
                     isHighlighted={isSmartPricing}
-                  />
-                </AnimatePresence>
+                  >
+                    <span className="text-white bg-blue-600 font-bold text-sm px-1 rounded-xs">
+                      HWP
+                    </span>
+                  </Card>
+                </div>
               </div>
 
               {/* 업로드 */}
