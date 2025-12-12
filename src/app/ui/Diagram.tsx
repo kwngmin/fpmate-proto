@@ -508,7 +508,7 @@ const Diagram = () => {
         </div>
         <div className="leading-normal tracking-tight break-keep max-w-xl md:max-w-3xl space-y-4">
           <p className="text-[1.0625rem] md:text-[1.3125rem] text-text-primary">
-            반복되고 소모적인 작업은 줄이고 더 합리적인 비용 판단 분석에 집중해
+            반복되고 소모적인 작업은 줄이고 합리적인 비용 판단 분석에 집중해
             보세요.
           </p>
           {/* <p className="text-[1.0625rem] md:text-[1.3125rem] text-text-primary">

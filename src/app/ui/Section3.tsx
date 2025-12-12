@@ -58,8 +58,8 @@ const chartDataSets = [
 
 // 플로팅 라벨 데이터
 const floatingBarGraphLabelData = [
-  { value: 4813.8, position: 24, color: "bg-amber-500", label: "EO" },
-  { value: 3942.5, position: 64, color: "bg-violet-500", label: "EI" },
+  { value: 4813.8, position: 24, color: "bg-amber-500", label: "EI" },
+  { value: 3942.5, position: 64, color: "bg-violet-500", label: "EO" },
 ] as const;
 
 interface FpChartProps {

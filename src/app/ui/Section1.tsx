@@ -117,25 +117,14 @@ const Section1 = () => {
     >
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-4">
         <p className="max-w-96 sm:max-w-none text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] leading-tight tracking-tighter break-keep text-text-primary">
-          어떤 사업이든, <span className="font-semibold">더 정확하게. </span>{" "}
-          어떤 역할이든, <span className="font-semibold">더 효율적으로. </span>
-          <br />
-          <span className="font-semibold">
-            성공적인 SW 사업을 위한 파트너,{" "}
+          {/* <span className="font-extrabold text-brand-primary text-[2rem] md:text-[3rem]">
+            FPMate
           </span>
-          <span className="font-extrabold text-brand-primary">FPMate</span>
+          <br /> */}
+          어떤 사업이든, <span className="font-semibold">더 정확하게. </span>
+          <br className="sm:hidden" />
+          어떤 역할이든, <span className="font-semibold">더 효율적으로. </span>
         </p>
-
-        <p className="text-[1.0625rem] leading-normal tracking-tight break-keep text-text-secondary">
-          <span className="font-semibold">FPMate</span>에서는{" "}
-          <span className="font-medium">국제표준</span>(ISO/IEC 14143)에 기반한
-          방법으로 <span className="font-medium">SW 사업 비용을 산정</span>
-          합니다.
-        </p>
-        {/* Section 1 Description */}
-        {/* <div className="max-w-[1200px] mx-auto px-6">
-        
-      </div> */}
       </div>
 
       <div>
