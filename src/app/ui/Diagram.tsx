@@ -245,7 +245,7 @@ const Diagram = () => {
 
   const { ref: diagramRef, isIntersecting: isDiagramIntersecting } =
     useIntersectionObserver({
-      threshold: 0.4,
+      threshold: 0.3,
       once: true,
     });
 
@@ -549,7 +549,7 @@ const Diagram = () => {
               ? "translateY(0)"
               : "translateY(-10px)",
             transition:
-              "opacity 0.3s ease-out 0.6s, transform 0.3s ease-out 0.6s",
+              "opacity 0.6s ease-out 0.6s, transform 0.6s ease-out 0.6s",
             willChange: "opacity, transform",
           }}
         >
