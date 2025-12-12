@@ -374,21 +374,24 @@ const Diagram = () => {
   // 10초마다 focus 상태 자동 전환
   useEffect(() => {
     const interval = setInterval(() => {
-      setFocusState((prev) => {
-        const newState =
-          prev === "smart-pricing" ? "error-validation" : "smart-pricing";
-        // error-validation → smart-pricing 전환 시 파일 타입 순환
-        if (prev === "error-validation" && newState === "smart-pricing") {
-          setFileTypeIndex(
-            (prevIndex) => (prevIndex + 1) % FILE_TYPE_ORDER.length
-          );
-        }
-        return newState;
-      });
+      setFocusState((prev) =>
+        prev === "smart-pricing" ? "error-validation" : "smart-pricing"
+      );
     }, 10000);
 
     return () => clearInterval(interval);
   }, [resetTrigger, isAnimationStarted]);
+
+  // 3초마다 파일 타입 순환 (focusState와 독립적)
+  useEffect(() => {
+    if (focusState === "error-validation") return;
+
+    const fileTypeInterval = setInterval(() => {
+      setFileTypeIndex((prev) => (prev + 1) % FILE_TYPE_ORDER.length);
+    }, 3000);
+
+    return () => clearInterval(fileTypeInterval);
+  }, [focusState]);
 
   const isSmartPricing = focusState === "smart-pricing";
   const isErrorValidation = focusState === "error-validation";
@@ -553,10 +556,6 @@ const Diagram = () => {
                 }}
                 onClick={() => {
                   if (focusState !== "smart-pricing") {
-                    // error-validation → smart-pricing 전환 시 파일 타입 순환
-                    setFileTypeIndex(
-                      (prev) => (prev + 1) % FILE_TYPE_ORDER.length
-                    );
                     setFocusState("smart-pricing");
                   }
                   setResetTrigger((prev) => prev + 1);
