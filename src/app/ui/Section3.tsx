@@ -2,14 +2,7 @@
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import SkeletonBar from "./SkeletonBar";
-import {
-  motion,
-  AnimatePresence,
-  useSpring,
-  useTransform,
-  animate,
-  useMotionValue,
-} from "motion/react";
+import { motion, AnimatePresence, animate, useMotionValue } from "motion/react";
 
 // 자동 hover 순환 대상 셀 식별자
 type HighlightCellId =
@@ -48,16 +41,16 @@ const getHighlightCellClass = (
 // 두 개의 데이터셋 정의
 const chartDataSets = [
   [
-    { label: "ILF", color: "bg-blue-500", width: 85 },
+    { label: "ILF", color: "bg-blue-500", width: 25 },
     { label: "EIF", color: "bg-emerald-500", width: 65 },
-    { label: "EL", color: "bg-violet-500", width: 92 },
+    { label: "EI", color: "bg-violet-500", width: 42 },
     { label: "EO", color: "bg-amber-500", width: 78 },
     { label: "EQ", color: "bg-rose-500", width: 54 },
   ],
   [
     { label: "ILF", color: "bg-blue-500", width: 62 },
-    { label: "EIF", color: "bg-emerald-500", width: 88 },
-    { label: "EL", color: "bg-violet-500", width: 71 },
+    { label: "EIF", color: "bg-emerald-500", width: 18 },
+    { label: "EI", color: "bg-violet-500", width: 71 },
     { label: "EO", color: "bg-amber-500", width: 95 },
     { label: "EQ", color: "bg-rose-500", width: 42 },
   ],
@@ -65,8 +58,8 @@ const chartDataSets = [
 
 // 플로팅 라벨 데이터
 const floatingBarGraphLabelData = [
-  { value: 2683.8, position: 8 },
-  { value: 3142.5, position: 32 },
+  { value: 4283.8, position: 8, color: "bg-amber-500", label: "EO" },
+  { value: 3942.5, position: 32, color: "bg-violet-500", label: "EI" },
 ] as const;
 
 interface FpChartProps {
@@ -115,7 +108,7 @@ const FpChart = ({ chartKey, selectedChart, floatingOffset }: FpChartProps) => {
       <div className="flex flex-col gap-0.5 relative after:content-[''] after:absolute after:h-full after:left-0 after:top-0 after:bg-linear-to-r after:from-white/80 after:to-transparent after:w-1/3 after:z-20 after:pointer-events-none">
         {/* 플로팅 라벨 */}
         <motion.div
-          className="absolute top-8 left-2/5 z-30 bg-white/70 backdrop-blur-xl shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-text-primary font-medium"
+          className="absolute top-8 left-2/5 z-30 bg-white/20 backdrop-blur-md shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-white/50 text-text-primary font-medium"
           animate={{
             y: floatingOffset + currentFloating.position,
           }}
@@ -125,8 +118,10 @@ const FpChart = ({ chartKey, selectedChart, floatingOffset }: FpChartProps) => {
             damping: 30,
           }}
         >
-          <div className="rounded-full size-4 bg-amber-500 ring-3 ring-white mr-1" />
-          <span>ELF</span>
+          <div
+            className={`rounded-full size-4 ring-3 ring-white mr-1 transition-[background-color] duration-200 ease-in-out ${currentFloating.color}`}
+          />
+          <span>{currentFloating.label}</span>
           <AnimatePresence mode="wait">
             <motion.span
               key={currentFloating.value}
@@ -175,25 +170,25 @@ const FpChart = ({ chartKey, selectedChart, floatingOffset }: FpChartProps) => {
 // 두 개의 데이터셋 정의
 const rateDataSets = [
   [
-    { label: "ILF", color: "bg-green-500", width: 85 },
+    { label: "ILF", color: "bg-green-500", width: 15 },
     { label: "EIF", color: "bg-amber-500", width: 65 },
-    { label: "EL", color: "bg-sky-500", width: 92 },
-    { label: "EO", color: "bg-red-500", width: 78 },
-    { label: "EQ", color: "bg-teal-500", width: 54 },
+    { label: "EI", color: "bg-sky-500", width: 32 },
+    { label: "EO", color: "bg-red-500", width: 138 },
+    { label: "EQ", color: "bg-teal-500", width: 34 },
   ],
   [
     { label: "ILF", color: "bg-green-500", width: 62 },
-    { label: "EIF", color: "bg-amber-500", width: 88 },
-    { label: "EL", color: "bg-sky-500", width: 71 },
-    { label: "EO", color: "bg-red-500", width: 95 },
+    { label: "EIF", color: "bg-amber-500", width: 28 },
+    { label: "EI", color: "bg-sky-500", width: 71 },
+    { label: "EO", color: "bg-red-500", width: 28 },
     { label: "EQ", color: "bg-teal-500", width: 42 },
   ],
 ] as const;
 
 // 플로팅 라벨 데이터
 const floatingChartLabelData = [
-  { label: "EO", percentage: 40 },
-  { label: "EIF", percentage: 52 },
+  { label: "EO", percentage: 48.6, color: "bg-red-500" },
+  { label: "EI", percentage: 30.74, color: "bg-sky-500" },
 ] as const;
 
 const colorMap: Record<string, string> = {
@@ -326,7 +321,7 @@ const FpRate = ({ chartKey, selectedChart, floatingOffset }: FpRateProps) => {
 
         {/* Floating 정보 카드 */}
         <motion.div
-          className="absolute bottom-20 left-0 z-20 bg-black/20 backdrop-blur-md shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-white font-medium"
+          className="absolute bottom-20 left-0 z-20 bg-black/30 backdrop-blur-md shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-white font-medium"
           animate={{
             y: floatingOffset,
           }}
@@ -336,7 +331,9 @@ const FpRate = ({ chartKey, selectedChart, floatingOffset }: FpRateProps) => {
             damping: 30,
           }}
         >
-          <div className="rounded-full size-4 bg-red-500 ring-3 ring-white mr-1" />
+          <div
+            className={`rounded-full size-4 ring-3 ring-white mr-1 transition-[background-color] duration-200 ease-in-out ${currentFloating.color}`}
+          />
           <AnimatePresence mode="wait">
             <motion.span
               key={currentFloating.label}
@@ -392,7 +389,6 @@ const AnimatedReportNumber = ({
     const controls = animate(motionValue, value, {
       duration: 0.5,
       ease: [0.0, 1, 0, 1],
-      // ease: "easeOut",
       onUpdate: (latest) => {
         setDisplayValue(latest);
       },
@@ -510,34 +506,6 @@ const chartData = [
     title: "기능 점수 산정 결과",
     image: "/assets/images/section3-chart-4.png",
     slider: FpReport,
-  },
-];
-
-const chart1Data = [
-  {
-    color: "bg-green-500",
-    label: "ILF",
-    width: 25,
-  },
-  {
-    color: "bg-amber-500",
-    label: "EIF",
-    width: 50,
-  },
-  {
-    color: "bg-sky-500",
-    label: "EL",
-    width: 20,
-  },
-  {
-    color: "bg-red-500",
-    label: "EO",
-    width: 86,
-  },
-  {
-    color: "bg-teal-500",
-    label: "EQ",
-    width: 35,
   },
 ];
 
