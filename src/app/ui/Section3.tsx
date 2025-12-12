@@ -85,11 +85,11 @@ const FpChart = ({ chartKey, selectedChart, floatingOffset }: FpChartProps) => {
 
   return (
     <div
-      className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
+      className="scale-90 origin-bottom md:scale-100 min-w-96 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
       style={{
         opacity: selectedChart === chartKey ? 1 : 0,
         filter: selectedChart === chartKey ? "blur(0rem)" : "blur(2rem)",
-        transition: "opacity 0.3s ease-in-out, filter 0.4s ease-in-out",
+        transition: "opacity 0.3s ease-out, filter 0.4s ease-in-out",
       }}
     >
       {/* 범례 */}
@@ -258,11 +258,11 @@ const FpRate = ({ chartKey, selectedChart, floatingOffset }: FpRateProps) => {
 
   return (
     <div
-      className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
+      className="scale-90 origin-bottom md:scale-100 min-w-96 w-96 h-88 object-cover flex flex-col border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
       style={{
         opacity: selectedChart === chartKey ? 1 : 0,
         filter: selectedChart === chartKey ? "blur(0rem)" : "blur(2rem)",
-        transition: "opacity 0.3s ease-in-out, filter 0.4s ease-in-out",
+        transition: "opacity 0.3s ease-out, filter 0.4s ease-in-out",
       }}
     >
       {/* 범례 */}
@@ -420,11 +420,11 @@ const FpReport = ({
 
   return (
     <div
-      className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
+      className="scale-90 origin-bottom md:scale-100 min-w-96 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
       style={{
         opacity: selectedChart === chartKey ? 1 : 0,
         filter: selectedChart === chartKey ? "blur(0rem)" : "blur(2rem)",
-        transition: "opacity 0.3s ease-in-out, filter 0.4s ease-in-out",
+        transition: "opacity 0.3s ease-out, filter 0.4s ease-in-out",
       }}
     >
       <div
