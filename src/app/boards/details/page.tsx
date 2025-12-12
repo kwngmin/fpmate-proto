@@ -20,7 +20,6 @@ const BoardsDetailsPage = () => {
           <div className="flex flex-col gap-2">
             {/* 제목 */}
             <div className="text-[1.3125rem] sm:text-[1.5rem] leading-tight tracking-tighter font-semibold break-keep text-text-primary">
-              {/* <div className="text-[1.5rem] sm:text-[2rem] leading-tight tracking-tighter font-semibold break-keep text-text-primary"> */}
               첨부파일 테스트
             </div>
 
