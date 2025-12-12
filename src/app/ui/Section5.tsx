@@ -27,15 +27,6 @@ function hexToGLColor(
   ];
 }
 
-function rgbaToGLColor(
-  r: number,
-  g: number,
-  b: number,
-  a = 255
-): [number, number, number, number] {
-  return [r / 255, g / 255, b / 255, a / 255];
-}
-
 interface WebGLGradientAnimationProps {
   colors?: GradientColors;
 }
@@ -251,7 +242,7 @@ const Section5 = () => {
       }}
     >
       {/* bottom background gradient */}
-      <div className="absolute inset-0 z-20 bg-linear-to-t from-transparent to-gray-50" />
+      <div className="absolute inset-0 z-20 bg-linear-to-t from-transparent via-gray-50 to-gray-50" />
 
       {/* WebGL Background */}
       <WebGLGradientAnimation
