@@ -64,7 +64,7 @@ const chartDataSets = [
 ] as const;
 
 // 플로팅 라벨 데이터
-const floatingLabelData = [
+const floatingBarGraphLabelData = [
   { value: 2683.8, position: 8 },
   { value: 3142.5, position: 32 },
 ] as const;
@@ -88,7 +88,7 @@ const FpChart = ({ chartKey, selectedChart, floatingOffset }: FpChartProps) => {
   }, []);
 
   const currentData = chartDataSets[dataIndex];
-  const currentFloating = floatingLabelData[dataIndex];
+  const currentFloating = floatingBarGraphLabelData[dataIndex];
 
   return (
     <div
@@ -172,15 +172,95 @@ const FpChart = ({ chartKey, selectedChart, floatingOffset }: FpChartProps) => {
   );
 };
 
-const FpRate = ({
-  chartKey,
-  selectedChart,
-  floatingOffset,
-}: {
+// 두 개의 데이터셋 정의
+const rateDataSets = [
+  [
+    { label: "ILF", color: "bg-green-500", width: 85 },
+    { label: "EIF", color: "bg-amber-500", width: 65 },
+    { label: "EL", color: "bg-sky-500", width: 92 },
+    { label: "EO", color: "bg-red-500", width: 78 },
+    { label: "EQ", color: "bg-teal-500", width: 54 },
+  ],
+  [
+    { label: "ILF", color: "bg-green-500", width: 62 },
+    { label: "EIF", color: "bg-amber-500", width: 88 },
+    { label: "EL", color: "bg-sky-500", width: 71 },
+    { label: "EO", color: "bg-red-500", width: 95 },
+    { label: "EQ", color: "bg-teal-500", width: 42 },
+  ],
+] as const;
+
+// 플로팅 라벨 데이터
+const floatingChartLabelData = [
+  { label: "EO", percentage: 40 },
+  { label: "EIF", percentage: 52 },
+] as const;
+
+const colorMap: Record<string, string> = {
+  "bg-green-500": "#22c55e",
+  "bg-amber-500": "#f59e0b",
+  "bg-sky-500": "#0ea5e9",
+  "bg-red-500": "#ef4444",
+  "bg-teal-500": "#14b8a6",
+};
+
+// 숫자 카운팅 애니메이션 컴포넌트
+const AnimatedChartNumber = ({ value }: { value: number }) => {
+  const motionValue = useMotionValue(value);
+  const [displayValue, setDisplayValue] = useState(value);
+
+  useEffect(() => {
+    const controls = animate(motionValue, value, {
+      duration: 1.2,
+      ease: "easeOut",
+      onUpdate: (latest) => {
+        setDisplayValue(Math.round(latest));
+      },
+    });
+
+    return () => controls.stop();
+  }, [value, motionValue]);
+
+  return <>{displayValue.toLocaleString("ko-KR")}</>;
+};
+
+interface FpRateProps {
   chartKey: string;
   selectedChart: string;
   floatingOffset: number;
-}) => {
+}
+
+const FpRate = ({ chartKey, selectedChart, floatingOffset }: FpRateProps) => {
+  const [dataIndex, setDataIndex] = useState(0);
+
+  // 4초마다 데이터셋 전환
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDataIndex((prev) => (prev === 0 ? 1 : 0));
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentData = rateDataSets[dataIndex];
+  const currentFloating = floatingChartLabelData[dataIndex];
+  const total = currentData.reduce((sum, item) => sum + item.width, 0);
+
+  const radius = 100;
+  const circumference = 2 * Math.PI * radius;
+
+  // 각 항목의 segment 계산
+  const segments = currentData.map((item, index) => {
+    const percentage = (item.width / total) * 100;
+    const strokeLength = (percentage / 100) * circumference;
+    const offset = currentData.slice(0, index).reduce((sum, prevItem) => {
+      const prevPercentage = (prevItem.width / total) * 100;
+      return sum + (prevPercentage / 100) * circumference;
+    }, 0);
+
+    return { item, strokeLength, offset };
+  });
+
   return (
     <div
       className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
@@ -190,16 +270,18 @@ const FpRate = ({
         transition: "opacity 0.3s ease-in-out, filter 0.4s ease-in-out",
       }}
     >
+      {/* 범례 */}
       <div className="flex items-center justify-between gap-4 z-10">
-        {chart1Data.map((item) => (
+        {currentData.map((item) => (
           <div key={item.label} className="flex items-center gap-1.5">
             <div className={`size-3 rounded-full ${item.color}`} />
-            <span className="[0.9375rem] leading-none tracking-tight text-text-primary font-medium pb-0.5">
+            <span className="text-[0.9375rem] leading-none tracking-tight text-text-primary font-medium pb-0.5">
               {item.label}
             </span>
           </div>
         ))}
       </div>
+
       <div className="flex items-center justify-center relative h-full">
         {/* 도넛 차트 */}
         <svg
@@ -208,56 +290,34 @@ const FpRate = ({
           viewBox="0 0 280 280"
           className="transform -rotate-90 size-64"
         >
-          {(() => {
-            const total = chart1Data.reduce((sum, item) => sum + item.width, 0);
-            const radius = 100;
-            const circumference = 2 * Math.PI * radius;
-
-            const colorMap: Record<string, string> = {
-              "bg-green-500": "#22c55e",
-              "bg-amber-500": "#f59e0b",
-              "bg-sky-500": "#0ea5e9",
-              "bg-red-500": "#ef4444",
-              "bg-teal-500": "#14b8a6",
-            };
-
-            // 각 항목의 offset을 미리 계산
-            const segments = chart1Data.map((item, index) => {
-              const percentage = (item.width / total) * 100;
-              const strokeLength = (percentage / 100) * circumference;
-              const offset = chart1Data
-                .slice(0, index)
-                .reduce((sum, prevItem) => {
-                  const prevPercentage = (prevItem.width / total) * 100;
-                  return sum + (prevPercentage / 100) * circumference;
-                }, 0);
-
-              return { item, strokeLength, offset };
-            });
-
-            return segments.map(({ item, strokeLength, offset }) => (
-              <circle
-                key={item.label}
-                cx="140"
-                cy="140"
-                r={radius}
-                fill="none"
-                stroke={colorMap[item.color] || "#gray"}
-                strokeWidth="48"
-                strokeDasharray={`${strokeLength} ${
+          {segments.map(({ item, strokeLength, offset }) => (
+            <motion.circle
+              key={item.label}
+              cx="140"
+              cy="140"
+              r={radius}
+              fill="none"
+              stroke={colorMap[item.color] || "#gray"}
+              strokeWidth="48"
+              initial={false}
+              animate={{
+                strokeDasharray: `${strokeLength} ${
                   circumference - strokeLength
-                }`}
-                strokeDashoffset={-offset}
-                className="transition-all duration-500"
-              />
-            ));
-          })()}
+                }`,
+                strokeDashoffset: -offset,
+              }}
+              transition={{
+                duration: 1,
+                ease: "easeOut",
+              }}
+            />
+          ))}
         </svg>
 
         {/* 중앙 정보 */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center z-10">
           <div className="text-[2.5rem] font-extrabold text-text-primary leading-tight tracking-tighter">
-            {chart1Data.reduce((sum, item) => sum + item.width, 0)}
+            <AnimatedChartNumber value={total} />
           </div>
           <div className="text-[0.9375rem] text-text-secondary font-medium">
             Total FP
@@ -265,16 +325,41 @@ const FpRate = ({
         </div>
 
         {/* Floating 정보 카드 */}
-        <div
-          className="absolute bottom-20 left-0 z-20 bg-black/20 backdrop-blur-md shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-white font-medium transition-transform duration-200 ease-out"
-          style={{
-            transform: `translateY(${floatingOffset}px)`,
+        <motion.div
+          className="absolute bottom-20 left-0 z-20 bg-black/20 backdrop-blur-md shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-white font-medium"
+          animate={{
+            y: floatingOffset,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 30,
           }}
         >
           <div className="rounded-full size-4 bg-red-500 ring-3 ring-white mr-1" />
-          <span>EO</span>
-          <span>40%</span>
-        </div>
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={currentFloating.label}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.3 }}
+            >
+              {currentFloating.label}
+            </motion.span>
+          </AnimatePresence>
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={currentFloating.percentage}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.3 }}
+            >
+              {currentFloating.percentage}%
+            </motion.span>
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   );
@@ -293,7 +378,7 @@ interface FpReportProps {
 }
 
 // 숫자 카운팅 애니메이션 컴포넌트
-const AnimatedNumber = ({
+const AnimatedReportNumber = ({
   value,
   formatOptions,
 }: {
@@ -354,13 +439,13 @@ const FpReport = ({
       >
         <p>소프트웨어 개발비는</p>
         <p className="text-[1.3125rem] sm:text-[1.5rem] font-bold mb-2">
-          <AnimatedNumber value={currentData.amount} />
+          <AnimatedReportNumber value={currentData.amount} />
           원,
         </p>
         <p>입력된 1인 생산성 20(FP/MM) 기준</p>
         <p className="text-[1.3125rem] sm:text-[1.5rem] font-bold mb-2">
           소요 M/M는{" "}
-          <AnimatedNumber
+          <AnimatedReportNumber
             value={currentData.manMonth}
             formatOptions={{
               minimumFractionDigits: 1,
