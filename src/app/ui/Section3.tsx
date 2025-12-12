@@ -391,7 +391,7 @@ const AnimatedReportNumber = ({
   useEffect(() => {
     const controls = animate(motionValue, value, {
       duration: 0.5,
-      ease: [0.0, 2, 1, 1],
+      ease: [0.0, 1, 0, 1],
       // ease: "easeOut",
       onUpdate: (latest) => {
         setDisplayValue(latest);
