@@ -2,6 +2,14 @@
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import SkeletonBar from "./SkeletonBar";
+import {
+  motion,
+  AnimatePresence,
+  useSpring,
+  useTransform,
+  animate,
+  useMotionValue,
+} from "motion/react";
 
 // 자동 hover 순환 대상 셀 식별자
 type HighlightCellId =
@@ -37,15 +45,51 @@ const getHighlightCellClass = (
   return baseClass;
 };
 
-const FpChart = ({
-  chartKey,
-  selectedChart,
-  floatingOffset,
-}: {
+// 두 개의 데이터셋 정의
+const chartDataSets = [
+  [
+    { label: "ILF", color: "bg-blue-500", width: 85 },
+    { label: "EIF", color: "bg-emerald-500", width: 65 },
+    { label: "EL", color: "bg-violet-500", width: 92 },
+    { label: "EO", color: "bg-amber-500", width: 78 },
+    { label: "EQ", color: "bg-rose-500", width: 54 },
+  ],
+  [
+    { label: "ILF", color: "bg-blue-500", width: 62 },
+    { label: "EIF", color: "bg-emerald-500", width: 88 },
+    { label: "EL", color: "bg-violet-500", width: 71 },
+    { label: "EO", color: "bg-amber-500", width: 95 },
+    { label: "EQ", color: "bg-rose-500", width: 42 },
+  ],
+] as const;
+
+// 플로팅 라벨 데이터
+const floatingLabelData = [
+  { value: 2683.8, position: 8 },
+  { value: 3142.5, position: 32 },
+] as const;
+
+interface FpChartProps {
   chartKey: string;
   selectedChart: string;
   floatingOffset: number;
-}) => {
+}
+
+const FpChart = ({ chartKey, selectedChart, floatingOffset }: FpChartProps) => {
+  const [dataIndex, setDataIndex] = useState(0);
+
+  // 4초마다 데이터셋 전환
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDataIndex((prev) => (prev === 0 ? 1 : 0));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentData = chartDataSets[dataIndex];
+  const currentFloating = floatingLabelData[dataIndex];
+
   return (
     <div
       className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
@@ -55,35 +99,65 @@ const FpChart = ({
         transition: "opacity 0.3s ease-in-out, filter 0.4s ease-in-out",
       }}
     >
+      {/* 범례 */}
       <div className="flex items-center justify-between gap-4 z-10">
-        {chart1Data.map((item) => (
+        {currentData.map((item) => (
           <div key={item.label} className="flex items-center gap-1.5">
             <div className={`size-3 rounded-full ${item.color}`} />
-            <span className="[0.9375rem] leading-none tracking-tight text-text-primary font-medium pb-0.5">
+            <span className="text-[0.9375rem] leading-none tracking-tight text-text-primary font-medium pb-0.5">
               {item.label}
             </span>
           </div>
         ))}
       </div>
+
+      {/* 차트 영역 */}
       <div className="flex flex-col gap-0.5 relative after:content-[''] after:absolute after:h-full after:left-0 after:top-0 after:bg-linear-to-r after:from-white/80 after:to-transparent after:w-1/3 after:z-20 after:pointer-events-none">
-        <div
-          className="absolute top-8 left-2/5 z-30 bg-white/70 backdrop-blur-xl shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-text-primary font-medium transition-transform duration-200 ease-out"
-          style={{
-            transform: `translateY(${floatingOffset}px)`,
+        {/* 플로팅 라벨 */}
+        <motion.div
+          className="absolute top-8 left-2/5 z-30 bg-white/70 backdrop-blur-xl shadow-lg flex items-center gap-2 pl-4 pr-6 h-11 rounded-md border border-border-primary/50 text-text-primary font-medium"
+          animate={{
+            y: floatingOffset + currentFloating.position,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
+            damping: 30,
           }}
         >
           <div className="rounded-full size-4 bg-amber-500 ring-3 ring-white mr-1" />
           <span>ELF</span>
-          <span>2683.8</span>
-        </div>
-        {chart1Data.map((item) => (
-          <div
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={currentFloating.value}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.3 }}
+            >
+              {currentFloating.value}
+            </motion.span>
+          </AnimatePresence>
+        </motion.div>
+
+        {/* 바 차트 */}
+        {currentData.map((item) => (
+          <motion.div
             key={item.label}
             className={`z-10 relative h-8 rounded-r shadow-sm ${item.color}`}
-            style={{ width: `${item.width}%` }}
-          ></div>
+            initial={false}
+            animate={{ width: `${item.width}%` }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 20,
+              mass: 1,
+            }}
+          />
         ))}
       </div>
+
+      {/* X축 라벨 */}
       <div className="flex justify-between border-t border-border-primary/50 pt-2">
         {["0", "1000", "2000", "3000", "4000", "5000"].map((item) => (
           <span
@@ -206,17 +280,63 @@ const FpRate = ({
   );
 };
 
+// 두 개의 데이터셋 정의
+const reportDataSets = [
+  { amount: 740141670, manMonth: 497.5 },
+  { amount: 1285930420, manMonth: 823.2 },
+] as const;
+
+interface FpReportProps {
+  chartKey: string;
+  selectedChart: string;
+  floatingOffset: number;
+}
+
+// 숫자 카운팅 애니메이션 컴포넌트
+const AnimatedNumber = ({
+  value,
+  formatOptions,
+}: {
+  value: number;
+  formatOptions?: Intl.NumberFormatOptions;
+}) => {
+  const motionValue = useMotionValue(value);
+  const [displayValue, setDisplayValue] = useState(value);
+
+  useEffect(() => {
+    const controls = animate(motionValue, value, {
+      duration: 0.5,
+      ease: [0.0, 2, 1, 1],
+      // ease: "easeOut",
+      onUpdate: (latest) => {
+        setDisplayValue(latest);
+      },
+    });
+
+    return () => controls.stop();
+  }, [value, motionValue]);
+
+  return <>{displayValue.toLocaleString("ko-KR", formatOptions)}</>;
+};
+
 const FpReport = ({
   chartKey,
   selectedChart,
   floatingOffset,
-}: {
-  chartKey: string;
-  selectedChart: string;
-  floatingOffset: number;
-}) => {
-  const amount = 740141670;
-  const manMonth = 497.5;
+}: FpReportProps) => {
+  const [dataIndex, setDataIndex] = useState(0);
+
+  // 4초마다 데이터셋 전환
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDataIndex((prev) => (prev === 0 ? 1 : 0));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentData = reportDataSets[dataIndex];
+
   return (
     <div
       className="scale-90 origin-bottom md:scale-100 w-96 h-88 object-cover flex flex-col gap-8 border-t border-x border-border-primary px-10 pt-12 rounded-t-xl shadow-2xl bg-white"
@@ -234,11 +354,20 @@ const FpReport = ({
       >
         <p>소프트웨어 개발비는</p>
         <p className="text-[1.3125rem] sm:text-[1.5rem] font-bold mb-2">
-          {amount.toLocaleString()}원,
+          <AnimatedNumber value={currentData.amount} />
+          원,
         </p>
         <p>입력된 1인 생산성 20(FP/MM) 기준</p>
         <p className="text-[1.3125rem] sm:text-[1.5rem] font-bold mb-2">
-          소요 M/M는 {manMonth.toLocaleString()} M/M
+          소요 M/M는{" "}
+          <AnimatedNumber
+            value={currentData.manMonth}
+            formatOptions={{
+              minimumFractionDigits: 1,
+              maximumFractionDigits: 1,
+            }}
+          />{" "}
+          M/M
         </p>
         <p>로 추정됩니다.</p>
       </div>
