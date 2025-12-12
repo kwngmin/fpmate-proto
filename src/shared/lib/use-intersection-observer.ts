@@ -9,12 +9,12 @@ interface UseIntersectionObserverOptions extends IntersectionObserverInit {
  * @param options IntersectionObserverInit 옵션 + once 옵션
  * @returns {object} ref: DOM ref / isIntersecting: 관찰 여부 state
  */
-export function useIntersectionObserver(
+export function useIntersectionObserver<T extends HTMLElement = HTMLElement>(
   options?: UseIntersectionObserverOptions
 ) {
   const { once = false, ...observerOptions } = options ?? {};
 
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<T | null>(null);
   const [isIntersecting, setIsIntersecting] = useState(false);
   const hasIntersectedRef = useRef(false);
 

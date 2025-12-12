@@ -3,6 +3,44 @@
 import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
 import Image from "next/image";
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { motion } from "motion/react";
+
+export function GradientBeamAnimation() {
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(0, 123, 85, 0.025), transparent)",
+        }}
+        animate={{
+          x: ["-100%", "100%"],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(0, 171, 85, 0.1), transparent)",
+        }}
+        animate={{
+          x: ["100%", "-100%"],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+    </div>
+  );
+}
 
 type FocusState = "smart-pricing" | "error-validation";
 
@@ -931,7 +969,7 @@ const Diagram = () => {
                     className="absolute left-0 top-0 z-30"
                     style={{ opacity: 1 }}
                   >
-                    <div className="min-w-48 shrink-0 font-medium text-text-tertiary">
+                    <div className="min-w-48 shrink-0 text-[#007B55]">
                       산정에서 관리까지,
                       <br />
                       쉽고 빠르게, AI로 스마트하게!
@@ -939,6 +977,7 @@ const Diagram = () => {
                     </div>
                   </div>
                 </div>
+                <GradientBeamAnimation />
               </div>
             </div>
           </div>
