@@ -500,15 +500,18 @@ const Diagram = () => {
       ref={diagramRef as React.RefObject<HTMLDivElement>}
     >
       {/* title */}
-      <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-6">
+      <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-4">
         <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
           <span className="font-extrabold text-brand-primary">FPMate</span>로
-          쉽게 <br />
-          {/* <br className="sm:hidden" /> */}
-          SW 사업비용을 산정해 보세요
+          <br />
+          스마트하게 산정해 보세요
         </div>
         <div className="leading-normal tracking-tight break-keep max-w-xl md:max-w-3xl space-y-4">
           <p className="text-[1.0625rem] md:text-[1.3125rem] text-text-primary">
+            반복되고 소모적인 작업은 줄이고 더 합리적인 비용 판단 분석에 집중해
+            보세요.
+          </p>
+          {/* <p className="text-[1.0625rem] md:text-[1.3125rem] text-text-primary">
             반복되고 소모적인 작업은 줄이고 더 합리적인 비용 판단 분석에 집중해
             보세요. <br className="hidden sm:block" />
             <span className="outline outline-amber-400 outline-dashed bg-amber-50 px-1 leading-none h-6 md:h-7 mx-0.5 pt-0.75 inline-block text-amber-700">
@@ -516,12 +519,7 @@ const Diagram = () => {
             </span>
             로 일관된 산정을 제공합니다.
             <br />
-          </p>
-          <p className="text-[0.9375rem] text-text-secondary">
-            <span className="font-medium">FPMate</span>는{" "}
-            <span className="font-semibold text-text-primary">기능점수</span>{" "}
-            기반의 소프트웨어 대가산정 가이드를 준수합니다.
-          </p>
+          </p> */}
         </div>
       </div>
 

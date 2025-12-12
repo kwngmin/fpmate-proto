@@ -116,15 +116,14 @@ const Section1 = () => {
       className="bg-gray-50 py-20 md:py-40 overflow-hidden space-y-2 sm:space-y-6"
     >
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-4">
-        {/* <div className="text-[2rem] md:text-[3rem] leading-[1.15] tracking-tighter font-semibold break-keep">
-          <span className="font-extrabold text-brand-primary">FPMate</span>는?{" "}
-        </div> */}
         <p className="max-w-96 sm:max-w-none text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] leading-tight tracking-tighter break-keep text-text-primary">
-          <span className="font-extrabold text-brand-primary">FPMate</span>는{" "}
-          <span className="font-semibold">SW 사업 파트너</span>
-          로서 <br />
-          <span className="font-semibold">SW 사업 관리</span>를 돕고자
-          탄생하였습니다.
+          어떤 사업이든, <span className="font-semibold">더 정확하게. </span>{" "}
+          어떤 역할이든, <span className="font-semibold">더 효율적으로. </span>
+          <br />
+          <span className="font-semibold">
+            성공적인 SW 사업을 위한 파트너,{" "}
+          </span>
+          <span className="font-extrabold text-brand-primary">FPMate</span>
         </p>
 
         <p className="text-[1.0625rem] leading-normal tracking-tight break-keep text-text-secondary">

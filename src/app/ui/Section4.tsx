@@ -175,9 +175,7 @@ const Section4 = () => {
           </div>
 
           <p className="text-[1.0625rem] md:text-[1.3125rem] text-center leading-normal tracking-tight break-keep text-text-primary">
-            어떤 사업이든, <span className="font-semibold">더 정확하게</span>.{" "}
-            <br className="sm:hidden" />
-            어떤 역할이든, <span className="font-semibold">더 효율적으로</span>.
+            지금 바로 아래 기능들을 활용해보세요.
           </p>
         </div>
 

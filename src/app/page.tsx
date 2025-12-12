@@ -13,7 +13,6 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <Header />
-
       {/* Hero Section */}
       <Hero />
       {/* Diagram */}

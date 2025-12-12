@@ -40,58 +40,36 @@ const CardStep1 = () => {
   );
 };
 
-const CardStep2 = () => {
+export const CardStep2 = () => {
   return (
-    <div className="w-[256px] h-[130px] bg-gray-100 pl-10 overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
-      <div className="bg-white w-full h-full border-l border-border-primary shadow-lg shadow-black/15 flex flex-col gap-2.5 justify-center pl-6">
-        {/* check */}
-        <div className="flex items-center gap-1">
-          <div className="bg-brand-primary rounded-sm flex items-center justify-center size-8 shrink-0 mr-1">
-            <Image
-              src="/assets/svgs/check-bold.svg"
-              alt="check-icon"
-              width={32}
-              height={32}
-              className="size-6 brightness-0 invert"
-            />
-          </div>
-          <Image
-            src="/assets/svgs/xlsx.svg"
-            alt="xlsx-icon"
-            width={32}
-            height={32}
-            className="size-10 shrink-0"
-          />
-          <SkeletonBar width={2.5} height={1} />
-          <SkeletonBar width={6} height={1} />
-        </div>
-        {/* sparkles */}
-        <div className="flex items-center gap-1">
-          <div className="border-2 border-border-secondary rounded-sm flex items-center justify-center size-8 shrink-0 mr-1">
-            <Image
-              src="/assets/svgs/check-bold.svg"
-              alt="check-icon"
-              width={32}
-              height={32}
-              className="size-6 brightness-0 invert"
-            />
-          </div>
-          <Image
-            src="/assets/svgs/sparkles.svg"
-            alt="sparkles-icon"
-            width={32}
-            height={32}
-            className="size-10 shrink-0"
-          />
-          <SkeletonBar width={5} height={1} />
-          <SkeletonBar width={6} height={1} />
-        </div>
+    <div className="w-[256px] h-[130px] bg-white pl-10 overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none pt-3">
+      <div className="flex items-center gap-1 mb-2">
+        <SkeletonBar width={2} height={1} />
+        <SkeletonBar width={3.5} height={1} />
+      </div>
+      <div className="bg-white w-full h-40 border-l-4 border-t-4 border-dashed border-amber-300 rounded-tl-xl flex flex-col gap-2.5 pl-6 relative">
+        <div className="bg-amber-100 absolute top-0 left-0 w-full h-full animate-pulse" />
+        <Image
+          src="/assets/svgs/xlsx.svg"
+          alt="xlsx-icon"
+          width={32}
+          height={32}
+          className="size-16 absolute -top-6 left-14 shrink-0 z-10"
+        />
+        <div className="absolute -top-1 left-18 w-10.5 h-10 bg-black shadow-lg shadow-black/15" />
+        <Image
+          src="/assets/svgs/cursor-hand.svg"
+          alt="xlsx-icon"
+          width={32}
+          height={32}
+          className="size-14 absolute top-5 left-26 shrink-0 z-20"
+        />
       </div>
     </div>
   );
 };
 
-const CardStep3 = () => {
+export const CardStep3 = () => {
   return (
     <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
       <div className="bg-white w-full h-full flex flex-col gap-3 justify-center after:content-[''] relative after:absolute after:w-20 after:h-full after:left-0 after:top-0 after:bg-linear-to-r after:from-white after:to-transparent after:pointer-events-none">
@@ -105,6 +83,13 @@ const CardStep3 = () => {
               <SkeletonBar width={1} height={1} emphasize />
               <SkeletonBar width={3.5} height={1} emphasize />
             </div>
+            <Image
+              src="/assets/svgs/ai-sparkles.svg"
+              alt="cursor-icon"
+              width={24}
+              height={24}
+              className="size-10 absolute right-3 bottom-1"
+            />
           </div>
           <div className="flex items-center gap-3 relative">
             <div className="flex items-center justify-center size-12 shrink-0 z-10">
@@ -119,6 +104,7 @@ const CardStep3 = () => {
 
             {/* pulse animation */}
             <div className="absolute right-0 bottom-0 bg-gray-200 rounded-full flex items-center justify-center size-12 shrink-0  animate-pulse" />
+            <div className="absolute right-1 bottom-1 bg-gray-200 rounded-full flex items-center justify-center size-10 shrink-0  animate-ping" />
           </div>
         </div>
       </div>
@@ -165,7 +151,7 @@ const CardStep4 = () => {
   );
 };
 
-const CardStep5 = () => {
+export const CardStep5 = () => {
   return (
     <div className="w-[256px] h-[130px] overflow-hidden relative after:content-[''] after:absolute after:h-1/3 after:bottom-0 after:left-0 after:right-0 after:bg-linear-to-b after:from-transparent after:to-gray-200 after:pointer-events-none">
       <table className="absolute -top-5 -left-1 min-w-lg">
@@ -190,8 +176,9 @@ const CardStep5 = () => {
                         className="size-6.5 shrink-0"
                       />
                     </div>
-                    <SkeletonBar width={5} height={1} emphasize />
-                    <SkeletonBar width={6} height={1} emphasize />
+                    <span className="text-xl font-medium text-text-secondary">
+                      연계복잡성
+                    </span>
                   </div>
 
                   {/* tree nodes */}
@@ -205,8 +192,9 @@ const CardStep5 = () => {
                         className="size-6.5 shrink-0"
                       />
                     </div>
-                    <SkeletonBar width={2.5} height={1} />
-                    <SkeletonBar width={6} height={1} />
+                    <span className="text-xl font-medium text-text-secondary">
+                      성능
+                    </span>
                   </div>
                 </div>
               </div>
@@ -300,7 +288,7 @@ const processSteps = [
     id: 1,
     number: "01",
     key: "one",
-    title: "SW 사업 정보 정보 등록",
+    title: "비용 산정 관련 정보 등록",
     content: <CardStep1 />,
     image: "/assets/images/main-card-01.png",
   },
@@ -308,7 +296,7 @@ const processSteps = [
     id: 2,
     number: "02",
     key: "two",
-    title: "SW 비용 산정 정보 등록",
+    title: "비용 산정 시작",
     content: <CardStep2 />,
     image: "/assets/images/main-card-02.png",
   },
@@ -332,7 +320,7 @@ const processSteps = [
     id: 5,
     number: "05",
     key: "five",
-    title: "보정계수 결정",
+    title: "보정 계수 결정",
     content: <CardStep5 />,
     image: "/assets/images/main-card-05.png",
   },
@@ -340,7 +328,7 @@ const processSteps = [
     id: 6,
     number: "06",
     key: "six",
-    title: "SW 사업비용 산정",
+    title: "SW 사업 비용 산정",
     content: <CardStep6 />,
     image: "/assets/images/main-card-06.png",
   },
@@ -483,39 +471,56 @@ const Hero = () => {
               className="break-keep"
             />
           </div>
-          <p className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep">
-            <FadeText text="FPMate" delay={900} className="font-semibold" />
-            <FadeText
-              text="는"
-              //   text="는 AI 비서와 함께"
-              delay={950}
-              className="
+          <div className="space-y-3">
+            <p className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep">
+              <FadeText text="FPMate" delay={900} className="font-semibold" />
+              <FadeText
+                text="는"
+                //   text="는 AI 비서와 함께"
+                delay={950}
+                className="
             mr-1"
-            />
-            <FadeText
-              text="AI 비서"
-              //   text="는 AI 비서와 함께"
-              delay={950}
-              className="font-semibold"
-            />
-            <FadeText
-              text="와"
-              //   text="는 AI 비서와 함께"
-              delay={950}
-              className="mr-1"
-            />
-            <FadeText
-              text="쉽고 빠르게 SW 사업 비용을 알아 볼 수 있습니다. "
-              //   text="는 AI 비서와 함께"
-              delay={950}
-              className="mr-1"
-            />
-            <br />
-            <FadeText
-              text="사업 단계별 변경 관리도 어렵지 않아요."
-              delay={1100}
-            />
-          </p>
+              />
+              <FadeText
+                text="AI"
+                //   text="는 AI 비서와 함께"
+                delay={950}
+                className="font-semibold"
+              />
+              <FadeText
+                text="로"
+                //   text="는 AI 비서와 함께"
+                delay={950}
+                className="mr-1"
+              />
+              <FadeText
+                text="쉽고 빠르게 SW 사업 비용을 알아 볼 수 있습니다. "
+                //   text="는 AI 비서와 함께"
+                delay={950}
+                className="mr-1"
+              />
+              <br />
+              <FadeText
+                text="표준화된 프로세스로 일관된 산정을 제공합니다."
+                delay={1100}
+              />
+            </p>
+            <p className="text-[0.9375rem] sm:text-base text-text-secondary">
+              <FadeText text="FPMate" delay={1200} className="font-medium" />
+              <FadeText text="는" delay={1250} className="mr-1" />
+              <FadeText
+                text="기능점수"
+                delay={1300}
+                className="font-semibold text-text-primary mr-1"
+              />
+              <FadeText
+                text="기반의 소프트웨어 대가산정 "
+                delay={1350}
+                className="mr-1"
+              />
+              <FadeText text="가이드를 준수합니다." delay={1350} />
+            </p>
+          </div>
         </div>
 
         {/* progress bar */}

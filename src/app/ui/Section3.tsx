@@ -43,23 +43,23 @@ const chartDataSets = [
   [
     { label: "ILF", color: "bg-blue-500", width: 25 },
     { label: "EIF", color: "bg-emerald-500", width: 65 },
-    { label: "EI", color: "bg-violet-500", width: 42 },
-    { label: "EO", color: "bg-amber-500", width: 78 },
+    { label: "EI", color: "bg-amber-500", width: 90 },
+    { label: "EO", color: "bg-violet-500", width: 38 },
     { label: "EQ", color: "bg-rose-500", width: 54 },
   ],
   [
-    { label: "ILF", color: "bg-blue-500", width: 62 },
+    { label: "ILF", color: "bg-blue-500", width: 36 },
     { label: "EIF", color: "bg-emerald-500", width: 18 },
-    { label: "EI", color: "bg-violet-500", width: 71 },
-    { label: "EO", color: "bg-amber-500", width: 95 },
+    { label: "EI", color: "bg-amber-500", width: 51 },
+    { label: "EO", color: "bg-violet-500", width: 75 },
     { label: "EQ", color: "bg-rose-500", width: 42 },
   ],
 ] as const;
 
 // 플로팅 라벨 데이터
 const floatingBarGraphLabelData = [
-  { value: 4283.8, position: 8, color: "bg-amber-500", label: "EO" },
-  { value: 3942.5, position: 32, color: "bg-violet-500", label: "EI" },
+  { value: 4813.8, position: 24, color: "bg-amber-500", label: "EO" },
+  { value: 3942.5, position: 64, color: "bg-violet-500", label: "EI" },
 ] as const;
 
 interface FpChartProps {
@@ -170,33 +170,33 @@ const FpChart = ({ chartKey, selectedChart, floatingOffset }: FpChartProps) => {
 // 두 개의 데이터셋 정의
 const rateDataSets = [
   [
-    { label: "ILF", color: "bg-green-500", width: 15 },
-    { label: "EIF", color: "bg-amber-500", width: 65 },
-    { label: "EI", color: "bg-sky-500", width: 32 },
-    { label: "EO", color: "bg-red-500", width: 138 },
-    { label: "EQ", color: "bg-teal-500", width: 34 },
+    { label: "ILF", color: "bg-blue-500", width: 15 },
+    { label: "EIF", color: "bg-emerald-500", width: 65 },
+    { label: "EI", color: "bg-amber-500", width: 32 },
+    { label: "EO", color: "bg-violet-500", width: 138 },
+    { label: "EQ", color: "bg-rose-500", width: 34 },
   ],
   [
-    { label: "ILF", color: "bg-green-500", width: 62 },
-    { label: "EIF", color: "bg-amber-500", width: 28 },
-    { label: "EI", color: "bg-sky-500", width: 71 },
-    { label: "EO", color: "bg-red-500", width: 28 },
-    { label: "EQ", color: "bg-teal-500", width: 42 },
+    { label: "ILF", color: "bg-blue-500", width: 62 },
+    { label: "EIF", color: "bg-emerald-500", width: 28 },
+    { label: "EI", color: "bg-amber-500", width: 71 },
+    { label: "EO", color: "bg-violet-500", width: 28 },
+    { label: "EQ", color: "bg-rose-500", width: 42 },
   ],
 ] as const;
 
 // 플로팅 라벨 데이터
 const floatingChartLabelData = [
-  { label: "EO", percentage: 48.6, color: "bg-red-500" },
-  { label: "EI", percentage: 30.74, color: "bg-sky-500" },
+  { label: "EO", percentage: 48.6, color: "bg-violet-500" },
+  { label: "EI", percentage: 30.74, color: "bg-amber-500" },
 ] as const;
 
 const colorMap: Record<string, string> = {
-  "bg-green-500": "#22c55e",
-  "bg-amber-500": "#f59e0b",
-  "bg-sky-500": "#0ea5e9",
-  "bg-red-500": "#ef4444",
-  "bg-teal-500": "#14b8a6",
+  "bg-blue-500": "oklch(62.3% 0.214 259.815)",
+  "bg-emerald-500": "oklch(69.6% 0.17 162.48)",
+  "bg-amber-500": "oklch(76.9% 0.188 70.08)",
+  "bg-violet-500": "oklch(60.6% 0.25 292.717)",
+  "bg-rose-500": "oklch(64.5% 0.246 16.439)",
 };
 
 // 숫자 카운팅 애니메이션 컴포넌트
@@ -581,12 +581,16 @@ const ReportTable = ({
         <tbody>
           {/* 1row */}
           <tr>
-            <td className={getCellClass("totalFp")}>1000.6</td>
+            <td className={getCellClass("totalFp")}>
+              {/* 1000.6 */}
+              2505.5
+            </td>
             <td className={getCellClass("unitPrice")}>
               <span>605,784</span>원
             </td>
             <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 outline-transparent">
-              1.1530
+              {/* 1.1530 */}
+              1.0480
             </td>
             <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 outline-transparent">
               0.94
@@ -596,10 +600,15 @@ const ReportTable = ({
               1.00
             </td>
             <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 outline-transparent">
-              1.03
+              {/* 1.03 */}
+              1.06
             </td>
             <td className={getCellClass("devCost", "end")}>
-              <span>6,728,560,634</span>원
+              <span>
+                {/* 6,728,560,634 */}
+                1,584,961,395
+              </span>
+              원
             </td>
           </tr>
 
@@ -612,7 +621,11 @@ const ReportTable = ({
               합계(보정 후 개발원가)
             </td>
             <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 outline-transparent">
-              <span>6,728,560,634</span>원
+              <span>
+                {/* 6,728,560,634 */}
+                1,584,961,395
+              </span>
+              원
             </td>
           </tr>
 
@@ -628,7 +641,11 @@ const ReportTable = ({
               <span>11</span>%
             </td>
             <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 outline-transparent">
-              <span>740,141,670</span>원
+              <span>
+                {/* 740,141,670 */}
+                79,248,070
+              </span>
+              원
             </td>
           </tr>
 
@@ -648,13 +665,18 @@ const ReportTable = ({
               }`}
               colSpan={2}
             >
-              합계: <span>740,141,670</span>원
+              합계:{" "}
+              <span>
+                {/* 740,141,670 */}
+                1,664,209,464
+              </span>
+              원
             </td>
           </tr>
         </tbody>
       </table>
       <p className="mb-10 text-xs md:text-[0.9375rem] leading-[1.6] tracking-[-0.011em]">
-        ※ 적용 단가: 553,111원(2024년 기준)
+        ※ 적용 단가: 605,784원(2024년 기준)
       </p>
 
       <div className="flex justify-between gap-4">
