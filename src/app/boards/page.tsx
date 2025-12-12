@@ -268,13 +268,7 @@ const BoardsPage = () => {
                       <div className="flex items-center gap-2">
                         {/* category badge */}
                         <div
-                          className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter px-1 pt-px border rounded-sm flex items-center w-fit ${
-                            item.category.color === "blue"
-                              ? "bg-blue-500/10 border-blue-500/20 text-blue-600"
-                              : item.category.color === "green"
-                              ? "bg-emerald-500/10 border-emerald-500/30 text-green-700"
-                              : "bg-orange-500/10 border-orange-500/30 text-orange-700"
-                          }`}
+                          className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter text-text-secondary px-1 bg-bg-neutral border border-border-primary rounded-sm flex items-center`}
                         >
                           {item.category.title}
                         </div>

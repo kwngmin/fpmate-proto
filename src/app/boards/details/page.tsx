@@ -11,7 +11,7 @@ const BoardsDetailsPage = () => {
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-4 sm:gap-6">
           {/* category badge */}
           <div
-            className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter px-1 pt-px border rounded-sm flex items-center w-fit bg-blue-500/10 border-blue-500/20 text-blue-600`}
+            className={`text-[0.8125rem] font-medium leading-tight h-5.5 tracking-tighter text-text-secondary px-1 w-fit bg-bg-neutral border border-border-primary rounded-sm flex items-center`}
           >
             서비스 공지사항
           </div>
