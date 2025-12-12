@@ -3,6 +3,40 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import SkeletonBar from "./SkeletonBar";
 
+// 자동 hover 순환 대상 셀 식별자
+type HighlightCellId =
+  | "totalFp"
+  | "devCost"
+  | "unitPrice"
+  | "performance"
+  | "swDevCost";
+
+const HIGHLIGHT_CELLS: HighlightCellId[] = [
+  "totalFp",
+  "devCost",
+  "unitPrice",
+  "performance",
+  "swDevCost",
+];
+
+const HIGHLIGHT_INTERVAL_MS = 2500;
+
+// 하이라이트 셀 스타일 유틸리티
+const getHighlightCellClass = (
+  cellId: HighlightCellId,
+  activeCell: HighlightCellId | null
+) => {
+  const baseClass =
+    "border border-border-primary bg-bg-primary p-3 transition-all ease-in-out duration-200 outline-transparent";
+  const activeClass = "bg-amber-50! outline-1! outline-accent-hover!";
+
+  if (activeCell === cellId) {
+    return `${baseClass} ${activeClass}`;
+  }
+
+  return baseClass;
+};
+
 const FpChart = ({
   chartKey,
   selectedChart,
@@ -105,7 +139,7 @@ const FpRate = ({
             const radius = 100;
             const circumference = 2 * Math.PI * radius;
 
-            const colorMap: { [key: string]: string } = {
+            const colorMap: Record<string, string> = {
               "bg-green-500": "#22c55e",
               "bg-amber-500": "#f59e0b",
               "bg-sky-500": "#0ea5e9",
@@ -293,10 +327,222 @@ const chart1Data = [
   },
 ];
 
+// 보고서 테이블 컴포넌트 (DRY 원칙 적용)
+const ReportTable = ({
+  activeCell,
+}: {
+  activeCell: HighlightCellId | null;
+}) => {
+  const getCellClass = (
+    cellId: HighlightCellId,
+    align: "center" | "end" = "center"
+  ) => {
+    const alignClass = align === "end" ? "text-end" : "text-center";
+    return `${getHighlightCellClass(cellId, activeCell)} ${alignClass}`;
+  };
+
+  return (
+    <>
+      {/* 개발원가 산정 */}
+      <div className="flex justify-between gap-4">
+        <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
+          개발원가 산정
+        </span>
+        <span>(단위: 원)</span>
+      </div>
+      <table className="w-full border-collapse origin-top-left scale-65 sm:scale-90 md:scale-100 -mb-26 sm:-mb-8 md:mb-0">
+        <thead>
+          <tr>
+            <th
+              rowSpan={2}
+              className="border border-border-primary bg-bg-tertiary p-3"
+            >
+              총 기능점수
+            </th>
+            <th
+              rowSpan={2}
+              className="border border-border-primary bg-bg-tertiary p-3"
+            >
+              기능점수당 단가
+            </th>
+            <th
+              colSpan={5}
+              className="border border-border-primary bg-bg-tertiary p-3"
+            >
+              보정 계수
+            </th>
+            <th
+              rowSpan={2}
+              className="border border-border-primary bg-bg-tertiary p-3"
+            >
+              개발 원가
+            </th>
+          </tr>
+          <tr>
+            <th className="border border-border-primary bg-bg-tertiary p-3">
+              SW 규모
+            </th>
+            <th className="border border-border-primary bg-bg-tertiary p-3">
+              연계복잡성
+            </th>
+            <th className="border border-border-primary bg-bg-tertiary p-3">
+              성능 요구수준
+            </th>
+            <th className="border border-border-primary bg-bg-tertiary p-3">
+              운영환경 호환성
+            </th>
+            <th className="border border-border-primary bg-bg-tertiary p-3">
+              보안성 요구수준
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* 1row */}
+          <tr>
+            <td className={getCellClass("totalFp")}>1000.6</td>
+            <td className={getCellClass("unitPrice")}>
+              <span>605,784</span>원
+            </td>
+            <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 outline-transparent">
+              1.1530
+            </td>
+            <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 outline-transparent">
+              0.94
+            </td>
+            <td className={getCellClass("performance")}>1.00</td>
+            <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 outline-transparent">
+              1.00
+            </td>
+            <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 outline-transparent">
+              1.03
+            </td>
+            <td className={getCellClass("devCost", "end")}>
+              <span>6,728,560,634</span>원
+            </td>
+          </tr>
+
+          {/* 2row */}
+          <tr>
+            <td
+              className="border border-border-primary bg-bg-primary p-3"
+              colSpan={7}
+            >
+              합계(보정 후 개발원가)
+            </td>
+            <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 outline-transparent">
+              <span>6,728,560,634</span>원
+            </td>
+          </tr>
+
+          {/* 3row */}
+          <tr>
+            <td
+              className="border border-border-primary bg-bg-primary p-3"
+              colSpan={6}
+            >
+              이윤 (※이윤은 개발원가의 25% 이내에서 산정한다.)
+            </td>
+            <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-300 outline-transparent">
+              <span>11</span>%
+            </td>
+            <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 outline-transparent">
+              <span>740,141,670</span>원
+            </td>
+          </tr>
+
+          {/* 4row */}
+          <tr>
+            <td
+              className="border border-border-primary bg-bg-secondary p-3"
+              colSpan={6}
+            >
+              소프트웨어 개발비 (부가세 별도)
+            </td>
+            <td
+              className={`border border-border-primary p-3 text-end transition-all ease-in-out duration-200 ${
+                activeCell === "swDevCost"
+                  ? "bg-amber-50 outline-1 outline-accent-hover"
+                  : "bg-bg-secondary"
+              }`}
+              colSpan={2}
+            >
+              합계: <span>740,141,670</span>원
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p className="mb-10 text-xs md:text-[0.9375rem] leading-[1.6] tracking-[-0.011em]">
+        ※ 적용 단가: 553,111원(2024년 기준)
+      </p>
+
+      <div className="flex justify-between gap-4">
+        <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
+          직접경비
+        </span>
+        <div className="w-12 h-5 rounded bg-gray-100" />
+      </div>
+      <table className="w-full border-collapse origin-top-left scale-65 sm:scale-90 md:scale-100 -mb-12 sm:-mb-4 md:mb-0">
+        <thead>
+          <tr>
+            <th className="border border-border-primary bg-bg-tertiary p-3">
+              <div className="w-28 h-5 rounded bg-gray-200" />
+            </th>
+            <th className="border border-border-primary bg-bg-tertiary p-3">
+              <div className="w-16 h-5 rounded bg-gray-200" />
+            </th>
+            <th className="border border-border-primary bg-bg-tertiary p-3">
+              <div className="w-20 h-5 rounded bg-gray-200" />
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* 1row */}
+          <tr>
+            <td className="border border-border-primary bg-bg-primary p-3 text-center">
+              <div className="w-12 h-5 rounded bg-gray-100" />
+            </td>
+            <td className="border border-border-primary bg-bg-primary p-3 text-center">
+              <div className="w-24 h-5 rounded bg-gray-100" />
+            </td>
+            <td className="border border-border-primary bg-bg-primary p-3 text-center">
+              <div className="w-16 h-5 rounded bg-gray-100" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+// 자동 하이라이트 순환 훅
+const useAutoHighlight = () => {
+  const [activeCell, setActiveCell] = useState<HighlightCellId | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const currentIndexRef = useRef(0);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setActiveCell(HIGHLIGHT_CELLS[currentIndexRef.current]);
+      currentIndexRef.current =
+        (currentIndexRef.current + 1) % HIGHLIGHT_CELLS.length;
+    }, HIGHLIGHT_INTERVAL_MS);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
+
+  return activeCell;
+};
+
 const Section3 = () => {
   const [selectedChart, setSelectedChart] = useState<string>("function");
   const [floatingOffset, setFloatingOffset] = useState<number>(0);
   const chartContainerRef = useRef<HTMLDivElement>(null);
+
+  const activeCell = useAutoHighlight();
 
   const handleChartClick = (key: string) => {
     setSelectedChart(key);
@@ -356,7 +602,6 @@ const Section3 = () => {
             <p className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep text-text-primary max-w-xl md:max-w-3xl">
               <span className="font-semibold">축적된 데이터</span>를 활용하여
               유사 사업 비용을 빠르게 예측하고,{" "}
-              {/* <br className="hidden sm:block" /> */}
               <span className="font-semibold">보고서</span>,{" "}
               <span className="font-semibold">시각화된 통계</span> 제공으로
               객관적인 의사결정을 돕습니다.
@@ -370,364 +615,14 @@ const Section3 = () => {
             </span>
             {/* 보고서 내역 - desktop */}
             <div className="relative p-6 bg-white rounded-lg hidden lg:flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default">
-              {/* 개발원가 산정 */}
-              <div className="flex justify-between gap-4">
-                <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
-                  개발원가 산정
-                </span>
-                <span>(단위: 원)</span>
-              </div>
-              <table className="w-full border-collapse origin-top-left scale-65 sm:scale-90 md:scale-100 -mb-26 sm:-mb-8 md:mb-0">
-                <thead>
-                  <tr>
-                    <th
-                      rowSpan={2}
-                      className="border border-border-primary bg-bg-tertiary p-3"
-                    >
-                      총 기능점수
-                    </th>
-                    <th
-                      rowSpan={2}
-                      className="border border-border-primary bg-bg-tertiary p-3"
-                    >
-                      기능점수당 단가
-                    </th>
-                    <th
-                      colSpan={5}
-                      className="border border-border-primary bg-bg-tertiary p-3"
-                    >
-                      보정 계수
-                    </th>
-                    <th
-                      rowSpan={2}
-                      className="border border-border-primary bg-bg-tertiary p-3"
-                    >
-                      개발 원가
-                    </th>
-                  </tr>
-                  <tr>
-                    <th className="border border-border-primary bg-bg-tertiary p-3">
-                      SW 규모
-                    </th>
-                    <th className="border border-border-primary bg-bg-tertiary p-3">
-                      연계복잡성
-                    </th>
-                    <th className="border border-border-primary bg-bg-tertiary p-3">
-                      성능 요구수준
-                    </th>
-                    <th className="border border-border-primary bg-bg-tertiary p-3">
-                      운영환경 호환성
-                    </th>
-                    <th className="border border-border-primary bg-bg-tertiary p-3">
-                      보안성 요구수준
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {/* 1row */}
-                  <tr>
-                    <td
-                      className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
-                      // rowSpan={4}
-                    >
-                      1000.6
-                    </td>
-                    <td
-                      className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
-                      // rowSpan={4}
-                    >
-                      <span>605,784</span>원
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                      1.1530
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                      0.94
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                      1.00
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                      1.00
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                      1.03
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                      <span>6,728,560,634</span>원
-                    </td>
-                  </tr>
-
-                  {/* 2row */}
-                  <tr>
-                    <td
-                      className="border border-border-primary bg-bg-primary p-3"
-                      colSpan={7}
-                    >
-                      합계(보정 후 개발원가)
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                      <span>6,728,560,634</span>원
-                    </td>
-                  </tr>
-
-                  {/* 3row */}
-                  <tr>
-                    <td
-                      className="border border-border-primary bg-bg-primary p-3"
-                      colSpan={6}
-                    >
-                      이윤 (※이윤은 개발원가의 25% 이내에서 산정한다.)
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-300 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                      <span>11</span>%
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                      <span>740,141,670</span>원
-                    </td>
-                  </tr>
-
-                  {/* 4row */}
-                  <tr>
-                    <td
-                      className="border border-border-primary bg-bg-secondary p-3"
-                      colSpan={6}
-                    >
-                      소프트웨어 개발비 (부가세 별도)
-                    </td>
-                    <td
-                      className="border border-border-primary bg-bg-secondary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
-                      colSpan={2}
-                    >
-                      합계: <span>740,141,670</span>원
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <p className="mb-10 text-xs md:text-[0.9375rem] leading-[1.6] tracking-[-0.011em]">
-                ※ 적용 단가: 553,111원(2024년 기준)
-              </p>
-
-              <div className="flex justify-between gap-4">
-                <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
-                  직접경비
-                </span>
-                <div className="w-12 h-5 rounded bg-gray-100" />
-              </div>
-              <table className="w-full border-collapse origin-top-left scale-65 sm:scale-90 md:scale-100 -mb-12 sm:-mb-4 md:mb-0">
-                <thead>
-                  <tr>
-                    <th className="border border-border-primary bg-bg-tertiary p-3">
-                      <div className="w-28 h-5 rounded bg-gray-200" />
-                    </th>
-                    <th className="border border-border-primary bg-bg-tertiary p-3">
-                      <div className="w-16 h-5 rounded bg-gray-200" />
-                    </th>
-                    <th className="border border-border-primary bg-bg-tertiary p-3">
-                      <div className="w-20 h-5 rounded bg-gray-200" />
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {/* 1row */}
-                  <tr>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-center">
-                      <div className="w-12 h-5 rounded bg-gray-100" />
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-center">
-                      <div className="w-24 h-5 rounded bg-gray-100" />
-                    </td>
-                    <td className="border border-border-primary bg-bg-primary p-3 text-center">
-                      <div className="w-16 h-5 rounded bg-gray-100" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <ReportTable activeCell={activeCell} />
             </div>
 
             {/* 보고서 내역 - mobile & tablet */}
             <div className="lg:hidden relative h-136 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-16 after:md:bottom-0 after:scale-125 after:bg-linear-to-t after:from-gray-50 after:via-gray-50 after:to-transparent after:h-1/3 after:pointer-events-none after:z-40">
               <div className="absolute top-0 left-0 translate-x-4 translate-y-0 z-30 shadow-lg">
                 <div className="relative p-6 bg-white rounded-lg flex flex-col gap-4 after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:bg-linear-to-b after:from-transparent after:to-gray-50 after:h-1/3 after:pointer-events-none after:z-10 min-w-[1152px] before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border-t before:border-x before:border-border-primary before:pointer-events-none before:z-0 *:cursor-default">
-                  {/* 개발원가 산정 */}
-                  <div className="flex justify-between gap-4">
-                    <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
-                      개발원가 산정
-                    </span>
-                    <span>(단위: 원)</span>
-                  </div>
-                  <table className="w-full border-collapse origin-top-left scale-65 sm:scale-90 md:scale-100 -mb-26 sm:-mb-8 md:mb-0">
-                    <thead>
-                      <tr>
-                        <th
-                          rowSpan={2}
-                          className="border border-border-primary bg-bg-tertiary p-3"
-                        >
-                          총 기능점수
-                        </th>
-                        <th
-                          rowSpan={2}
-                          className="border border-border-primary bg-bg-tertiary p-3"
-                        >
-                          기능점수당 단가
-                        </th>
-                        <th
-                          colSpan={5}
-                          className="border border-border-primary bg-bg-tertiary p-3"
-                        >
-                          보정 계수
-                        </th>
-                        <th
-                          rowSpan={2}
-                          className="border border-border-primary bg-bg-tertiary p-3"
-                        >
-                          개발 원가
-                        </th>
-                      </tr>
-                      <tr>
-                        <th className="border border-border-primary bg-bg-tertiary p-3">
-                          SW 규모
-                        </th>
-                        <th className="border border-border-primary bg-bg-tertiary p-3">
-                          연계복잡성
-                        </th>
-                        <th className="border border-border-primary bg-bg-tertiary p-3">
-                          성능 요구수준
-                        </th>
-                        <th className="border border-border-primary bg-bg-tertiary p-3">
-                          운영환경 호환성
-                        </th>
-                        <th className="border border-border-primary bg-bg-tertiary p-3">
-                          보안성 요구수준
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {/* 1row */}
-                      <tr>
-                        <td
-                          className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
-                          // rowSpan={4}
-                        >
-                          1000.6
-                        </td>
-                        <td
-                          className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
-                          // rowSpan={4}
-                        >
-                          <span>605,784</span>원
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                          1.1530
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                          0.94
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                          1.00
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                          1.00
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                          1.03
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                          <span>6,728,560,634</span>원
-                        </td>
-                      </tr>
-
-                      {/* 2row */}
-                      <tr>
-                        <td
-                          className="border border-border-primary bg-bg-primary p-3"
-                          colSpan={7}
-                        >
-                          합계(보정 후 개발원가)
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                          <span>6,728,560,634</span>원
-                        </td>
-                      </tr>
-
-                      {/* 3row */}
-                      <tr>
-                        <td
-                          className="border border-border-primary bg-bg-primary p-3"
-                          colSpan={6}
-                        >
-                          이윤 (※이윤은 개발원가의 25% 이내에서 산정한다.)
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-center transition-all ease-in-out duration-300 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                          <span>11</span>%
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent">
-                          <span>740,141,670</span>원
-                        </td>
-                      </tr>
-
-                      {/* 4row */}
-                      <tr>
-                        <td
-                          className="border border-border-primary bg-bg-secondary p-3"
-                          colSpan={6}
-                        >
-                          소프트웨어 개발비 (부가세 별도)
-                        </td>
-                        <td
-                          className="border border-border-primary bg-bg-secondary p-3 text-end transition-all ease-in-out duration-200 hover:bg-amber-50 hover:outline-1 hover:outline-accent-hover outline-transparent"
-                          colSpan={2}
-                        >
-                          {/* <div className="w-full flex justify-between">
-                <span>합계:</span>
-                <span>
-                  <span>740,141,670</span>원
-                </span>
-              </div> */}
-                          합계: <span>740,141,670</span>원
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <p className="mb-10 text-xs md:text-[0.9375rem] leading-[1.6] tracking-[-0.011em]">
-                    ※ 적용 단가: 553,111원(2024년 기준)
-                  </p>
-
-                  <div className="flex justify-between gap-4">
-                    <span className="text-[1.0625rem] leading-[1.4] tracking-[-0.012em] font-semibold">
-                      직접경비
-                    </span>
-                    <div className="w-12 h-5 rounded bg-gray-100" />
-                  </div>
-                  <table className="w-full border-collapse origin-top-left scale-65 sm:scale-90 md:scale-100 -mb-12 sm:-mb-4 md:mb-0">
-                    <thead>
-                      <tr>
-                        <th className="border border-border-primary bg-bg-tertiary p-3">
-                          <div className="w-28 h-5 rounded bg-gray-200" />
-                        </th>
-                        <th className="border border-border-primary bg-bg-tertiary p-3">
-                          <div className="w-16 h-5 rounded bg-gray-200" />
-                        </th>
-                        <th className="border border-border-primary bg-bg-tertiary p-3">
-                          <div className="w-20 h-5 rounded bg-gray-200" />
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {/* 1row */}
-                      <tr>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-center">
-                          <div className="w-12 h-5 rounded bg-gray-100" />
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-center">
-                          <div className="w-24 h-5 rounded bg-gray-100" />
-                        </td>
-                        <td className="border border-border-primary bg-bg-primary p-3 text-center">
-                          <div className="w-16 h-5 rounded bg-gray-100" />
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <ReportTable activeCell={activeCell} />
                 </div>
               </div>
               <div className="absolute top-0 left-0 rotate-y-12 -translate-x-2 translate-y-8 z-20 shadow-lg">
@@ -859,9 +754,6 @@ const Section3 = () => {
                     ? "shadow-card grow bg-linear-to-b from-white via-white to-gray-100"
                     : "bg-white/50"
                 }`}
-                // className={`bg-white rounded h-72 overflow-hidden ${
-                //   selectedChart === chart.key ? "shadow-card grow" : ""
-                // }`}
                 style={{
                   width: selectedChart === chart.key ? "80%" : "0%",
                   flexShrink: selectedChart === chart.key ? 0 : 1,

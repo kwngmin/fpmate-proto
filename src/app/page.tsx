@@ -6,7 +6,7 @@ import Section4 from "./ui/Section4";
 import Footer from "./ui/Footer";
 import Section5 from "./ui/Section5";
 import Diagram from "./ui/Diagram";
-import Section3Auto from "./ui/Section3.test";
+import Section3 from "./ui/Section3";
 
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
       {/* Section 2 */}
       <Section2 />
       {/* Section 3 */}
-      <Section3Auto />
+      <Section3 />
       {/* Section 4 */}
       <Section4 />
       {/* Section 5 */}
