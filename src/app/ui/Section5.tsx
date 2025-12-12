@@ -233,7 +233,7 @@ export function WebGLGradientAnimation({
   }, [isIntersecting, colors]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 z-10 opacity-10">
+    <div ref={containerRef} className="absolute inset-0 z-10 opacity-30">
       <canvas ref={canvasRef} className="w-full h-full" />
     </div>
   );
@@ -250,6 +250,9 @@ const Section5 = () => {
         isolation: "isolate",
       }}
     >
+      {/* bottom background gradient */}
+      <div className="absolute inset-0 z-20 bg-linear-to-t from-transparent to-gray-50" />
+
       {/* WebGL Background */}
       <WebGLGradientAnimation
         colors={{
@@ -260,7 +263,7 @@ const Section5 = () => {
       />
 
       {/* Content */}
-      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-16 relative z-40">
+      <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-16 relative z-80">
         <div className="flex flex-col gap-8">
           <div className="flex justify-center items-center">
             <Image
