@@ -43,18 +43,20 @@ export function GradientBeamAnimation() {
 }
 
 type FocusState = "smart-pricing" | "error-validation";
-type FileType = "hwp" | "pdf" | "xls";
+type FileType = "hwp" | "pdf" | "xls" | "doc" | "txt";
 
 const FILE_TYPE_CONFIG: Record<
   FileType,
   { label: string; display: string; bgColor: string }
 > = {
-  hwp: { label: "한글", display: "HWP", bgColor: "bg-blue-600" },
+  hwp: { label: "한글", display: "HWP", bgColor: "bg-cyan-600" },
   pdf: { label: "PDF", display: "PDF", bgColor: "bg-red-500" },
   xls: { label: "엑셀", display: "XLS", bgColor: "bg-green-700" },
+  doc: { label: "워드", display: "DOC", bgColor: "bg-blue-600" },
+  txt: { label: "텍스트", display: "TXT", bgColor: "bg-black" },
 };
 
-const FILE_TYPE_ORDER: FileType[] = ["hwp", "pdf", "xls"];
+const FILE_TYPE_ORDER: FileType[] = ["hwp", "pdf", "xls", "doc", "txt"];
 
 interface Point {
   x: number;
@@ -317,7 +319,7 @@ const FileTypeCard = ({
           className="absolute left-0 top-0 z-30 -translate-x-1/2 -translate-y-1/2"
           style={{ opacity: 1 }}
         >
-          <Label className="w-12" isHighlighted={isHighlighted}>
+          <Label className="w-13" isHighlighted={isHighlighted}>
             {config.label}
           </Label>
         </div>
@@ -804,16 +806,20 @@ const Diagram = () => {
               {/* 요구사항 label */}
               <div className="absolute left-[calc(50%+34px+25px)] top-[264px] z-30 preserve-3d">
                 <div
-                  className="absolute left-0 top-0 z-30 -translate-x-1/2 -translate-y-1/2"
+                  className="absolute left-0 -top-2 z-30 -translate-x-1/2 -translate-y-1/2"
                   style={{ opacity: 1 }}
                 >
-                  <div className="min-w-48 shrink-0">
+                  <div className="min-w-52 shrink-0">
                     요구사항 (
                     <span className="text-red-500 font-medium">PDF</span>
                     <span className="text-text-tertiary">/</span>
-                    <span className="text-blue-500 font-medium">HWP</span>
+                    <span className="text-blue-500 font-medium">DOC</span>
                     <span className="text-text-tertiary">/</span>
-                    <span className="text-green-700 font-medium">XLS</span>)
+                    <span className="text-green-700 font-medium">XLS</span>
+                    <span className="text-text-tertiary">/</span>
+                    <span className="text-sky-500 font-medium">HWP</span>
+                    <span className="text-text-tertiary">/</span>
+                    <span className="text-black-700 font-medium">TXT</span>)
                   </div>
                 </div>
               </div>
