@@ -52,10 +52,10 @@ const articles = [
 
 const ThumbnailPlus = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 xl:size-28 flex items-center justify-center bg-gradient-to-t from-emerald-100 to-emerald-50 relative z-10 overflow-hidden rounded-2xl group-hover:scale-105 transition-transform duration-500">
+    <div className="size-14 sm:size-16 lg:size-20 xl:size-28 flex items-center justify-center bg-linear-to-t from-emerald-100 to-emerald-50 relative z-10 overflow-hidden rounded-2xl group-hover:scale-105 transition-transform duration-500">
       {/* Object Container - Abstract Shape */}
-      <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-24 -top-3 -left-3 bg-gradient-to-br from-emerald-400/20 to-emerald-300/20 rounded-full blur-xl" />
-      <div className="absolute size-10 sm:size-12 lg:size-14 xl:size-20 bottom-0 right-0 bg-gradient-to-tl from-emerald-400/10 to-transparent rounded-full blur-lg" />
+      <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-24 -top-3 -left-3 bg-linear-to-br from-emerald-400/20 to-emerald-300/20 rounded-full blur-xl" />
+      <div className="absolute size-10 sm:size-12 lg:size-14 xl:size-20 bottom-0 right-0 bg-linear-to-tl from-emerald-400/10 to-transparent rounded-full blur-lg" />
 
       {/* Icon Container */}
       <div className="size-10 sm:size-12 xl:size-14 flex items-center justify-center bg-white/60 backdrop-blur-md rounded-xl shadow-sm border border-white/50 relative z-30 group-hover:shadow-emerald-200/50 group-hover:shadow-lg transition-all duration-300">
@@ -73,7 +73,7 @@ const ThumbnailPlus = ({ title }: { title: string }) => {
 
 const ThumbnailClock = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 xl:size-28 flex items-center justify-center bg-gradient-to-t from-indigo-100 to-indigo-50 relative z-10 overflow-hidden rounded-2xl group-hover:scale-105 transition-transform duration-500">
+    <div className="size-14 sm:size-16 lg:size-20 xl:size-28 flex items-center justify-center bg-linear-to-t from-indigo-100 to-indigo-50 relative z-10 overflow-hidden rounded-2xl group-hover:scale-105 transition-transform duration-500">
       <div className="absolute size-16 sm:size-18 lg:size-20 xl:size-28 -bottom-5 -left-5 bg-indigo-400/20 rounded-full blur-xl" />
 
       <div className="size-10 sm:size-12 xl:size-14 flex items-center justify-center bg-white/60 backdrop-blur-md rounded-xl shadow-sm border border-white/50 relative z-30 group-hover:shadow-indigo-200/50 group-hover:shadow-lg transition-all duration-300">
@@ -91,7 +91,7 @@ const ThumbnailClock = ({ title }: { title: string }) => {
 
 const ThumbnailList = ({ title }: { title: string }) => {
   return (
-    <div className="size-14 sm:size-16 lg:size-20 xl:size-28 flex items-center justify-center bg-gradient-to-t from-orange-100 to-orange-50 relative z-10 overflow-hidden rounded-2xl group-hover:scale-105 transition-transform duration-500">
+    <div className="size-14 sm:size-16 lg:size-20 xl:size-28 flex items-center justify-center bg-linear-to-t from-orange-100 to-orange-50 relative z-10 overflow-hidden rounded-2xl group-hover:scale-105 transition-transform duration-500">
       <div className="absolute size-12 sm:size-14 lg:size-16 xl:size-24 -top-2 -right-2 bg-orange-400/20 rounded-full blur-xl" />
 
       <div className="size-10 sm:size-12 xl:size-14 flex items-center justify-center bg-white/60 backdrop-blur-md rounded-xl shadow-sm border border-white/50 relative z-30 group-hover:shadow-orange-200/50 group-hover:shadow-lg transition-all duration-300">
