@@ -446,11 +446,11 @@ const Hero = () => {
   }, [currentStep, containerWidth]);
 
   return (
-    <main className="relative pb-24 md:pb-40 overflow-hidden">
+    <main className="relative pb-24 md:pb-32 overflow-hidden">
       {/* text & progress bar container */}
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Title */}
-        <div className="py-10 space-y-6 flex flex-col relative z-20">
+        <div className="py-6 space-y-4 flex flex-col relative z-20">
           <FadeText
             text="FINE PROJECT MATE"
             className="text-[0.9375rem] md:text-[1.0625rem] tracking-tight font-semibold text-text-tertiary"
@@ -471,8 +471,11 @@ const Hero = () => {
               className="break-keep"
             />
           </div>
-          <div className="space-y-3">
-            <p className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep">
+          <div className="space-y-2">
+            <p
+              className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep"
+              // className="text-[1.0625rem] md:text-[1.3125rem] leading-normal tracking-tight break-keep"
+            >
               <FadeText text="FPMate" delay={900} className="font-semibold" />
               <FadeText
                 text="는"
@@ -521,71 +524,72 @@ const Hero = () => {
               <FadeText text="가이드를 준수합니다." delay={1350} />
             </p>
           </div>
-        </div>
 
-        {/* progress bar */}
-        <FadeDiv className="w-full" delay={1200}>
-          <div className="flex items-center w-full max-w-xs sm:max-w-lg pb-4 md:py-4 lg:py-8">
-            {processSteps.map((step, index) => (
-              <Fragment key={step.id}>
-                <button
-                  type="button"
-                  onClick={handleStepClick(step.id)}
-                  className={`size-8 sm:size-9 rounded-full flex items-center justify-center transition-colors duration-300 cursor-pointer ${
-                    step.id === currentStep
-                      ? "bg-brand-primary"
-                      : step.id < currentStep
-                      ? "bg-accent-primary"
-                      : "bg-white border border-border-primary"
-                  }`}
-                >
-                  {step.id < currentStep ? (
-                    <Image
-                      src="/assets/svgs/check-bold.svg"
-                      alt={`completed-step-${step.id}`}
-                      width={32}
-                      height={32}
-                      className="size-4.5 md:size-5 brightness-0 invert"
-                    />
-                  ) : (
-                    <Image
-                      src={`/assets/svgs/number-${step.key}-bold.svg`}
-                      alt={`process-step-${step.id}`}
-                      width={32}
-                      height={32}
-                      className={`size-4.5 md:size-5 ${
-                        step.id === currentStep ? "brightness-0 invert" : ""
-                      }`}
-                    />
-                  )}
-                </button>
-                {index < processSteps.length - 1 && (
-                  <div className="grow h-1 sm:h-0.75 bg-border-primary relative overflow-hidden">
-                    {Boolean(isAnimationStarted) && step.id === currentStep && (
-                      <div
-                        key={`${currentStep}-${resetTrigger}`}
-                        className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
-                        style={{
-                          animation: "progressBar 4s forwards",
-                        }}
+          {/* progress bar */}
+          <FadeDiv className="w-full" delay={1200}>
+            <div className="flex items-center w-full max-w-xs sm:max-w-md pt-3">
+              {processSteps.map((step, index) => (
+                <Fragment key={step.id}>
+                  <button
+                    type="button"
+                    onClick={handleStepClick(step.id)}
+                    className={`size-8 rounded-full flex items-center justify-center transition-colors duration-300 cursor-pointer ${
+                      step.id === currentStep
+                        ? "bg-brand-primary"
+                        : step.id < currentStep
+                        ? "bg-accent-primary"
+                        : "bg-white border border-border-primary"
+                    }`}
+                  >
+                    {step.id < currentStep ? (
+                      <Image
+                        src="/assets/svgs/check-bold.svg"
+                        alt={`completed-step-${step.id}`}
+                        width={32}
+                        height={32}
+                        className="size-4.5 brightness-0 invert"
+                      />
+                    ) : (
+                      <Image
+                        src={`/assets/svgs/number-${step.key}-bold.svg`}
+                        alt={`process-step-${step.id}`}
+                        width={32}
+                        height={32}
+                        className={`size-4.5 md:size-5 ${
+                          step.id === currentStep ? "brightness-0 invert" : ""
+                        }`}
                       />
                     )}
-                  </div>
-                )}
-              </Fragment>
-            ))}
-          </div>
-          <style jsx>{`
-            @keyframes progressBar {
-              from {
-                transform: scaleX(0);
+                  </button>
+                  {index < processSteps.length - 1 && (
+                    <div className="grow h-1 sm:h-0.75 bg-border-primary relative overflow-hidden">
+                      {Boolean(isAnimationStarted) &&
+                        step.id === currentStep && (
+                          <div
+                            key={`${currentStep}-${resetTrigger}`}
+                            className="absolute inset-0 bg-brand-primary origin-left will-change-transform"
+                            style={{
+                              animation: "progressBar 4s forwards",
+                            }}
+                          />
+                        )}
+                    </div>
+                  )}
+                </Fragment>
+              ))}
+            </div>
+            <style jsx>{`
+              @keyframes progressBar {
+                from {
+                  transform: scaleX(0);
+                }
+                to {
+                  transform: scaleX(1);
+                }
               }
-              to {
-                transform: scaleX(1);
-              }
-            }
-          `}</style>
-        </FadeDiv>
+            `}</style>
+          </FadeDiv>
+        </div>
       </div>
 
       {/* 카드 영역 - Linear.app 스타일 Inset 캐로셀 */}

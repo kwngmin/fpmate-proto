@@ -500,7 +500,7 @@ const Diagram = () => {
       ref={diagramRef as React.RefObject<HTMLDivElement>}
     >
       {/* title */}
-      <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-4">
+      <div className="relative z-30 max-w-[1200px] mx-auto px-6 space-y-3">
         <div className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-tight tracking-tighter font-semibold break-keep">
           <span className="font-extrabold text-brand-primary">FPMate</span>로
           <br />

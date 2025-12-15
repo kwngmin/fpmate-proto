@@ -233,7 +233,7 @@ export function WebGLGradientAnimation({
 const Section5 = () => {
   return (
     <section
-      className="bg-gray-50 py-32 md:py-40 lg:py-80 relative z-50 overflow-hidden"
+      className="bg-gray-50 py-32 md:py-40 lg:py-60 relative z-50 overflow-hidden"
       style={{
         transform: "translate3d(0, 0, 0)",
         WebkitBackfaceVisibility: "hidden",
@@ -245,13 +245,13 @@ const Section5 = () => {
       <div className="absolute inset-0 z-20 bg-linear-to-t from-transparent via-gray-50 to-gray-50" />
 
       {/* WebGL Background */}
-      <WebGLGradientAnimation
+      {/* <WebGLGradientAnimation
         colors={{
           primary: hexToGLColor("#00AB55", 1), // 80% 불투명
           secondary: hexToGLColor("#007B55", 0.1), // 60% 불투명
           variation: 0.15,
         }}
-      />
+      /> */}
 
       {/* Content */}
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-16 relative z-80">
@@ -267,7 +267,7 @@ const Section5 = () => {
           </div>
 
           <div className="flex flex-col gap-4">
-            <div className="text-[1.5rem] sm:text-[2rem] md:text-[3rem] lg:text-[3.5rem] leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">
+            <div className="text-[1.5rem] sm:text-[2rem] md:text-[3rem] lg:text-[3.25rem] leading-tight tracking-tighter font-semibold break-keep text-center text-text-primary">
               진화하는{" "}
               <span className="font-extrabold text-brand-primary">FPMate</span>,{" "}
               사업 성공 도우미
