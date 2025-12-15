@@ -3,6 +3,7 @@
 import Header from "../../ui/Header";
 import Link from "next/link";
 import { useState } from "react";
+import type { SxProps, Theme } from "@mui/material";
 import {
   Box,
   Typography,
@@ -89,158 +90,147 @@ interface ThumbnailProps {
   title: string;
 }
 
+// 공통 스타일 정의
+const thumbnailContainerSx: SxProps<Theme> = {
+  width: { xs: 56, sm: 64, lg: 80, xl: 128 },
+  height: { xs: 56, sm: 64, lg: 80, xl: 128 },
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "relative",
+  zIndex: 10,
+  overflow: "hidden",
+};
+
+const thumbnailObjectSx: SxProps<Theme> = {
+  position: "absolute",
+  width: { xs: 48, sm: 56, lg: 64, xl: 96 },
+  height: { xs: 48, sm: 56, lg: 64, xl: 96 },
+  boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+};
+
+const thumbnailIconContainerSx: SxProps<Theme> = {
+  width: { xs: 40, sm: 48, xl: 80 },
+  height: { xs: 40, sm: 48, xl: 80 },
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backdropFilter: "blur(4px)",
+  borderRadius: 2,
+  position: "relative",
+  zIndex: 30,
+  border: "1px solid rgba(255, 255, 255, 0.2)",
+  overflow: "hidden",
+};
+
+const thumbnailIconSx: SxProps<Theme> = {
+  fontSize: { xs: 24, xl: 32 },
+  color: "white",
+};
+
 const ThumbnailPlus = ({ title }: ThumbnailProps) => (
   <Box
-    sx={{
-      width: { xs: 56, sm: 64, lg: 80, xl: 128 },
-      height: { xs: 56, sm: 64, lg: 80, xl: 128 },
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      background: "linear-gradient(to top, #a7f3d0, #d1fae5)",
-      position: "relative",
-      zIndex: 10,
-      overflow: "hidden",
-    }}
+    sx={
+      {
+        ...thumbnailContainerSx,
+        background: "linear-gradient(to top, #a7f3d0, #d1fae5)",
+      } as SxProps<Theme>
+    }
   >
-    {/* object container */}
     <Box
-      sx={{
-        position: "absolute",
-        width: { xs: 48, sm: 56, lg: 64, xl: 96 },
-        height: { xs: 48, sm: 56, lg: 64, xl: 96 },
-        top: -8,
-        left: -8,
-        bgcolor: "success.main",
-        borderRadius: 2,
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-      }}
+      sx={
+        {
+          ...thumbnailObjectSx,
+          top: -8,
+          left: -8,
+          bgcolor: "success.main",
+          borderRadius: 2,
+        } as SxProps<Theme>
+      }
     />
-
-    {/* icon container */}
     <Box
-      sx={{
-        width: { xs: 40, sm: 48, xl: 80 },
-        height: { xs: 40, sm: 48, xl: 80 },
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background:
-          "linear-gradient(to bottom right, rgba(0, 171, 85, 0.5), rgba(255, 255, 255, 0.5))",
-        backdropFilter: "blur(4px)",
-        borderRadius: 2,
-        boxShadow: "0 4px 6px -1px rgba(0, 171, 85, 0.2)",
-        position: "relative",
-        zIndex: 30,
-        border: "1px solid rgba(255, 255, 255, 0.2)",
-        overflow: "hidden",
-      }}
+      sx={
+        {
+          ...thumbnailIconContainerSx,
+          background:
+            "linear-gradient(to bottom right, rgba(0, 171, 85, 0.5), rgba(255, 255, 255, 0.5))",
+          boxShadow: "0 4px 6px -1px rgba(0, 171, 85, 0.2)",
+        } as SxProps<Theme>
+      }
     >
-      <AddIcon sx={{ fontSize: { xs: 24, xl: 32 }, color: "white" }} />
+      <AddIcon sx={thumbnailIconSx} />
     </Box>
   </Box>
 );
 
 const ThumbnailClock = ({ title }: ThumbnailProps) => (
   <Box
-    sx={{
-      width: { xs: 56, sm: 64, lg: 80, xl: 128 },
-      height: { xs: 56, sm: 64, lg: 80, xl: 128 },
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      background: "linear-gradient(to top, #c7d2fe, #e0e7ff)",
-      position: "relative",
-      zIndex: 10,
-      overflow: "hidden",
-    }}
+    sx={
+      {
+        ...thumbnailContainerSx,
+        background: "linear-gradient(to top, #c7d2fe, #e0e7ff)",
+      } as SxProps<Theme>
+    }
   >
-    {/* object container */}
     <Box
-      sx={{
-        position: "absolute",
-        width: { xs: 64, sm: 72, lg: 80, xl: 112 },
-        height: { xs: 64, sm: 72, lg: 80, xl: 112 },
-        bottom: -20,
-        left: -20,
-        bgcolor: "#748CDC",
-        borderRadius: "50%",
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-      }}
+      sx={
+        {
+          ...thumbnailObjectSx,
+          width: { xs: 64, sm: 72, lg: 80, xl: 112 },
+          height: { xs: 64, sm: 72, lg: 80, xl: 112 },
+          bottom: -20,
+          left: -20,
+          bgcolor: "#748CDC",
+          borderRadius: "50%",
+        } as SxProps<Theme>
+      }
     />
-
-    {/* icon container */}
     <Box
-      sx={{
-        width: { xs: 40, sm: 48, xl: 80 },
-        height: { xs: 40, sm: 48, xl: 80 },
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background:
-          "linear-gradient(to top right, rgba(116, 140, 220, 0.5), rgba(255, 255, 255, 0.5))",
-        backdropFilter: "blur(4px)",
-        borderRadius: 2,
-        boxShadow: "0 4px 6px -1px rgba(116, 140, 220, 0.2)",
-        position: "relative",
-        zIndex: 30,
-        border: "1px solid rgba(255, 255, 255, 0.2)",
-        overflow: "hidden",
-      }}
+      sx={
+        {
+          ...thumbnailIconContainerSx,
+          background:
+            "linear-gradient(to top right, rgba(116, 140, 220, 0.5), rgba(255, 255, 255, 0.5))",
+          boxShadow: "0 4px 6px -1px rgba(116, 140, 220, 0.2)",
+        } as SxProps<Theme>
+      }
     >
-      <ClockIcon sx={{ fontSize: { xs: 24, xl: 32 }, color: "white" }} />
+      <ClockIcon sx={thumbnailIconSx} />
     </Box>
   </Box>
 );
 
 const ThumbnailList = ({ title }: ThumbnailProps) => (
   <Box
-    sx={{
-      width: { xs: 56, sm: 64, lg: 80, xl: 128 },
-      height: { xs: 56, sm: 64, lg: 80, xl: 128 },
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      background: "linear-gradient(to top, #fecaca, #fee2e2)",
-      position: "relative",
-      zIndex: 10,
-      overflow: "hidden",
-    }}
+    sx={
+      {
+        ...thumbnailContainerSx,
+        background: "linear-gradient(to top, #fecaca, #fee2e2)",
+      } as SxProps<Theme>
+    }
   >
-    {/* object container */}
     <Box
-      sx={{
-        position: "absolute",
-        width: { xs: 48, sm: 56, lg: 64, xl: 96 },
-        height: { xs: 48, sm: 56, lg: 64, xl: 96 },
-        top: -8,
-        right: -8,
-        bgcolor: "#F98D78",
-        borderRadius: 2,
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-      }}
+      sx={
+        {
+          ...thumbnailObjectSx,
+          top: -8,
+          right: -8,
+          bgcolor: "#F98D78",
+          borderRadius: 2,
+        } as SxProps<Theme>
+      }
     />
-
-    {/* icon container */}
     <Box
-      sx={{
-        width: { xs: 40, sm: 48, xl: 80 },
-        height: { xs: 40, sm: 48, xl: 80 },
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background:
-          "linear-gradient(to bottom left, rgba(249, 141, 120, 0.5), rgba(255, 255, 255, 0.5))",
-        backdropFilter: "blur(4px)",
-        borderRadius: 2,
-        boxShadow: "0 4px 6px -1px rgba(249, 141, 120, 0.2)",
-        position: "relative",
-        zIndex: 30,
-        border: "1px solid rgba(255, 255, 255, 0.2)",
-        overflow: "hidden",
-      }}
+      sx={
+        {
+          ...thumbnailIconContainerSx,
+          background:
+            "linear-gradient(to bottom left, rgba(249, 141, 120, 0.5), rgba(255, 255, 255, 0.5))",
+          boxShadow: "0 4px 6px -1px rgba(249, 141, 120, 0.2)",
+        } as SxProps<Theme>
+      }
     >
-      <SearchIcon sx={{ fontSize: { xs: 24, xl: 32 }, color: "white" }} />
+      <SearchIcon sx={thumbnailIconSx} />
     </Box>
   </Box>
 );
@@ -278,6 +268,53 @@ const options: SelectOption[] = [
   { value: "default", label: "3개월 내 갱신목록" },
   { value: "expiring", label: "임박(5일내)/지연목록" },
 ];
+
+// 페이지 레벨 공통 스타일
+const stickyHeaderSx: SxProps<Theme> = {
+  bgcolor: "background.paper",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  height: 64,
+  borderBottom: "1px solid",
+  borderColor: "success.main",
+  zIndex: 10,
+  position: "sticky",
+  top: 64,
+};
+
+const badgeSx: SxProps<Theme> = {
+  height: 24,
+  px: 0.75,
+  minWidth: 24,
+  borderRadius: 12,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "1rem",
+  fontWeight: 600,
+};
+
+const tabButtonSx: SxProps<Theme> = {
+  display: "flex",
+  alignItems: "center",
+  gap: 1,
+  height: 64,
+  borderRadius: 0,
+  textTransform: "none",
+  color: "text.primary",
+  bgcolor: "transparent",
+  "&:hover": {
+    bgcolor: "transparent",
+  },
+};
+
+const tabTextSx: SxProps<Theme> = {
+  fontSize: "1.3125rem",
+  lineHeight: 1.33,
+  letterSpacing: "-0.012em",
+  fontWeight: 500,
+};
 
 const WorkspacePage = () => {
   const [selectedValue, setSelectedValue] = useState("default");
@@ -327,57 +364,63 @@ const WorkspacePage = () => {
           }}
         >
           <Typography
-            sx={{
-              fontSize: { xs: "1.5rem", sm: "2rem" },
-              lineHeight: 1.2,
-              letterSpacing: "-0.05em",
-              fontWeight: 600,
-              color: "text.primary",
-            }}
+            sx={
+              {
+                fontSize: { xs: "1.5rem", sm: "2rem" },
+                lineHeight: 1.2,
+                letterSpacing: "-0.05em",
+                fontWeight: 600,
+                color: "text.primary",
+              } as SxProps<Theme>
+            }
           >
             무엇을 하시겠습니까?
           </Typography>
 
           <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: {
-                xs: "1fr",
-                sm: "repeat(2, 1fr)",
-                lg: "repeat(3, 1fr)",
-              },
-              gap: { xs: 0.5, lg: 1 },
-            }}
+            sx={
+              {
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: "1fr",
+                  sm: "repeat(2, 1fr)",
+                  lg: "repeat(3, 1fr)",
+                },
+                gap: { xs: 0.5, lg: 1 },
+              } as SxProps<Theme>
+            }
           >
             {workspaceNav.map((nav) => (
               <Card
                 key={nav.id}
                 component="button"
                 elevation={0}
-                sx={{
-                  borderRadius: { xs: 1, lg: 3 },
-                  border: "1px solid",
-                  borderColor: "divider",
-                  overflow: "hidden",
-                  boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
-                  transition: "all 0.1s",
-                  cursor: "pointer",
-                  bgcolor: "background.paper",
-                  height: { xs: 56, sm: 64, lg: 80, xl: 128 },
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "flex-start",
-                  p: 0,
-                  textAlign: "left",
-                  "&:hover": {
-                    borderColor: "success.main",
-                    boxShadow:
-                      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-                  },
-                  "&:active": {
-                    transform: "scale(0.99)",
-                  },
-                }}
+                sx={
+                  {
+                    borderRadius: { xs: 1, lg: 3 },
+                    border: "1px solid",
+                    borderColor: "divider",
+                    overflow: "hidden",
+                    boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+                    transition: "all 0.1s",
+                    cursor: "pointer",
+                    bgcolor: "background.paper",
+                    height: { xs: 56, sm: 64, lg: 80, xl: 128 },
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    p: 0,
+                    textAlign: "left",
+                    "&:hover": {
+                      borderColor: "success.main",
+                      boxShadow:
+                        "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+                    },
+                    "&:active": {
+                      transform: "scale(0.99)",
+                    },
+                  } as SxProps<Theme>
+                }
               >
                 {nav.thumbnail}
                 <Typography
@@ -408,20 +451,7 @@ const WorkspacePage = () => {
           {/* tabs content */}
           <Box sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
             {/* header */}
-            <Box
-              sx={{
-                bgcolor: "background.paper",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                height: 64,
-                borderBottom: "1px solid",
-                borderColor: "success.main",
-                zIndex: 10,
-                position: "sticky",
-                top: 64,
-              }}
-            >
+            <Box sx={stickyHeaderSx}>
               {/* tabs - desktop */}
               <Stack
                 direction="row"
@@ -429,46 +459,16 @@ const WorkspacePage = () => {
                 alignItems="center"
                 sx={{ display: { xs: "none", sm: "flex" } }}
               >
-                <Button
-                  disableRipple
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                    height: 64,
-                    borderRadius: 0,
-                    textTransform: "none",
-                    color: "text.primary",
-                    bgcolor: "transparent",
-                    "&:hover": {
-                      bgcolor: "transparent",
-                    },
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      fontSize: "1.3125rem",
-                      lineHeight: 1.33,
-                      letterSpacing: "-0.012em",
-                      fontWeight: 500,
-                    }}
-                  >
-                    3개월 내 갱신목록
-                  </Typography>
+                <Button disableRipple sx={tabButtonSx}>
+                  <Typography sx={tabTextSx}>3개월 내 갱신목록</Typography>
                   <Box
-                    sx={{
-                      height: 24,
-                      px: 0.75,
-                      minWidth: 24,
-                      borderRadius: 12,
-                      bgcolor: "error.main",
-                      color: "common.white",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "1rem",
-                      fontWeight: 600,
-                    }}
+                    sx={
+                      {
+                        ...badgeSx,
+                        bgcolor: "error.main",
+                        color: "common.white",
+                      } as SxProps<Theme>
+                    }
                   >
                     12
                   </Box>
@@ -478,45 +478,17 @@ const WorkspacePage = () => {
 
                 <Button
                   disableRipple
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                    height: 64,
-                    borderRadius: 0,
-                    textTransform: "none",
-                    color: "text.primary",
-                    opacity: 0.5,
-                    bgcolor: "transparent",
-                    "&:hover": {
-                      bgcolor: "transparent",
-                    },
-                  }}
+                  sx={{ ...tabButtonSx, opacity: 0.5 } as SxProps<Theme>}
                 >
-                  <Typography
-                    sx={{
-                      fontSize: "1.3125rem",
-                      lineHeight: 1.33,
-                      letterSpacing: "-0.012em",
-                      fontWeight: 500,
-                    }}
-                  >
-                    임박(5일내)/지연목록
-                  </Typography>
+                  <Typography sx={tabTextSx}>임박(5일내)/지연목록</Typography>
                   <Box
-                    sx={{
-                      height: 24,
-                      px: 0.75,
-                      minWidth: 24,
-                      borderRadius: 12,
-                      bgcolor: "grey.500",
-                      color: "common.white",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "1rem",
-                      fontWeight: 600,
-                    }}
+                    sx={
+                      {
+                        ...badgeSx,
+                        bgcolor: "grey.500",
+                        color: "common.white",
+                      } as SxProps<Theme>
+                    }
                   >
                     5
                   </Box>
@@ -570,30 +542,17 @@ const WorkspacePage = () => {
                     alignItems="center"
                     sx={{ flexGrow: 1 }}
                   >
-                    <Typography
-                      sx={{
-                        fontSize: "1.3125rem",
-                        lineHeight: 1.33,
-                        letterSpacing: "-0.012em",
-                        fontWeight: 500,
-                      }}
-                    >
+                    <Typography sx={tabTextSx}>
                       {selectedOption?.label ?? "3개월 내 갱신목록"}
                     </Typography>
                     <Box
-                      sx={{
-                        height: 24,
-                        px: 0.75,
-                        minWidth: 24,
-                        borderRadius: 12,
-                        bgcolor: "error.main",
-                        color: "common.white",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "1rem",
-                        fontWeight: 600,
-                      }}
+                      sx={
+                        {
+                          ...badgeSx,
+                          bgcolor: "error.main",
+                          color: "common.white",
+                        } as SxProps<Theme>
+                      }
                     >
                       12
                     </Box>
@@ -626,17 +585,18 @@ const WorkspacePage = () => {
                 alignItems: "center",
                 justifyContent: "space-between",
                 px: 1.5,
-                bgcolor: (theme) =>
-                  theme.palette.mode === "dark" ? "grey.900" : "grey.100",
+                bgcolor: "grey.100",
               }}
             >
               <Typography
-                sx={{
-                  fontSize: { xs: "0.8125rem", sm: "0.875rem" },
-                  lineHeight: 1.2,
-                  color: "text.secondary",
-                  fontWeight: 500,
-                }}
+                sx={
+                  {
+                    fontSize: { xs: "0.8125rem", sm: "0.875rem" },
+                    lineHeight: 1.2,
+                    color: "text.secondary",
+                    fontWeight: 500,
+                  } as SxProps<Theme>
+                }
               >
                 김광민님이 담당자(수정권한)인 건만 조회합니다.
               </Typography>
@@ -655,32 +615,35 @@ const WorkspacePage = () => {
                   key={index}
                   component="button"
                   elevation={0}
-                  sx={{
-                    borderRadius: 3,
-                    border: "1px solid",
-                    borderColor: "divider",
-                    transition: "all 0.1s",
-                    cursor: "pointer",
-                    bgcolor: "background.paper",
-                    display: "flex",
-                    gap: 3,
-                    p: 3,
-                    alignItems: "center",
-                    textAlign: "left",
-                    width: "100%",
-                    "&:hover": {
-                      borderColor: index === 0 ? "info.main" : "success.light",
-                      boxShadow:
-                        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-                    },
-                    "&:active": {
-                      transform: "scale(0.99)",
-                    },
-                    "&:hover .title-text": {
-                      textDecoration: "underline",
-                      textUnderlineOffset: 4,
-                    },
-                  }}
+                  sx={
+                    {
+                      borderRadius: 3,
+                      border: "1px solid",
+                      borderColor: "divider",
+                      transition: "all 0.1s",
+                      cursor: "pointer",
+                      bgcolor: "background.paper",
+                      display: "flex",
+                      gap: 3,
+                      p: 3,
+                      alignItems: "center",
+                      textAlign: "left",
+                      width: "100%",
+                      "&:hover": {
+                        borderColor:
+                          index === 0 ? "info.main" : "success.light",
+                        boxShadow:
+                          "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                      },
+                      "&:active": {
+                        transform: "scale(0.99)",
+                      },
+                      "&:hover .title-text": {
+                        textDecoration: "underline",
+                        textUnderlineOffset: 4,
+                      },
+                    } as SxProps<Theme>
+                  }
                 >
                   <Box sx={{ flexGrow: 1 }}>
                     <Typography
@@ -716,10 +679,7 @@ const WorkspacePage = () => {
                         sx={{
                           width: 32,
                           height: 32,
-                          bgcolor: (theme) =>
-                            theme.palette.mode === "dark"
-                              ? "grey.700"
-                              : "grey.200",
+                          bgcolor: "grey.200",
                           color: "text.primary",
                           fontSize: "0.875rem",
                         }}
@@ -765,10 +725,7 @@ const WorkspacePage = () => {
                             "& .MuiAvatar-root": {
                               width: 32,
                               height: 32,
-                              bgcolor: (theme) =>
-                                theme.palette.mode === "dark"
-                                  ? "grey.700"
-                                  : "grey.200",
+                              bgcolor: "grey.200",
                               color: "text.primary",
                               fontSize: "0.875rem",
                               borderColor: "background.paper",
@@ -800,7 +757,7 @@ const WorkspacePage = () => {
                     </Stack>
                   </Box>
 
-                  {/* desktop action button - Box로 변경하여 hydration error 해결 */}
+                  {/* desktop action button */}
                   <Box
                     component="span"
                     sx={{
@@ -836,21 +793,7 @@ const WorkspacePage = () => {
             }}
           >
             {/* boards header */}
-            <Box
-              sx={{
-                bgcolor: "background.paper",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                height: 64,
-                borderBottom: "1px solid",
-                borderColor: "success.main",
-                zIndex: 10,
-                position: "sticky",
-                top: 64,
-                mb: 1.5,
-              }}
-            >
+            <Box sx={{ ...stickyHeaderSx, mb: 1.5 } as SxProps<Theme>}>
               <Typography
                 sx={{
                   fontSize: "1.3125rem",
@@ -924,10 +867,7 @@ const WorkspacePage = () => {
                           fontWeight: 500,
                           letterSpacing: "-0.02em",
                           color: "text.secondary",
-                          bgcolor: (theme) =>
-                            theme.palette.mode === "dark"
-                              ? "grey.800"
-                              : "grey.100",
+                          bgcolor: "grey.100",
                           border: "1px solid",
                           borderColor: "divider",
                           borderRadius: 0.5,
@@ -959,17 +899,19 @@ const WorkspacePage = () => {
 
                   <Typography
                     className="article-title"
-                    sx={{
-                      fontSize: { xs: "1.0625rem", sm: "0.9375rem" },
-                      lineHeight: 1.4,
-                      letterSpacing: "-0.01em",
-                      fontWeight: 500,
-                      color: "text.primary",
-                      textDecoration: "underline",
-                      textUnderlineOffset: 4,
-                      textAlign: "start",
-                      transition: "color 0.2s",
-                    }}
+                    sx={
+                      {
+                        fontSize: { xs: "1.0625rem", sm: "0.9375rem" },
+                        lineHeight: 1.4,
+                        letterSpacing: "-0.01em",
+                        fontWeight: 500,
+                        color: "text.primary",
+                        textDecoration: "underline",
+                        textUnderlineOffset: 4,
+                        textAlign: "start",
+                        transition: "color 0.2s",
+                      } as SxProps<Theme>
+                    }
                   >
                     {article.title}
                   </Typography>
