@@ -1,15 +1,8 @@
-/* Button Reset */
-:global(button) {
-  background: none;
-  background-color: transparent;
-  border: none;
-  border-width: 0;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  outline: none;
-}
+/* Section4.module.css */
+
+/* ========================================
+   Section Container
+   ======================================== */
 
 .section {
   background-color: white;
@@ -30,6 +23,10 @@
   }
 }
 
+/* ========================================
+     Container
+     ======================================== */
+
 .container {
   max-width: 1200px;
   margin-left: auto;
@@ -38,8 +35,12 @@
   padding-right: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
+
+/* ========================================
+     Header
+     ======================================== */
 
 .header {
   display: flex;
@@ -54,8 +55,7 @@
   font-weight: 600;
   word-break: keep-all;
   text-align: center;
-  color: rgb(17 24 39);
-  margin: 0;
+  color: var(--text-primary, #1f2937);
 }
 
 @media (min-width: 768px) {
@@ -64,43 +64,36 @@
   }
 }
 
-.brandText {
+.titleHighlight {
   font-weight: 800;
-  color: #00ab55;
+  color: var(--brand-primary, #00ab55);
 }
 
-.icons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.iconWrapper {
-  border-radius: 9999px;
-  background-color: white;
+.description {
+  font-size: 1.0625rem;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+  word-break: keep-all;
+  color: var(--text-primary, #1f2937);
 }
 
 @media (min-width: 768px) {
-  .iconWrapper {
-    padding: 0.5rem;
-    border: 1px solid rgb(229 231 235);
+  .description {
+    font-size: 1.3125rem;
   }
 }
 
-.icon {
-  width: 1.5rem;
-  height: 1.5rem;
-}
+/* ========================================
+     Grid Layout
+     ======================================== */
 
 .grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 0.5rem 1.5rem;
+  column-gap: 0.5rem;
   row-gap: 1.5rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  max-width: 32rem;
+  max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -119,24 +112,29 @@
   }
 }
 
-.card {
+/* ========================================
+     Card Item
+     ======================================== */
+
+.cardWrapper {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   height: 100%;
   flex-shrink: 0;
   width: 100%;
-  max-width: 28rem;
+  max-width: 24rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 @media (min-width: 768px) {
-  .card {
+  .cardWrapper {
     max-width: none;
   }
 }
 
+/* Label (Header) */
 .cardLabel {
   position: relative;
   font-size: 1.0625rem;
@@ -150,8 +148,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 0.75rem;
   border-radius: 0.375rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease-out, background-color 0.5s ease-out;
 }
 
 @media (min-width: 640px) {
@@ -160,16 +161,35 @@
   }
 }
 
-.labelGreen {
-  background-color: rgb(22 163 74);
+.cardWrapper:hover .cardLabel {
+  transform: translateY(-0.5rem);
+  background-color: #007b55;
 }
 
-.labelLime {
-  background-color: rgb(101 163 13);
+.cardLabelGreen {
+  composes: cardLabel;
+  background-color: #16a34a;
 }
 
-.labelTeal {
-  background-color: rgb(13 148 136);
+.cardLabelLime {
+  composes: cardLabel;
+  background-color: #65a30d;
+}
+
+.cardLabelTeal {
+  composes: cardLabel;
+  background-color: #0d9488;
+}
+
+.cardLabelIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: brightness(0) invert(1);
+}
+
+.cardLabelText {
+  padding-bottom: 0.125rem;
+  margin-right: 1rem;
 }
 
 .cardLabelArrow {
@@ -184,43 +204,37 @@
   border-top: 0.5rem solid green;
 }
 
-.cardContent {
+/* List Container */
+.cardList {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 2rem;
-  padding-bottom: 2.5rem;
+  padding: 2rem 1.5rem 2.5rem 1.5rem;
   flex-grow: 1;
   border-radius: 0.375rem;
-}
-
-.cardContent ul {
-  list-style-type: disc;
+  list-style: none;
   margin: 0;
-  padding: 0;
 }
 
-.contentSlate {
-  background-color: rgb(248 250 252);
+.cardListSlate {
+  composes: cardList;
+  background-color: #f8fafc;
 }
 
-.contentStone {
-  background-color: rgb(250 250 249);
+.cardListStone {
+  composes: cardList;
+  background-color: #fafaf9;
 }
 
+/* List Item */
 .listItem {
   font-size: 1.0625rem;
-  line-height: 1.625;
+  line-height: 1.4;
   letter-spacing: -0.025em;
   word-break: keep-all;
   list-style-type: disc;
   margin-left: 1rem;
-  margin-top: 0;
-  margin-bottom: 0;
-  color: rgb(17 24 39);
-  font-weight: 500;
+  color: var(--text-primary, #1f2937);
 }
 
 @media (min-width: 640px) {
@@ -230,5 +244,5 @@
 }
 
 .listItemDescription {
-  color: rgb(107 114 128);
+  color: var(--text-secondary, #6b7280);
 }

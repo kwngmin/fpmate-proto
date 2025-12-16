@@ -10,4 +10,4 @@ export { default as Section3 } from "./Section3";
 export { default as Section4 } from "./Section4";
 export { default as Section5 } from "./Section5";
 export { default as Footer } from "./Footer";
-
+export { default as Diagram } from "./Diagram";

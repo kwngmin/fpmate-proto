@@ -1,0 +1,971 @@
+/* Diagram.module.css */
+
+/* ========================================
+   Gradient Beam Animation
+   ======================================== */
+
+.gradientBeamContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gradientBeamLayer {
+  position: absolute;
+  inset: 0;
+}
+
+/* ========================================
+     Common Card Components
+     ======================================== */
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background-color: white;
+  border: 1px solid;
+  transition: all 0.5s ease-out;
+}
+
+.cardDefault {
+  composes: card;
+  border-color: #9ca3af;
+  box-shadow: -3px 3px 0px 0px gray;
+}
+
+.cardDefault:hover {
+  border-color: var(--brand-primary, #00ab55);
+  box-shadow: -3px 3px 0px 0px green;
+}
+
+.cardHighlighted {
+  composes: card;
+  border-color: var(--brand-primary, #00ab55);
+  box-shadow: -3px 3px 0px 0px green;
+}
+
+/* Card sizes */
+.cardSmall {
+  height: 3rem;
+  width: 3rem;
+}
+
+.cardPadding2 {
+  padding: 0.5rem;
+}
+
+.cardPadding3 {
+  padding: 0.75rem;
+}
+
+/* ========================================
+     Label Components
+     ======================================== */
+
+.label {
+  border-radius: 9999px;
+  border: 1px solid;
+  background-color: white;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  transition: all 0.5s ease-out;
+  text-align: center;
+  font-weight: 500;
+  color: var(--text-primary, #1f2937);
+}
+
+.labelDefault {
+  composes: label;
+  border-color: #9ca3af;
+}
+
+.labelHighlighted {
+  composes: label;
+  border-color: var(--brand-primary, #00ab55);
+}
+
+.labelWidth12 {
+  width: 3rem;
+}
+
+.labelWidth13 {
+  width: 3.25rem;
+}
+
+/* ========================================
+     Button Label Component
+     ======================================== */
+
+.buttonLabel {
+  border-radius: 9999px;
+  border: 1px solid;
+  background-color: white;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8125rem;
+  transition: all 0.5s ease-out;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--text-primary, #1f2937);
+}
+
+.buttonLabelDefault {
+  composes: buttonLabel;
+  border-color: #9ca3af;
+}
+
+.buttonLabelHighlighted {
+  composes: buttonLabel;
+  border-color: var(--brand-primary, #00ab55);
+}
+
+.buttonLabelIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ========================================
+     Feature Card Component
+     ======================================== */
+
+.featureCard {
+  border-radius: 0.375rem;
+  border: 1px solid;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--fg0, #1f2937);
+  position: relative;
+  z-index: 20;
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease-out;
+}
+
+.featureCardDefault {
+  composes: featureCard;
+  border-color: #9ca3af;
+  box-shadow: -3px 3px 0px 0px gray;
+  background-color: white;
+}
+
+.featureCardDefault:hover {
+  border-color: var(--brand-primary, #00ab55);
+  box-shadow: -3px 3px 0px 0px green;
+}
+
+.featureCardHighlighted {
+  composes: featureCard;
+  border-color: var(--brand-primary, #00ab55);
+  box-shadow: -3px 3px 0px 0px green;
+  background-color: #f0fdf4;
+}
+
+.featureCardIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ========================================
+     Result Card Component
+     ======================================== */
+
+.resultCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  border: 1px solid;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  transition: all 0.5s ease-out;
+  background-color: white;
+}
+
+.resultCardDefault {
+  composes: resultCard;
+  border-color: #9ca3af;
+  box-shadow: -3px 3px 0px 0px gray;
+}
+
+.resultCardDefault:hover {
+  border-color: var(--brand-primary, #00ab55);
+  box-shadow: -3px 3px 0px 0px green;
+}
+
+.resultCardHighlighted {
+  composes: resultCard;
+  border-color: var(--brand-primary, #00ab55);
+  box-shadow: -3px 3px 0px 0px green;
+}
+
+.resultCardInner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.resultCardContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+}
+
+.resultCardIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ========================================
+     File Type Card Component
+     ======================================== */
+
+.fileTypeCardWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.fileTypeLabelWrapper {
+  position: absolute;
+  left: calc(50% + 16px + 25px);
+  top: -6px;
+  z-index: 30;
+  transform-style: preserve-3d;
+}
+
+.fileTypeLabelInner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.fileTypeCardContainer {
+  position: absolute;
+  left: calc(50% + 18px + 25px);
+  top: -12px;
+  z-index: 20;
+  transform-style: preserve-3d;
+}
+
+.fileTypeCardInner {
+  position: absolute;
+  opacity: 0.8;
+  z-index: 0;
+  transform: translateY(8px) translateX(-8px);
+}
+
+.fileTypeBadge {
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0 0.25rem;
+  border-radius: 2px;
+}
+
+.fileTypeBadgeHwp {
+  background-color: #0891b2;
+}
+
+.fileTypeBadgePdf {
+  background-color: #ef4444;
+}
+
+.fileTypeBadgeXls {
+  background-color: #15803d;
+}
+
+.fileTypeBadgeDoc {
+  background-color: #2563eb;
+}
+
+.fileTypeBadgeTxt {
+  background-color: black;
+}
+
+/* ========================================
+     Diagram Main Component
+     ======================================== */
+
+.diagramContainer {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .diagramContainer {
+    margin-top: 10rem;
+    gap: 0;
+  }
+}
+
+/* Title Section */
+.titleContainer {
+  position: relative;
+  z-index: 30;
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mainTitle {
+  font-size: 2rem;
+  line-height: 1.25;
+  letter-spacing: -0.05em;
+  font-weight: 600;
+  word-break: keep-all;
+}
+
+@media (min-width: 768px) {
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mainTitle {
+    font-size: 3rem;
+  }
+}
+
+.brandText {
+  font-weight: 800;
+  color: var(--brand-primary, #00ab55);
+}
+
+.descriptionWrapper {
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+  word-break: keep-all;
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .descriptionWrapper {
+    max-width: 48rem;
+  }
+}
+
+.descriptionText {
+  font-size: 1.0625rem;
+  color: var(--text-primary, #1f2937);
+}
+
+@media (min-width: 768px) {
+  .descriptionText {
+    font-size: 1.3125rem;
+  }
+}
+
+/* Diagram Area */
+.diagramArea {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Selected Section */
+.selectedSection {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  z-index: 30;
+  margin-bottom: 1.5rem;
+  margin-top: 16rem;
+}
+
+@media (min-width: 640px) {
+  .selectedSection {
+    margin-top: 27rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .selectedSection {
+    padding-top: 5rem;
+    margin-top: 20rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .selectedSection {
+    margin-top: 0;
+  }
+}
+
+.selectedSectionInner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .selectedSectionInner {
+    height: 24rem;
+  }
+}
+
+.buttonContainer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .buttonContainer {
+    max-width: 65ch;
+  }
+}
+
+/* Selection Button */
+.selectionButton {
+  position: relative;
+  text-align: left;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-radius: 0.375rem;
+  background-color: rgba(244, 244, 245, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .selectionButton {
+    max-width: 28rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .selectionButton {
+    height: 10rem;
+  }
+}
+
+.selectionButtonActive {
+  composes: selectionButton;
+  background-color: white;
+  outline: 1px solid var(--brand-primary, #00ab55);
+}
+
+.buttonHeader {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.75rem;
+  transition: all 0.4s ease-out;
+}
+
+@media (min-width: 640px) {
+  .buttonHeader {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.buttonIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.buttonTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.buttonTitle {
+  font-size: 1.0625rem;
+  line-height: 1.25;
+  letter-spacing: -0.05em;
+  color: var(--text-primary, #1f2937);
+  max-width: 24rem;
+  word-break: keep-all;
+  font-weight: 600;
+}
+
+.pulseIndicator {
+  position: relative;
+  display: flex;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.pulseIndicatorMobile {
+  composes: pulseIndicator;
+}
+
+@media (min-width: 640px) {
+  .pulseIndicatorMobile {
+    display: none;
+  }
+}
+
+.pulseIndicatorDesktop {
+  composes: pulseIndicator;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .pulseIndicatorDesktop {
+    display: flex;
+  }
+}
+
+.pulsePing {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  position: absolute;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 9999px;
+  background-color: var(--brand-primary, #00ab55);
+  opacity: 0.75;
+}
+
+.pulseDot {
+  position: relative;
+  display: inline-flex;
+  border-radius: 9999px;
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: var(--brand-primary, #00ab55);
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.buttonDescription {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  word-break: keep-all;
+  transition: all 0.4s ease-out;
+  overflow: hidden;
+  color: var(--text-secondary, #6b7280);
+}
+
+@media (min-width: 640px) {
+  .buttonDescription {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  .buttonDescription {
+    max-width: 24rem;
+  }
+}
+
+/* Background Grid */
+.backgroundGrid {
+  position: absolute;
+  top: -18rem;
+  height: 838px;
+  left: 50%;
+  pointer-events: none;
+  /* 기본값: scale-[0.55] -translate-x-38 translate-y-20 */
+  transform: translateX(-9.5rem) translateY(5rem) scale(0.55);
+}
+
+@media (min-width: 640px) {
+  .backgroundGrid {
+    /* sm: -top-40 scale-[0.875] -translate-x-60 */
+    top: -10rem;
+    transform: translateX(-15rem) scale(0.875);
+  }
+}
+
+@media (min-width: 768px) {
+  .backgroundGrid {
+    /* md: -top-28 -translate-x-48 translate-y-8 scale-[0.94] */
+    top: -7rem;
+    transform: translateX(-12rem) translateY(2rem) scale(0.94);
+  }
+}
+
+@media (min-width: 1024px) {
+  .backgroundGrid {
+    /* lg: -top-20 translate-x-0 translate-y-0 */
+    top: -3.5rem;
+    transform: translateX(0) translateY(0) scale(1);
+  }
+}
+
+.gridInner {
+  height: 838px;
+  width: 100%;
+  position: relative;
+  opacity: 1;
+}
+
+.isometricContainer {
+  position: absolute;
+  left: calc(50% - 550px);
+  top: -5rem;
+  height: 1095px;
+  width: 1580px;
+  transform: rotate(-30deg) skewX(30deg);
+}
+
+/* Grid Image */
+.gridImageWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.gridImageWrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, white, transparent);
+}
+
+.gridImage {
+  object-fit: none;
+  opacity: 0.15;
+}
+
+/* SVG Lines */
+.svgLinesLayer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Animated Line */
+.animatedLineBackground {
+  transition: stroke 0.5s, stroke-width 0.5s;
+}
+
+.animatedLineFlow {
+  animation: flow 1s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes flow {
+  from {
+    stroke-dashoffset: 16;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* User Card */
+.userCard {
+  position: absolute;
+  left: calc(50% - 89px);
+  top: 297px;
+  z-index: 20;
+}
+
+.userIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+  color: var(--fg0, #1f2937);
+}
+
+/* Requirement Label */
+.requirementLabel {
+  position: absolute;
+  left: calc(50% + 34px + 25px);
+  top: 264px;
+  z-index: 30;
+  transform-style: preserve-3d;
+}
+
+.requirementLabelInner {
+  position: absolute;
+  left: 0;
+  top: -0.5rem;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.requirementText {
+  min-width: 13rem;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.fileTypeRed {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.fileTypeBlue {
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+.fileTypeGreen {
+  color: #15803d;
+  font-weight: 500;
+}
+
+.fileTypeSky {
+  color: #0ea5e9;
+  font-weight: 500;
+}
+
+.fileTypeBlack {
+  color: black;
+  font-weight: 500;
+}
+
+.fileTypeSeparator {
+  color: var(--text-tertiary, #9ca3af);
+}
+
+/* File Type Card Position */
+.fileTypeCardPosition {
+  position: absolute;
+  left: calc(50% - 8px);
+  top: 301px;
+  z-index: 20;
+  transform-style: preserve-3d;
+}
+
+/* Upload Button */
+.uploadButton {
+  position: absolute;
+  left: calc(50% + 112px + 25px);
+  top: 310px;
+  z-index: 20;
+}
+
+/* User Input Button */
+.userInputButton {
+  position: absolute;
+  left: calc(50% + 74px);
+  top: 360px;
+  z-index: 20;
+}
+
+/* FPMate AI Container */
+.fpmateAiContainer {
+  position: absolute;
+  left: 1043px;
+  top: 274px;
+  display: flex;
+  height: 150px;
+  width: 250px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9375rem;
+  border-radius: 0.25rem;
+  border: 1px dashed var(--separator, #e5e7eb);
+  transition: border-color 0.3s;
+  padding-bottom: 0.5rem;
+}
+
+.fpmateLogoCard {
+  position: absolute;
+  top: -76px;
+  left: 0.25rem;
+  z-index: 0;
+}
+
+.fpmateLogo {
+  width: 2rem;
+  height: 2rem;
+}
+
+.fpmateAiLabel {
+  position: absolute;
+  left: -1.25rem;
+  top: -1rem;
+}
+
+.fpmateAiLabelInner {
+  border-radius: 9999px;
+  border: 1px solid var(--brand-primary, #00ab55);
+  background-color: white;
+  padding: 0.125rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-primary, #1f2937);
+  transition: all 0.5s ease-out;
+  opacity: 1;
+}
+
+/* Result Cards Positions */
+.costEstimationCard {
+  position: absolute;
+  left: calc(50% + 180px);
+  top: 484px;
+  z-index: 20;
+}
+
+.dataDuplicateCard {
+  position: absolute;
+  left: calc(50% + 320px);
+  top: 530px;
+  z-index: 20;
+}
+
+.dataErrorCard {
+  position: absolute;
+  left: calc(50% + 320px);
+  top: 568px;
+  z-index: 20;
+}
+
+.dataMissingCard {
+  position: absolute;
+  left: calc(50% + 320px);
+  top: 606px;
+  z-index: 20;
+}
+
+/* Output Cards (Web, PDF, XLS) */
+.outputCardWrapper {
+  position: absolute;
+  z-index: 20;
+  transform-style: preserve-3d;
+}
+
+.webCard {
+  composes: outputCardWrapper;
+  left: calc(50% - 32px);
+  top: 589px;
+}
+
+.pdfCard {
+  composes: outputCardWrapper;
+  left: calc(50% + 68px);
+  top: 589px;
+}
+
+.xlsCard {
+  composes: outputCardWrapper;
+  left: calc(50% + 168px);
+  top: 589px;
+}
+
+.outputLabelWrapper {
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  z-index: 30;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.outputCardInner {
+  position: absolute;
+  opacity: 0.8;
+  z-index: 0;
+  transform: translateY(8px) translateX(-8px);
+}
+
+.globeIcon {
+  width: 1.625rem;
+  height: 1.625rem;
+}
+
+/* Backboard Panel */
+.backboardPanel {
+  position: absolute;
+  border: 1px solid var(--action-disabled, #e5e7eb);
+  left: calc(50% - 95px);
+  top: 450px;
+  z-index: 5;
+  display: flex;
+  height: 250px;
+  width: 597px;
+  padding: 0.5rem 0.75rem;
+  opacity: 1;
+}
+
+.backboardPulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(220, 252, 231, 0.2);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.backboardContent {
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+  z-index: 30;
+  transform-style: preserve-3d;
+}
+
+.backboardContentInner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 30;
+  opacity: 1;
+}
+
+.backboardText {
+  min-width: 12rem;
+  flex-shrink: 0;
+  color: #007b55;
+}

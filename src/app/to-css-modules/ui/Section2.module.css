@@ -1,15 +1,8 @@
-/* Button Reset */
-:global(button) {
-  background: none;
-  background-color: transparent;
-  border: none;
-  border-width: 0;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  outline: none;
-}
+/* Section2.module.css */
+
+/* ========================================
+   Section Container
+   ======================================== */
 
 .section {
   background-color: white;
@@ -25,6 +18,10 @@
   }
 }
 
+/* ========================================
+     Content Container
+     ======================================== */
+
 .container {
   max-width: 1200px;
   margin-left: auto;
@@ -33,9 +30,19 @@
   padding-right: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
   position: relative;
 }
+
+@media (min-width: 640px) {
+  .container {
+    gap: 2rem;
+  }
+}
+
+/* ========================================
+     Header Section
+     ======================================== */
 
 .header {
   display: flex;
@@ -49,7 +56,6 @@
   letter-spacing: -0.05em;
   font-weight: 600;
   word-break: keep-all;
-  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -58,9 +64,9 @@
   }
 }
 
-.brandText {
+.titleHighlight {
   font-weight: 700;
-  color: #00ab55;
+  color: var(--brand-primary, #00ab55);
 }
 
 .description {
@@ -68,8 +74,7 @@
   line-height: 1.5;
   letter-spacing: -0.025em;
   word-break: keep-all;
-  color: rgb(17 24 39);
-  margin: 0;
+  color: var(--text-primary, #1f2937);
 }
 
 @media (min-width: 768px) {
@@ -78,9 +83,13 @@
   }
 }
 
-.semibold {
+.fontSemibold {
   font-weight: 600;
 }
+
+/* ========================================
+     Card Container
+     ======================================== */
 
 .cardContainer {
   display: flex;
@@ -89,20 +98,23 @@
   position: relative;
 }
 
-.cardContainer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  width: 66.666667%;
-  left: auto;
-  right: -1.5rem;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.9));
-  pointer-events: none;
-}
-
+/* 오른쪽 그라데이션 오버레이 */
 @media (min-width: 640px) {
   .cardContainer::after {
     content: "";
+    position: absolute;
+    inset: 0;
+    width: 33.333%;
+    left: auto;
+    top: -2rem;
+    right: -1.5rem;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.9)
+    );
+    pointer-events: none;
+    z-index: 30;
   }
 }
 
@@ -112,7 +124,11 @@
   }
 }
 
-.insightCards {
+/* ========================================
+     Insight Cards Grid
+     ======================================== */
+
+.insightCardsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
@@ -120,26 +136,32 @@
 }
 
 @media (min-width: 768px) {
-  .insightCards {
+  .insightCardsGrid {
     width: 1152px;
   }
 }
 
-.dummyCards {
+/* ========================================
+     Dummy Cards Grid
+     ======================================== */
+
+.dummyCardsGrid {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
   width: 1040px;
+  height: 14rem;
 }
 
 @media (min-width: 768px) {
-  .dummyCards {
+  .dummyCardsGrid {
     width: 1152px;
   }
 }
 
-.dummyCards::after {
+/* 하단 페이드 아웃 그라데이션 */
+.dummyCardsGrid::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -147,10 +169,14 @@
   pointer-events: none;
 }
 
+/* ========================================
+     Dummy Card Styles
+     ======================================== */
+
 .dummyCard {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .dummyCardHeader {
@@ -159,24 +185,25 @@
   gap: 0.5rem;
 }
 
-.dummyChips {
+.dummyCardChips {
   display: flex;
   gap: 0.25rem;
   align-items: center;
   opacity: 0.5;
 }
 
-.dummyActions {
+.dummyCardActions {
   display: flex;
   gap: 0.5rem;
   align-items: center;
 }
 
-.dummyActionsShrink {
+.dummyCardActionsShrink {
+  composes: dummyCardActions;
   flex-shrink: 0;
 }
 
-.dummyContent {
+.dummyCardContent {
   display: flex;
   gap: 0.25rem;
   align-items: center;

@@ -1,60 +1,70 @@
-/* Button Reset */
-:global(button) {
-  background: none;
-  background-color: transparent;
-  border: none;
-  border-width: 0;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
-  outline: none;
-}
+/* Card.module.css */
+
+/* ========================================
+   Base Styles
+   ======================================== */
 
 .card {
   border-radius: 0.5rem;
   transition: all 0.25s;
 }
 
-/* Variants */
-.default {
-  background-color: rgb(255 255 255);
+/* ========================================
+     Variant Styles
+     ======================================== */
+
+.variantDefault {
+  background-color: var(--bg-paper, #ffffff);
 }
 
-.bordered {
-  background-color: rgb(255 255 255);
-  border: 1px solid rgb(229 231 235);
+.variantBordered {
+  background-color: var(--bg-paper, #ffffff);
+  border: 1px solid var(--border-primary, #e5e7eb);
 }
 
-.elevated {
-  background-color: rgb(255 255 255);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+.variantElevated {
+  background-color: var(--bg-paper, #ffffff);
+  box-shadow: var(
+    --shadow-card,
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.1)
+  );
 }
 
-/* Padding */
-.none {
+/* ========================================
+     Padding Styles
+     ======================================== */
+
+.paddingNone {
   padding: 0;
 }
 
-.xs {
+.paddingXs {
   padding: 0.75rem;
 }
 
-.sm {
+.paddingSm {
   padding: 1rem;
 }
 
-.md {
+.paddingMd {
   padding: 1.5rem;
 }
 
-.lg {
+.paddingLg {
   padding: 2rem;
 }
 
-/* Interactions */
+/* ========================================
+     Interaction Styles
+     ======================================== */
+
 .hoverable:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: var(
+    --shadow-medium,
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1)
+  );
 }
 
 .clickable {
@@ -64,4 +74,3 @@
 .clickable:active {
   transform: scale(0.98);
 }
-

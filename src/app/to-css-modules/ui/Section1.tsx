@@ -1,16 +1,50 @@
 "use client";
 
 import { useIntersectionObserver } from "@/shared/lib/use-intersection-observer";
-import { Card } from "./Card";
+import { Card } from "@/shared/ui";
+import ConnectionLines from "@/shared/ui/ConnectionLines";
 import { FadeDiv, FadeText } from "@/shared/ui/FadeMotion";
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Section1.module.css";
 
-/**
- * Section 1 카드 데이터
- */
-const section1Contents = [
+interface Feature {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+interface SectionContent {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+}
+
+const features: Feature[] = [
+  {
+    title: "신규 개발",
+    description: "초기 개발 규모 산정의 정확도 향상",
+    icon: "magic-wand",
+  },
+  {
+    title: "유지보수",
+    description: "변경개선 요청에 대한 업무량 산정의 객관성과 신뢰도 향상",
+    icon: "toolbox",
+  },
+  {
+    title: "발주사",
+    description: "견적 비교와 기능점수 검증에 효과적으로 대응",
+    icon: "building-office",
+  },
+  {
+    title: "개발사",
+    description: "견적제안서 작성에 필요한 기능점수 기반 근거 자료 자동 생성",
+    icon: "code",
+  },
+];
+
+const section1Contents: SectionContent[] = [
   {
     id: 1,
     title: "SW 사업을 기획하고 계신가요?",
@@ -31,6 +65,11 @@ const section1Contents = [
   },
 ];
 
+const SECTION1_CARD_WIDTH = 288;
+const SECTION1_CARD_GAP = 8;
+const CONTAINER_PADDING = 48;
+const MOBILE_BREAKPOINT = 1024;
+
 const Section1 = () => {
   const [section1Step, setSection1Step] = useState<number>(1);
   const [section1ContainerWidth, setSection1ContainerWidth] =
@@ -38,15 +77,10 @@ const Section1 = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const section1ContainerRef = useRef<HTMLDivElement>(null);
 
-  // 카드 상수
-  const SECTION1_CARD_WIDTH = 288; // min-w-72 = 18rem = 288px
-  const SECTION1_CARD_GAP = 8; // gap-2
-
-  // 화면 크기 감지 및 컨테이너 너비 측정
   useEffect(() => {
     const updateLayout = () => {
       const width = window.innerWidth;
-      setIsMobile(width <= 1024);
+      setIsMobile(width <= MOBILE_BREAKPOINT);
 
       if (section1ContainerRef.current) {
         setSection1ContainerWidth(section1ContainerRef.current.clientWidth);
@@ -58,27 +92,22 @@ const Section1 = () => {
     return () => window.removeEventListener("resize", updateLayout);
   }, []);
 
-  // Section1 translateX 계산
   const section1TranslateX = useMemo(() => {
     if (!isMobile || section1ContainerWidth === 0) return 0;
 
-    const PADDING = 48;
-    const visibleWidth = section1ContainerWidth - PADDING;
+    const visibleWidth = section1ContainerWidth - CONTAINER_PADDING;
     const totalCards = section1Contents.length;
     const carouselWidth =
       totalCards * SECTION1_CARD_WIDTH + (totalCards - 1) * SECTION1_CARD_GAP;
 
     if (section1Step === 1) {
-      // 첫번째: 왼쪽 가장자리에서 24px (기본 위치)
       return 0;
     } else if (section1Step === 2) {
-      // 두번째: 가운데
       const cardLeftPosition = SECTION1_CARD_WIDTH + SECTION1_CARD_GAP;
       const cardCenter = cardLeftPosition + SECTION1_CARD_WIDTH / 2;
       const containerCenter = visibleWidth / 2;
       return cardCenter - containerCenter;
     } else {
-      // 세번째: 오른쪽 가장자리에서 24px
       return carouselWidth - visibleWidth;
     }
   }, [section1Step, section1ContainerWidth, isMobile]);
@@ -87,147 +116,193 @@ const Section1 = () => {
     threshold: 0.5,
   });
 
+  const handleCardClick = useCallback(
+    (contentId: number) => {
+      if (isMobile) {
+        setSection1Step(contentId);
+      }
+    },
+    [isMobile]
+  );
+
+  const handlePrevClick = useCallback(() => {
+    if (section1Step > 1) {
+      setSection1Step(section1Step - 1);
+    }
+  }, [section1Step]);
+
+  const handleNextClick = useCallback(() => {
+    if (section1Step < section1Contents.length) {
+      setSection1Step(section1Step + 1);
+    }
+  }, [section1Step]);
+
+  const getCardClassName = useCallback(
+    (contentId: number): string => {
+      if (!isMobile) return styles.card;
+
+      if (contentId === section1Step) {
+        return styles.cardMobileActive;
+      }
+      return styles.cardMobileInactive;
+    },
+    [isMobile, section1Step]
+  );
+
   return (
     <section ref={ref} className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.title}>
-          <span className={styles.brandText}>FPMate</span>는?{" "}
-        </div>
-        <p className={styles.description}>
-          <span className={styles.semibold}>SW 사업 파트너</span>
-          로서 <span className={styles.semibold}>SW 사업 관리</span>를 돕고자
-          탄생하였습니다.
+      <div className={styles.headerContainer}>
+        <p className={styles.headerText}>
+          어떤 사업이든,{" "}
+          <span className={styles.fontSemibold}>더 정확하게. </span>
+          <br className={styles.hiddenSmUp} />
+          어떤 역할이든,{" "}
+          <span className={styles.fontSemibold}>더 효율적으로. </span>
         </p>
       </div>
 
-      {/* 카드 영역 - 1024px 이하에서 캐로셀 */}
-      <div className={styles.cardArea}>
-        <div
-          ref={section1ContainerRef}
-          className={styles.cardContainer}
-          style={{
-            perspective: isMobile ? "1000px" : "none",
-          }}
-        >
+      <div>
+        <div className={styles.carouselWrapper}>
           <div
-            className={styles.cardWrapper}
+            ref={section1ContainerRef}
+            className={styles.carouselContainer}
             style={{
-              transform: isMobile
-                ? `translateX(-${section1TranslateX}px)`
-                : "none",
-              width: isMobile ? "max-content" : "auto",
-              transformStyle: "preserve-3d",
+              perspective: isMobile ? "1000px" : "none",
             }}
           >
-            {section1Contents.map((content, index) => (
-              <Card
-                key={content.id}
-                variant="elevated"
-                padding="none"
-                className={`${styles.card} ${
-                  isMobile ? styles.cardMobile : ""
-                } ${
-                  isMobile && content.id === section1Step
-                    ? styles.cardActive
-                    : isMobile
-                    ? styles.cardInactive
-                    : ""
-                }`}
-                onClick={() => isMobile && setSection1Step(content.id)}
-              >
-                <div className={styles.cardContent}>
-                  <FadeDiv
-                    intersectionOptions={{
-                      threshold: 0.5,
-                    }}
-                    useIntersection={true}
-                  >
-                    {/* image */}
-                    <Image
-                      src={content.image}
-                      alt={`section1-${content.id}`}
-                      width={124}
-                      height={124}
-                      className={styles.cardImage}
+            <div
+              className={styles.carouselGrid}
+              style={{
+                transform: isMobile
+                  ? `translateX(-${section1TranslateX}px)`
+                  : "none",
+                width: isMobile ? "max-content" : "auto",
+                transformStyle: "preserve-3d",
+              }}
+            >
+              {section1Contents.map((content, index) => (
+                <Card
+                  key={content.id}
+                  padding="none"
+                  className={getCardClassName(content.id)}
+                  onClick={() => handleCardClick(content.id)}
+                >
+                  <div className={styles.cardContent}>
+                    <FadeDiv
+                      intersectionOptions={{
+                        threshold: 0.5,
+                      }}
+                      delay={index * 200}
+                      hasBlur={false}
+                      useIntersection={!isMobile}
+                    >
+                      <Image
+                        src={content.image}
+                        alt={`section1-${content.id}`}
+                        width={124}
+                        height={124}
+                        className={styles.cardImage}
+                      />
+                    </FadeDiv>
+
+                    <FadeText
+                      className={styles.cardTitle}
+                      text={content.title}
+                      hasBlur={false}
+                      useIntersection={!isMobile}
+                      intersectionOptions={{
+                        threshold: 0.5,
+                      }}
+                      delay={index * 200 + 100}
                     />
-                  </FadeDiv>
 
-                  {/* title */}
-                  <FadeText
-                    className={styles.cardTitle}
-                    text={content.title}
-                    delay={100 + (index + 1) * 75}
-                    useIntersection={true}
-                    intersectionOptions={{
-                      threshold: 0.5,
-                    }}
-                  />
+                    <FadeText
+                      className={styles.cardDescription}
+                      text={content.description}
+                      hasBlur={false}
+                      useIntersection={!isMobile}
+                      intersectionOptions={{
+                        threshold: 0.5,
+                      }}
+                      delay={index * 200 + 200}
+                    />
+                  </div>
+                </Card>
+              ))}
+            </div>
 
-                  {/* description */}
-                  <FadeText
-                    className={styles.cardDescription}
-                    text={content.description}
-                    delay={200 + (index + 1) * 100}
-                    useIntersection={true}
-                    intersectionOptions={{
-                      threshold: 0.5,
-                    }}
-                  />
-                </div>
-              </Card>
-            ))}
-          </div>
-          <div className={styles.controls}>
-            <button
-              type="button"
-              onClick={() =>
-                section1Step > 1 && setSection1Step(section1Step - 1)
-              }
-              className={`${styles.controlButton} ${
-                section1Step > 1 ? "" : styles.controlButtonDisabled
-              }`}
-            >
-              <Image
-                src="/assets/svgs/caret-left.svg"
-                alt="caret-left"
-                width={24}
-                height={24}
-                className={styles.controlIcon}
-              />
-            </button>
-            <button
-              type="button"
-              onClick={() =>
-                section1Step < section1Contents.length &&
-                setSection1Step(section1Step + 1)
-              }
-              className={`${styles.controlButton} ${
-                section1Step < section1Contents.length
-                  ? ""
-                  : styles.controlButtonDisabled
-              }`}
-            >
-              <Image
-                src="/assets/svgs/caret-right.svg"
-                alt="caret-right"
-                width={24}
-                height={24}
-                className={styles.controlIcon}
-              />
-            </button>
+            <div className={styles.navButtonContainer}>
+              <button
+                type="button"
+                onClick={handlePrevClick}
+                className={
+                  section1Step > 1
+                    ? styles.navButtonEnabled
+                    : styles.navButtonDisabled
+                }
+              >
+                <Image
+                  src="/assets/svgs/caret-left.svg"
+                  alt="caret-left"
+                  width={24}
+                  height={24}
+                  className={styles.navButtonIcon}
+                />
+              </button>
+              <button
+                type="button"
+                onClick={handleNextClick}
+                className={
+                  section1Step < section1Contents.length
+                    ? styles.navButtonEnabled
+                    : styles.navButtonDisabled
+                }
+              >
+                <Image
+                  src="/assets/svgs/caret-right.svg"
+                  alt="caret-right"
+                  width={24}
+                  height={24}
+                  className={styles.navButtonIcon}
+                />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Section 1 Description */}
-      <div className={styles.footer}>
-        <p className={styles.footerText}>
-          <span className={styles.footerBold}>FPMate</span>에서는{" "}
-          <span className={styles.footerMedium}>국제표준</span>(ISO/IEC 14143)에
-          기반한 방법으로{" "}
-          <span className={styles.footerMedium}>SW 사업 비용을 산정</span>
-          합니다.
-        </p>
+        <div className={styles.connectionLinesWrapper}>
+          <ConnectionLines />
+        </div>
+
+        <div className={styles.featuresContainer}>
+          <div className={styles.featuresGrid}>
+            {features.map((feature, index) => (
+              <FadeDiv
+                intersectionOptions={{
+                  threshold: 0.5,
+                }}
+                useIntersection={true}
+                delay={index * 100}
+                key={feature.title}
+                className={styles.featureItem}
+              >
+                <div className={styles.featureTitle}>
+                  <Image
+                    src={`/assets/svgs/${feature.icon}.svg`}
+                    alt={feature.title}
+                    width={16}
+                    height={16}
+                    className={styles.featureIcon}
+                  />
+                  {feature.title}
+                </div>
+                <p className={styles.featureDescription}>
+                  {feature.description}
+                </p>
+              </FadeDiv>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
