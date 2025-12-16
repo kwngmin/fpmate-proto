@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { Badge } from "./Badge";
 import { Card } from "./Card";
 import { useScrollTo } from "@/shared/lib/use-scroll-to";
@@ -16,10 +17,43 @@ interface InsightCardProps {
   fp: number;
   amount: number;
   date: string;
-  managerImage: string;
-  isFirst?: boolean;
+  cardIndex: number;
 }
 
+/**
+ * 툴팁 컴포넌트 (DRY 원칙)
+ * @param label - 툴팁에 표시할 텍스트
+ * @param isVisible - 툴팁 표시 여부
+ * @param className - 추가 CSS 클래스
+ * @returns 툴팁 JSX 또는 null
+ */
+const Tooltip = ({
+  label,
+  isVisible,
+  className = "",
+}: {
+  label: string;
+  isVisible: boolean;
+  className?: string;
+}) => {
+  if (!isVisible) return null;
+
+  return (
+    <div className={`${styles.tooltip} ${className}`}>
+      {label}
+      <div className={styles.tooltipArrow} />
+    </div>
+  );
+};
+
+/**
+ * 그라데이션 링이 있는 버튼 컴포넌트
+ * @param onClick - 클릭 핸들러
+ * @param isFirstCard - 첫 번째 카드 여부
+ * @param children - 자식 요소
+ * @param order - 애니메이션 순서 (기본값: 1)
+ * @returns 그라데이션 링 버튼 JSX
+ */
 const GradientRingButton = ({
   onClick,
   isFirstCard = false,
@@ -57,17 +91,41 @@ const GradientRingButton = ({
   );
 };
 
+/**
+ * 인사이트 카드 컴포넌트
+ * @param chips - 배지 칩 목록
+ * @param title - 카드 제목
+ * @param fp - 기능 점수
+ * @param amount - 개발비
+ * @param date - 선정완료일
+ * @param cardIndex - 카드 인덱스 (1부터 시작)
+ * @returns 인사이트 카드 JSX
+ */
 const InsightCard = ({
   chips,
   title,
   fp,
   amount,
   date,
-  managerImage,
-  isFirst = false,
+  cardIndex,
 }: InsightCardProps) => {
   const { scrollTo: scrollToTable } = useScrollTo(64);
   const { scrollTo: scrollToChart } = useScrollTo(316);
+
+  const isFirst = cardIndex === 1;
+
+  // 모바일에서 isFirst일 때 툴팁 번갈아 표시 (0: 최종 리포트, 1: 분석 그래프)
+  const [activeTooltip, setActiveTooltip] = useState<0 | 1>(0);
+
+  useEffect(() => {
+    if (!isFirst) return;
+
+    const interval = setInterval(() => {
+      setActiveTooltip((prev) => (prev === 0 ? 1 : 0));
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isFirst]);
 
   return (
     <Card
@@ -106,9 +164,42 @@ const InsightCard = ({
             onClick={() => scrollToTable("section3-table")}
             isFirstCard={isFirst}
           >
+            {/* isFirst: 모바일에서 번갈아 표시, 데스크톱에서 hover 시 표시 */}
+            {isFirst && (
+              <>
+                {/* 모바일: 4초 간격 번갈아 표시 */}
+                <Tooltip
+                  label="최종 리포트"
+                  isVisible={activeTooltip === 0}
+                  className={`${styles.tooltipMobileOnly} ${styles.tooltipBounce}`}
+                />
+                {/* 데스크톱: hover 시 표시 */}
+                <Tooltip
+                  label="최종 리포트"
+                  isVisible
+                  className={styles.tooltipDesktopHover}
+                />
+              </>
+            )}
+            {/* cardIndex === 2: 데스크톱에서만 bounce 애니메이션 */}
+            {cardIndex === 2 && (
+              <Tooltip
+                label="최종 리포트"
+                isVisible
+                className={`${styles.tooltipDesktopOnly} ${styles.tooltipBounce}`}
+              />
+            )}
+            {/* cardIndex === 3: hover 시에만 표시 (데스크톱 제외) */}
+            {cardIndex === 3 && (
+              <Tooltip
+                label="최종 리포트"
+                isVisible
+                className={styles.tooltipHoverOnly}
+              />
+            )}
             <Image
               src="/assets/svgs/note.svg"
-              alt="noter-icon"
+              alt="note-icon"
               width={28}
               height={28}
               className={styles.icon}
@@ -119,9 +210,42 @@ const InsightCard = ({
             isFirstCard={isFirst}
             order={2}
           >
+            {/* isFirst: 모바일에서 번갈아 표시, 데스크톱에서 hover 시 표시 */}
+            {isFirst && (
+              <>
+                {/* 모바일: 4초 간격 번갈아 표시 */}
+                <Tooltip
+                  label="분석 그래프"
+                  isVisible={activeTooltip === 1}
+                  className={`${styles.tooltipMobileOnly} ${styles.tooltipBounce}`}
+                />
+                {/* 데스크톱: hover 시 표시 */}
+                <Tooltip
+                  label="분석 그래프"
+                  isVisible
+                  className={styles.tooltipDesktopHover}
+                />
+              </>
+            )}
+            {/* cardIndex === 2: hover 시에만 표시 (데스크톱 제외) */}
+            {cardIndex === 2 && (
+              <Tooltip
+                label="분석 그래프"
+                isVisible
+                className={styles.tooltipHoverOnly}
+              />
+            )}
+            {/* cardIndex === 3: 데스크톱에서만 bounce 애니메이션 */}
+            {cardIndex === 3 && (
+              <Tooltip
+                label="분석 그래프"
+                isVisible
+                className={`${styles.tooltipDesktopOnly} ${styles.tooltipBounceDelay}`}
+              />
+            )}
             <Image
               src="/assets/svgs/chart-bar.svg"
-              alt="noter-icon"
+              alt="chart-icon"
               width={28}
               height={28}
               className={styles.icon}
@@ -159,17 +283,13 @@ const InsightCard = ({
         <span className={styles.footerText}>
           {`선정완료일: ${date} 담당자:`}
         </span>{" "}
-        <Image
-          src={managerImage}
-          alt="avatar-placeholder"
-          width={36}
-          height={36}
-          className={styles.avatar}
-        />
+        <div className={styles.avatar}>
+          <div className={styles.avatarHead} />
+          <div className={styles.avatarBody} />
+        </div>
       </div>
     </Card>
   );
 };
 
 export default InsightCard;
-
